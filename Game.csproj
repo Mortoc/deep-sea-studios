@@ -50,6 +50,9 @@
     <Compile Include="Game\Assets\Editor\Application.cs" />
     <Compile Include="Game\Assets\Game.cs" />
     <Compile Include="Game\Assets\Map\MapManager.cs" />
+    <Compile Include="Game\Assets\Scheduler\IYieldInstruction.cs" />
+    <Compile Include="Game\Assets\Scheduler\Scheduler.cs" />
+    <Compile Include="Game\Assets\Scheduler\YieldReturnZero.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
