@@ -13,6 +13,5 @@
 /Game/*.suo
 /Game/bin
 /Game/Properties
-*.unity
 /bin
 /Properties
