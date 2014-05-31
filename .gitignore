@@ -11,3 +11,8 @@
 /*.userprefs
 /*.pidb
 /*.booproj
+
+/Game/*.suo
+/Game/bin
+/Game/Properties
+/Game/*.meta
