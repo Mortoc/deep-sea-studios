@@ -9,10 +9,10 @@ public class ApplicationMenu : EditorWindow
     [MenuItem("Application/LoadProject")]
     private static void LoadProject()
     {
-        string unitySceneFileName = UnityEngine.Application.dataPath + "Game.unity";
-        //string unitySceneSettingsFileName = mScenePath + projectName + ".xml";
+        string unitySceneFileName = UnityEngine.Application.dataPath + "/Game.unity";
 
         //check if we have the scene previously saved
+        Debug.Log("unity scene file: " + unitySceneFileName);
         if (!File.Exists(unitySceneFileName))
         {
             //if not, create the scene
@@ -22,7 +22,7 @@ public class ApplicationMenu : EditorWindow
             GameObject mainGameObject = new GameObject("Game");
             mainGameObject.AddComponent<Game>();
 
-            //save the weird beard scene
+            Debug.Log("saving scene: " + unitySceneFileName);
             EditorApplication.SaveScene(unitySceneFileName);
 
             AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
