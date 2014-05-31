@@ -7,6 +7,6 @@ public class Game : MonoBehaviour
 {
     private void Awake()
     {
-        Debug.Log("game awake");
+        Debug.Log("game awake"); 
     }
 }
