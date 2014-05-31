@@ -16,3 +16,4 @@
 /Game/bin
 /Game/Properties
 /Game/*.meta
+*.meta
