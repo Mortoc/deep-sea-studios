@@ -42,8 +42,8 @@
     <Reference Include="C:\Program Files (x86)\Unity-v4-5\Editor\Data\Managed\UnityEditor.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\Application.cs" />
-    <Compile Include="Assets\Game.cs" />
+    <Compile Include="Game\Assets\Editor\Application.cs" />
+    <Compile Include="Game\Assets\Game.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
