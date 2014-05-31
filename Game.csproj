@@ -49,6 +49,7 @@
     <Compile Include="Game\Assets\Actors\EnemyManager.cs" />
     <Compile Include="Game\Assets\Editor\Application.cs" />
     <Compile Include="Game\Assets\Game.cs" />
+    <Compile Include="Game\Assets\Map\MapManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
