@@ -14,5 +14,12 @@ public class Game : MonoBehaviour
 
         mActorManager = new ActorManager();
         mMapManager = new MapManager();
+
+        
+    }
+
+    private void Update()
+    {
+        Scheduler.Instance.Run();
     }
 }
