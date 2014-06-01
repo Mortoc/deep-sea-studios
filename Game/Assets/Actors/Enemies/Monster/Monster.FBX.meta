@@ -144,6 +144,7 @@ ModelImporter:
     100276: Object001
     100278: Object002
     100280: RightEye
+    100282: RightEye001
     400000: Bone001
     400002: Bone002
     400004: Bone003
@@ -285,6 +286,7 @@ ModelImporter:
     400276: Object001
     400278: Object002
     400280: RightEye
+    400282: RightEye001
     2300000: Box003
     2300002: Box013
     2300004: Box015
@@ -293,6 +295,7 @@ ModelImporter:
     2300010: Object001
     2300012: Object002
     2300014: RightEye
+    2300016: RightEye001
     3300000: Box003
     3300002: Box013
     3300004: Box015
@@ -301,6 +304,7 @@ ModelImporter:
     3300010: Object001
     3300012: Object002
     3300014: RightEye
+    3300016: RightEye001
     4300000: Loft001
     4300002: RightEye
     4300004: Box003
@@ -309,6 +313,7 @@ ModelImporter:
     4300010: Object001
     4300012: Object002
     4300014: LeftEye
+    4300016: RightEye001
     9500000: //RootNode
   materials:
     importMaterials: 1
