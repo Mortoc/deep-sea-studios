@@ -6,13 +6,13 @@ public class YieldReturnZero : IYieldInstruction
     private static YieldReturnZero mInstance = null;
     public static YieldReturnZero Instance
     {
-        get 
+        get
         {
             if (mInstance == null)
             {
                 mInstance = new YieldReturnZero();
             }
-            return mInstance; 
+            return mInstance;
         }
     }
 
