@@ -9,7 +9,7 @@ public class ActorManager
 
     public ActorManager()
     {
-        mAvatar = new Avatar(Vector3.one);
+        mAvatar = new Avatar(new Vector3(1102,161,923));
         mEnemyManager = new EnemyManager(1);
     }
 }

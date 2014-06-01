@@ -83,7 +83,7 @@ public class Enemy : ActorBase
                         
         if (didHit)
         {
-            Debug.Log("hit: " + hitInfo.collider.gameObject.name);
+           // Debug.Log("hit: " + hitInfo.collider.gameObject.name);
             Vector3 hitVector = hitInfo.point - mGameObject.transform.position;
             float angleBetweenHitPointAndForwardVector = Vector3.Angle(hitVector, mGameObject.transform.forward);
 
