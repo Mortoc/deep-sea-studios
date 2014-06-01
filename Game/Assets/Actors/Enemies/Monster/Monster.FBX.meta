@@ -262,6 +262,18 @@ ModelImporter:
     100512: Tongue_01
     100514: Tongue_02
     100516: UpperTeeth
+    100518: IK Chain001
+    100520: Left_Tail_Wing00
+    100522: Left_Tail_Wing01
+    100524: Left_Tail_Wing02
+    100526: Left_Tail_Wing05
+    100528: Line001
+    100530: Right_Tail_Wing02
+    100532: Right_Tail_Wing05
+    100534: Right_Tail_Wing08
+    100536: Right_Tail_Wing09
+    100538: Spine_23
+    100540: Spine_24
     400000: Bone001
     400002: Bone002
     400004: Bone003
@@ -521,6 +533,18 @@ ModelImporter:
     400512: Tongue_01
     400514: Tongue_02
     400516: UpperTeeth
+    400518: IK Chain001
+    400520: Left_Tail_Wing00
+    400522: Left_Tail_Wing01
+    400524: Left_Tail_Wing02
+    400526: Left_Tail_Wing05
+    400528: Line001
+    400530: Right_Tail_Wing02
+    400532: Right_Tail_Wing05
+    400534: Right_Tail_Wing08
+    400536: Right_Tail_Wing09
+    400538: Spine_23
+    400540: Spine_24
     2300000: Box003
     2300002: Box013
     2300004: Box015
@@ -571,6 +595,8 @@ ModelImporter:
     13700006: Loft001
     13700008: RightWing1
     13700010: RightWing2
+    13700012: LeftTailWing
+    13700014: RightTailWing
   materials:
     importMaterials: 1
     materialName: 0
