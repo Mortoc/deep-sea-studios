@@ -2003,6 +2003,7 @@ GameObject:
   - 114: {fileID: 2141910586}
   - 114: {fileID: 2141910585}
   - 114: {fileID: 2141910587}
+  - 114: {fileID: 2141910588}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2048,7 +2049,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: .300000012
-  far clip plane: 1000
+  far clip plane: 3000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2121,7 +2122,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141910579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dad87ba4f1e04d6eb7f287e1f2e08fe, type: 3}
   m_Name: 
@@ -2156,9 +2157,36 @@ MonoBehaviour:
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
-  exposureAdjustment: 1.47000003
+  exposureAdjustment: 6
   middleGrey: .400000006
   white: 2
   adaptionSpeed: 1.5
   tonemapper: {fileID: 4800000, guid: 003377fc2620a44939dadde6fe3f8190, type: 3}
   validRenderTextureFormat: 1
+--- !u!114 &2141910588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2141910579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyDistortion: 1
+  antialiasing: 1
+  positionGameWindow: 1
+  disableTracking: 0
+  wireframe: 0
+  overlaySettings:
+    texture: {fileID: 0}
+    curved: 1
+    scale: 3
+    distance: 1.25
+    alpha: 1
+    uvOffset: {x: 0, y: 0, z: 1, w: 1}
+    radius: 0
+  renderComponents: []
+  followHead: []
+  followEyes: []
