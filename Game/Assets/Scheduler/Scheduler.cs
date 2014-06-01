@@ -18,7 +18,7 @@ public class Scheduler
 
     private Scheduler()
     {
-        mCoroutineLinkedList= new LinkedList<KeyValuePair<uint,IEnumerator<IYieldInstruction>>>();
+        mCoroutineLinkedList = new LinkedList<KeyValuePair<uint, IEnumerator<IYieldInstruction>>>();
     }
 
     private static uint mCoroutineId = 0;
@@ -29,7 +29,7 @@ public class Scheduler
         uint coroutineId = ++mCoroutineId;
         coroutine.MoveNext();
 
-        KeyValuePair<uint, IEnumerator<IYieldInstruction>> coroutineObject = new KeyValuePair<uint,IEnumerator<IYieldInstruction>>(coroutineId, coroutine);
+        KeyValuePair<uint, IEnumerator<IYieldInstruction>> coroutineObject = new KeyValuePair<uint, IEnumerator<IYieldInstruction>>(coroutineId, coroutine);
         mCoroutineLinkedList.AddLast(coroutineObject);
 
         return coroutineId;
@@ -38,9 +38,13 @@ public class Scheduler
     public void Run()
     {
         LinkedListNode<KeyValuePair<uint, IEnumerator<IYieldInstruction>>> currentCoroutineObject = mCoroutineLinkedList.First;
-        while(currentCoroutineObject.Next != null)
+        while (currentCoroutineObject != null)
         {
-            bool moveNext = currentCoroutineObject.Value.Value.MoveNext();
+            bool moveNext = true;
+            if (currentCoroutineObject.Value.Value.Current.IsReady())
+            {
+                moveNext = currentCoroutineObject.Value.Value.MoveNext();
+            }
 
             LinkedListNode<KeyValuePair<uint, IEnumerator<IYieldInstruction>>> prevCoroutine = currentCoroutineObject;
             currentCoroutineObject = currentCoroutineObject.Next;
@@ -51,5 +55,4 @@ public class Scheduler
             }
         }
     }
-
 }
