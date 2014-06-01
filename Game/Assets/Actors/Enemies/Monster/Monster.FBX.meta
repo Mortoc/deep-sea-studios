@@ -145,6 +145,123 @@ ModelImporter:
     100278: Object002
     100280: RightEye
     100282: RightEye001
+    100284: Frill_00
+    100286: Frill_01
+    100288: Frill_02
+    100290: Frill_03
+    100292: Frill_04
+    100294: Frill_05
+    100296: Frill_06
+    100298: Frill_07
+    100300: Frill_08
+    100302: Frill_09
+    100304: Frill_10
+    100306: Frill_11
+    100308: Frill_12
+    100310: Frill_13
+    100312: Frill_14
+    100314: Frill_15
+    100316: Frill_16
+    100318: Frill_17
+    100320: Frill_18
+    100322: Frill_19
+    100324: Frill_20
+    100326: Frill_21
+    100328: Head
+    100330: Left_Eye
+    100332: Left_Eye_Base
+    100334: Left_Wing_01_00
+    100336: Left_Wing_01_01
+    100338: Left_Wing_01_02
+    100340: Left_Wing_01_03
+    100342: Left_Wing_01_04
+    100344: Left_Wing_01_05
+    100346: Left_Wing_01_06
+    100348: Left_Wing_01_07
+    100350: Left_Wing_01_08
+    100352: Left_Wing_01_09
+    100354: Left_Wing_01_10
+    100356: Left_Wing_01_11
+    100358: Left_Wing_01_12
+    100360: Left_Wing_02_00
+    100362: Left_Wing_02_01
+    100364: Left_Wing_02_02
+    100366: Left_Wing_02_03
+    100368: Left_Wing_02_04
+    100370: Left_Wing_02_05
+    100372: Left_Wing_02_06
+    100374: Left_Wing_02_07
+    100376: Left_Wing_02_08
+    100378: Left_Wing_02_09
+    100380: Left_Wing_02_10
+    100382: Left_Wing_02_11
+    100384: Left_Wing_02_12
+    100386: LeftTailWing
+    100388: LeftWing1
+    100390: LeftWing2
+    100392: Lower_Jaw_00
+    100394: Lower_Jaw_01
+    100396: Lower_Jaw_02
+    100398: Lower_Jaw_03
+    100400: LowerTeeth
+    100402: Right_Eye
+    100404: Right_Eye_Base
+    100406: Right_Wing_01_00
+    100408: Right_Wing_01_01
+    100410: Right_Wing_01_02
+    100412: Right_Wing_01_03
+    100414: Right_Wing_01_04
+    100416: Right_Wing_01_05
+    100418: Right_Wing_01_06
+    100420: Right_Wing_01_07
+    100422: Right_Wing_01_08
+    100424: Right_Wing_01_09
+    100426: Right_Wing_01_10
+    100428: Right_Wing_01_11
+    100430: Right_Wing_01_12
+    100432: Right_Wing_02_00
+    100434: Right_Wing_02_01
+    100436: Right_Wing_02_02
+    100438: Right_Wing_02_03
+    100440: Right_Wing_02_04
+    100442: Right_Wing_02_05
+    100444: Right_Wing_02_06
+    100446: Right_Wing_02_07
+    100448: Right_Wing_02_08
+    100450: Right_Wing_02_09
+    100452: Right_Wing_02_10
+    100454: Right_Wing_02_11
+    100456: Right_Wing_02_12
+    100458: RightTailWing
+    100460: RightWing1
+    100462: RightWing2
+    100464: Spine_00
+    100466: Spine_01
+    100468: Spine_02
+    100470: Spine_03
+    100472: Spine_04
+    100474: Spine_05
+    100476: Spine_06
+    100478: Spine_07
+    100480: Spine_08
+    100482: Spine_09
+    100484: Spine_10
+    100486: Spine_11
+    100488: Spine_12
+    100490: Spine_13
+    100492: Spine_14
+    100494: Spine_15
+    100496: Spine_16
+    100498: Spine_17
+    100500: Spine_18
+    100502: Spine_19
+    100504: Spine_20
+    100506: Spine_21
+    100508: Spine_22
+    100510: Tongue_00
+    100512: Tongue_01
+    100514: Tongue_02
+    100516: UpperTeeth
     400000: Bone001
     400002: Bone002
     400004: Bone003
@@ -287,6 +404,123 @@ ModelImporter:
     400278: Object002
     400280: RightEye
     400282: RightEye001
+    400284: Frill_00
+    400286: Frill_01
+    400288: Frill_02
+    400290: Frill_03
+    400292: Frill_04
+    400294: Frill_05
+    400296: Frill_06
+    400298: Frill_07
+    400300: Frill_08
+    400302: Frill_09
+    400304: Frill_10
+    400306: Frill_11
+    400308: Frill_12
+    400310: Frill_13
+    400312: Frill_14
+    400314: Frill_15
+    400316: Frill_16
+    400318: Frill_17
+    400320: Frill_18
+    400322: Frill_19
+    400324: Frill_20
+    400326: Frill_21
+    400328: Head
+    400330: Left_Eye
+    400332: Left_Eye_Base
+    400334: Left_Wing_01_00
+    400336: Left_Wing_01_01
+    400338: Left_Wing_01_02
+    400340: Left_Wing_01_03
+    400342: Left_Wing_01_04
+    400344: Left_Wing_01_05
+    400346: Left_Wing_01_06
+    400348: Left_Wing_01_07
+    400350: Left_Wing_01_08
+    400352: Left_Wing_01_09
+    400354: Left_Wing_01_10
+    400356: Left_Wing_01_11
+    400358: Left_Wing_01_12
+    400360: Left_Wing_02_00
+    400362: Left_Wing_02_01
+    400364: Left_Wing_02_02
+    400366: Left_Wing_02_03
+    400368: Left_Wing_02_04
+    400370: Left_Wing_02_05
+    400372: Left_Wing_02_06
+    400374: Left_Wing_02_07
+    400376: Left_Wing_02_08
+    400378: Left_Wing_02_09
+    400380: Left_Wing_02_10
+    400382: Left_Wing_02_11
+    400384: Left_Wing_02_12
+    400386: LeftTailWing
+    400388: LeftWing1
+    400390: LeftWing2
+    400392: Lower_Jaw_00
+    400394: Lower_Jaw_01
+    400396: Lower_Jaw_02
+    400398: Lower_Jaw_03
+    400400: LowerTeeth
+    400402: Right_Eye
+    400404: Right_Eye_Base
+    400406: Right_Wing_01_00
+    400408: Right_Wing_01_01
+    400410: Right_Wing_01_02
+    400412: Right_Wing_01_03
+    400414: Right_Wing_01_04
+    400416: Right_Wing_01_05
+    400418: Right_Wing_01_06
+    400420: Right_Wing_01_07
+    400422: Right_Wing_01_08
+    400424: Right_Wing_01_09
+    400426: Right_Wing_01_10
+    400428: Right_Wing_01_11
+    400430: Right_Wing_01_12
+    400432: Right_Wing_02_00
+    400434: Right_Wing_02_01
+    400436: Right_Wing_02_02
+    400438: Right_Wing_02_03
+    400440: Right_Wing_02_04
+    400442: Right_Wing_02_05
+    400444: Right_Wing_02_06
+    400446: Right_Wing_02_07
+    400448: Right_Wing_02_08
+    400450: Right_Wing_02_09
+    400452: Right_Wing_02_10
+    400454: Right_Wing_02_11
+    400456: Right_Wing_02_12
+    400458: RightTailWing
+    400460: RightWing1
+    400462: RightWing2
+    400464: Spine_00
+    400466: Spine_01
+    400468: Spine_02
+    400470: Spine_03
+    400472: Spine_04
+    400474: Spine_05
+    400476: Spine_06
+    400478: Spine_07
+    400480: Spine_08
+    400482: Spine_09
+    400484: Spine_10
+    400486: Spine_11
+    400488: Spine_12
+    400490: Spine_13
+    400492: Spine_14
+    400494: Spine_15
+    400496: Spine_16
+    400498: Spine_17
+    400500: Spine_18
+    400502: Spine_19
+    400504: Spine_20
+    400506: Spine_21
+    400508: Spine_22
+    400510: Tongue_00
+    400512: Tongue_01
+    400514: Tongue_02
+    400516: UpperTeeth
     2300000: Box003
     2300002: Box013
     2300004: Box015
@@ -296,6 +530,10 @@ ModelImporter:
     2300012: Object002
     2300014: RightEye
     2300016: RightEye001
+    2300018: LeftTailWing
+    2300020: LowerTeeth
+    2300022: RightTailWing
+    2300024: UpperTeeth
     3300000: Box003
     3300002: Box013
     3300004: Box015
@@ -305,6 +543,10 @@ ModelImporter:
     3300012: Object002
     3300014: RightEye
     3300016: RightEye001
+    3300018: LeftTailWing
+    3300020: LowerTeeth
+    3300022: RightTailWing
+    3300024: UpperTeeth
     4300000: Loft001
     4300002: RightEye
     4300004: Box003
@@ -314,7 +556,21 @@ ModelImporter:
     4300012: Object002
     4300014: LeftEye
     4300016: RightEye001
+    4300018: RightWing1
+    4300020: LeftWing2
+    4300022: LeftWing1
+    4300024: RightWing2
+    4300026: LowerTeeth
+    4300028: UpperTeeth
+    4300030: RightTailWing
+    4300032: LeftTailWing
     9500000: //RootNode
+    13700000: Box003
+    13700002: LeftWing1
+    13700004: LeftWing2
+    13700006: Loft001
+    13700008: RightWing1
+    13700010: RightWing2
   materials:
     importMaterials: 1
     materialName: 0
