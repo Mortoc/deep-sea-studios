@@ -43,14 +43,16 @@ public class Avatar : ActorBase
 		bool pressedMovementButton = false;
 
 		//on "A" key, add force up
-		if (Input.GetKeyDown(KeyCode.JoystickButton0))
+		if (Input.GetKeyDown(KeyCode.JoystickButton0) || 
+		    Input.GetKeyDown(KeyCode.Space))
 		{
 			mGameObject.rigidbody.AddForce(Vector3.up * 200);
 
 			pressedMovementButton = true;
 		}
 		//on "X" key, add force up and forward
-		if (Input.GetKeyDown(KeyCode.JoystickButton2))
+		if (Input.GetKeyDown(KeyCode.JoystickButton2) ||
+		    Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			mGameObject.rigidbody.AddForce(Vector3.up * 100);
 			mGameObject.rigidbody.AddForce(mGameObject.transform.forward * 100);
