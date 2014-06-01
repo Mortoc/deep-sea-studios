@@ -14,16 +14,27 @@ public class Avatar : ActorBase
 
     protected override void  LoadModel(Vector3 initialPosition)
     {
-        mGameObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        mGameObject.transform.position = initialPosition;
-        mGameObject.name = "avatar";
+		mGameObject = GameObject.CreatePrimitive (PrimitiveType.Sphere);
+		mGameObject.transform.position = initialPosition;
+		mGameObject.name = "avatar";
 
 		Camera.main.transform.parent = mGameObject.transform;
 		Camera.main.transform.localPosition = Vector3.zero;
 		Camera.main.transform.localRotation = Quaternion.identity;
+	
+		var cameraGO = Camera.main.gameObject;
+		var backgroundAudio = cameraGO.AddComponent<AudioSource>();
+		backgroundAudio.clip = Resources.Load ("Sounds/ANW1043_01_Creeping-Shadow") as AudioClip;
+		backgroundAudio.loop = true;
+		backgroundAudio.playOnAwake = true;
+		backgroundAudio.volume = 0.02f;
+		cameraGO.audio.Play ();
 
-		mGameObject.AddComponent<Rigidbody>();
+		mGameObject.AddComponent<Rigidbody> ();
 		mGameObject.rigidbody.freezeRotation = true;
+	
+		var audioSource = mGameObject.AddComponent<AudioSource>();
+		audioSource.clip = Resources.Load ("Sounds/211389__monica137142__underwater---played when character moves") as AudioClip;
     }
 
     protected override void ActorUpdate()
@@ -56,5 +67,16 @@ public class Avatar : ActorBase
 		{
 			mGameObject.rigidbody.velocity = mGameObject.rigidbody.velocity.normalized * topSpeed;
 		}
+
+		//adding sound for when user inputs movement (not including velocity)
+		if (horizontalMovement != 0 || verticalMovement != 0 || horizontalRotation != 0) {
+			if(!mGameObject.audio.isPlaying){
+				mGameObject.audio.Play();
+			}
+		}
+		else{
+			mGameObject.audio.Stop();
+		}
+
     }
 }
