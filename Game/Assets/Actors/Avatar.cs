@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Avatar : ActorBase
 {
+	float topSpeed = 5.0f;
+	float moveSpeed = 20.0f;
+
     public Avatar(Vector3 initialPosition)
         : base(initialPosition)
     {
@@ -37,14 +40,21 @@ public class Avatar : ActorBase
 			mGameObject.rigidbody.AddForce(mGameObject.transform.forward * 100);
 		}
 		
-		var moveSpeed = 0.05f;
+
 		var horizontalMovement = Input.GetAxis("Horizontal");
 		var verticalMovement = Input.GetAxis("Vertical");
 		var horizontalRotation = Input.GetAxis("Horizontal2");
 
 		
-		mGameObject.transform.position +=  horizontalMovement * mGameObject.transform.right * moveSpeed ;
-		mGameObject.transform.position +=  verticalMovement  * mGameObject.transform.forward * moveSpeed;
+		mGameObject.rigidbody.AddForce (horizontalMovement * mGameObject.transform.right * moveSpeed);
+		mGameObject.rigidbody.AddForce (verticalMovement  * mGameObject.transform.forward * moveSpeed);
 		mGameObject.transform.Rotate(Vector3.up * horizontalRotation);
+
+		//Debug.Log(mGameObject.rigidbody.velocity.magnitude);
+
+		if (mGameObject.rigidbody.velocity.magnitude > topSpeed)
+		{
+			mGameObject.rigidbody.velocity = mGameObject.rigidbody.velocity.normalized * topSpeed;
+		}
     }
 }
