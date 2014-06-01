@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Game : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class Game : MonoBehaviour
         mActorManager = new ActorManager();
         mMapManager = new MapManager();
 
-        
     }
 
     private void Update()

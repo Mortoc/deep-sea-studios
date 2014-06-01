@@ -46,6 +46,7 @@
     <Compile Include="Game\Assets\Actors\ActorManager.cs" />
     <Compile Include="Game\Assets\Actors\Avatar.cs" />
     <Compile Include="Game\Assets\Actors\Enemy.cs" />
+    <Compile Include="Game\Assets\Actors\EnemyComponent.cs" />
     <Compile Include="Game\Assets\Actors\EnemyManager.cs" />
     <Compile Include="Game\Assets\Editor\Application.cs" />
     <Compile Include="Game\Assets\Game.cs" />

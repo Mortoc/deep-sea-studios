@@ -18,18 +18,21 @@ public abstract class ActorBase : IDisposable
 
     protected abstract void LoadModel(Vector3 initialPosition);
 
-    protected IEnumerator<IYieldInstruction> Update()
+    private IEnumerator<IYieldInstruction> Update()
     {
         while (!mIsDisposed)
         {
-            Debug.Log(mGameObject.name + " update");
+            ActorUpdate();
 
             yield return YieldReturnZero.Instance;
         }
     }
 
+    protected abstract void ActorUpdate();
+
     public void Dispose()
     {
+        Debug.Log(mGameObject.name + " disposed");
         mIsDisposed = true;
     }
 }
