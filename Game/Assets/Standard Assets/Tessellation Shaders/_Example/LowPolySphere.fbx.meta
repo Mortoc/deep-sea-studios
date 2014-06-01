@@ -1,54 +1,20 @@
 fileFormatVersion: 2
-guid: 771b2f26f3947e3448a009f32c6e2279
+guid: 103612e5e1ff43a4e896c567a2cb3ae1
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Object001
-    100002: Object002
-    100004: Object003
-    100006: Object004
-    100008: Object005
-    100010: Rowboat
-    100012: //RootNode
-    100014: Skrog
-    400000: Object001
-    400002: Object002
-    400004: Object003
-    400006: Object004
-    400008: Object005
-    400010: Rowboat
-    400012: //RootNode
-    400014: Skrog
-    2300000: Object001
-    2300002: Object002
-    2300004: Object003
-    2300006: Object004
-    2300008: Object005
-    2300010: Rowboat
-    2300012: Skrog
-    2300014: //RootNode
-    3300000: Object001
-    3300002: Object002
-    3300004: Object003
-    3300006: Object004
-    3300008: Object005
-    3300010: Rowboat
-    3300012: Skrog
-    3300014: //RootNode
-    4300000: Skrog
-    4300002: Rowboat
-    4300004: Object001
-    4300006: Object002
-    4300008: Object003
-    4300010: Object004
-    4300012: Object005
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pSphere1
+    11100000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
-    legacyGenerateAnimations: 4
+    legacyGenerateAnimations: 0
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
@@ -59,10 +25,10 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -76,9 +42,9 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 180
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
@@ -94,6 +60,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

@@ -1,47 +1,13 @@
 fileFormatVersion: 2
-guid: 771b2f26f3947e3448a009f32c6e2279
+guid: ae764c51a789bc14eaf42e7aea745085
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Object001
-    100002: Object002
-    100004: Object003
-    100006: Object004
-    100008: Object005
-    100010: Rowboat
-    100012: //RootNode
-    100014: Skrog
-    400000: Object001
-    400002: Object002
-    400004: Object003
-    400006: Object004
-    400008: Object005
-    400010: Rowboat
-    400012: //RootNode
-    400014: Skrog
-    2300000: Object001
-    2300002: Object002
-    2300004: Object003
-    2300006: Object004
-    2300008: Object005
-    2300010: Rowboat
-    2300012: Skrog
-    2300014: //RootNode
-    3300000: Object001
-    3300002: Object002
-    3300004: Object003
-    3300006: Object004
-    3300008: Object005
-    3300010: Rowboat
-    3300012: Skrog
-    3300014: //RootNode
-    4300000: Skrog
-    4300002: Rowboat
-    4300004: Object001
-    4300006: Object002
-    4300008: Object003
-    4300010: Object004
-    4300012: Object005
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Sphere001
     9500000: //RootNode
   materials:
     importMaterials: 1
