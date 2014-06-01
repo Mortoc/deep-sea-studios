@@ -50,7 +50,6 @@
      <Compile Include="Assets\Actors\ActorManager.cs" />
      <Compile Include="Assets\Actors\Avatar.cs" />
      <Compile Include="Assets\Actors\Enemy.cs" />
-     <Compile Include="Assets\Actors\EnemyComponent.cs" />
      <Compile Include="Assets\Actors\EnemyManager.cs" />
      <Compile Include="Assets\Game.cs" />
      <Compile Include="Assets\Map\MapManager.cs" />
