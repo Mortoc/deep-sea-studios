@@ -123,7 +123,7 @@ public class Enemy : ActorBase
 
         RaycastHit[] hitInfoArray = Physics.RaycastAll(mGameObject.transform.position,
                                                        mMoveVector.normalized,
-                                                       200.0f);
+                                                       50.0f, ~(1 << LayerMask.NameToLayer("Terrain")));
         
         RaycastHit hitInfo = new RaycastHit();
         Collider hitCollider = null;
@@ -197,7 +197,7 @@ public class Enemy : ActorBase
             if (mUpdateRandomDirection || mRandomRotation == Vector3.zero)
             {
                 mRandomRotation = new Vector3(  UnityEngine.Random.Range(-0.25f, 0.25f),
-                                                UnityEngine.Random.Range(-0.25f, 0.25f),
+                                                UnityEngine.Random.Range(-0.05f, 0.05f),
                                                 UnityEngine.Random.Range(-0.25f, 0.25f));
                 mUpdateRandomDirection = false;
 

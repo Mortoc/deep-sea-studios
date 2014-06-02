@@ -15,7 +15,7 @@ public class EnemyManager
         for (int i = 0; i < mEnemyArray.Length; ++i)
         {
             Vector3 position = mapMiddle + UnityEngine.Random.onUnitSphere * mSpawnArea;
-            position.y = mapMiddle.y;
+            position.y = mapMiddle.y + UnityEngine.Random.Range(-50.0f, 50.0f);
             mEnemyArray[i] = new Enemy(position);
         }
     }
