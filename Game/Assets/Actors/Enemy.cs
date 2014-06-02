@@ -17,9 +17,10 @@ public class Enemy : ActorBase
 
     protected override void LoadModel(Vector3 initialPosition)
     {
-        mGameObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //mGameObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        mGameObject = (GameObject)(GameObject.Instantiate(Resources.Load("Monster")));
         mGameObject.transform.position = initialPosition;
-        mGameObject.transform.localScale = new Vector3(50.0f, 50.0f, 50.0f);
+        mGameObject.transform.localScale = Vector3.one;
         mId = mEnemyIdCounter++;
         mGameObject.name = "enemy " + mId;
 
