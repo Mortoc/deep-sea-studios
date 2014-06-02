@@ -291,8 +291,9 @@ ModelImporter:
     4300018: RightEye001
     4300020: RightEye
     4300022: UpperTeeth
-    7400000: Take 001
+    7400000: Idle
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Box003
     13700002: LeftTailWing
     13700004: LeftWing1
@@ -310,13 +311,307 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 190
+      lastFrame: 389
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Box003
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: Head/Frill_21
+        weight: 1
+      - path: Head/Frill_21/Frill_18
+        weight: 1
+      - path: Head/Left_Eye_Base
+        weight: 1
+      - path: Head/Left_Eye_Base/Left_Eye
+        weight: 1
+      - path: Head/Left_Eye_Base/Left_Eye/RightEye001
+        weight: 1
+      - path: Head/Lower_Jaw_00
+        weight: 1
+      - path: Head/Lower_Jaw_00/Lower_Jaw_01
+        weight: 1
+      - path: Head/Lower_Jaw_00/Lower_Jaw_01/Lower_Jaw_02
+        weight: 1
+      - path: Head/Lower_Jaw_00/Lower_Jaw_01/Lower_Jaw_02/Lower_Jaw_03
+        weight: 1
+      - path: Head/Lower_Jaw_00/Lower_Jaw_01/Lower_Jaw_02/LowerTeeth
+        weight: 1
+      - path: Head/Lower_Jaw_00/Tongue_02
+        weight: 1
+      - path: Head/Lower_Jaw_00/Tongue_02/Tongue_00
+        weight: 1
+      - path: Head/Lower_Jaw_00/Tongue_02/Tongue_00/Tongue_01
+        weight: 1
+      - path: Head/Right_Eye_Base
+        weight: 1
+      - path: Head/Right_Eye_Base/Right_Eye
+        weight: 1
+      - path: Head/Right_Eye_Base/Right_Eye/RightEye
+        weight: 1
+      - path: Head/Spine_00
+        weight: 1
+      - path: Head/Spine_00/Frill_19
+        weight: 1
+      - path: Head/Spine_00/Frill_19/Frill_20
+        weight: 1
+      - path: Head/Spine_00/Spine_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_00/Left_Wing_01_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_00/Left_Wing_01_01/Left_Wing_01_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_00/Left_Wing_01_01/Left_Wing_01_02/Left_Wing_01_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_00/Left_Wing_01_01/Left_Wing_01_02/Left_Wing_01_03/Left_Wing_01_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_06/Left_Wing_01_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_06/Left_Wing_01_05/Left_Wing_01_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_06/Left_Wing_01_05/Left_Wing_01_09/Left_Wing_01_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_07/Left_Wing_01_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_07/Left_Wing_01_08/Left_Wing_01_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Left_Wing_01_07/Left_Wing_01_08/Left_Wing_01_12/Left_Wing_01_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_10/Right_Wing_01_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_10/Right_Wing_01_05/Right_Wing_01_00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_10/Right_Wing_01_05/Right_Wing_01_00/Right_Wing_01_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_10/Right_Wing_01_05/Right_Wing_01_00/Right_Wing_01_07/Right_Wing_01_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_11/Right_Wing_01_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_11/Right_Wing_01_01/Right_Wing_01_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_11/Right_Wing_01_01/Right_Wing_01_02/Right_Wing_01_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_12/Right_Wing_01_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_12/Right_Wing_01_09/Right_Wing_01_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Right_Wing_01_12/Right_Wing_01_09/Right_Wing_01_04/Right_Wing_01_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Frill_17
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Frill_17/Frill_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Frill_16
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Frill_16/Frill_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Frill_14
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Frill_14/Frill_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Frill_15
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Frill_15/Frill_13
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Frill_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Frill_09/Frill_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_08/Left_Wing_02_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_08/Left_Wing_02_09/Left_Wing_02_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_08/Left_Wing_02_09/Left_Wing_02_06/Left_Wing_02_00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_11/Left_Wing_02_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_11/Left_Wing_02_10/Left_Wing_02_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_11/Left_Wing_02_10/Left_Wing_02_05/Left_Wing_02_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_12/Left_Wing_02_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_12/Left_Wing_02_07/Left_Wing_02_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_12/Left_Wing_02_07/Left_Wing_02_02/Left_Wing_02_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Left_Wing_02_12/Left_Wing_02_07/Left_Wing_02_02/Left_Wing_02_03/Left_Wing_02_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_10
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_10/Right_Wing_02_00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_10/Right_Wing_02_00/Right_Wing_02_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_10/Right_Wing_02_00/Right_Wing_02_07/Right_Wing_02_08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_11/Right_Wing_02_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_11/Right_Wing_02_01/Right_Wing_02_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_11/Right_Wing_02_01/Right_Wing_02_02/Right_Wing_02_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_11/Right_Wing_02_01/Right_Wing_02_02/Right_Wing_02_03/Right_Wing_02_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_12/Right_Wing_02_09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_12/Right_Wing_02_09/Right_Wing_02_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Right_Wing_02_12/Right_Wing_02_09/Right_Wing_02_05/Right_Wing_02_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Frill_07
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Frill_07/Frill_06
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Frill_05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Frill_05/Frill_04
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Frill_03
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Frill_03/Frill_00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Frill_01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Frill_01/Frill_02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Left_Tail_Wing05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Left_Tail_Wing05/Left_Tail_Wing00
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Left_Tail_Wing05/Left_Tail_Wing00/Left_Tail_Wing01
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Left_Tail_Wing05/Left_Tail_Wing00/Left_Tail_Wing01/Left_Tail_Wing02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Right_Tail_Wing05
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Right_Tail_Wing05/Right_Tail_Wing02
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Right_Tail_Wing05/Right_Tail_Wing02/Right_Tail_Wing08
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Right_Tail_Wing05/Right_Tail_Wing02/Right_Tail_Wing08/Right_Tail_Wing09
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Spine_22
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Spine_22/Spine_23
+        weight: 1
+      - path: Head/Spine_00/Spine_01/Spine_02/Spine_03/Spine_04/Spine_05/Spine_06/Spine_07/Spine_08/Spine_09/Spine_10/Spine_11/Spine_12/Spine_13/Spine_14/Spine_15/Spine_16/Spine_17/Spine_18/Spine_19/Spine_20/Spine_21/Spine_22/Spine_23/Spine_24
+        weight: 1
+      - path: Head/UpperTeeth
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: LeftTailWing
+        weight: 1
+      - path: LeftWing1
+        weight: 1
+      - path: LeftWing2
+        weight: 1
+      - path: Line001
+        weight: 1
+      - path: Loft001
+        weight: 1
+      - path: RightTailWing
+        weight: 1
+      - path: RightWing1
+        weight: 1
+      - path: RightWing2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -352,6 +647,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

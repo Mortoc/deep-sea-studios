@@ -4,11 +4,59 @@ using UnityEngine;
 
 public class Enemy : ActorBase
 {
+
+    public class SmoothedVector
+    {
+        private struct Sample
+        {
+            public Vector3 Position { get; set; }
+            public float Time { get; set; }
+        }
+
+        private float _interval;
+        private List<Sample> _samples;
+
+        public SmoothedVector(float interval)
+        {
+            // Initialize the list to our best guess for the number of samples
+            _samples = new List<Sample>();
+            _interval = interval;
+        }
+
+        public void AddSample(Vector3 position)
+        {
+            _samples.Add(new Sample() { Position = position, Time = Time.time });
+
+            float sampleTimeout = Time.time - _interval;
+            for (; _samples[0].Time < sampleTimeout; )
+            {
+                _samples.RemoveAt(0);
+            }
+        }
+
+        public bool HasSamples
+        {
+            get { return _samples.Count > 0; }
+        }
+
+        public Vector3 GetSmoothedVector()
+        {
+            float recpCount = 1.0f / (float)_samples.Count;
+            Vector3 avg = Vector3.zero;
+
+            foreach (Sample sample in _samples)
+                avg += sample.Position;
+
+            return avg * recpCount;
+        }
+    }
+
     private static int mEnemyIdCounter = 1;
     private int mId = 0;
 
-    private float mMovementSpeed = 0.5f;
-    private float mTurnSpeed = 2.5f;
+    private float mMovementSpeed = 0.05f;
+    private float mTurnSpeed = 1.5f;
+    private SmoothedVector mMoveDir = new SmoothedVector(5.0f);
 
     public Enemy(Vector3 initialPosition)
         : base(initialPosition)
@@ -21,6 +69,13 @@ public class Enemy : ActorBase
         mGameObject = (GameObject)(GameObject.Instantiate(Resources.Load("Monster")));
         mGameObject.transform.position = initialPosition;
         mGameObject.transform.localScale = Vector3.one;
+
+        var anim = mGameObject.GetComponentInChildren<Animation>();
+        if (anim)
+        {
+            anim.Play();
+        }
+
         mId = mEnemyIdCounter++;
         mGameObject.name = "enemy " + mId;
 
@@ -59,12 +114,12 @@ public class Enemy : ActorBase
     {
         //if the enemy is colliding with something, update the forward vector away from the collision until it's no longer colliding
 
-        Debug.DrawRay(  mGameObject.transform.position,
-                        mGameObject.transform.forward * 200.0f,
-                        Color.blue);
-        Debug.DrawRay(mGameObject.transform.position,
-                        mMoveVector * 200.0f,
-                        Color.yellow);
+        //Debug.DrawRay(  mGameObject.transform.position,
+        //                mGameObject.transform.forward * 200.0f,
+        //                Color.blue);
+        //Debug.DrawRay(mGameObject.transform.position,
+        //                mMoveVector * 200.0f,
+        //                Color.yellow);
 
         RaycastHit[] hitInfoArray = Physics.RaycastAll(mGameObject.transform.position,
                                                        mMoveVector.normalized,
@@ -76,7 +131,7 @@ public class Enemy : ActorBase
         {           
             for (int i = 0; i < hitInfoArray.Length; ++i)
             {
-                Debug.Log("collider name: " + hitInfoArray[i].collider.gameObject.name);
+                //Debug.Log("collider name: " + hitInfoArray[i].collider.gameObject.name);
                 if ((hitInfoArray[i].collider.gameObject.GetInstanceID() != mGameObject.collider.gameObject.GetInstanceID()))
                 {
                     hitInfo = hitInfoArray[i];
@@ -120,12 +175,12 @@ public class Enemy : ActorBase
             //            " to: " + mLateralForceDirection +
             //            " curr: " + mMoveVector);
 
-            Debug.DrawRay(mGameObject.transform.position,
-                          mMoveVector * 100.0f,
-                          Color.green);
-            Debug.DrawRay(hitInfo.point,
-                            hitInfo.normal* 100.0f,
-                            Color.red);
+            //Debug.DrawRay(mGameObject.transform.position,
+            //              mMoveVector * 100.0f,
+            //              Color.green);
+            //Debug.DrawRay(hitInfo.point,
+            //                hitInfo.normal* 100.0f,
+            //                Color.red);
         }
         else if(mCurrentCollisionState == CollisionState.NoCollision)
         {
@@ -151,10 +206,13 @@ public class Enemy : ActorBase
             }
         }
 
-        mGameObject.GetComponent<CharacterController>().Move(mMoveVector);
-                mGameObject.rigidbody.rotation = Quaternion.Lerp(Quaternion.LookRotation(mGameObject.transform.forward.normalized),
-                                                         Quaternion.LookRotation(mMoveVector.normalized),
-                                                         Time.deltaTime * mTurnSpeed);
+        mMoveDir.AddSample(mMoveVector);
+        Vector3 moveDir = mMoveDir.GetSmoothedVector();
+
+        mGameObject.GetComponent<CharacterController>().Move(moveDir);
+        mGameObject.rigidbody.rotation = Quaternion.Lerp(Quaternion.LookRotation(mGameObject.transform.forward.normalized),
+                                                    Quaternion.LookRotation(moveDir.normalized),
+                                                    Time.deltaTime * mTurnSpeed);
 
         mPreviousCollisionState = mCurrentCollisionState;
     }

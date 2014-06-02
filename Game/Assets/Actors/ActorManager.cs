@@ -10,6 +10,6 @@ public class ActorManager
     public ActorManager()
     {
         mAvatar = new Avatar(new Vector3(1115,161,883));
-        mEnemyManager = new EnemyManager(5);
+        mEnemyManager = new EnemyManager(35);
     }
 }
