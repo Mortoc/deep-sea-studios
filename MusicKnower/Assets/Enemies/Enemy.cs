@@ -68,6 +68,6 @@ public class Enemy : MonoBehaviour
         }
         onComplete();
         _knower.OnBeat -= ModifySpeed;
-        GameObject.Destroy(this);
+        GameObject.Destroy(gameObject);
     }
 }
