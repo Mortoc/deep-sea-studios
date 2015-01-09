@@ -11,14 +11,14 @@ public class Tower : MonoBehaviour
     private Material _bulletMaterial;
 
     [SerializeField]
-    private int _nthBeatFire = 5;
+    private int _nthBeatFire = 2;
 	
     [SerializeField]
     private float _maxRange = 10.0f;
 
 	private int _lastBeatNum;
 	private int _lastUsedAbiltyBeatNum = 0;
-	private int _abilityTolerance = 1;
+	private int _abilityTolerance = 0;
 
     void Start()
     {
