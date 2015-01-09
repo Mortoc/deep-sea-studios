@@ -50,6 +50,7 @@
      <Compile Include="Assets\Enemies\Enemy.cs" />
      <Compile Include="Assets\Enemies\EnemySpawn.cs" />
      <Compile Include="Assets\GUI\Pause.cs" />
+     <Compile Include="Assets\Levels\LevelManager.cs" />
      <Compile Include="Assets\Lib\MathExt.cs" />
      <Compile Include="Assets\Lib\SimpleJSON.cs" />
      <Compile Include="Assets\Music\Scripts\BeatBounce.cs" />
