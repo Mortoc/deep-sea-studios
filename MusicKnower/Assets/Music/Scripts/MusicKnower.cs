@@ -64,6 +64,11 @@ public class MusicKnower : MonoBehaviour
                 {
                     OnBeat(_beats[currentBeat]);
                 }
+
+                if (currentBeat == _beats.Length)
+                {
+                    yield break;
+                }
             }
           
             yield return 0;

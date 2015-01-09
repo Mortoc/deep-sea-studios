@@ -5,7 +5,9 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
     private GameObject _enemyPrefab;
-    private int spawnCount = 5;
+
+    [SerializeField]
+    private int _beatsPerSpawn = 5;
     private Target _targetObject;
     void Start()
     {
@@ -16,7 +18,7 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnUnit(MusicKnower.BeatInfo bi)
     {
-        if (bi.BeatNumber % spawnCount == 0)
+        if (bi.BeatNumber % _beatsPerSpawn == 0)
         {
             var enemy = (GameObject)Instantiate(_enemyPrefab);
             enemy.transform.position = transform.position;

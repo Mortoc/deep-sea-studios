@@ -25,9 +25,9 @@ public class SimpleReceipt : IReceipt
 
 public class EchoNest 
 {
-    private static string API_KEY = "ELBDM05MHACH7A5TG";
-    private static string SECRET_KEY = "eS+wSejEQFSCqcQptrq8aQ";
-    private static string CUSTOMER_KEY = "fd3df52703c186be59202f614534d0a3";
+    //private static string API_KEY = "ELBDM05MHACH7A5TG";
+    //private static string SECRET_KEY = "eS+wSejEQFSCqcQptrq8aQ";
+    //private static string CUSTOMER_KEY = "fd3df52703c186be59202f614534d0a3";
 
     public struct TrackInfo
     {

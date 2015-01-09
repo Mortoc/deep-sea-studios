@@ -8,15 +8,12 @@ public class Enemy : MonoBehaviour
     private float _hitPoints = 10.0f;
     private float _damage = 0.0f;
 
-    private float _minSpeed = 5.0f;
-    private float _maxSpeed = 10.0f;
+    private float _speed = 5.0f;
 
-    private float _currentSpeed;
     private MusicKnower _knower;
 
     void Start()
     {
-        _currentSpeed = _minSpeed;
         _knower = GameObject.FindObjectOfType<MusicKnower>();
         _knower.OnBeat += ModifySpeed;
     }
@@ -62,8 +59,8 @@ public class Enemy : MonoBehaviour
         while((transform.position - position).sqrMagnitude > moveThresholdSqr)
         {
             var direction = (position - transform.position).normalized;
-            transform.Translate(direction * _currentSpeed * Time.deltaTime);
-            transform.forward = direction;
+            transform.position = transform.position + (direction * _speed * Time.deltaTime);
+
             yield return 0;
         }
         onComplete();
