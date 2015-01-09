@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Procedural;
+
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
@@ -8,11 +10,14 @@ public class EnemySpawn : MonoBehaviour
 
     [SerializeField]
     private int _beatsPerSpawn = 5;
+
+    [SerializeField]
+    private Procedural.LoftComponent _enemyPath;
+
     private Target _targetObject;
     void Start()
     {
         GameObject.FindObjectOfType<MusicKnower>().OnBeat += SpawnUnit;
-
         _targetObject = GameObject.FindObjectOfType<Target>();
     }
 
@@ -22,11 +27,7 @@ public class EnemySpawn : MonoBehaviour
         {
             var enemy = (GameObject)Instantiate(_enemyPrefab);
             enemy.transform.position = transform.position;
-
-            enemy.GetComponent<Enemy>().MoveToPosition(
-                _targetObject.transform.position,
-                () => _targetObject.TakeDamage(1.0f)
-           );
+            enemy.GetComponent<Enemy>().Init(_enemyPath.Path, _targetObject);
         }
     }
 }

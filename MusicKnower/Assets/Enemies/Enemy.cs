@@ -7,15 +7,30 @@ public class Enemy : MonoBehaviour
 {
     private float _hitPoints = 10.0f;
     private float _damage = 0.0f;
+    private float _speed = 0.05f;
 
-    private float _speed = 5.0f;
+    private float _pathT = 0.0f;
 
-    private MusicKnower _knower;
-
-    void Start()
+    public void Init(ISpline path, Target target)
     {
-        _knower = GameObject.FindObjectOfType<MusicKnower>();
-        _knower.OnBeat += ModifySpeed;
+        StartCoroutine(FollowPath(path, target));
+    }
+
+    private IEnumerator FollowPath(ISpline path, Target target)
+    {
+        var rotationOffset = new Vector3(0.0f, 90.0f, 0.0f);
+        _pathT = 0.0f;
+        while(_pathT < 1.0f)
+        {
+            transform.position = path.PositionSample(_pathT);
+            transform.forward = path.ForwardSample(_pathT);
+            transform.Rotate(rotationOffset);
+            _pathT += _speed * Time.deltaTime;
+            yield return 0;
+        }
+
+        target.TakeDamage(1.0f);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(float damage)
@@ -25,46 +40,5 @@ public class Enemy : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-    }
-
-    private void ModifySpeed(MusicKnower.BeatInfo bi)
-    {
-        try
-        {
-            StartCoroutine(ModifySpeedCoroutine(bi));
-        }
-        catch(MissingReferenceException)
-        {
-            _knower.OnBeat -= ModifySpeed;
-        }
-    }
-
-    private IEnumerator ModifySpeedCoroutine(MusicKnower.BeatInfo bi)
-    {
-        yield return 0;
-    }
-
-    private Coroutine _moveCoroutine = null;
-    public void MoveToPosition(Vector3 position, Action onComplete)
-    {
-        if( _moveCoroutine != null )
-            StopCoroutine(_moveCoroutine);
-
-        _moveCoroutine = StartCoroutine(AnimateMovement(position, onComplete));
-    }
-
-    private IEnumerator AnimateMovement(Vector3 position, Action onComplete)
-    {
-        var moveThresholdSqr = 0.5f;
-        while((transform.position - position).sqrMagnitude > moveThresholdSqr)
-        {
-            var direction = (position - transform.position).normalized;
-            transform.position = transform.position + (direction * _speed * Time.deltaTime);
-
-            yield return 0;
-        }
-        onComplete();
-        _knower.OnBeat -= ModifySpeed;
-        GameObject.Destroy(gameObject);
     }
 }
