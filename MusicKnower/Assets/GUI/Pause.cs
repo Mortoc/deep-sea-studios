@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     public float _animateTime = 0.5f;
     public Image _fadePanel;
     public float _fadeAmount = 0.66f;
+	public AudioSource _audioSource;
 
     private Coroutine _animateTimeCoroutine = null;
 
@@ -29,7 +30,6 @@ public class Pause : MonoBehaviour
 
     IEnumerator AnimatePause(float toTimeScale)
     {
-        var audioComponent = GetComponent<AudioSource>();
         var fadeColor = _fadePanel.color;
         
         float recipAnimTime = 1.0f / _animateTime;
@@ -37,15 +37,15 @@ public class Pause : MonoBehaviour
         for(float time = 0.0f; time < _animateTime; time += Mathf.Max(Time.deltaTime, 0.01f))
         {
             Time.timeScale = Mathf.SmoothStep(startScale, toTimeScale, recipAnimTime * time);
-            audioComponent.pitch = Time.timeScale;
-            audioComponent.volume = Time.timeScale;
+			_audioSource.pitch = Time.timeScale;
+			_audioSource.volume = Time.timeScale;
             fadeColor.a = _fadeAmount * (1.0f - Time.timeScale);
             _fadePanel.color = fadeColor;
             yield return 0;
         }
         Time.timeScale = toTimeScale; 
-        audioComponent.pitch = Time.timeScale;
-        audioComponent.volume = Time.timeScale;
+		_audioSource.pitch = Time.timeScale;
+		_audioSource.volume = Time.timeScale;
         fadeColor.a = _fadeAmount * (1.0f - Time.timeScale);
         _fadePanel.color = fadeColor;
     }
