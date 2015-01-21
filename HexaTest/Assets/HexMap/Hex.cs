@@ -6,12 +6,15 @@ public class Hex : MonoBehaviour
 	private static Mesh s_sharedHexMesh = null;
 	private static Vector2[] s_colliderPoints = null;
 
+	public int i { get; set; }
+	public int j { get; set; }
+
 	public static Hex MakeHex()
 	{
 		GameObject hex = new GameObject("Hex");
 		hex.AddComponent<MeshRenderer>();
 		var meshFilter = hex.AddComponent<MeshFilter>();
-		meshFilter.mesh = MakeHexMesh();
+		meshFilter.sharedMesh = MakeHexMesh();
 		var collider = hex.AddComponent<PolygonCollider2D>();
 		collider.points = s_colliderPoints;
 
@@ -70,10 +73,5 @@ public class Hex : MonoBehaviour
 		s_sharedHexMesh = mesh;
 		s_colliderPoints = colliderPoints;
 		return mesh;
-	}
-
-	void OnMouseUpAsButton()
-	{
-	
 	}
 }

@@ -1,9 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/HexMap/Hex.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameLogic/GameController.cs">
     <Files>
-      <File FileName="Assets/Hexedit/HexEdit.cs" Line="48" Column="3" />
-      <File FileName="Assets/HexMap/Hex.cs" Line="30" Column="30" />
+      <File FileName="Assets/GameLogic/GameController.cs" Line="197" Column="5" />
+      <File FileName="Assets/GameLogic/TurnManager.cs" Line="55" Column="15" />
+      <File FileName="Assets/HexMap/HexMap.cs" Line="177" Column="3" />
+      <File FileName="Assets/Player/LocalPlayer.cs" Line="64" Column="24" />
+      <File FileName="Assets/GameLogic/NewGame.cs" Line="10" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
