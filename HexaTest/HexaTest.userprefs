@@ -2,11 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameLogic/GameController.cs">
     <Files>
-      <File FileName="Assets/GameLogic/GameController.cs" Line="197" Column="5" />
-      <File FileName="Assets/GameLogic/TurnManager.cs" Line="55" Column="15" />
-      <File FileName="Assets/HexMap/HexMap.cs" Line="177" Column="3" />
-      <File FileName="Assets/Player/LocalPlayer.cs" Line="64" Column="24" />
-      <File FileName="Assets/GameLogic/NewGame.cs" Line="10" Column="3" />
+      <File FileName="Assets/GameLogic/GameController.cs" Line="250" Column="23" />
+      <File FileName="Assets/GameLogic/TurnManager.cs" Line="436" Column="24" />
+      <File FileName="Assets/HexMap/HexMap.cs" Line="130" Column="21" />
+      <File FileName="Assets/Player/LocalPlayer.cs" Line="53" Column="3" />
+      <File FileName="Assets/GameLogic/NewGame.cs" Line="1" Column="1" />
+      <File FileName="Assets/Bombs/BombManager.cs" Line="21" Column="13" />
+      <File FileName="Assets/HexMap/Editor/HexEdit.cs" Line="51" Column="13" />
+      <File FileName="Assets/Player/ForeignPlayer.cs" Line="17" Column="48" />
+      <File FileName="Assets/Bombs/Bomb.cs" Line="57" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

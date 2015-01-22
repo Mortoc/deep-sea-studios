@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour 
 {
+	private struct HexPosition
+	{
+		public int i;
+		public int j;
+	}
+
 	public float _moveTime = 0.4f;
-	public GameObject _bombPrefab;
 	public HexMap Map { get; set; }
+	public TurnManager TurnManager { get; set; }
+	private HexPosition Position;
 
 	void Start()
 	{
+		Position = new HexPosition();
 		foreach(var r in GetComponentsInChildren<Renderer>())
 		{
 			foreach(var m in r.materials)
@@ -32,8 +42,20 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	protected IEnumerator AnimateToHex(int i, int j)
+	public virtual void Murder()
 	{
+		Destroy (gameObject);
+	}
+
+	public bool IsAt(int i, int j)
+	{
+		return i == Position.i && j == Position.j;
+	}
+
+	protected IEnumerator AnimateToHex(int i, int j, Action afterAnimation = null)
+	{
+		Position.i = i;
+		Position.j = j;
 		var targetPos = Map.HexIdxToPos(i, j);
 		var startPos = transform.position;
 		var recipMoveTime = 1.0f / _moveTime;
@@ -45,5 +67,7 @@ public class Player : MonoBehaviour
 		}
 		
 		transform.position = targetPos;
+		if( afterAnimation != null )
+			afterAnimation();
 	}
 }

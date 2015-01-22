@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+using Random = UnityEngine.Random;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LocalPlayer : Player
 {
 	public GameObject _moveWidgetPrefab;
+	public GameObject _bombWidgetPrefab;
+	private BombWidget _bombWidget;
 	private MoveWidget _moveWidget;
 	private TurnManager _turnManager;
 
@@ -16,6 +20,11 @@ public class LocalPlayer : Player
 		_moveWidget = moveWidgetObj.GetComponent<MoveWidget>();
 		_moveWidget.SetPlayer(this);
 		_moveWidget.gameObject.SetActive(false);
+
+		var bombWidgetObj = (GameObject)Instantiate (_bombWidgetPrefab);
+		_bombWidget = bombWidgetObj.GetComponent<BombWidget>();
+		_bombWidget.Init(this);
+		_bombWidget.gameObject.SetActive(false);
 	}
 
 	public void SetInitialPosition(int i, int j)
@@ -30,9 +39,32 @@ public class LocalPlayer : Player
 		_moveWidget.MoveToPosition(i, j);
 		_moveWidget.gameObject.SetActive(false);
 
-		StartCoroutine (AnimateToHex(i, j));
-		
-		TurnComplete(i, j);
+		_turnManager.UpdateLocalPlayerPos(i, j);
+		StartCoroutine (AnimateToHex(i, j, () => ShowBombWidget(i, j)));
+	}
+
+	private void ShowBombWidget(int i, int j)
+	{
+		Debug.Log ("Countdowns");
+		var explodedBombs = new List<Bomb>();
+		_myBombs.ForEach(b => {
+			if( !b || !b.CountDown() ) explodedBombs.Add (b);
+		});
+
+		explodedBombs.ForEach (b => _myBombs.Remove(b));
+
+		_bombWidget.gameObject.SetActive(true);
+		_bombWidget.MoveToPosition(i, j);
+	}
+
+	private List<Bomb> _myBombs = new List<Bomb>();
+
+	public void PlaceBomb(int i, int j)
+	{
+		_bombWidget.gameObject.SetActive(false);
+		_myBombs.Add(FindObjectOfType<BombManager>().PlaceBomb(i, j));
+
+		TurnComplete();
 	}
 
 	public void TakeTurn(TurnManager turnManager)
@@ -41,9 +73,15 @@ public class LocalPlayer : Player
 		_moveWidget.gameObject.SetActive(true);
 	}
 
-	private void TurnComplete(int i, int j)
+	private void TurnComplete()
 	{
-		_turnManager.UpdateLocalPlayerPos(i, j);
 		_turnManager.HandoverTurnToNextPlayer();
+	}
+
+	
+	public override void Murder()
+	{
+		FindObjectOfType<GameController>().ShowYouLose();
+		base.Murder ();
 	}
 }

@@ -48,12 +48,10 @@ public class TurnManager : LoadBalancingClient
 		: base(null, APP_ID, "0.1") 
 	{	
 		ConnectToRegionMaster ("EU");
-		Map = map;
 		Controller = controller;
 	}
 
 	public GameController Controller { get; private set; }
-	public HexMap Map { get; private set; }
 
 	public event Action OnGamePopulatedAndReady; // Called when the game has an opponent and is ready to go
 	public event Action OnTurnComplete; // Called every time a player completes their turn
@@ -263,13 +261,52 @@ public class TurnManager : LoadBalancingClient
 		_localPlayerI = i;
 		_localPlayerJ = j;
 	}
+
+	private int? _newBombI = null;
+	private int? _newBombJ = null;
+	public void PlaceBomb(int i, int j)
+	{
+		_newBombI = i;
+		_newBombJ = j;
+	}
+
+	private int? _explosionI = null;
+	private int? _explosionJ = null;
+	public void BombExploded(int i, int j)
+	{
+		_explosionI = i;
+		_explosionJ = j;
+	}
+	
 	
 	public void SaveBoardToProperties()
 	{
-		var boardProps = Map.GetBoardAsCustomProperties();
+		var boardProps = new Hashtable();
 		boardProps.Add("pt", this.PlayerIdToMakeThisTurn);  // "pt" is for "player turn" and contains the ID/actorNumber of the player who's turn it is
 		boardProps.Add("t#", this.TurnNumber);
 		boardProps.Add("pos-" + this.LocalPlayer.ID, new int[]{_localPlayerI, _localPlayerJ});
+		if( _newBombI != null && _newBombJ != null )
+		{
+			boardProps.Add
+			(
+				"bomb-" + this.LocalPlayer.ID + "-" + this.TurnNumber, 
+				new int[]{ (int)_newBombI, (int)_newBombJ }
+			);
+			
+			_newBombI = null;
+			_newBombJ = null;
+		}
+		if( _explosionI != null && _explosionJ != null )
+		{
+			boardProps.Add
+			(
+				"explosion",
+				new int[]{ (int)_explosionI, (int)_explosionJ }
+			);
+			
+			_explosionI = null;
+			_explosionJ = null;
+		}
 
 		// our turn will be over if 2 tiles are clicked/flipped but not the same. in that case, we update the other player if inactive
 		bool webForwardToPush = false;
@@ -315,12 +352,8 @@ public class TurnManager : LoadBalancingClient
 		if (roomProps.Count == 0)
 		{
 			// we are in a fresh room with no saved board.
-			Map.InitializeBoard();
 			this.SaveBoardToProperties();
 		}
-
-		// we are in a game that has props (a board). read those (as update or as init, depending on calledByEvent)
-		Map.SetBoardByCustomProperties(roomProps);
 
 		// we set properties "pt" (player turn) and "t#" (turn number). those props might have changed
 		// it's easier to use a variable in gui, so read the latter property now
@@ -354,12 +387,11 @@ public class TurnManager : LoadBalancingClient
 		{
 			OnTurnComplete();
 		}
-		
-		Debug.Log ("loading foreign info");
+
+		// foreign player positions
 		var foreignPlayerPositions = new List<ForeignPlayerInfo>();
 		foreach(var key in this.CurrentRoom.CustomProperties.Keys)
 		{
-			Debug.Log ("checking key " + key);
 			if( key.ToString().StartsWith("pos-") )
 			{
 				var playerId = int.Parse(key.ToString().Split ('-')[1]);
@@ -374,12 +406,43 @@ public class TurnManager : LoadBalancingClient
 					};
 
 					foreignPlayerPositions.Add (info);
-					Debug.Log ("Not player ID, storing coords: " + info.i + " " + info.j);
 				}
 			}
 		}
 
 		Controller.UpdateForeignPlayers(foreignPlayerPositions);
+
+		// bombs
+		foreach(var key in this.CurrentRoom.CustomProperties.Keys)
+		{
+			if( key.ToString().StartsWith("bomb-") )
+			{
+				var split = key.ToString().Split ('-');
+				var playerId = int.Parse(split[1]);
+				var turnNumber = int.Parse(split[2]);
+				if( playerId != this.LocalPlayer.ID && turnNumber >= this.TurnNumber)
+				{
+					var coords = (int[])this.CurrentRoom.CustomProperties[key];
+					Controller.PlaceForeignBomb(coords[0], coords[1]);
+				}
+			}
+		}
+
+		// explosions
+		foreach(var key in this.CurrentRoom.CustomProperties.Keys)
+		{
+			if( key.ToString () == "explosion" )
+			{
+				var coord = (int[])this.CurrentRoom.CustomProperties[key];
+				foreach(var bomb in GameObject.FindObjectsOfType<Bomb>())
+				{
+					if( bomb.IsAt(coord[0], coord[1]) )
+					{
+						bomb.Explode();
+					}
+				}
+			}
+		}
 	}
 		
 	

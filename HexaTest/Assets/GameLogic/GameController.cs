@@ -11,6 +11,13 @@ using ExitGames.Client.Photon.LoadBalancing;
 public class GameController : MonoBehaviour
 {
 	public HexMap _map;
+	public HexMap Map 
+	{
+		get { return _map; }
+	}
+
+	public Canvas _youLoseGui;
+	public Canvas _youWinGui;
 
 	public Canvas _joinGameCanvas;
 
@@ -18,6 +25,8 @@ public class GameController : MonoBehaviour
 
 	public InputField _usernameInput;
 	public TurnManager TurnManager { get; private set; }
+
+	public BombManager _bombManager;
 
 	public GameObject _localPlayerPrefab;
 	private LocalPlayer _localPlayer;
@@ -35,6 +44,9 @@ public class GameController : MonoBehaviour
 
 	void Awake()
 	{	
+		_youWinGui.gameObject.SetActive(false);
+		_youLoseGui.gameObject.SetActive(false);
+
 		_gameInfoText.text = "";
 		Application.runInBackground = true;
 		CustomTypes.Register();
@@ -55,14 +67,14 @@ public class GameController : MonoBehaviour
 
 	void OnEnable()
 	{
-		TurnManager.OnStateChangeAction += StateChanged;
+		//TurnManager.OnStateChangeAction += StateChanged;
 		TurnManager.OnTurnComplete += OnTurnComplete;
 		TurnManager.OnGamePopulatedAndReady += SpawnLocalPlayer;
 	}
 
 	void OnDisable()
 	{
-		TurnManager.OnStateChangeAction -= StateChanged;
+		//TurnManager.OnStateChangeAction -= StateChanged;
 		TurnManager.OnTurnComplete -= OnTurnComplete;
 		TurnManager.OnGamePopulatedAndReady -= SpawnLocalPlayer;
 	}
@@ -85,10 +97,10 @@ public class GameController : MonoBehaviour
 
 		_joinGameCanvas.gameObject.SetActive(true);
 	}
-
-	private void StateChanged(ClientState newState)
-	{
-	}
+//
+//	private void StateChanged(ClientState newState)
+//	{
+//	}
 
 	public void Update()
 	{
@@ -207,6 +219,11 @@ public class GameController : MonoBehaviour
 		}
 	}
 
+	public void PlaceForeignBomb(int i, int j)
+	{
+		_bombManager.PlaceForeignBomb(i, j);
+	}
+
 	public void OnApplicationQuit()
 	{
 		if( TurnManager.loadBalancingPeer != null ) 
@@ -214,5 +231,23 @@ public class GameController : MonoBehaviour
 			TurnManager.loadBalancingPeer.StopThread();
 		}
 		TurnManager.Disconnect();
+	}
+
+	public void ShowYouLose()
+	{
+		Destroy(_localPlayer);
+		_youLoseGui.gameObject.SetActive(true);
+	}
+
+	public void ShowYouWin()
+	{
+		Destroy(_localPlayer);
+		_youWinGui.gameObject.SetActive(true);
+	}
+
+	public void RestartGame()
+	{
+		OnApplicationQuit();
+		Application.LoadLevel (Application.loadedLevel);
 	}
 }

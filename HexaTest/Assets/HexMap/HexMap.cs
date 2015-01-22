@@ -30,8 +30,6 @@ public class HexMap : MonoBehaviour
 	}
 
 	public Material _hexMaterial;
-
-	private bool[] _existingHexes;
 	private Hex[][] _hexes = null;
 
 	public Hex GetRandomValidHex()
@@ -120,9 +118,27 @@ public class HexMap : MonoBehaviour
 
 	public void DestroyHexAt(int i, int j)
 	{
-		_existingHexes[(i * j) + i] = false;
-		Destroy (_hexes[i][j]);
-		_hexes[i][j] = null;
+		if( IsValidIdx(i, j) )
+		{
+			Destroy (_hexes[i][j].gameObject);
+			_hexes[i][j] = null;
+
+			foreach(var bomb in FindObjectsOfType<Bomb>())
+			{
+				if( bomb.IsAt(i, j) )
+				{
+					bomb.Explode();
+				}
+			}
+			
+			foreach(var player in FindObjectsOfType<Player>())
+			{
+				if( player.IsAt(i, j) )
+				{
+					player.Murder();
+				}
+			}
+		}
 	}
 
 	private void Cleanup()
@@ -151,69 +167,22 @@ public class HexMap : MonoBehaviour
 		return hexObj;
 	}
 
-	public void InitializeBoard()
+	public void Awake()
 	{
 		if( _hexes != null ) 
 		{
 			Cleanup();
 		}
 
-		_existingHexes = new bool[_width * _height];
 		_hexes = new Hex[_width][];
 		for(var i = 0; i < _width; ++i) 
 		{
 			_hexes[i] = new Hex[_height];
 			for(var j = 0; j < _height; ++j)
 			{
-				_existingHexes[(i * j) + i] = true;
 				var hexObj = CreateHexAt(i, j);
-
 				_hexes[i][j] = hexObj;
 			}
 		}
-	}
-
-	public void SetBoardByCustomProperties(Hashtable customProps)
-	{
-		if( _existingHexes == null ) 
-			InitializeBoard();
-
-		object remoteHexesRaw;
-		if( customProps.TryGetValue("hexState", out remoteHexesRaw) && remoteHexesRaw != null ) 
-		{
-			var remoteHexes = new BitArray((bool[])remoteHexesRaw);
-			var localHexes = new BitArray(_existingHexes);
-			var difference = localHexes.Or(remoteHexes);
-
-			var index = new int[] { 0, 0 };
-			for(var i = 0; i < _width * _height; ++i)
-			{
-				if( difference[i] )
-				{
-					if( remoteHexes[i] )
-					{
-						CreateHexAt(index[0], index[1]);
-					}
-					else
-					{
-						DestroyHexAt(index[0], index[1]);
-					}
-				}
-				
-				index[0]++;
-				if( index[0] == _width )
-				{
-					index[0] = 0;
-					index[1]++;
-				}
-			}
-		}
-	}
-
-	protected internal Hashtable GetBoardAsCustomProperties()
-	{
-		var customProps = new Hashtable();
-		customProps["hexState"] = _existingHexes;
-		return customProps;
 	}
 }

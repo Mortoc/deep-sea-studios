@@ -48,7 +48,7 @@ public class HexEdit : EditorWindow
 			map._width = _mapWidth;
 			map._height = _mapHeight;
 			map._hexMaterial = _hexMaterial;
-			map.InitializeBoard();
+			map.Awake();
 			
 			Undo.RegisterCreatedObjectUndo(map, "Created Hex Map");
 		}
