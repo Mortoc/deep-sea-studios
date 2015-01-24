@@ -10,8 +10,8 @@
 /*.pidb
 /*.booproj
 
-/Game/*.suo
-/Game/bin
-/Game/Properties
+/hinder/*.suo
+/hinder/bin
+/hinder/Properties
 /bin
 /Properties
