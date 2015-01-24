@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ControllerManager.cs" />
      <Compile Include="Assets\UI\HinderancePickerUI.cs" />
      <Compile Include="Assets\controllerTest.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
