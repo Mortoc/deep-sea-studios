@@ -46,6 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Player\Being.cs" />
+     <Compile Include="Assets\Player\CharacterController2D.cs" />
+     <Compile Include="Assets\Player\Minion.cs" />
+     <Compile Include="Assets\Player\Player.cs" />
      <Compile Include="Assets\UI\HinderancePickerUI.cs" />
      <Compile Include="Assets\controllerTest.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
