@@ -22,9 +22,13 @@ public class Player : MonoBehaviour
 	private bool _grounded = true;
 
 	private ControllerManager _controllers;
+	private float _inputMovement = 0.0f;
 
 	[SerializeField]
 	private LayerMask _groundLayers;
+
+	[SerializeField]
+	private ControllerManager.PlayerNumber _playerNum;
 
 	void Awake()
 	{
@@ -38,16 +42,31 @@ public class Player : MonoBehaviour
 
 	void OnEnable()
 	{
-		_controllers.OnButtonPress += ButtonPressed;
+		_controllers.OnButtonPress += HandleButtonPressed;
+		_controllers.OnAnalogMovement += HandleOnAnalogMovement;
 	}
 
 	void OnDisable()
 	{
-		_controllers.OnButtonPress -= ButtonPressed;
+		_controllers.OnButtonPress -= HandleButtonPressed;
+		_controllers.OnAnalogMovement -= HandleOnAnalogMovement;
+	}
+	
+	private void HandleOnAnalogMovement (ControllerManager.AnalogLabel label, ControllerManager.PlayerNumber playerNum, float value)
+	{
+		if( _playerNum != playerNum ) return;
+
+
+		if( label == ControllerManager.AnalogLabel.LeftAnalogX ) 
+		{
+			_inputMovement = value;
+		}
 	}
 
-	private void ButtonPressed(ControllerManager.ButtonLabel button, ControllerManager.PlayerNumber Player)
+	private void HandleButtonPressed(ControllerManager.ButtonLabel button, ControllerManager.PlayerNumber playerNum)
 	{
+		if( _playerNum != playerNum ) return;
+
 		if( _grounded && button == ControllerManager.ButtonLabel.BottomButton )
 		{
 			_grounded = false;
@@ -57,8 +76,7 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		var movement = Input.GetAxis ("LeftAnalogXP1");
-		var speed = movement * _speed * Time.fixedDeltaTime;
+		var speed = _inputMovement * _speed * Time.fixedDeltaTime;
 		_animator.SetFloat ("X-Speed", speed);
 
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);

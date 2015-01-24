@@ -34,8 +34,6 @@ public class ControllerManager : MonoBehaviour{
         P2
     }
 
-    public float _analogTolerance = 0.2f;
-
 	// Update is called once per frame
 	void Update () 
     {
@@ -61,10 +59,7 @@ public class ControllerManager : MonoBehaviour{
 	            foreach (string playerNum in Enum.GetNames(typeof(PlayerNumber)))
 	            {
 	                float analogMovement = Input.GetAxis(analog + playerNum);
-	                if (Math.Abs(analogMovement) > _analogTolerance)
-	                {
-	                    OnAnalogMovement((AnalogLabel)Enum.Parse(typeof(AnalogLabel), analog), (PlayerNumber)Enum.Parse(typeof(PlayerNumber), playerNum), analogMovement);
-	                }
+	                OnAnalogMovement((AnalogLabel)Enum.Parse(typeof(AnalogLabel), analog), (PlayerNumber)Enum.Parse(typeof(PlayerNumber), playerNum), analogMovement);
 	            }
 	        }
 		}
