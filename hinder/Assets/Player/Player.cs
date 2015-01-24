@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+using System;
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour
 
 	private bool _grounded = true;
 
+	private ControllerManager _controllers;
+
 	[SerializeField]
 	private LayerMask _groundLayers;
 
@@ -28,11 +32,23 @@ public class Player : MonoBehaviour
 		_rightScale = transform.localScale;
 		_leftScale = _rightScale;
 		_leftScale.x *= -1.0f;
+		_controllers = GameObject.FindObjectOfType<ControllerManager>();
+		if( !_controllers ) throw new InvalidOperationException("No controller manager found in this scene");
 	}
 
-	void Update()
+	void OnEnable()
 	{
-		if( _grounded && Input.GetKeyDown (KeyCode.Space) )
+		_controllers.OnButtonPress += ButtonPressed;
+	}
+
+	void OnDisable()
+	{
+		_controllers.OnButtonPress -= ButtonPressed;
+	}
+
+	private void ButtonPressed(ControllerManager.ButtonLabel button, ControllerManager.PlayerNumber Player)
+	{
+		if( _grounded && button == ControllerManager.ButtonLabel.BottomButton )
 		{
 			_grounded = false;
 			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
@@ -41,7 +57,7 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		var movement = Input.GetAxis ("Horizontal");
+		var movement = Input.GetAxis ("LeftAnalogXP1");
 		var speed = movement * _speed * Time.fixedDeltaTime;
 		_animator.SetFloat ("X-Speed", speed);
 
@@ -56,11 +72,18 @@ public class Player : MonoBehaviour
 			transform.localScale = _rightScale;
 		}
 
-		_grounded = Physics2D.Raycast(
-			rigidbody2D.position + _footCollider.center, 
+		_grounded = Physics2D.Raycast
+		(
+			rigidbody2D.position, 
 			Vector2.up * -1.0f, 
-			_footCollider.radius * 1.5f, 
+			0.5f, 
 			_groundLayers.value
+		);
+
+		Debug.DrawLine (
+			rigidbody2D.position, 
+			rigidbody2D.position + (Vector2.up * -0.5f),
+			Color.red
 		);
 
 		_animator.SetBool("IsGrounded", _grounded);

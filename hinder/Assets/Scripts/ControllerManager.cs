@@ -39,27 +39,34 @@ public class ControllerManager : MonoBehaviour{
 	// Update is called once per frame
 	void Update () 
     {
-        foreach (string button in Enum.GetNames(typeof(ButtonLabel)))
-        {
-            foreach (string playerNum in Enum.GetNames(typeof(PlayerNumber)))
-            {
-                if (Input.GetButtonDown(button + playerNum))
-                {
-                    OnButtonPress((ButtonLabel)Enum.Parse(typeof(ButtonLabel), button), (PlayerNumber) Enum.Parse(typeof(PlayerNumber), playerNum));
-                }
-            }
-        }
+		
+		if( OnButtonPress != null )
+		{
+	        foreach (string button in Enum.GetNames(typeof(ButtonLabel)))
+	        {
+	            foreach (string playerNum in Enum.GetNames(typeof(PlayerNumber)))
+	            {
+	                if (Input.GetButtonDown(button + playerNum))
+	                {
+	                    OnButtonPress((ButtonLabel)Enum.Parse(typeof(ButtonLabel), button), (PlayerNumber) Enum.Parse(typeof(PlayerNumber), playerNum));
+	                }
+	            }
+	        }
+		}
 
-        foreach (string analog in Enum.GetNames(typeof(AnalogLabel)))
-        {
-            foreach (string playerNum in Enum.GetNames(typeof(PlayerNumber)))
-            {
-                float analogMovement = Input.GetAxis(analog + playerNum);
-                if (Math.Abs(analogMovement) > _analogTolerance)
-                {
-                    OnAnalogMovement((AnalogLabel)Enum.Parse(typeof(AnalogLabel), analog), (PlayerNumber)Enum.Parse(typeof(PlayerNumber), playerNum), analogMovement);
-                }
-            }
-        }
+		if( OnAnalogMovement != null )
+		{
+	        foreach (string analog in Enum.GetNames(typeof(AnalogLabel)))
+	        {
+	            foreach (string playerNum in Enum.GetNames(typeof(PlayerNumber)))
+	            {
+	                float analogMovement = Input.GetAxis(analog + playerNum);
+	                if (Math.Abs(analogMovement) > _analogTolerance)
+	                {
+	                    OnAnalogMovement((AnalogLabel)Enum.Parse(typeof(AnalogLabel), analog), (PlayerNumber)Enum.Parse(typeof(PlayerNumber), playerNum), analogMovement);
+	                }
+	            }
+	        }
+		}
 	}
 }
