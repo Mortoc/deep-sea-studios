@@ -12,6 +12,7 @@ public abstract class Being : MonoBehaviour
 	public float AttackDamage 
 	{ 
 		get { return _attackDamage; }
+		set { _attackDamage = value; }
 	}
 
 	[SerializeField]
@@ -19,7 +20,10 @@ public abstract class Being : MonoBehaviour
 
 	[SerializeField]
 	protected ControllerManager.PlayerNumber _playerNum;
-
+	public ControllerManager.PlayerNumber PlayerNumber
+	{
+		get { return _playerNum; }
+	}
 
 	public virtual void RecieveDamage(float damage)
 	{

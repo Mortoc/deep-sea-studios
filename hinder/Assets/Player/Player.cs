@@ -8,6 +8,12 @@ public class Player : Being
 {
 	[SerializeField]
 	private float _speed = 10.0f;
+	public float Speed
+	{
+		get { return _speed; }
+		set { _speed = value; }
+	}
+
 	
 	[SerializeField]
 	private float _jumpForce = 100.0f;
@@ -40,6 +46,14 @@ public class Player : Being
 
 	private PlayerStatusGUI _gui;
 
+	[SerializeField]
+	private float _healthRegen = 1.0f;
+	public float HealthRegen
+	{
+		get { return _healthRegen; }
+		set { _healthRegen = value; }
+	}
+
 
 
 	void Awake()
@@ -60,6 +74,13 @@ public class Player : Being
 				_gui = gui;
 			}
 		}
+	}
+
+	public void SetScale(float targetScale)
+	{
+		_rightScale *= targetScale;
+		_leftScale *= targetScale;
+		transform.localScale = transform.localScale * targetScale;
 	}
 
 	void OnEnable()
@@ -89,21 +110,38 @@ public class Player : Being
 	{
 		if( _playerNum != playerNum ) return;
 
-		if( _grounded && button == ControllerManager.ButtonLabel.BottomButton )
+		if( button == ControllerManager.ButtonLabel.BottomButton )
 		{
-			_grounded = false;
-			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+			Jump();
 		}
 
-		if( button == ControllerManager.ButtonLabel.LeftButton && Time.time - _lastAttack > _maxAttackRate )
+		if( button == ControllerManager.ButtonLabel.LeftButton )
+		{
+			Attack();
+		}
+	}
+
+	public void Attack()
+	{
+		if( Time.time - _lastAttack > _maxAttackRate  )
 		{
 			_lastAttack = Time.time;
 			_animator.SetTrigger("OnAttack");
-
+			
 			foreach(var hit in Physics2D.OverlapCircleAll(_attackCenter.position, 0.5f, _enemyLayers))
 			{
 				AttackLanded (hit);
 			}
+
+		}
+	}
+
+	public void Jump()
+	{
+		if( _grounded )
+		{
+			_grounded = false;
+			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 		}
 	}
 
@@ -132,6 +170,12 @@ public class Player : Being
 		{
 			_lastAttackHitFrame = Time.frameCount;
 		}
+	}
+
+	void Update()
+	{
+		_damageTaken -= _healthRegen * Time.deltaTime;
+		_gui.UpdateHealth(_hitPoints, _damageTaken);
 	}
 
 	void FixedUpdate()
