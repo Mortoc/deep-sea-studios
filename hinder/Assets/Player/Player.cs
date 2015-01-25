@@ -96,11 +96,9 @@ public class Player : Being
 
 	public void AttackLanded(Collider2D colliderHit)
 	{
-		Debug.Log ("Landed an attack");
 		var beingHit = colliderHit.gameObject.GetComponentInChildren<Being>();
 		if( beingHit )
 		{
-			Debug.Log ("Hit", beingHit);
 			beingHit.RecieveDamage(_attackDamage);
 			AttackLandedThisFrame();
 		}
@@ -112,7 +110,6 @@ public class Player : Being
 		if( Time.frameCount > _lastAttackHitFrame )
 		{
 			_lastAttackHitFrame = Time.frameCount;
-			Debug.Log ("hit");
 		}
 	}
 
