@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Minion : Being 
 {
@@ -15,6 +16,9 @@ public class Minion : Being
 
     [SerializeField]
     private LayerMask _attackableLayers;
+
+	[SerializeField]
+	private LayerMask _wallLayer;
 
     [SerializeField]
     private GameObject _bulletPrefab;
@@ -48,28 +52,46 @@ public class Minion : Being
 
             if (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers)) 
             {
-                rigidbody2D.velocity = Vector2.zero;
-                yield return StartCoroutine(Attack());
+				Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers);
+				List<Collider2D> realTargets = AttackableTargets(targets);
+				if (realTargets.Count > 0)
+				{
+	                rigidbody2D.velocity = Vector2.zero;
+	                yield return StartCoroutine(Attack());
+				}
             }
         }
     }
 
+	private List<Collider2D> AttackableTargets(Collider2D[] targets)
+	{
+		List<Collider2D> realTargets = new List<Collider2D>();
+		foreach (var target in targets)
+		{
+			if (!Physics2D.Linecast(transform.position, target.gameObject.transform.position, _wallLayer))
+			{
+				realTargets.Add(target);
+			}
+		}
+		return realTargets;
+	}
+
     private IEnumerator Attack()
     {
-        while (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers))
+		while (AttackableTargets(Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers)).Count > 0)
         {
-            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers);
+			var targets = AttackableTargets(Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers));
             Being target = null;
             foreach (var t in targets)
             {
-                target = t.GetComponent<Player>();
-                if (target)
+        		target = t.GetComponent<Player>();
+				if (target)
                     break;
             }
 
             if (!target)
             {
-                target = targets[Random.Range(0, targets.Length)].GetComponent<Being>();
+                target = targets[Random.Range(0, targets.Count)].GetComponent<Being>();
             }
 
             GameObject go = (GameObject)Instantiate(_bulletPrefab);
