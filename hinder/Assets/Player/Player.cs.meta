@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: f7aa6121f3afb477d9e94efe5d24535b
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _footCollider: {instanceID: 0}
+  - _attackCenter: {instanceID: 0}
+  - _onHitEffect: {instanceID: 0}
+  - jumpSound1: {fileID: 8300000, guid: 61c323ff8fe82c04d969eb19ce06442d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

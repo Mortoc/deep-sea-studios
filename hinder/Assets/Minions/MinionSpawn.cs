@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinionSpawn : MonoBehaviour 
+public class MinionSpawn : Being 
 {
     [SerializeField]
     private GameObject _minionPrefab;
@@ -10,20 +10,31 @@ public class MinionSpawn : MonoBehaviour
     private Procedural.BezierComponent _enemyPath;
 
     public int _numMinions = 3;
+    public int _spawnTimer = 10;
 
 	void Start () 
     {
-        SpawnMinion(_numMinions);
+        _hitPoints = 200;
+        StartCoroutine(SpawnMinions(_numMinions));
 	}
 
-    void SpawnMinion(int num)
+    IEnumerator SpawnMinions(int num)
     {
-        for (int i = 0; i < num; i++)
+        while (true)
         {
-            var minion = (GameObject)Instantiate(_minionPrefab);
-            minion.transform.position = transform.position;
-            minion.GetComponent<Minion>().Init(_enemyPath, gameObject.layer);
+            for (int i = 0; i < num; i++)
+            {
+                var minion = (GameObject)Instantiate(_minionPrefab);
+                minion.transform.position = transform.position;
+                minion.GetComponent<Minion>().Init(_enemyPath, gameObject.layer);
+            }
+            for (float timer = 0; timer < _spawnTimer; timer += Time.deltaTime)
+                yield return 0;
         }
     }
-	
+
+    public override void TimeToDie()
+    {
+        Destroy(gameObject);
+    }
 }

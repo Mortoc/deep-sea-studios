@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Minion : Being 
 {
@@ -16,8 +17,13 @@ public class Minion : Being
     [SerializeField]
     private LayerMask _attackableLayers;
 
+	[SerializeField]
+	private LayerMask _wallLayer;
+
     [SerializeField]
-    private Material _bulletMaterial;
+    private GameObject _bulletPrefab;
+
+    
 
     public void Init(ISpline path, LayerMask layer)
     {
@@ -46,52 +52,61 @@ public class Minion : Being
 
             if (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers)) 
             {
-                rigidbody2D.velocity = Vector2.zero;
-                yield return StartCoroutine(Attack());
+				Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers);
+				List<Collider2D> realTargets = AttackableTargets(targets);
+				if (realTargets.Count > 0)
+				{
+	                rigidbody2D.velocity = Vector2.zero;
+	                yield return StartCoroutine(Attack());
+				}
             }
         }
     }
 
+	private List<Collider2D> AttackableTargets(Collider2D[] targets)
+	{
+		List<Collider2D> realTargets = new List<Collider2D>();
+		foreach (var target in targets)
+		{
+			if (!Physics2D.Linecast(transform.position, target.gameObject.transform.position, _wallLayer))
+			{
+				realTargets.Add(target);
+			}
+		}
+		return realTargets;
+	}
+
     private IEnumerator Attack()
     {
-        while (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers))
+		while (AttackableTargets(Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers)).Count > 0)
         {
-            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers);
-            //focus player
-            var target = targets[Random.Range(0, targets.Length)].GetComponent<Being>();
-            StartCoroutine(FireBulletAt(target));
-            yield return 0; 
+			var targets = AttackableTargets(Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers));
+            Being target = null;
+            foreach (var t in targets)
+            {
+        		target = t.GetComponent<Player>();
+				if (target)
+                    break;
+            }
+
+            if (!target)
+            {
+                target = targets[Random.Range(0, targets.Count)].GetComponent<Being>();
+            }
+
+            GameObject go = (GameObject)Instantiate(_bulletPrefab);
+            go.transform.position = transform.position;
+            go.GetComponent<Bullet>().DoThing(target);
+            
+            yield return new WaitForSeconds(1); 
         }
         
         yield return 0;
     }
 
-    IEnumerator FireBulletAt(Being enemy)
+
+    public override void TimeToDie()
     {
-        var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        bullet.transform.localScale = Vector3.one * 0.1f;
-        bullet.transform.position = transform.position;
-        bullet.GetComponent<Renderer>().material = _bulletMaterial;
-        var bulletSpeed = 12.0f;
-        var hitDistance = bulletSpeed * 0.05f;
-
-        while ((bullet.transform.position - enemy.transform.position).magnitude > hitDistance)
-        {
-            var bulletDirection = (enemy.transform.position - bullet.transform.position).normalized;
-            bullet.transform.Translate(bulletDirection * bulletSpeed * Time.deltaTime);
-            yield return 0;
-
-            if (!enemy)
-            {
-                GameObject.Destroy(bullet);
-                yield break;
-            }
-        }
-
-        GameObject.Destroy(bullet);
-        //enemy.TakeDamage(1.0f);
-        
+        Destroy(gameObject);
     }
-
-   
 }
