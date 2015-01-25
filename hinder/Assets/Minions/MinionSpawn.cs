@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinionSpawn : MonoBehaviour 
+public class MinionSpawn : Being 
 {
     [SerializeField]
     private GameObject _minionPrefab;
@@ -14,6 +14,7 @@ public class MinionSpawn : MonoBehaviour
 
 	void Start () 
     {
+        _hitPoints = 200;
         StartCoroutine(SpawnMinions(_numMinions));
 	}
 
@@ -30,5 +31,10 @@ public class MinionSpawn : MonoBehaviour
             for (float timer = 0; timer < _spawnTimer; timer += Time.deltaTime)
                 yield return 0;
         }
+    }
+
+    public override void TimeToDie()
+    {
+        Destroy(gameObject);
     }
 }
