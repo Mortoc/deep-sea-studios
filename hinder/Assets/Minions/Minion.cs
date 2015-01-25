@@ -23,6 +23,15 @@ public class Minion : Being
     [SerializeField]
     private GameObject _bulletPrefab;
 
+	private Vector3 _rightScale;
+	private Vector3 _leftScale;
+
+	void Awake()
+	{
+		_rightScale = transform.localScale;
+		_leftScale = _rightScale;
+		_leftScale.x *= -1.0f;
+	}
     
 
     public void Init(ISpline path, LayerMask layer)
@@ -47,7 +56,17 @@ public class Minion : Being
             var t = Mathf.Lerp(startT, endT, time * recipTotalTime);
             var pathPnt = path.PositionSample(t);
             var pathOffset = Quaternion.FromToRotation(Vector3.up, path.ForwardSample(t)) * _offset;
-            transform.position = pathPnt + pathOffset;
+			var targetPosition = pathPnt + pathOffset;
+			if( targetPosition.x > transform.position.x )
+			{
+				transform.localScale = _rightScale;
+			}
+			else 
+			{
+				transform.localScale = _leftScale;
+			}
+
+			transform.position = targetPosition;
             yield return 0;
 
             if (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers)) 
@@ -91,7 +110,9 @@ public class Minion : Being
 
             if (!target)
             {
-                target = targets[Random.Range(0, targets.Count)].GetComponent<Being>();
+				var potentialTarget = targets[Random.Range(0, targets.Count)];
+				if( potentialTarget && potentialTarget.GetComponent<Being>() )
+					target = potentialTarget.GetComponent<Being>();
             }
 
             GameObject go = (GameObject)Instantiate(_bulletPrefab);
@@ -107,6 +128,7 @@ public class Minion : Being
 
     public override void TimeToDie()
     {
-        Destroy(gameObject);
+		if( this && this.gameObject )
+	        Destroy(gameObject);
     }
 }
