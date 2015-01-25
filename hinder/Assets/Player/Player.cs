@@ -72,15 +72,16 @@ public class Player : Being
 	void FixedUpdate()
 	{
 		var speed = _inputMovement * _speed * Time.fixedDeltaTime;
+		Debug.Log (speed);
 		_animator.SetFloat ("X-Speed", speed);
 
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
 
-		if( speed < 0.0f ) 
+		if( speed < -0.01f ) 
 		{
 			transform.localScale = _leftScale;
 		}
-		else
+		else if( speed > 0.01f )
 		{
 			transform.localScale = _rightScale;
 		}
