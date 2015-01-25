@@ -31,11 +31,13 @@ public class Bullet : MonoBehaviour {
             if (!enemy)
             {
                 GameObject.Destroy(bullet);
+                Destroy(gameObject);
                 yield break;
             }
         }
 
         GameObject.Destroy(bullet);
+        Destroy(gameObject);
         enemy.RecieveDamage(1.0f);
     }
 }
