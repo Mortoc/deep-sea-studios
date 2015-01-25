@@ -38,6 +38,8 @@ public class Player : Being
 	[SerializeField]
 	private ParticleSystem _onHitEffect;
 
+	private PlayerStatusGUI _gui;
+
 
 
 	void Awake()
@@ -50,6 +52,14 @@ public class Player : Being
 
 		if( !_controllers ) 
 			throw new InvalidOperationException("No controller manager found in this scene");
+
+		foreach(var gui in GameObject.FindObjectsOfType<PlayerStatusGUI>())
+		{
+			if( gui.playerNum == _playerNum )
+			{
+				_gui = gui;
+			}
+		}
 	}
 
 	void OnEnable()
@@ -102,6 +112,7 @@ public class Player : Being
 		base.RecieveDamage(damage);
 
 		_onHitEffect.Emit(Mathf.FloorToInt(10.0f * damage / _hitPoints));
+		_gui.UpdateHealth(_hitPoints, _damageTaken);
 	}
 
 	public void AttackLanded(Collider2D colliderHit)
@@ -159,9 +170,12 @@ public class Player : Being
 		_animator.SetTrigger("OnDeath");
 
 		foreach(var col in gameObject.GetComponents<Collider2D>())
-			Destroy (col);
+			col.enabled = false;
 
-		Destroy (gameObject.GetComponent<Rigidbody2D>());
-		Destroy (this);
+		gameObject.rigidbody2D.Sleep();
+
+		this.enabled = false;
+
+		_gui.SetRespawnTimer(5.0f);
 	}
 }

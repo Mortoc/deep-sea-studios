@@ -25,7 +25,7 @@ public abstract class Being : MonoBehaviour
 	{
 		_damageTaken += damage;
 
-		if( _damageTaken > _hitPoints )
+		if( _damageTaken >= _hitPoints )
 		{
 			TimeToDie();
 		}
