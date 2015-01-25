@@ -28,8 +28,13 @@ public class Player : Being
 	private float _maxAttackRate = 1.0f;
 	private float _lastAttack = 0.0f;
 
+
 	[SerializeField]
-	private GameObject _attackObject;
+	private Transform _attackCenter;
+
+	[SerializeField]
+	private LayerMask _enemyLayers;
+
 
 
 	void Awake()
@@ -81,22 +86,21 @@ public class Player : Being
 		{
 			_lastAttack = Time.time;
 			_animator.SetTrigger("OnAttack");
-			StartCoroutine(DoAttack());
+
+			foreach(var hit in Physics2D.OverlapCircleAll(_attackCenter.position, 0.5f, _enemyLayers))
+			{
+				AttackLanded (hit);
+			}
 		}
 	}
 
-	IEnumerator DoAttack()
+	public void AttackLanded(Collider2D colliderHit)
 	{
-		_attackObject.SetActive(true);
-		yield return 0;
-		_attackObject.SetActive(false);
-	}
-
-	public void AttackLanded(Collision2D colliderHit)
-	{
+		Debug.Log ("Landed an attack");
 		var beingHit = colliderHit.gameObject.GetComponentInChildren<Being>();
 		if( beingHit )
 		{
+			Debug.Log ("Hit", beingHit);
 			beingHit.RecieveDamage(_attackDamage);
 			AttackLandedThisFrame();
 		}
@@ -116,6 +120,7 @@ public class Player : Being
 	{
 		var speed = _inputMovement * _speed * Time.fixedDeltaTime;
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+
 		_animator.SetFloat("X-Speed", rigidbody2D.velocity.x);
 		_animator.SetFloat("Y-Speed", rigidbody2D.velocity.y);
 
@@ -136,7 +141,7 @@ public class Player : Being
 			_groundLayers.value
 		);
 
-		Debug.DrawLine(rigidbody2D.position, rigidbody2D.position + Vector2.up * -0.66f);
+		//Debug.DrawLine(rigidbody2D.position, rigidbody2D.position + Vector2.up * -0.66f);
 
 		_animator.SetBool("IsGrounded", _grounded);
 	}
@@ -145,6 +150,11 @@ public class Player : Being
 	public override void TimeToDie ()
 	{
 		_animator.SetTrigger("OnDeath");
+
+		foreach(var col in gameObject.GetComponents<Collider2D>())
+			Destroy (col);
+
+		Destroy (gameObject.GetComponent<Rigidbody2D>());
 		Destroy (this);
 	}
 }
