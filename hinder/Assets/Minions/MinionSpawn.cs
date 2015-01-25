@@ -22,7 +22,7 @@ public class MinionSpawn : MonoBehaviour
         {
             var minion = (GameObject)Instantiate(_minionPrefab);
             minion.transform.position = transform.position;
-            minion.GetComponent<Minion>().Init(_enemyPath);
+            minion.GetComponent<Minion>().Init(_enemyPath, gameObject.layer);
         }
     }
 	

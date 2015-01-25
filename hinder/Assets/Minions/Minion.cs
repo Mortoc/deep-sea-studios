@@ -17,11 +17,13 @@ public class Minion : Being
     [SerializeField]
     private float _attackRange = 3.0f;
 
-    
+    [SerializeField]
     private LayerMask _attackableLayers;
 
+    [SerializeField]
+    private Material _bulletMaterial;
 
-    public void Init(ISpline path)
+    public void Init(ISpline path, LayerMask layer)
     {
         _offset = Random.onUnitSphere * Mathf.Lerp(0.0f, _offsetAmount, Random.value);
         if (Vector3.Distance(transform.position, path.PositionSample(0)) < 
@@ -48,6 +50,7 @@ public class Minion : Being
 
             if (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers)) 
             {
+                rigidbody2D.velocity = Vector2.zero;
                 yield return StartCoroutine(Attack());
             }
         }
@@ -55,12 +58,44 @@ public class Minion : Being
 
     private IEnumerator Attack()
     {
+        while (Physics2D.OverlapCircle(transform.position, _attackRange, _attackableLayers))
+        {
+            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _attackRange, _attackableLayers);
+            //focus player
+            var target = targets[Random.Range(0, targets.Length)].GetComponent<Being>();
+            StartCoroutine(FireBulletAt(target));
+            yield return 0; 
+        }
+        
         yield return 0;
-        //while( shits in RangeAttribute ) 
-        //{
-        //    // attack it
-        //}
-
-        // returns back to follow path
     }
+
+    IEnumerator FireBulletAt(Being enemy)
+    {
+        var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        bullet.transform.localScale = Vector3.one * 0.1f;
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<Renderer>().material = _bulletMaterial;
+        var bulletSpeed = 12.0f;
+        var hitDistance = bulletSpeed * 0.05f;
+
+        while ((bullet.transform.position - enemy.transform.position).magnitude > hitDistance)
+        {
+            var bulletDirection = (enemy.transform.position - bullet.transform.position).normalized;
+            bullet.transform.Translate(bulletDirection * bulletSpeed * Time.deltaTime);
+            yield return 0;
+
+            if (!enemy)
+            {
+                GameObject.Destroy(bullet);
+                yield break;
+            }
+        }
+
+        GameObject.Destroy(bullet);
+        //enemy.TakeDamage(1.0f);
+        
+    }
+
+   
 }
