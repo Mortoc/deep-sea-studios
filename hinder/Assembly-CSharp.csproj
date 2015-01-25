@@ -46,8 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Minions\Minion.cs" />
      <Compile Include="Assets\Player\Being.cs" />
-     <Compile Include="Assets\Player\Minion.cs" />
      <Compile Include="Assets\Player\Player.cs" />
      <Compile Include="Assets\Procedural\CompoundObjects\Loft.cs" />
      <Compile Include="Assets\Procedural\CompoundObjects\LoftComponent.cs" />

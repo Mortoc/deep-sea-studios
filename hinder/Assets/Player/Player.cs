@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour 
+public class Player : Being 
 {
 	[SerializeField]
 	private float _speed = 10.0f;
@@ -24,11 +24,6 @@ public class Player : MonoBehaviour
 	private ControllerManager _controllers;
 	private float _inputMovement = 0.0f;
 
-	[SerializeField]
-	private LayerMask _groundLayers;
-
-	[SerializeField]
-	private ControllerManager.PlayerNumber _playerNum;
 
 	void Awake()
 	{

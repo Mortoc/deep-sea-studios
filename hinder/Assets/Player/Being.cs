@@ -3,10 +3,18 @@ using System.Collections;
 
 public class Being : MonoBehaviour 
 {
+	[SerializeField]
+	protected float _hitPoints;
+	protected float _damageTaken;
 
-	private bool _isGrounded;
+	[SerializeField]
+	protected float _attackDamage;
 
-	public void Move(float direction, float power)
-	{
-	}
+	[SerializeField]
+	protected LayerMask _groundLayers;
+
+	[SerializeField]
+	protected ControllerManager.PlayerNumber _playerNum;
+
+
 }
