@@ -54,7 +54,10 @@ public class Player : Being
 		set { _healthRegen = value; }
 	}
 
-
+    public AudioClip jumpSound1;
+    private AudioSource source;
+    private float volLowRange = 0.1f;
+    private float volHighRange = 0.3f;
 
 	void Awake()
 	{
@@ -66,6 +69,8 @@ public class Player : Being
 
 		if( !_controllers ) 
 			throw new InvalidOperationException("No controller manager found in this scene");
+
+        source = GetComponent<AudioSource>();
 
 		foreach(var gui in GameObject.FindObjectsOfType<PlayerStatusGUI>())
 		{
@@ -140,6 +145,9 @@ public class Player : Being
 	{
 		if( _grounded )
 		{
+            float vol = UnityEngine.Random.Range(volLowRange, volHighRange);
+            source.PlayOneShot(jumpSound1, vol);
+
 			_grounded = false;
 			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 		}
