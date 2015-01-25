@@ -79,6 +79,22 @@ public class Player : Being
 				_gui = gui;
 			}
 		}
+
+		// Apply curses
+		if( _playerNum == ControllerManager.PlayerNumber.P1 &&
+		    Curse.p1Selection != null )
+		{
+			var curse = (Curse)gameObject.AddComponent(Curse.p1Selection);
+			curse.FromPlayer = ControllerManager.PlayerNumber.P2;
+			curse.TargetPlayer = ControllerManager.PlayerNumber.P1;
+		}
+		else if( _playerNum == ControllerManager.PlayerNumber.P2 &&
+		    	 Curse.p2Selection != null )
+		{
+			var curse = (Curse)gameObject.AddComponent(Curse.p2Selection);
+			curse.FromPlayer = ControllerManager.PlayerNumber.P1;
+			curse.TargetPlayer = ControllerManager.PlayerNumber.P2;
+		}
 	}
 
 	public void SetScale(float targetScale)

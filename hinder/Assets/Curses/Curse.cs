@@ -3,13 +3,39 @@ using System.Collections;
 
 public abstract class Curse : MonoBehaviour 
 {
+	public static System.Type p1Selection = null;
+	public static System.Type p2Selection = null;
+
+
 	[SerializeField]
 	private ControllerManager.PlayerNumber _targetPlayer;
+
+	public ControllerManager.PlayerNumber TargetPlayer 
+	{
+		get 
+		{
+			return _targetPlayer;
+		}
+		set 
+		{
+			_targetPlayer = value;
+		}
+	}
 
 	
 	[SerializeField]
 	private ControllerManager.PlayerNumber _fromPlayer;
-
+	public ControllerManager.PlayerNumber FromPlayer 
+	{
+		get 
+		{
+			return _fromPlayer;
+		}
+		set 
+		{
+			_fromPlayer = value;
+		}
+	}
 
 	void Start()
 	{

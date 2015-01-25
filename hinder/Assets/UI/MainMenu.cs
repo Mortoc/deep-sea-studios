@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
 
 			if( _p1Ready && _p2Ready )
 			{
-				Application.LoadLevel ("Level1");
+				Application.LoadLevel ("CurseSelection");
 			}
 		}
 	}
