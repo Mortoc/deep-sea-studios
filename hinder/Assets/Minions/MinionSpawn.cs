@@ -14,7 +14,6 @@ public class MinionSpawn : Being
 
 	void Start () 
     {
-        _hitPoints = 200;
         StartCoroutine(SpawnMinions(_numMinions));
 	}
 

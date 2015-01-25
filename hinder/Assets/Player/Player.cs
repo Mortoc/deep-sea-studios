@@ -54,10 +54,11 @@ public class Player : Being
 		set { _healthRegen = value; }
 	}
 
-    public AudioClip jumpSound1;
     private AudioSource source;
-    private float volLowRange = 0.1f;
-    private float volHighRange = 0.3f;
+	[SerializeField]
+    private float _volLowRange = 0.1f;
+	[SerializeField]
+    private float _volHighRange = 0.3f;
 
 	[SerializeField]
 	private float _hopStrength = 5.0f;
@@ -67,6 +68,30 @@ public class Player : Being
 	private float _hopVerticalAmount = 0.2f;
 	private float _lastHop = 0.0f;
 	private bool _inputDisabled = false;
+
+	[Serializable]
+	public struct Sounds
+	{
+		public AudioClip jumpSound1;
+		public AudioClip jumpSound2;
+		
+		public AudioClip landing1;
+		public AudioClip landing2;
+
+		public AudioClip takeDamage1;
+		public AudioClip takeDamage2;
+
+		public AudioClip attack1;
+		public AudioClip attack2;
+		public AudioClip attack3;
+
+		public AudioClip death;
+
+		public AudioClip spawn;
+	}
+
+	[SerializeField]
+	private Sounds _sounds;
 
 	void Awake()
 	{
@@ -115,6 +140,7 @@ public class Player : Being
 
 	void OnEnable()
 	{
+		PlaySound (1.0f, _sounds.spawn);
 		_controllers.OnButtonPress += HandleButtonPressed;
 		_controllers.OnAnalogMovement += HandleOnAnalogMovement;
 	}
@@ -166,6 +192,8 @@ public class Player : Being
 
 			_lastHop = Time.time;
 
+			PlaySound(0.5f, _sounds.jumpSound1, _sounds.jumpSound2);
+
 			var dir = Vector2.right * (left ? -1.0f : 1.0f);
 			dir = Vector3.Slerp (dir, Vector3.up, _hopVerticalAmount);
 			var force = dir * _hopStrength;
@@ -186,8 +214,10 @@ public class Player : Being
 
 	public void Attack()
 	{
-		if( Time.time - _lastAttack > _maxAttackRate  )
+		if( Time.time - _lastAttack > _maxAttackRate )
 		{
+			PlaySound(0.5f, _sounds.attack1, _sounds.attack2, _sounds.attack3);
+
 			_lastAttack = Time.time;
 			_animator.SetTrigger("OnAttack");
 			
@@ -199,12 +229,19 @@ public class Player : Being
 		}
 	}
 
+	private void PlaySound(float volume, params AudioClip[] oneOfTheseClips)
+	{
+		var audioClipIdx = UnityEngine.Random.Range(0, oneOfTheseClips.Length);
+		var clip = oneOfTheseClips[audioClipIdx];
+		AudioSource.PlayClipAtPoint(clip, rigidbody2D.position, volume);
+	}
+
 	public void Jump()
 	{
 		if( _grounded )
 		{
-            float vol = UnityEngine.Random.Range(volLowRange, volHighRange);
-            source.PlayOneShot(jumpSound1, vol);
+			float vol = Mathf.Lerp(_volLowRange, _volHighRange, UnityEngine.Random.value);
+			PlaySound(vol, _sounds.jumpSound1, _sounds.jumpSound2);
 
 			_grounded = false;
 			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
@@ -214,7 +251,8 @@ public class Player : Being
 	public override void RecieveDamage(float damage)
 	{
 		base.RecieveDamage(damage);
-
+			
+		PlaySound(0.5f, _sounds.takeDamage1, _sounds.takeDamage2);
 		_onHitEffect.Emit(Mathf.FloorToInt(10.0f * damage / _hitPoints));
 		_gui.UpdateHealth(_hitPoints, _damageTaken);
 	}
@@ -225,16 +263,6 @@ public class Player : Being
 		if( beingHit )
 		{
 			beingHit.RecieveDamage(_attackDamage);
-			AttackLandedThisFrame();
-		}
-	}
-
-	private int _lastAttackHitFrame = 0;
-	private void AttackLandedThisFrame()
-	{
-		if( Time.frameCount > _lastAttackHitFrame )
-		{
-			_lastAttackHitFrame = Time.frameCount;
 		}
 	}
 
@@ -275,6 +303,7 @@ public class Player : Being
 			transform.localScale = _rightScale;
 		}
 
+		var oldGrounded = _grounded;
 		_grounded = Physics2D.Raycast
 		(
 			rigidbody2D.position, 
@@ -282,6 +311,10 @@ public class Player : Being
 			0.66f, 
 			_groundLayers.value
 		);
+		if( !oldGrounded && _grounded )
+		{
+			PlaySound(0.5f, _sounds.landing1, _sounds.landing2);
+		}
 
 		//Debug.DrawLine(rigidbody2D.position, rigidbody2D.position + Vector2.up * -0.66f);
 
@@ -292,6 +325,7 @@ public class Player : Being
 	public override void TimeToDie ()
 	{
 		_animator.SetTrigger("OnDeath");
+		PlaySound (1.0f, _sounds.death);
 
 		foreach(var col in gameObject.GetComponents<Collider2D>())
 			col.enabled = false;

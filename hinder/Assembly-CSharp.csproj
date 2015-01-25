@@ -46,13 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Hobblings\Curse.cs" />
-     <Compile Include="Assets\Hobblings\CurseOfBlindness.cs" />
-     <Compile Include="Assets\Hobblings\CurseOfHeavyHands.cs" />
-     <Compile Include="Assets\Hobblings\CurseOfMimicry.cs" />
+     <Compile Include="Assets\Curses\Curse.cs" />
+     <Compile Include="Assets\Curses\CurseOfBlindness.cs" />
+     <Compile Include="Assets\Curses\CurseOfHeavyHands.cs" />
+     <Compile Include="Assets\Curses\CurseOfMimicry.cs" />
      <Compile Include="Assets\Minions\Bullet.cs" />
      <Compile Include="Assets\Minions\Minion.cs" />
      <Compile Include="Assets\Minions\MinionSpawn.cs" />
+     <Compile Include="Assets\Music\Music.cs" />
      <Compile Include="Assets\Player\Being.cs" />
      <Compile Include="Assets\Player\Player.cs" />
      <Compile Include="Assets\Player\PlayerStatusGUI.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\Procedural\Primitives\Splines\BezierComponent.cs" />
      <Compile Include="Assets\Procedural\Primitives\Splines\ISpline.cs" />
      <Compile Include="Assets\Scripts\ControllerManager.cs" />
+     <Compile Include="Assets\UI\CurseMenu.cs" />
      <Compile Include="Assets\UI\Hinderance Selection\HinderancePickerUI.cs" />
      <Compile Include="Assets\UI\MainMenu.cs" />
      <Compile Include="Assets\controllerTest.cs" />
