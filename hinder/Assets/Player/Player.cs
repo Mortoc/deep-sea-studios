@@ -59,6 +59,15 @@ public class Player : Being
     private float volLowRange = 0.1f;
     private float volHighRange = 0.3f;
 
+	[SerializeField]
+	private float _hopStrength = 5.0f;
+	[SerializeField]
+	private float _hopCooldown = 2.0f;
+	[SerializeField]
+	private float _hopVerticalAmount = 0.2f;
+	private float _lastHop = 0.0f;
+	private bool _inputDisabled = false;
+
 	void Awake()
 	{
 		_animator = GetComponent<Animator>();
@@ -135,11 +144,44 @@ public class Player : Being
 		{
 			Jump();
 		}
-
-		if( button == ControllerManager.ButtonLabel.LeftButton )
+		else if( button == ControllerManager.ButtonLabel.LeftButton )
 		{
 			Attack();
 		}
+		else if( button == ControllerManager.ButtonLabel.L1Button )
+		{
+			StartCoroutine(Hop (true));
+		}
+		else if( button == ControllerManager.ButtonLabel.R1Button )
+		{
+			StartCoroutine(Hop (false));
+		}
+	}
+
+	private IEnumerator Hop(bool left)
+	{
+		if( Time.time - _lastHop > _hopCooldown )
+		{
+			yield return new WaitForFixedUpdate();
+
+			_lastHop = Time.time;
+
+			var dir = Vector2.right * (left ? -1.0f : 1.0f);
+			dir = Vector3.Slerp (dir, Vector3.up, _hopVerticalAmount);
+			var force = dir * _hopStrength;
+			rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+			StartCoroutine(DisableInputFor(_hopCooldown/2));
+			//Debug.DrawLine (rigidbody2D.position, rigidbody2D.position + force, Color.green, 5.0f);
+
+		}
+
+	}
+
+	private IEnumerator DisableInputFor(float seconds)
+	{
+		_inputDisabled = true;
+		yield return new WaitForSeconds(seconds);
+		_inputDisabled = false;
 	}
 
 	public void Attack()
@@ -198,16 +240,28 @@ public class Player : Being
 
 	void Update()
 	{
-		_damageTaken -= _healthRegen * Time.deltaTime;
-		if (_damageTaken < 0)
-			_damageTaken = 0;
-		_gui.UpdateHealth(_hitPoints, _damageTaken);
+		if (_damageTaken > 0.0f) 
+		{
+			_damageTaken -= _healthRegen * Time.deltaTime;
+			_gui.UpdateHealth(_hitPoints, _damageTaken);
+		}
+		else
+		{
+			_damageTaken = 0.0f;
+		}
 	}
 
 	void FixedUpdate()
 	{
-		var speed = _inputMovement * _speed * Time.fixedDeltaTime;
-		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+		var speed = 0.0f;
+
+		if( !_inputDisabled )
+		{
+			speed = _inputMovement * _speed * Time.fixedDeltaTime;
+			rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+		}
+
+		//Debug.DrawLine (rigidbody2D.position, rigidbody2D.position + rigidbody2D.velocity, Color.blue, 3.0f);
 
 		_animator.SetFloat("X-Speed", rigidbody2D.velocity.x);
 		_animator.SetFloat("Y-Speed", rigidbody2D.velocity.y);
