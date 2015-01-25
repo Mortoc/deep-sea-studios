@@ -6,6 +6,9 @@ public class MinionSpawn : MonoBehaviour
     [SerializeField]
     private GameObject _minionPrefab;
 
+    [SerializeField]
+    private Procedural.BezierComponent _enemyPath;
+
     public int _numMinions = 3;
 
 	void Start () 
@@ -19,6 +22,7 @@ public class MinionSpawn : MonoBehaviour
         {
             var minion = (GameObject)Instantiate(_minionPrefab);
             minion.transform.position = transform.position;
+            minion.GetComponent<Minion>().Init(_enemyPath);
         }
     }
 	
