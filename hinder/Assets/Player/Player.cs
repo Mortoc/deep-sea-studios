@@ -183,6 +183,8 @@ public class Player : Being
 	void Update()
 	{
 		_damageTaken -= _healthRegen * Time.deltaTime;
+		if (_damageTaken < 0)
+			_damageTaken = 0;
 		_gui.UpdateHealth(_hitPoints, _damageTaken);
 	}
 
