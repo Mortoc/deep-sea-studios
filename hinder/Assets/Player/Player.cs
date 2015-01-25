@@ -22,12 +22,19 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private LayerMask _groundLayers;
 
+    public AudioSource jumpSound1;
+
 	void Awake()
 	{
 		_animator = GetComponent<Animator>();
 		_rightScale = transform.localScale;
 		_leftScale = _rightScale;
 		_leftScale.x *= -1.0f;
+
+        jumpSound1 = (AudioSource)gameObject.AddComponent("AudioSource");
+        AudioClip myAudioClip;
+        myAudioClip = (AudioClip)Resources.Load("Player/SoundEffects/PlayerJumpVariation1");
+        jumpSound1.clip = myAudioClip;
 	}
 
 	void Update()
@@ -36,6 +43,7 @@ public class Player : MonoBehaviour
 		{
 			_grounded = false;
 			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            jumpSound1.Play();
 		}
 	}
 
