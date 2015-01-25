@@ -3,10 +3,6 @@ using System.Collections;
 
 public class Minion : Being 
 {
-	public override void TimeToDie ()
-	{
-	}
-
     [SerializeField]
     private float _totalPathTime = 10.0f;
 
@@ -16,6 +12,9 @@ public class Minion : Being
 
     [SerializeField]
     private float _attackRange = 3.0f;
+
+    [SerializeField]
+    private float _attackRate = 1.0f;
 
     [SerializeField]
     private LayerMask _attackableLayers;
@@ -64,7 +63,7 @@ public class Minion : Being
             //focus player
             var target = targets[Random.Range(0, targets.Length)].GetComponent<Being>();
             StartCoroutine(FireBulletAt(target));
-            yield return 0; 
+            yield return new WaitForSeconds(_attackRate);
         }
         
         yield return 0;
@@ -75,11 +74,13 @@ public class Minion : Being
         var bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         bullet.transform.localScale = Vector3.one * 0.1f;
         bullet.transform.position = transform.position;
+        bullet.transform.parent = transform;
         bullet.GetComponent<Renderer>().material = _bulletMaterial;
+
         var bulletSpeed = 12.0f;
         var hitDistance = bulletSpeed * 0.05f;
 
-        while ((bullet.transform.position - enemy.transform.position).magnitude > hitDistance)
+        while (enemy && (bullet.transform.position - enemy.transform.position).magnitude > hitDistance)
         {
             var bulletDirection = (enemy.transform.position - bullet.transform.position).normalized;
             bullet.transform.Translate(bulletDirection * bulletSpeed * Time.deltaTime);
@@ -93,9 +94,11 @@ public class Minion : Being
         }
 
         GameObject.Destroy(bullet);
-        //enemy.TakeDamage(1.0f);
-        
+        enemy.RecieveDamage(1.0f);
     }
 
-   
+    public override void TimeToDie()
+    {
+        GameObject.Destroy(gameObject);
+    }
 }
