@@ -24,6 +24,14 @@ public class Player : Being
 	private ControllerManager _controllers;
 	private float _inputMovement = 0.0f;
 
+	[SerializeField]
+	private float _maxAttackRate = 1.0f;
+	private float _lastAttack = 0.0f;
+
+	[SerializeField]
+	private GameObject _attackObject;
+
+
 
 	void Awake()
 	{
@@ -67,12 +75,17 @@ public class Player : Being
 			_grounded = false;
 			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 		}
+
+		if( button == ControllerManager.ButtonLabel.LeftButton && Time.time - _lastAttack > _maxAttackRate )
+		{
+			_lastAttack = Time.time;
+			_animator.SetTrigger ("OnAttack");
+		}
 	}
 
 	void FixedUpdate()
 	{
 		var speed = _inputMovement * _speed * Time.fixedDeltaTime;
-		Debug.Log (speed);
 		_animator.SetFloat ("X-Speed", speed);
 
 		rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
@@ -94,12 +107,12 @@ public class Player : Being
 			_groundLayers.value
 		);
 
-		Debug.DrawLine (
-			rigidbody2D.position, 
-			rigidbody2D.position + (Vector2.up * -0.5f),
-			Color.red
-		);
-
 		_animator.SetBool("IsGrounded", _grounded);
+	}
+
+
+	public void ApplyDamage(float damage)
+	{
+
 	}
 }
