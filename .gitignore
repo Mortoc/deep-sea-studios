@@ -11,6 +11,11 @@
 /*.booproj
 
 /hinder/*.suo
+/hinder/*.unityproj
+/hinder/*.user
+/hinder/*.userprefs
+/hinder/*.pidb
+/hinder/*.booproj
 /hinder/bin
 /hinder/Properties
 /bin
