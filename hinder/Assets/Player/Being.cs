@@ -21,7 +21,7 @@ public abstract class Being : MonoBehaviour
 	protected ControllerManager.PlayerNumber _playerNum;
 
 
-	public void RecieveDamage(float damage)
+	public virtual void RecieveDamage(float damage)
 	{
 		_damageTaken += damage;
 

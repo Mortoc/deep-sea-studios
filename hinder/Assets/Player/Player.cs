@@ -35,6 +35,9 @@ public class Player : Being
 	[SerializeField]
 	private LayerMask _enemyLayers;
 
+	[SerializeField]
+	private ParticleSystem _onHitEffect;
+
 
 
 	void Awake()
@@ -92,6 +95,13 @@ public class Player : Being
 				AttackLanded (hit);
 			}
 		}
+	}
+
+	public override void RecieveDamage(float damage)
+	{
+		base.RecieveDamage(damage);
+
+		_onHitEffect.Emit(Mathf.FloorToInt(10.0f * damage / _hitPoints));
 	}
 
 	public void AttackLanded(Collider2D colliderHit)
