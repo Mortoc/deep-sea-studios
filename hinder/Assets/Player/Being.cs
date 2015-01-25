@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Being : MonoBehaviour 
+public abstract class Being : MonoBehaviour 
 {
 	[SerializeField]
 	protected float _hitPoints;
@@ -21,4 +21,15 @@ public class Being : MonoBehaviour
 	protected ControllerManager.PlayerNumber _playerNum;
 
 
+	public void RecieveDamage(float damage)
+	{
+		_damageTaken += damage;
+
+		if( _damageTaken > _hitPoints )
+		{
+			TimeToDie();
+		}
+	}
+
+	public abstract void TimeToDie();
 }

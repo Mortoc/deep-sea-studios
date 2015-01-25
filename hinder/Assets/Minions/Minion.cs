@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Minion : Being 
 {
+	public override void TimeToDie ()
+	{
+	}
+
     [SerializeField]
     private float _totalPathTime = 10.0f;
 

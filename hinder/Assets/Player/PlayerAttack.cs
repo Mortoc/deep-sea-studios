@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+using System;
 using System.Collections;
 
 public class PlayerAttack : MonoBehaviour 
@@ -6,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField]
 	private Player _owner;
 
-	void OnCollisionEnter2D(Collision2D coll) 
+	void OnCollisionEnter2D(Collision2D col) 
 	{
-		coll.gameObject.SendMessage("ApplyDamage", _owner.AttackDamage);
+		_owner.AttackLanded(col);
 	}
 }
