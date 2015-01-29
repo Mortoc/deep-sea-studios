@@ -37,8 +37,6 @@ public class PlayerStatusGUI : MonoBehaviour
 
 	private void SetHealthPercent(float percent)
 	{
-		var healthRect = _healthImage.GetComponent<RectTransform>();
-
 		_healthImage.rectTransform.SetSizeWithCurrentAnchors
 		(
 			RectTransform.Axis.Horizontal, 

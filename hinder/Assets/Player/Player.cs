@@ -53,8 +53,7 @@ public class Player : Being
 		get { return _healthRegen; }
 		set { _healthRegen = value; }
 	}
-
-    private AudioSource source;
+	
 	[SerializeField]
     private float _volLowRange = 0.1f;
 	[SerializeField]
@@ -103,8 +102,6 @@ public class Player : Being
 
 		if( !_controllers ) 
 			throw new InvalidOperationException("No controller manager found in this scene");
-
-        source = GetComponent<AudioSource>();
 
 		foreach(var gui in GameObject.FindObjectsOfType<PlayerStatusGUI>())
 		{
@@ -197,7 +194,7 @@ public class Player : Being
 			var dir = Vector2.right * (left ? -1.0f : 1.0f);
 			dir = Vector3.Slerp (dir, Vector3.up, _hopVerticalAmount);
 			var force = dir * _hopStrength;
-			rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
 			StartCoroutine(DisableInputFor(_hopCooldown/2));
 			//Debug.DrawLine (rigidbody2D.position, rigidbody2D.position + force, Color.green, 5.0f);
 
@@ -233,7 +230,7 @@ public class Player : Being
 	{
 		var audioClipIdx = UnityEngine.Random.Range(0, oneOfTheseClips.Length);
 		var clip = oneOfTheseClips[audioClipIdx];
-		AudioSource.PlayClipAtPoint(clip, rigidbody2D.position, volume);
+		AudioSource.PlayClipAtPoint(clip, GetComponent<Rigidbody2D>().position, volume);
 	}
 
 	public void Jump()
@@ -244,7 +241,7 @@ public class Player : Being
 			PlaySound(vol, _sounds.jumpSound1, _sounds.jumpSound2);
 
 			_grounded = false;
-			rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D>().AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 		}
 	}
 
@@ -286,13 +283,13 @@ public class Player : Being
 		if( !_inputDisabled )
 		{
 			speed = _inputMovement * _speed * Time.fixedDeltaTime;
-			rigidbody2D.velocity = new Vector2(speed, rigidbody2D.velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 		}
 
 		//Debug.DrawLine (rigidbody2D.position, rigidbody2D.position + rigidbody2D.velocity, Color.blue, 3.0f);
 
-		_animator.SetFloat("X-Speed", rigidbody2D.velocity.x);
-		_animator.SetFloat("Y-Speed", rigidbody2D.velocity.y);
+		_animator.SetFloat("X-Speed", GetComponent<Rigidbody2D>().velocity.x);
+		_animator.SetFloat("Y-Speed", GetComponent<Rigidbody2D>().velocity.y);
 
 		if( speed < -0.01f ) 
 		{
@@ -306,7 +303,7 @@ public class Player : Being
 		var oldGrounded = _grounded;
 		_grounded = Physics2D.Raycast
 		(
-			rigidbody2D.position, 
+			GetComponent<Rigidbody2D>().position, 
 			Vector2.up * -1.0f, 
 			0.66f, 
 			_groundLayers.value
@@ -330,7 +327,7 @@ public class Player : Being
 		foreach(var col in gameObject.GetComponents<Collider2D>())
 			col.enabled = false;
 
-		gameObject.rigidbody2D.Sleep();
+		gameObject.GetComponent<Rigidbody2D>().Sleep();
 
 		this.enabled = false;
 

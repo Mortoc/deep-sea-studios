@@ -75,7 +75,7 @@ public class Minion : Being
 				List<Collider2D> realTargets = AttackableTargets(targets);
 				if (realTargets.Count > 0)
 				{
-	                rigidbody2D.velocity = Vector2.zero;
+	                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 	                yield return StartCoroutine(Attack());
 				}
             }
