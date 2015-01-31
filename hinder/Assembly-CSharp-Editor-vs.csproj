@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Editor\PlanesToSprites.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Editor\AntialiasingEditor.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Editor\BloomAndFlaresEditor.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Editor\BloomEditor.cs" />
