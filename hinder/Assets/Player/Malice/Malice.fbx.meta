@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 3fb9ffcda879b4d93987853c95765989
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: Head
     100002: LeftArm
@@ -20,6 +20,15 @@ ModelImporter:
     100028: RightLeg_sort1
     100030: RightPupil_sort5
     100032: Torso_sort3
+    100034: back1
+    100036: Character
+    100038: LeftArm_sort6
+    100040: LeftPigTail_sort0
+    100042: persp1
+    100044: RightPigTail_sort0
+    100046: Torso_sort2
+    100048: LeftFoot_sort0
+    100050: RightFoot_sort1
     400000: Head
     400002: LeftArm
     400004: LeftLeg
@@ -37,6 +46,15 @@ ModelImporter:
     400028: RightLeg_sort1
     400030: RightPupil_sort5
     400032: Torso_sort3
+    400034: back1
+    400036: Character
+    400038: LeftArm_sort6
+    400040: LeftPigTail_sort0
+    400042: persp1
+    400044: RightPigTail_sort0
+    400046: Torso_sort2
+    400048: LeftFoot_sort0
+    400050: RightFoot_sort1
     2300000: Head
     2300002: LeftArm
     2300004: LeftLeg
@@ -53,6 +71,12 @@ ModelImporter:
     2300026: RightLeg_sort1
     2300028: RightPupil_sort5
     2300030: Torso_sort3
+    2300032: LeftArm_sort6
+    2300034: LeftPigTail_sort0
+    2300036: RightPigTail_sort0
+    2300038: Torso_sort2
+    2300040: LeftFoot_sort0
+    2300042: RightFoot_sort1
     3300000: Head
     3300002: LeftArm
     3300004: LeftLeg
@@ -69,6 +93,12 @@ ModelImporter:
     3300026: RightLeg_sort1
     3300028: RightPupil_sort5
     3300030: Torso_sort3
+    3300032: LeftArm_sort6
+    3300034: LeftPigTail_sort0
+    3300036: RightPigTail_sort0
+    3300038: Torso_sort2
+    3300040: LeftFoot_sort0
+    3300042: RightFoot_sort1
     4300000: Head
     4300002: Torso
     4300004: RightArm
@@ -85,6 +115,12 @@ ModelImporter:
     4300026: RightPupil_sort5
     4300028: RightLeg_sort1
     4300030: LeftLeg_sort0
+    4300032: Torso_sort2
+    4300034: LeftArm_sort6
+    4300036: RightPigTail_sort0
+    4300038: LeftPigTail_sort0
+    4300040: RightFoot_sort1
+    4300042: LeftFoot_sort0
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -95,6 +131,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -113,11 +150,13 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -140,3 +179,4 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
