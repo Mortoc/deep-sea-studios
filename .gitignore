@@ -20,3 +20,7 @@
 /hinder/Properties
 /bin
 /Properties
+*.csproj
+*.csproj
+hinder/Assembly-CSharp-Editor.csproj
+hinder/Assembly-CSharp-Editor-vs.csproj
