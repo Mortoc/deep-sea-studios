@@ -29,6 +29,40 @@ ModelImporter:
     100046: Torso_sort2
     100048: LeftFoot_sort0
     100050: RightFoot_sort1
+    100052: head
+    100054: left_ankle
+    100056: left_elbow
+    100058: left_foot
+    100060: left_hand
+    100062: left_hip
+    100064: left_knee
+    100066: left_pig_tail0
+    100068: left_pig_tail1
+    100070: left_pig_tail2
+    100072: left_pig_tail3
+    100074: left_pupil
+    100076: left_sholder
+    100078: left_toe
+    100080: left_wrist
+    100082: neck
+    100084: right_ankle
+    100086: right_elbow
+    100088: right_foot
+    100090: right_hand
+    100092: right_hip
+    100094: right_knee
+    100096: right_pig_tail0
+    100098: right_pig_tail1
+    100100: right_pig_tail2
+    100102: right_pig_tail3
+    100104: right_pupil
+    100106: right_sholder
+    100108: right_toe
+    100110: right_wrist
+    100112: root
+    100114: spine1
+    100116: spine2
+    100118: spine3
     400000: Head
     400002: LeftArm
     400004: LeftLeg
@@ -55,6 +89,40 @@ ModelImporter:
     400046: Torso_sort2
     400048: LeftFoot_sort0
     400050: RightFoot_sort1
+    400052: head
+    400054: left_ankle
+    400056: left_elbow
+    400058: left_foot
+    400060: left_hand
+    400062: left_hip
+    400064: left_knee
+    400066: left_pig_tail0
+    400068: left_pig_tail1
+    400070: left_pig_tail2
+    400072: left_pig_tail3
+    400074: left_pupil
+    400076: left_sholder
+    400078: left_toe
+    400080: left_wrist
+    400082: neck
+    400084: right_ankle
+    400086: right_elbow
+    400088: right_foot
+    400090: right_hand
+    400092: right_hip
+    400094: right_knee
+    400096: right_pig_tail0
+    400098: right_pig_tail1
+    400100: right_pig_tail2
+    400102: right_pig_tail3
+    400104: right_pupil
+    400106: right_sholder
+    400108: right_toe
+    400110: right_wrist
+    400112: root
+    400114: spine1
+    400116: spine2
+    400118: spine3
     2300000: Head
     2300002: LeftArm
     2300004: LeftLeg
@@ -122,6 +190,16 @@ ModelImporter:
     4300040: RightFoot_sort1
     4300042: LeftFoot_sort0
     9500000: //RootNode
+    13700000: Head_sort4
+    13700002: LeftArm_sort2
+    13700004: LeftFoot_sort0
+    13700006: LeftPigTail_sort0
+    13700008: LeftPupil_sort5
+    13700010: RightArm_sort6
+    13700012: RightFoot_sort1
+    13700014: RightPigTail_sort0
+    13700016: RightPupil_sort5
+    13700018: Torso_sort3
   materials:
     importMaterials: 1
     materialName: 0

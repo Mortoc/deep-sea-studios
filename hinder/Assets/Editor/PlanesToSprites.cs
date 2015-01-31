@@ -13,13 +13,14 @@ public static class PlanesToSprites
 	{
 		if( Selection.activeGameObject ) 
 		{
-			foreach(var meshRenderer in Selection.activeGameObject.GetComponentsInChildren<MeshRenderer>())
+			foreach(var renderer in Selection.activeGameObject.GetComponentsInChildren<SkinnedMeshRenderer>())
 			{
-				var match = _sortingLayerRegex.Match(meshRenderer.gameObject.name);
+				var match = _sortingLayerRegex.Match(renderer.gameObject.name);
 				int sortingOrder;
 				if( int.TryParse(match.Groups[1].Value, out sortingOrder) )
 				{
-					meshRenderer.sortingOrder = sortingOrder;
+                    Debug.Log("Setting sort order " + sortingOrder + " on ", renderer.gameObject);
+					renderer.sortingOrder = sortingOrder;
 				}
 			}
 		}
