@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 3fb9ffcda879b4d93987853c95765989
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: Head
     100002: LeftArm
@@ -20,6 +20,49 @@ ModelImporter:
     100028: RightLeg_sort1
     100030: RightPupil_sort5
     100032: Torso_sort3
+    100034: back1
+    100036: Character
+    100038: LeftArm_sort6
+    100040: LeftPigTail_sort0
+    100042: persp1
+    100044: RightPigTail_sort0
+    100046: Torso_sort2
+    100048: LeftFoot_sort0
+    100050: RightFoot_sort1
+    100052: head
+    100054: left_ankle
+    100056: left_elbow
+    100058: left_foot
+    100060: left_hand
+    100062: left_hip
+    100064: left_knee
+    100066: left_pig_tail0
+    100068: left_pig_tail1
+    100070: left_pig_tail2
+    100072: left_pig_tail3
+    100074: left_pupil
+    100076: left_sholder
+    100078: left_toe
+    100080: left_wrist
+    100082: neck
+    100084: right_ankle
+    100086: right_elbow
+    100088: right_foot
+    100090: right_hand
+    100092: right_hip
+    100094: right_knee
+    100096: right_pig_tail0
+    100098: right_pig_tail1
+    100100: right_pig_tail2
+    100102: right_pig_tail3
+    100104: right_pupil
+    100106: right_sholder
+    100108: right_toe
+    100110: right_wrist
+    100112: root
+    100114: spine1
+    100116: spine2
+    100118: spine3
     400000: Head
     400002: LeftArm
     400004: LeftLeg
@@ -37,6 +80,49 @@ ModelImporter:
     400028: RightLeg_sort1
     400030: RightPupil_sort5
     400032: Torso_sort3
+    400034: back1
+    400036: Character
+    400038: LeftArm_sort6
+    400040: LeftPigTail_sort0
+    400042: persp1
+    400044: RightPigTail_sort0
+    400046: Torso_sort2
+    400048: LeftFoot_sort0
+    400050: RightFoot_sort1
+    400052: head
+    400054: left_ankle
+    400056: left_elbow
+    400058: left_foot
+    400060: left_hand
+    400062: left_hip
+    400064: left_knee
+    400066: left_pig_tail0
+    400068: left_pig_tail1
+    400070: left_pig_tail2
+    400072: left_pig_tail3
+    400074: left_pupil
+    400076: left_sholder
+    400078: left_toe
+    400080: left_wrist
+    400082: neck
+    400084: right_ankle
+    400086: right_elbow
+    400088: right_foot
+    400090: right_hand
+    400092: right_hip
+    400094: right_knee
+    400096: right_pig_tail0
+    400098: right_pig_tail1
+    400100: right_pig_tail2
+    400102: right_pig_tail3
+    400104: right_pupil
+    400106: right_sholder
+    400108: right_toe
+    400110: right_wrist
+    400112: root
+    400114: spine1
+    400116: spine2
+    400118: spine3
     2300000: Head
     2300002: LeftArm
     2300004: LeftLeg
@@ -53,6 +139,12 @@ ModelImporter:
     2300026: RightLeg_sort1
     2300028: RightPupil_sort5
     2300030: Torso_sort3
+    2300032: LeftArm_sort6
+    2300034: LeftPigTail_sort0
+    2300036: RightPigTail_sort0
+    2300038: Torso_sort2
+    2300040: LeftFoot_sort0
+    2300042: RightFoot_sort1
     3300000: Head
     3300002: LeftArm
     3300004: LeftLeg
@@ -69,6 +161,12 @@ ModelImporter:
     3300026: RightLeg_sort1
     3300028: RightPupil_sort5
     3300030: Torso_sort3
+    3300032: LeftArm_sort6
+    3300034: LeftPigTail_sort0
+    3300036: RightPigTail_sort0
+    3300038: Torso_sort2
+    3300040: LeftFoot_sort0
+    3300042: RightFoot_sort1
     4300000: Head
     4300002: Torso
     4300004: RightArm
@@ -85,7 +183,23 @@ ModelImporter:
     4300026: RightPupil_sort5
     4300028: RightLeg_sort1
     4300030: LeftLeg_sort0
+    4300032: Torso_sort2
+    4300034: LeftArm_sort6
+    4300036: RightPigTail_sort0
+    4300038: LeftPigTail_sort0
+    4300040: RightFoot_sort1
+    4300042: LeftFoot_sort0
     9500000: //RootNode
+    13700000: Head_sort4
+    13700002: LeftArm_sort2
+    13700004: LeftFoot_sort0
+    13700006: LeftPigTail_sort0
+    13700008: LeftPupil_sort5
+    13700010: RightArm_sort6
+    13700012: RightFoot_sort1
+    13700014: RightPigTail_sort0
+    13700016: RightPupil_sort5
+    13700018: Torso_sort3
   materials:
     importMaterials: 1
     materialName: 0
@@ -95,6 +209,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -113,11 +228,13 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -140,3 +257,4 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
