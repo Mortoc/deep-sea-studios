@@ -63,6 +63,14 @@ ModelImporter:
     100114: spine1
     100116: spine2
     100118: spine3
+    100120: LeftFootIK
+    100122: LeftHandIK
+    100124: LeftPigtailIK
+    100126: RightFootGrip
+    100128: RightFootGrip1
+    100130: RightFootIK
+    100132: RightHandIK
+    100134: RightPigtailIK
     400000: Head
     400002: LeftArm
     400004: LeftLeg
@@ -123,6 +131,14 @@ ModelImporter:
     400114: spine1
     400116: spine2
     400118: spine3
+    400120: LeftFootIK
+    400122: LeftHandIK
+    400124: LeftPigtailIK
+    400126: RightFootGrip
+    400128: RightFootGrip1
+    400130: RightFootIK
+    400132: RightHandIK
+    400134: RightPigtailIK
     2300000: Head
     2300002: LeftArm
     2300004: LeftLeg
@@ -189,6 +205,7 @@ ModelImporter:
     4300038: LeftPigTail_sort0
     4300040: RightFoot_sort1
     4300042: LeftFoot_sort0
+    7400000: Take 001
     9500000: //RootNode
     13700000: Head_sort4
     13700002: LeftArm_sort2
