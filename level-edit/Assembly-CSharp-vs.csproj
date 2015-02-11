@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MiscScripts\Spin.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -195,11 +196,9 @@
      <None Include="Assets\SampleAssets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
-     <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
      <None Include="Assets\SampleAssets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
-     <None Include="Assets\Plugins\Android\unityads\build.xml" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
@@ -234,7 +233,6 @@
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\SampleAssets\2D\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\SampleAssets\Effects\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
      <None Include="Assets\SampleAssets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
@@ -277,7 +275,6 @@
      <None Include="Assets\SampleAssets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
-     <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
