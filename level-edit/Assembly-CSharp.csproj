@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;UNITY_IPHONE;ENABLE_RUNTIME_GI;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_NETWORK;UNITY_IPHONE_API;UNITY_IOS;ENABLE_TEXTUREID_MAP;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT;MOBILE_INPUT</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;CROSS_PLATFORM_INPUT;MOBILE_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LevelEditor\Scripts\ViewportControls.cs" />
      <Compile Include="Assets\MiscScripts\Spin.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
@@ -105,22 +106,6 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\SupportLogger.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\TimeKeeper.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\ButtonHandler.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\Joystick.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\MobileControlRig.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\TiltInput.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\TouchPad.cs" />
-     <Compile Include="Assets\SampleAssets\2D\CrossPlatformInput\Scripts\VirtualInput.cs" />
-     <Compile Include="Assets\SampleAssets\2D\Scripts\Camera2DFollow.cs" />
-     <Compile Include="Assets\SampleAssets\2D\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\SampleAssets\2D\Scripts\Platformer2DUserControl.cs" />
-     <Compile Include="Assets\SampleAssets\2D\Scripts\PlatformerCharacter2D.cs" />
-     <Compile Include="Assets\SampleAssets\2D\Scripts\Restarter.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\SampleAssets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -162,37 +147,7 @@
      <Compile Include="Assets\SampleAssets\Effects\LightShafts\Scripts\LightShafts.Resources.cs" />
      <Compile Include="Assets\SampleAssets\Effects\LightShafts\Scripts\LightShafts.Utils.cs" />
      <Compile Include="Assets\SampleAssets\Effects\LightShafts\Scripts\LightShafts.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\ExplosionFireAndDebris.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\Explosive.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\ExtinguishableParticleSystem.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\FireLight.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\Hose.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\SmokeParticles.cs" />
-     <Compile Include="Assets\SampleAssets\Effects\ParticleSystems\Scripts\WaterHoseParticles.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\ActivateTrigger.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\AutoMobileShaderSwitch.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\AutoMoveAndRotate.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\CameraRefocus.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\CurveControlledBob.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\DragRigidbody.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\DynamicShadowSettings.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\FOVKick.cs" />
      <Compile Include="Assets\SampleAssets\Utility\FPSCounter.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\FollowTarget.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\ForcedReset.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\LerpControlledBob.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\ObjectResetter.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\ParticleSystemDestroyer.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\PlatformSpecificContent.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\SimpleActivatorMenu.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\SimpleMouseRotator.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\TimedObjectActivator.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\TimedObjectDestructor.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\WaypointCircuit.cs" />
-     <Compile Include="Assets\SampleAssets\Utility\WaypointProgressTracker.cs" />
      <None Include="Assets\SampleAssets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -222,19 +177,15 @@
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\SampleAssets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
-     <None Include="Assets\SampleAssets\Effects\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
-     <None Include="Assets\SampleAssets\Effects\ParticleSystems\ParticleSystemsGuidelines.txt" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
-     <None Include="Assets\SampleAssets\2D\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
-     <None Include="Assets\SampleAssets\Effects\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
      <None Include="Assets\SampleAssets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\SampleAssets\Effects\ToonShading\Shaders\ToonLit.shader" />
@@ -271,7 +222,6 @@
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
-     <None Include="Assets\SampleAssets\Effects\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\SampleAssets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\SampleAssets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />
