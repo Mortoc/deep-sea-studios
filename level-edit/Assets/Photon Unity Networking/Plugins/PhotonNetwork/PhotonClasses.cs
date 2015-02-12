@@ -376,15 +376,6 @@ namespace Photon
                 return PhotonView.Get(this);
             }
         }
-
-        public PhotonView networkView
-        {
-            get
-            {
-                Debug.LogWarning("Why are you still using networkView? should be PhotonView?");
-                return PhotonView.Get(this);
-            }
-        }
     }
 
 
