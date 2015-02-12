@@ -377,7 +377,7 @@ namespace Photon
             }
         }
 
-        new public PhotonView networkView
+        public PhotonView networkView
         {
             get
             {
