@@ -108,6 +108,7 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\TimeKeeper.cs" />
      <Compile Include="Assets\Procedural\CompoundObjects\Loft.cs" />
      <Compile Include="Assets\Procedural\CompoundObjects\LoftComponent.cs" />
+     <Compile Include="Assets\Procedural\Edit\EditableControlPoint.cs" />
      <Compile Include="Assets\Procedural\Edit\EditableLoft.cs" />
      <Compile Include="Assets\Procedural\Math\MathExt.cs" />
      <Compile Include="Assets\Procedural\Math\MersenneTwister.cs" />
