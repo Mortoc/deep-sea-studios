@@ -14,6 +14,8 @@ namespace Botter.States
         [SerializeField]
 		public GameState ActiveState;
 
+        public event Action<GameState> NewState;
+
 		public virtual void Init(string name, GameStateManager parent)
 		{
 			Name = name;
@@ -44,6 +46,8 @@ namespace Botter.States
                 ActiveState.gameObject.SetActive(true);
 				ActiveState.EnterState();
 			}
+
+            if (NewState != null) NewState(ActiveState);
 		}
 
         public T CreateSubManager<T>(string name) where T : GameStateManager

@@ -1,0 +1,52 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+using Botter.States;
+using Botter.Networking.States;
+
+namespace Botter
+{
+    public class AppLoadingScreen : MonoBehaviour
+    {
+        [SerializeField]
+        private Image _readyButton;
+        [SerializeField]
+        private Text _loadingMessage;
+
+        private NetworkingStateManager _networkManager;
+
+        public IEnumerator Start()
+        {
+            _readyButton.gameObject.SetActive(false);
+
+            while (!_networkManager)
+            {
+                _networkManager = FindObjectOfType<NetworkingStateManager>();
+                yield return 0;
+            }
+            _networkManager.NewState += NetworkingStateChange;
+        }
+
+        public void OnDisable()
+        {
+            _networkManager.NewState -= NetworkingStateChange;
+        }
+
+        private void NetworkingStateChange(GameState newState)
+        {
+            if (newState is InLobbyState || newState is CannotConnectState)
+            {
+                _readyButton.gameObject.SetActive(true);
+                _loadingMessage.text = "Ready";
+            }
+        }
+
+        public void ReadyPressed()
+        {
+            var appLoadingState = FindObjectOfType<AppLoadingState>();
+            appLoadingState.LoadingIsComplete();
+        }
+
+    }
+}

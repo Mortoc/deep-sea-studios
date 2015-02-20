@@ -31,7 +31,7 @@ namespace Botter.Networking.States
             _networkingHandler.FailedToConnectToPhoton += FailedToConnectToPhoton;
         }
 
-        private void OnDisable()
+        public void OnDisable()
         {
             _networkingHandler.JoinedRoom -= JoinedRoom;
             _networkingHandler.JoinedLobby -= JoinedLobby;
