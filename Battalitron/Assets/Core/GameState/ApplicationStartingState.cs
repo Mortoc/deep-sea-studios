@@ -3,13 +3,8 @@ using System.Collections;
 
 namespace Botter.States
 {
-	public class ApplicationStartingState : BasicState
+	public class ApplicationStartingState : GameState
 	{
-		public ApplicationStartingState(GameStateManager manager) 
-			: base(manager)
-		{
-		}
-
 		public override void EnterState()
 		{
 		}

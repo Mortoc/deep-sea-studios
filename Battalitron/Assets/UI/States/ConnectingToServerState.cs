@@ -5,13 +5,8 @@ using System.Collections.Generic;
 
 namespace Botter.States 
 {
-	public class ConnectingToServerState : BasicState 
+	public class ConnectingToServerState : GameState 
 	{
-		public ConnectingToServerState(GameStateManager manager)
-			: base(manager)
-		{
-		}
-
 		#region implemented abstract members of BasicState
 		public override void EnterState ()
 		{
