@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Botter.States
+namespace BackstreetBots.States
 {
 	public class GameStateManager : MonoBehaviour
 	{

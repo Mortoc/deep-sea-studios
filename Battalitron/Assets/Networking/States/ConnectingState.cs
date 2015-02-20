@@ -4,9 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Botter.States;
+using BackstreetBots.States;
 
-namespace Botter.Networking.States
+namespace BackstreetBots.Networking.States
 {
     public class ConnectingState : GameState
     {

@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 
-using Botter.States;
-using Botter.Networking.States;
+using BackstreetBots.States;
+using BackstreetBots.Networking.States;
 
-namespace Botter
+namespace BackstreetBots
 {
     public class AppLoadingScreen : MonoBehaviour
     {

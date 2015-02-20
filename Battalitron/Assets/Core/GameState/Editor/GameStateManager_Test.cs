@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using NUnit.Framework;
 
-namespace Botter.States.Test
+namespace BackstreetBots.States.Test
 {
     [TestFixture]
     internal class GameStateManager_Test

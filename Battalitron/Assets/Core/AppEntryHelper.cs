@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-namespace Botter
+namespace BackstreetBots
 {
     public class AppEntryHelper : MonoBehaviour
     {
