@@ -25,14 +25,14 @@ namespace BackstreetBots
                 _networkManager = FindObjectOfType<NetworkingStateManager>();
                 yield return 0;
             }
-            _networkManager.NewState += NetworkingStateChange;
+            _networkManager.StateTransition += NetworkingStateChange;
         }
 
         public void OnDisable()
         {
             if (_networkManager)
             {
-                _networkManager.NewState -= NetworkingStateChange;
+                _networkManager.StateTransition -= NetworkingStateChange;
             }
         }
 

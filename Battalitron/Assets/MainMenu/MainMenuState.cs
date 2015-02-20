@@ -21,7 +21,7 @@ namespace BackstreetBots.States
 
         public void GoToFight()
         {
-            //Manager.CreateSubState<Arena.States.ArenaState>(true);
+            Manager.TransitionToState<Arena.States.ArenaState>();
         }
     }
 }

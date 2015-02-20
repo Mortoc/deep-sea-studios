@@ -14,7 +14,7 @@ namespace BackstreetBots.States
         [SerializeField]
 		public GameState ActiveState;
 
-        public event Action<GameState> NewState;
+        public event Action<GameState> StateTransition;
 
 		public virtual void Init(string name, GameStateManager parent)
 		{
@@ -47,7 +47,7 @@ namespace BackstreetBots.States
 				ActiveState.EnterState();
 			}
 
-            if (NewState != null) NewState(ActiveState);
+            if (StateTransition != null) StateTransition(ActiveState);
 		}
 
         public T CreateSubManager<T>(string name) where T : GameStateManager
