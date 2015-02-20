@@ -13,5 +13,15 @@ namespace BackstreetBots.States
 
             Application.LoadLevel("MainMenu");
         }
+
+        public void GoToWorkshop()
+        {
+            Manager.TransitionToState<Workshop.States.WorkshopState>();
+        }
+
+        public void GoToFight()
+        {
+            //Manager.CreateSubState<Arena.States.ArenaState>(true);
+        }
     }
 }

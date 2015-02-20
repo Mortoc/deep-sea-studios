@@ -18,7 +18,7 @@ namespace BackstreetBots.Networking.States
             //PhotonNetwork.logLevel = PhotonLogLevel.Full;
 
             SetupPhotonCallbacks();
-            this.CreateSubState<ConnectingState>(true);
+            this.TransitionToState<ConnectingState>();
         }
 
         private void SetupPhotonCallbacks()
@@ -48,13 +48,13 @@ namespace BackstreetBots.Networking.States
         private void JoinedLobby()
         {
             //Debug.Log("Joined Lobby");
-            this.CreateSubState<InLobbyState>(true);
+            this.TransitionToState<InLobbyState>();
         }
 
         private void FailedToConnectToPhoton(DisconnectCause cause)
         {
             //Debug.Log("Failed to Connect: " + cause);
-            this.CreateSubState<CannotConnectState>(true);
+            this.TransitionToState<CannotConnectState>();
         }
     }
 

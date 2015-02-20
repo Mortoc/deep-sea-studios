@@ -17,13 +17,17 @@ namespace BackstreetBots.States.Test
 
             public override void EnterState()
             {
+                base.EnterState();
                 EnterCount++;
             }
             public override void ExitState()
             {
+                base.ExitState();
                 ExitCount++;
             }
         }
+
+        private class MockGameState2 : MockGameState { }
 
         private GameStateManager _gsm;
 
@@ -40,45 +44,20 @@ namespace BackstreetBots.States.Test
             GameObject.DestroyImmediate(_gsm.gameObject);
         }
 
-
-        [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void RegisteringAForeignTestThrows()
-        {
-            var subGsm = _gsm.CreateSubManager<GameStateManager>("Sub");
-
-            var state = subGsm.CreateSubState<MockGameState>();
-
-            _gsm.SetState(state);
-        }
-
         [Test]
         public void GameStateManagersCallEditAndEnterStates()
         {
-            var stateA = _gsm.CreateSubState<MockGameState>();
-            var stateB = _gsm.CreateSubState<MockGameState>();
+            var stateA = _gsm.TransitionToState<MockGameState>();
+            var stateB = _gsm.TransitionToState<MockGameState2>();
 
-            _gsm.SetState(stateA);
-
-            Assert.AreEqual(stateA.EnterCount, 1);
-            Assert.AreEqual(stateA.ExitCount, 0);
-            Assert.AreEqual(_gsm.ActiveState, stateA);
-
-            _gsm.SetState(stateB);
             Assert.AreEqual(stateA.EnterCount, 1);
             Assert.AreEqual(stateA.ExitCount, 1);
-
             Assert.AreEqual(stateB.EnterCount, 1);
             Assert.AreEqual(stateB.ExitCount, 0);
             Assert.AreEqual(_gsm.ActiveState, stateB);
 
-            _gsm.SetState(stateA);
-            Assert.AreEqual(stateA.EnterCount, 2);
-            Assert.AreEqual(stateA.ExitCount, 1);
-
-            Assert.AreEqual(stateB.EnterCount, 1);
-            Assert.AreEqual(stateB.ExitCount, 1);
-            Assert.AreEqual(_gsm.ActiveState, stateA);
+            var secondStateA = _gsm.TransitionToState<MockGameState>();
+            Assert.AreEqual(stateA, secondStateA);
         }
     }
 }

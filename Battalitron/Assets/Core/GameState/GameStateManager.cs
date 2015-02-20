@@ -26,7 +26,7 @@ namespace BackstreetBots.States
             }
 		}
 
-		public void SetState(GameState state)
+		private void SetState(GameState state)
 		{
 			if( state.Manager != this ) 
 			{
@@ -58,19 +58,18 @@ namespace BackstreetBots.States
             return manager;
         }
 
-        public T CreateSubState<T>(bool andSetActive = false) where T : GameState
+        public T TransitionToState<T>() where T : GameState
         {
-            var stateObj = new GameObject(typeof(T).Name);
-            var state = stateObj.AddComponent<T>();
-            state.Init(this);
-            if (andSetActive)
+            var state = GetComponentInChildren<T>();
+
+            if (!state)
             {
-                this.SetState(state);
+                var stateObj = new GameObject(typeof(T).Name);
+                state = stateObj.AddComponent<T>();
+                state.Init(this);
             }
-            else
-            {
-                stateObj.SetActive(false);
-            }
+            
+            this.SetState(state);
             return state;
         }
 

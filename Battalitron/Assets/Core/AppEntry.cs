@@ -19,7 +19,7 @@ namespace BackstreetBots
 
             _rootManager = gameObject.AddComponent<GameStateManager>();
 			_rootManager.Init("Root", null);
-            var appLoading = _rootManager.CreateSubState<AppLoadingState>(true);
+            var appLoading = _rootManager.TransitionToState<AppLoadingState>();
             appLoading.LoadingComplete += LoadingComplete;
 
             _rootManager.CreateSubManager<NetworkingStateManager>("NetworkManager");
@@ -27,7 +27,7 @@ namespace BackstreetBots
 
         private void LoadingComplete()
         {
-            _rootManager.CreateSubState<MainMenuState>(true);
+            _rootManager.TransitionToState<MainMenuState>();
         }
 	}
 }
