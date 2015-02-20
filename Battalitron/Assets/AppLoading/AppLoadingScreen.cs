@@ -30,7 +30,10 @@ namespace Botter
 
         public void OnDisable()
         {
-            _networkManager.NewState -= NetworkingStateChange;
+            if (_networkManager)
+            {
+                _networkManager.NewState -= NetworkingStateChange;
+            }
         }
 
         private void NetworkingStateChange(GameState newState)
