@@ -27,6 +27,106 @@ ModelImporter:
     100042: pCube16
     100044: polySurface1
     100046: pSphere3
+    100048: Actuator
+    100050: pCube17
+    100052: pCube18
+    100054: pCube19
+    100056: pCube20
+    100058: pCube21
+    100060: pCube22
+    100062: pCube23
+    100064: pCube24
+    100066: pCube25
+    100068: pCylinder3
+    100070: pCylinder4
+    100072: pCylinder5
+    100074: pCylinder6
+    100076: pCylinder7
+    100078: polySurface2
+    100080: polySurface4
+    100082: polySurface5
+    100084: pSphere4
+    100086: pSphere5
+    100088: pSphere6
+    100090: transform1
+    100092: transform10
+    100094: transform11
+    100096: transform12
+    100098: transform13
+    100100: transform14
+    100102: transform15
+    100104: transform16
+    100106: transform17
+    100108: transform18
+    100110: transform19
+    100112: transform2
+    100114: transform20
+    100116: transform21
+    100118: transform22
+    100120: transform23
+    100122: transform24
+    100124: transform25
+    100126: transform26
+    100128: transform27
+    100130: transform28
+    100132: transform29
+    100134: transform3
+    100136: transform30
+    100138: transform31
+    100140: transform32
+    100142: transform33
+    100144: transform34
+    100146: transform35
+    100148: transform36
+    100150: transform37
+    100152: transform38
+    100154: transform4
+    100156: transform5
+    100158: transform6
+    100160: transform7
+    100162: transform8
+    100164: transform9
+    100166: pCylinder10
+    100168: pCylinder11
+    100170: pCylinder8
+    100172: pCylinder9
+    100174: transform39
+    100176: transform40
+    100178: transform41
+    100180: pCube26
+    100182: pCube27
+    100184: pCube28
+    100186: pCube29
+    100188: pCube30
+    100190: pCube31
+    100192: pCube32
+    100194: pCube33
+    100196: pCube34
+    100198: pCube35
+    100200: pCube36
+    100202: pCube37
+    100204: pCube38
+    100206: pSphere7
+    100208: transform42
+    100210: transform43
+    100212: transform44
+    100214: transform45
+    100216: transform46
+    100218: transform47
+    100220: transform48
+    100222: transform49
+    100224: transform50
+    100226: transform51
+    100228: transform52
+    100230: transform53
+    100232: transform54
+    100234: transform55
+    100236: pCylinder25
+    100238: pCylinder26
+    100240: pCylinder27
+    100242: pCube39
+    100244: pCylinder28
+    100246: pCylinder29
     400000: //RootNode
     400002: pCube1
     400004: pCube2
@@ -51,6 +151,106 @@ ModelImporter:
     400042: pCube16
     400044: polySurface1
     400046: pSphere3
+    400048: Actuator
+    400050: pCube17
+    400052: pCube18
+    400054: pCube19
+    400056: pCube20
+    400058: pCube21
+    400060: pCube22
+    400062: pCube23
+    400064: pCube24
+    400066: pCube25
+    400068: pCylinder3
+    400070: pCylinder4
+    400072: pCylinder5
+    400074: pCylinder6
+    400076: pCylinder7
+    400078: polySurface2
+    400080: polySurface4
+    400082: polySurface5
+    400084: pSphere4
+    400086: pSphere5
+    400088: pSphere6
+    400090: transform1
+    400092: transform10
+    400094: transform11
+    400096: transform12
+    400098: transform13
+    400100: transform14
+    400102: transform15
+    400104: transform16
+    400106: transform17
+    400108: transform18
+    400110: transform19
+    400112: transform2
+    400114: transform20
+    400116: transform21
+    400118: transform22
+    400120: transform23
+    400122: transform24
+    400124: transform25
+    400126: transform26
+    400128: transform27
+    400130: transform28
+    400132: transform29
+    400134: transform3
+    400136: transform30
+    400138: transform31
+    400140: transform32
+    400142: transform33
+    400144: transform34
+    400146: transform35
+    400148: transform36
+    400150: transform37
+    400152: transform38
+    400154: transform4
+    400156: transform5
+    400158: transform6
+    400160: transform7
+    400162: transform8
+    400164: transform9
+    400166: pCylinder10
+    400168: pCylinder11
+    400170: pCylinder8
+    400172: pCylinder9
+    400174: transform39
+    400176: transform40
+    400178: transform41
+    400180: pCube26
+    400182: pCube27
+    400184: pCube28
+    400186: pCube29
+    400188: pCube30
+    400190: pCube31
+    400192: pCube32
+    400194: pCube33
+    400196: pCube34
+    400198: pCube35
+    400200: pCube36
+    400202: pCube37
+    400204: pCube38
+    400206: pSphere7
+    400208: transform42
+    400210: transform43
+    400212: transform44
+    400214: transform45
+    400216: transform46
+    400218: transform47
+    400220: transform48
+    400222: transform49
+    400224: transform50
+    400226: transform51
+    400228: transform52
+    400230: transform53
+    400232: transform54
+    400234: transform55
+    400236: pCylinder25
+    400238: pCylinder26
+    400240: pCylinder27
+    400242: pCube39
+    400244: pCylinder28
+    400246: pCylinder29
     2300000: pCube1
     2300002: pCube2
     2300004: pCube3
@@ -74,6 +274,16 @@ ModelImporter:
     2300040: pCube16
     2300042: polySurface1
     2300044: pSphere3
+    2300046: pCube17
+    2300048: pSphere5
+    2300050: pSphere6
+    2300052: pCylinder11
+    2300054: pCube37
+    2300056: pCube38
+    2300058: pCylinder25
+    2300060: pCylinder26
+    2300062: pCylinder27
+    2300064: pCylinder29
     3300000: pCube1
     3300002: pCube2
     3300004: pCube3
@@ -97,6 +307,16 @@ ModelImporter:
     3300040: pCube16
     3300042: polySurface1
     3300044: pSphere3
+    3300046: pCube17
+    3300048: pSphere5
+    3300050: pSphere6
+    3300052: pCylinder11
+    3300054: pCube37
+    3300056: pCube38
+    3300058: pCylinder25
+    3300060: pCylinder26
+    3300062: pCylinder27
+    3300064: pCylinder29
     4300000: pCube1
     4300002: pCube2
     4300004: pCube3
@@ -120,6 +340,16 @@ ModelImporter:
     4300040: pCube16
     4300042: polySurface1
     4300044: pSphere3
+    4300046: pCube17
+    4300048: pSphere5
+    4300050: pSphere6
+    4300052: pCylinder11
+    4300054: pCube37
+    4300056: pCube38
+    4300058: pCylinder25
+    4300060: pCylinder26
+    4300062: pCylinder27
+    4300064: pCylinder29
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -130,7 +360,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -179,3 +408,4 @@ ModelImporter:
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 
