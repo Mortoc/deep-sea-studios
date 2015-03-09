@@ -35,6 +35,59 @@ ModelImporter:
     100054: walls
     100056: floor2
     100058: Bench
+    100060: Bench1
+    100062: Bench2
+    100064: polySurface1
+    100066: polySurface1 1
+    100068: polySurface10
+    100070: polySurface11
+    100072: polySurface12
+    100074: polySurface13
+    100076: polySurface14
+    100078: polySurface15
+    100080: polySurface2
+    100082: polySurface3
+    100084: polySurface4
+    100086: polySurface5
+    100088: polySurface6
+    100090: polySurface7
+    100092: polySurface7 1
+    100094: polySurface8
+    100096: polySurface9
+    100098: transform10
+    100100: transform11
+    100102: transform12
+    100104: transform13
+    100106: transform14
+    100108: transform15
+    100110: transform16
+    100112: transform4
+    100114: transform5
+    100116: transform6
+    100118: transform7
+    100120: transform8
+    100122: transform9
+    100124: door_handle
+    100126: door_handle1
+    100128: pCube10
+    100130: pCube6
+    100132: pCube7
+    100134: polySurface16
+    100136: polySurface17
+    100138: polySurface19
+    100140: pCube11
+    100142: pCube12
+    100144: pCube13
+    100146: pCube15
+    100148: pCube16
+    100150: polySurface20
+    100152: polySurface21
+    100154: polySurface22
+    100156: pPlane1
+    100158: pPlane2
+    100160: arena_glass1
+    100162: arena_glass_door
+    100164: door_handle 1
     400000: //RootNode
     400002: pCube1
     400004: pCube14
@@ -65,6 +118,59 @@ ModelImporter:
     400054: walls
     400056: floor2
     400058: Bench
+    400060: Bench1
+    400062: Bench2
+    400064: polySurface1
+    400066: polySurface1 1
+    400068: polySurface10
+    400070: polySurface11
+    400072: polySurface12
+    400074: polySurface13
+    400076: polySurface14
+    400078: polySurface15
+    400080: polySurface2
+    400082: polySurface3
+    400084: polySurface4
+    400086: polySurface5
+    400088: polySurface6
+    400090: polySurface7
+    400092: polySurface7 1
+    400094: polySurface8
+    400096: polySurface9
+    400098: transform10
+    400100: transform11
+    400102: transform12
+    400104: transform13
+    400106: transform14
+    400108: transform15
+    400110: transform16
+    400112: transform4
+    400114: transform5
+    400116: transform6
+    400118: transform7
+    400120: transform8
+    400122: transform9
+    400124: door_handle
+    400126: door_handle1
+    400128: pCube10
+    400130: pCube6
+    400132: pCube7
+    400134: polySurface16
+    400136: polySurface17
+    400138: polySurface19
+    400140: pCube11
+    400142: pCube12
+    400144: pCube13
+    400146: pCube15
+    400148: pCube16
+    400150: polySurface20
+    400152: polySurface21
+    400154: polySurface22
+    400156: pPlane1
+    400158: pPlane2
+    400160: arena_glass1
+    400162: arena_glass_door
+    400164: door_handle 1
     2300000: pCube1
     2300002: pCube14
     2300004: pCube19
@@ -90,6 +196,26 @@ ModelImporter:
     2300044: walls
     2300046: floor2
     2300048: Bench
+    2300050: Bench1
+    2300052: polySurface1
+    2300054: polySurface15
+    2300056: door_handle
+    2300058: door_handle1
+    2300060: pCube6
+    2300062: pCube7
+    2300064: polySurface16
+    2300066: polySurface17
+    2300068: polySurface19
+    2300070: pCube11
+    2300072: pCube12
+    2300074: pCube15
+    2300076: pCube16
+    2300078: polySurface20
+    2300080: polySurface21
+    2300082: polySurface22
+    2300084: pPlane1
+    2300086: pPlane2
+    2300088: arena_glass1
     3300000: pCube1
     3300002: pCube14
     3300004: pCube19
@@ -115,6 +241,26 @@ ModelImporter:
     3300044: walls
     3300046: floor2
     3300048: Bench
+    3300050: Bench1
+    3300052: polySurface1
+    3300054: polySurface15
+    3300056: door_handle
+    3300058: door_handle1
+    3300060: pCube6
+    3300062: pCube7
+    3300064: polySurface16
+    3300066: polySurface17
+    3300068: polySurface19
+    3300070: pCube11
+    3300072: pCube12
+    3300074: pCube15
+    3300076: pCube16
+    3300078: polySurface20
+    3300080: polySurface21
+    3300082: polySurface22
+    3300084: pPlane1
+    3300086: pPlane2
+    3300088: arena_glass1
     4300000: pCube1
     4300002: pCube3
     4300004: pCube4
@@ -140,6 +286,26 @@ ModelImporter:
     4300044: ceiling
     4300046: floor2
     4300048: Bench
+    4300050: Bench1
+    4300052: polySurface1
+    4300054: polySurface15
+    4300056: polySurface16
+    4300058: polySurface17
+    4300060: pCube6
+    4300062: pCube7
+    4300064: door_handle
+    4300066: polySurface19
+    4300068: door_handle1
+    4300070: pPlane1
+    4300072: pCube11
+    4300074: pCube12
+    4300076: polySurface20
+    4300078: polySurface21
+    4300080: polySurface22
+    4300082: pCube15
+    4300084: pCube16
+    4300086: pPlane2
+    4300088: arena_glass1
     9500000: //RootNode
   materials:
     importMaterials: 1
