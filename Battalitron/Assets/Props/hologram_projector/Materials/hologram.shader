@@ -34,20 +34,6 @@
                 o.wpos = mul(_Object2World, v.vertex);
                 return o;
             }
-            
-            // returns 0 or 1 if the coord is on a gridline
-            float gridLine(float coord, float spacing, float lineThickness) {
-            	return step(lineThickness, fmod(coord, spacing));
-            }
-            
-//            float4 frag(vertOut i) : SV_Target {
-//            	return float4(
-//            		gridLine(0.0, 1.0, 0.1),
-//            		gridLine(0.05, 1.0, 0.1),
-//            		gridLine(0.5, 1.0, 0.1),
-//            		1.0
-//            	);
-//            }
 
             float4 frag(vertOut i) : SV_Target {
             	float4 result = _color;

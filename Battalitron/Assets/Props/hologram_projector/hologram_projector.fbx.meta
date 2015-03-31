@@ -10,23 +10,28 @@ ModelImporter:
     100004: lens
     100006: projector
     100008: projection_rays
+    100010: base2
     400000: base1
     400002: //RootNode
     400004: lens
     400006: projector
     400008: projection_rays
+    400010: base2
     2300000: base1
     2300002: lens
     2300004: projector
     2300006: projection_rays
+    2300008: base2
     3300000: base1
     3300002: lens
     3300004: projector
     3300006: projection_rays
+    3300008: base2
     4300000: base1
     4300002: projector
     4300004: lens
     4300006: projection_rays
+    4300008: base2
   materials:
     importMaterials: 1
     materialName: 0
