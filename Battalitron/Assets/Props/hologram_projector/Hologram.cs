@@ -64,7 +64,10 @@ public class Hologram : MonoBehaviour
 
 		foreach(var originalRendererMaterial in _originalMaterials)
 		{
-			originalRendererMaterial.Key.sharedMaterials = originalRendererMaterial.Value;
+			if( originalRendererMaterial.Key )
+			{
+				originalRendererMaterial.Key.sharedMaterials = originalRendererMaterial.Value;
+			}
 		}
 		_originalMaterials.Clear();
 	}
