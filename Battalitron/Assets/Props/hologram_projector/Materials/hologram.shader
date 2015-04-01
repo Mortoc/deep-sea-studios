@@ -2,17 +2,13 @@
 
 	Properties {
 		_color ("Color", Color) = (0,1,0,1)
+		_baseColor ("Base Color", Color) = (0,0,0,1)
         _gridSpacing ("Grid Spacing", Vector) = (1,1,1,0) 
         _gridThickness ("Grid Thickness", Float) = 0.1
     }
     
     SubShader {
-        Pass {
-        	Offset -1, -1
-		    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-		    Blend SrcAlpha OneMinusSrcAlpha
-		    Cull Off
-		    
+        Pass {		    
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -21,6 +17,7 @@
             
             float4 _gridSpacing;
             float4 _color;
+            float4 _baseColor;
             float _gridThickness;
 
             struct vertOut {
@@ -36,15 +33,11 @@
             }
 
             float4 frag(vertOut i) : SV_Target {
-            	float4 result = _color;
-            	
             	float xGrid = 1 - step(_gridThickness, abs(sin(i.wpos.x / _gridSpacing.x)));
             	float yGrid = 1 - step(_gridThickness, abs(sin(i.wpos.y / _gridSpacing.y)));
             	float zGrid = 1 - step(_gridThickness, abs(sin(i.wpos.z / _gridSpacing.z)));
             	
-            	result.a = saturate(xGrid + yGrid + zGrid);
-            		
-            	return result;
+            	return lerp(_baseColor, _color, saturate(xGrid + yGrid + zGrid));
             }
 
             ENDCG
