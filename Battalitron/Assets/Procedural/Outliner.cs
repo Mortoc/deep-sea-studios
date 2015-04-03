@@ -7,8 +7,8 @@ using System.Linq;
 using Rand = UnityEngine.Random;
 
 struct VertBucket {
-	public Vector3 position { get; set; }
-	public List<int> verts { get; set; }
+	public Vector3 position;
+	public List<int> verts;
 
 	public VertBucket(Vector3 position_, List<int> verts_)
 	{

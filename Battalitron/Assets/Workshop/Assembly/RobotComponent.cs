@@ -1,0 +1,16 @@
+﻿using UnityEngine;
+
+using System;
+using System.Collections;
+
+using Rand = UnityEngine.Random;
+
+public class RobotComponent : MonoBehaviour 
+{
+    [SerializeField]
+    private string _name;
+    public string Name
+    {
+        get { return _name; }
+    }
+}
