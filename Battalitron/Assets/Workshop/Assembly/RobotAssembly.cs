@@ -61,15 +61,25 @@ namespace DSS
             if( Input.GetMouseButton(0) && !_currentlyPlacingPart )
             {
                 var mouseDelta = _lastMousePos - Input.mousePosition;
-                Debug.Log(mouseDelta);
                 _core.transform.Rotate(Vector3.up * mouseDelta.x * _rotSpeed);
             }
             _lastMousePos = Input.mousePosition;
         }
 
+        private void AssignLayerToCollidersRecursively(GameObject root, int layer)
+        {
+            foreach (var t in root.GetComponentsInChildren<Transform>())
+            {
+                t.gameObject.layer = layer;
+            }
+        }
+
         private IEnumerator PlacePart(RobotComponent part)
         {
             _currentlyPlacingPart = Instantiate<RobotComponent>(part).gameObject;
+            var currentPart = _currentlyPlacingPart.GetComponent<RobotComponent>();
+            
+            AssignLayerToCollidersRecursively(_currentlyPlacingPart, LayerMask.NameToLayer("NoCollide"));
             
             var placed = false;
 
@@ -77,14 +87,20 @@ namespace DSS
             {
                 var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit rh;
-                if (Physics.Raycast(mouseRay, out rh, 100.0f, _robotAssemblyMask))
+                if (Physics.Raycast(mouseRay, out rh, Mathf.Infinity, _robotAssemblyMask))
                 {
                     _currentlyPlacingPart.transform.position = rh.point;
                     _currentlyPlacingPart.transform.up = rh.normal;
-
+                    
                     if( Input.GetMouseButtonDown(0) )
                     {
                         placed = true;
+                        
+                        _currentlyPlacingPart.transform.parent = _core.transform;
+                        AssignLayerToCollidersRecursively(_currentlyPlacingPart, LayerMask.NameToLayer("RobotAssembly"));
+
+                        currentPart.ObjectPlaced(rh.collider.GetComponentInParent<Rigidbody>());
+                        
                     }
                 }
                 else
@@ -94,8 +110,7 @@ namespace DSS
                 yield return 0;
             }
 
-            _currentlyPlacingPart.layer = LayerMask.NameToLayer("RobotAssembly");
-            _currentlyPlacingPart.transform.parent = _core.transform;
+
             _currentlyPlacingPart = null;
         }
     }
