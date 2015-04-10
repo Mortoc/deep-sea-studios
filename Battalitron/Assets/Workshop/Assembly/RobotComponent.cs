@@ -40,7 +40,6 @@ namespace DSS
                 {
                     if (prop.GetSetMethod() != null)
                     {
-                        Debug.Log("Storing field " + prop.Name + " to " + prop.GetValue(_connectionJoint, null));
                         _storedHinge.Add(prop.Name, prop.GetValue(_connectionJoint, null));
                     }
                 }
@@ -54,10 +53,9 @@ namespace DSS
             }
         }
 
-        private IEnumerator RebuildHinge(Rigidbody onBody)
+        private void RebuildHinge(Rigidbody onBody)
         {
             object joint = _hingeObj.AddComponent(_storedHingeType);
-            yield return 0;
 
             var properties = _storedHingeType.GetProperties();
             for (var i = 0; i < properties.Length; ++i)
@@ -68,7 +66,6 @@ namespace DSS
 
                     if (prop.GetSetMethod() != null)
                     {
-                        Debug.Log("Setting field " + prop.Name + " to " + _storedHinge[prop.Name].ToString());
                         prop.SetValue(joint, _storedHinge[prop.Name], null);
                     }
                 }
@@ -94,7 +91,7 @@ namespace DSS
 
         public void ObjectPlaced(Rigidbody onBody)
         {
-            StartCoroutine(RebuildHinge(onBody));
+            RebuildHinge(onBody);
         }
     }
 }

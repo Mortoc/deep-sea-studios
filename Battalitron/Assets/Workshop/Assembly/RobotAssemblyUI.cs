@@ -30,7 +30,7 @@ namespace DSS
             var buttonOffset = buttonRect.rect.width + _buttonMargin;
             var currentOffset = buttonRect.anchoredPosition.x;
 
-            _prototypeComponentButton.transform.parent = null;
+            _prototypeComponentButton.transform.SetParent(null);
             foreach (var part in _assembly.Parts)
             {
                 var newButton = Instantiate(_prototypeComponentButton.gameObject);

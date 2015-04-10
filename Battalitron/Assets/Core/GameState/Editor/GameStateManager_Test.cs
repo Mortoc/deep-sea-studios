@@ -27,7 +27,22 @@ namespace BackstreetBots.States.Test
             }
         }
 
-        private class MockGameState2 : MockGameState { }
+        private class MockGameState2 : GameState 
+        {
+            public int EnterCount { get; set; }
+            public int ExitCount { get; set; }
+
+            public override void EnterState()
+            {
+                base.EnterState();
+                EnterCount++;
+            }
+            public override void ExitState()
+            {
+                base.ExitState();
+                ExitCount++;
+            }
+        }
 
         private GameStateManager _gsm;
 
