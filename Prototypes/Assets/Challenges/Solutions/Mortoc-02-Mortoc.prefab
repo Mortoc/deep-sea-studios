@@ -257,8 +257,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147892}
-  m_LocalRotation: {x: 0, y: -.0470013767, z: 0, w: .99889487}
-  m_LocalPosition: {x: 11.2799997, y: 4.48999977, z: -.0299999993}
+  m_LocalRotation: {x: 0, y: -.149768382, z: 0, w: .988721192}
+  m_LocalPosition: {x: 10.8800001, y: 4.48999977, z: 3.6500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 445026}
@@ -679,7 +679,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.67000198, y: .919999838, z: -1.94000018}
+  m_ConnectedAnchor: {x: -2.67000198, y: .919999838, z: -1.93999994}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -711,7 +711,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.01696205, y: .921323776, z: -2.45277953}
+  m_ConnectedAnchor: {x: 3.01696587, y: .921323776, z: -2.45277977}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -743,7 +743,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.34000015, y: .919999838, z: 1.73000014}
+  m_ConnectedAnchor: {x: -2.34000015, y: .919999838, z: 1.7299999}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -775,7 +775,7 @@ HingeJoint:
   m_Anchor: {x: -.5, y: 1, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 2.19108772, y: -.430359364, z: -.512831807}
+  m_ConnectedAnchor: {x: 2.19108963, y: -.430359364, z: -.512831807}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -839,7 +839,7 @@ HingeJoint:
   m_Anchor: {x: -.5, y: 1, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 2.19108963, y: -.430359364, z: .0938316584}
+  m_ConnectedAnchor: {x: 2.19108963, y: -.430359364, z: .0938311815}
   m_UseSpring: 0
   m_Spring:
     spring: 0

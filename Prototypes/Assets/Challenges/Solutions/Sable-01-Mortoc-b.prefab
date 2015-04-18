@@ -454,7 +454,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166848}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 130
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -469,7 +469,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147992}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -505,7 +505,7 @@ HingeJoint:
     minBounce: 0
     maxBounce: 0
     contactDistance: 0
-  m_BreakForce: Infinity
+  m_BreakForce: 1000
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -590,7 +590,7 @@ FixedJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147992}
   m_ConnectedBody: {fileID: 5415636}
-  m_BreakForce: 350
+  m_BreakForce: 3.40282347e+38
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
