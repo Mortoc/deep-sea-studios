@@ -14,6 +14,43 @@ ModelImporter:
     100012: plug_negative
     100014: plug_positive
     100016: shaft
+    100018: motor1
+    100020: pCube1
+    100022: pCube10
+    100024: pCube11
+    100026: pCube12
+    100028: pCube13
+    100030: pCube14
+    100032: pCube15
+    100034: pCube16
+    100036: pCube17
+    100038: pCube18
+    100040: pCube3
+    100042: pCube4
+    100044: pCube5
+    100046: pCube7
+    100048: pCube8
+    100050: pCube9
+    100052: transform10
+    100054: transform11
+    100056: transform12
+    100058: transform13
+    100060: transform14
+    100062: transform15
+    100064: transform16
+    100066: transform17
+    100068: transform18
+    100070: transform2
+    100072: transform3
+    100074: transform4
+    100076: transform5
+    100078: transform6
+    100080: transform7
+    100082: transform8
+    100084: transform9
+    100086: motor 1
+    100088: motor2
+    100090: transform1
     400000: //RootNode
     400002: pCube6
     400004: pCylinder2
@@ -23,6 +60,43 @@ ModelImporter:
     400012: plug_negative
     400014: plug_positive
     400016: shaft
+    400018: motor1
+    400020: pCube1
+    400022: pCube10
+    400024: pCube11
+    400026: pCube12
+    400028: pCube13
+    400030: pCube14
+    400032: pCube15
+    400034: pCube16
+    400036: pCube17
+    400038: pCube18
+    400040: pCube3
+    400042: pCube4
+    400044: pCube5
+    400046: pCube7
+    400048: pCube8
+    400050: pCube9
+    400052: transform10
+    400054: transform11
+    400056: transform12
+    400058: transform13
+    400060: transform14
+    400062: transform15
+    400064: transform16
+    400066: transform17
+    400068: transform18
+    400070: transform2
+    400072: transform3
+    400074: transform4
+    400076: transform5
+    400078: transform6
+    400080: transform7
+    400082: transform8
+    400084: transform9
+    400086: motor 1
+    400088: motor2
+    400090: transform1
     2300000: pCube6
     2300002: pCylinder2
     2300004: pCylinder3
@@ -32,6 +106,7 @@ ModelImporter:
     2300012: plug_positive
     2300014: shaft
     2300016: //RootNode
+    2300018: motor1
     3300000: pCube6
     3300002: pCylinder2
     3300004: pCylinder3
@@ -41,6 +116,7 @@ ModelImporter:
     3300012: plug_positive
     3300014: shaft
     3300016: //RootNode
+    3300018: motor1
     4300000: pCylinder2
     4300002: pCube6
     4300004: pCylinder3
@@ -49,6 +125,7 @@ ModelImporter:
     4300010: motor
     4300012: plug_positive
     4300014: plug_negative
+    4300016: motor1
     9500000: //RootNode
   materials:
     importMaterials: 1
