@@ -51,6 +51,7 @@ ModelImporter:
     100086: motor 1
     100088: motor2
     100090: transform1
+    100092: motor_collider
     400000: //RootNode
     400002: pCube6
     400004: pCylinder2
@@ -97,6 +98,7 @@ ModelImporter:
     400086: motor 1
     400088: motor2
     400090: transform1
+    400092: motor_collider
     2300000: pCube6
     2300002: pCylinder2
     2300004: pCylinder3
@@ -107,6 +109,7 @@ ModelImporter:
     2300014: shaft
     2300016: //RootNode
     2300018: motor1
+    2300020: motor_collider
     3300000: pCube6
     3300002: pCylinder2
     3300004: pCylinder3
@@ -117,6 +120,7 @@ ModelImporter:
     3300014: shaft
     3300016: //RootNode
     3300018: motor1
+    3300020: motor_collider
     4300000: pCylinder2
     4300002: pCube6
     4300004: pCylinder3
@@ -126,6 +130,7 @@ ModelImporter:
     4300012: plug_positive
     4300014: plug_negative
     4300016: motor1
+    4300018: motor_collider
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -180,7 +185,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

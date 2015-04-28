@@ -8,8 +8,11 @@ using Rand = UnityEngine.Random;
 
 namespace DSS
 {
-	public class IWire : MonoBehaviour
-	{
-
-	}
+    public class BatteryPlug : Plug
+    {
+        public override bool IsPowered()
+        {
+            return true;
+        }
+    }
 }
