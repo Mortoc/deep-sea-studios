@@ -286,13 +286,13 @@ namespace DSS.Procedural
         public void GenerateSkinnedMesh(int pathSegments, int shapeSegments, SkinnedMeshRenderer skin)
         {
             skin.quality = SkinQuality.Bone1;
-            var bones = new Transform[pathSegments];
-            var bindPoses = new Matrix4x4[pathSegments];
+            var bones = new Transform[pathSegments + 1];
+            var bindPoses = new Matrix4x4[pathSegments + 1];
 
             var step = 1.0f / (float)pathSegments;
             var existingBones = skin.GetComponentsInChildren<LoftBone>();
             LoftBone last = null;
-            for (var i = 0; i < pathSegments; ++i)
+            for (var i = 0; i < bones.Length; ++i)
             {
                 var t = step * (float)i;
                 GameObject boneObj;
@@ -306,14 +306,14 @@ namespace DSS.Procedural
                 else
                 {
                     boneObj = new GameObject("LoftBone_" + i);
-                    boneObj.transform.parent = skin.transform;
                     newBone = boneObj.AddComponent<LoftBone>();
+                    boneObj.transform.parent = skin.transform;
                 }
 
                 newBone.Init(Path, t, last);
-                
-                boneObj.transform.position = Path.PositionSample(t);
-                boneObj.transform.forward = Path.ForwardSample(t);
+                boneObj.transform.position = skin.transform.TransformPoint(Path.PositionSample(t));
+                boneObj.transform.forward = skin.transform.TransformVector(Path.ForwardSample(t));
+
                 bindPoses[i] = boneObj.transform.worldToLocalMatrix * skin.transform.localToWorldMatrix;
 
                 bones[i] = boneObj.transform;
@@ -323,7 +323,6 @@ namespace DSS.Procedural
             var mesh = GenerateMesh(pathSegments, shapeSegments);
             mesh.bindposes = bindPoses;
 
-            skin.rootBone = bones[0];
             skin.bones = bones;
             skin.sharedMesh = mesh;
         }

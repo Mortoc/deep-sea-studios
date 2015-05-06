@@ -38,8 +38,8 @@ namespace DSS.Procedural
         {
             while(gameObject)
             {
-                transform.position = Spline.PositionSample(T);
-                transform.forward = Spline.ForwardSample(T);
+                transform.position = transform.parent.TransformPoint(Spline.PositionSample(T));
+                transform.forward = transform.parent.TransformVector(Spline.ForwardSample(T));
 
                 if( OnFixedUpdate )
                 {
