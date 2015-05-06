@@ -1294,6 +1294,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _in: {fileID: 1164538602}
   _out: {fileID: 1285427873}
+  _material: {fileID: 2100000, guid: db1f506e4c47b4d44a64c1e0543250b8, type: 2}
+  _pathSegments: 32
+  _shapeSegments: 8
+  _stiffnessNearPlug: .25
 --- !u!4 &2064251840
 Transform:
   m_ObjectHideFlags: 0
