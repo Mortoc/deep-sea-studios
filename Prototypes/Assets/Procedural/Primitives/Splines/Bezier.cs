@@ -178,16 +178,6 @@ namespace DSS.Procedural
 
         public Vector3 ForwardSample(float t)
         {
-            if( t < 0.001f )
-            {
-                return (_controlPoints[0].OutTangent - _controlPoints[0].Point).normalized;
-            }
-            else if( t > 0.999f )
-            {
-                int lastIdx = _controlPoints.Length - 1;
-                return (_controlPoints[lastIdx].OutTangent - _controlPoints[lastIdx].Point).normalized;
-            }
-
             float recipCpCount = 1.0f / (float)_controlPoints.Length;
             var beforeSample = PositionSample(Mathf.Clamp01(t - (0.01f * recipCpCount)));
             var afterSample = PositionSample(Mathf.Clamp01(t + (0.01f * recipCpCount)));
