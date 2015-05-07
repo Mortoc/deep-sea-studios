@@ -38,6 +38,8 @@ namespace DSS
         private int _shapeSegments = 8;
         [SerializeField]
         private float _stiffnessNearPlug = 0.25f;
+        [SerializeField]
+        private float _wireThickness = 0.01f;
 
         private Loft _loft;
         private Bezier _path;
@@ -53,14 +55,20 @@ namespace DSS
 
         public void Update()
         {
-            UpdatePath();
-            if (_in.IsPowered())
+            if( !_in || !_out )
             {
-                GetComponent<SkinnedMeshRenderer>().sharedMaterial = _onMaterial;
             }
             else
-            {
-                GetComponent<SkinnedMeshRenderer>().sharedMaterial = _offMaterial;
+            { 
+                UpdatePath();
+                if (_in.IsPowered())
+                {
+                    GetComponent<SkinnedMeshRenderer>().sharedMaterial = _onMaterial;
+                }
+                else
+                {
+                    GetComponent<SkinnedMeshRenderer>().sharedMaterial = _offMaterial;
+                }
             }
         }
 
@@ -83,7 +91,7 @@ namespace DSS
                 new Bezier.ControlPoint(end, endTan, endTan - end)
             });
 
-            _loft = new Loft(_path, Bezier.Circle(0.025f));
+            _loft = new Loft(_path, Bezier.Circle(_wireThickness));
 
             var skin = gameObject.AddComponent<SkinnedMeshRenderer>();
             _loft.GenerateSkinnedMesh(_pathSegments, _shapeSegments, skin);
