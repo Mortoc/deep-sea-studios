@@ -46,7 +46,6 @@ namespace DSS
             _wheelJoint.useMotor = true;
             var audio = GetComponent<AudioSource>();
 
-            Debug.Log("Fading in sound" + _originalVolumne);
             audio.clip = _runningSound;
             audio.loop = true;
             
@@ -56,8 +55,6 @@ namespace DSS
         private void TurnWheelOff()
         {
             _wheelJoint.useMotor = false;
-
-            Debug.Log("Fading out sound");
             GetComponent<AudioSource>().FadeOut();
         }
 
