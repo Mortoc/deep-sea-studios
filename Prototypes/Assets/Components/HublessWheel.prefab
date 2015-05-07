@@ -29,6 +29,7 @@ GameObject:
   - 4: {fileID: 466190}
   - 33: {fileID: 3352168}
   - 23: {fileID: 2314134}
+  - 114: {fileID: 11430774}
   m_Layer: 0
   m_Name: Plug
   m_TagString: Untagged
@@ -64,6 +65,8 @@ GameObject:
   - 54: {fileID: 5454912}
   - 59: {fileID: 5955294}
   - 65: {fileID: 6503194}
+  - 82: {fileID: 8259896}
+  - 114: {fileID: 11422488}
   m_Layer: 0
   m_Name: motor
   m_TagString: Untagged
@@ -265,7 +268,7 @@ HingeJoint:
     targetPosition: 0
   m_UseMotor: 1
   m_Motor:
-    targetVelocity: 50
+    targetVelocity: 125
     force: 1000
     freeSpin: 0
   m_UseLimits: 0
@@ -303,6 +306,102 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .351306766, y: .668512285, z: 1.22697473}
   m_Center: {x: -.0671219677, y: .0004475842, z: 2.36404162e-07}
+--- !u!82 &8259896
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191898}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5.49595547
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &11422488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287f7e0f36360a842b89146a22edacdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plug: {fileID: 11430774}
+  _wheelJoint: {fileID: 5955294}
+  _runningSound: {fileID: 8300000, guid: ca87ce8138f49d24f91936c8c15c3aea, type: 3}
+--- !u!114 &11430774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae69a35b20d2bf04c998dd96fd16205c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connectedWire: {fileID: 0}
+  _plugAnimateTime: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
