@@ -44,7 +44,6 @@ namespace DSS
 
         private void TurnOnPlug()
         {
-            Debug.Log("Plug On", this);
             if (_plugAnimation != null)
             {
                 StopCoroutine(_plugAnimation);
@@ -55,7 +54,6 @@ namespace DSS
 
         private void TurnOffPlug()
         {
-            Debug.Log("Plug Off", this);
             if (_plugAnimation != null)
             {
                 StopCoroutine(_plugAnimation);

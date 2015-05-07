@@ -33,7 +33,7 @@ namespace DSS
         private Material _offMaterial;
 
         [SerializeField]
-        private int _pathSegments = 32;
+        private int _pathSegments = 24;
         [SerializeField]
         private int _shapeSegments = 8;
         [SerializeField]
@@ -42,7 +42,7 @@ namespace DSS
         private Loft _loft;
         private Bezier _path;
 
-        public void OnEnable()
+        public void Start()
         {
             transform.parent = _in.transform;
             transform.localPosition = Vector3.zero;
@@ -51,14 +51,17 @@ namespace DSS
             InitializeLoft();
         }
 
-        public void OnDisable()
-        {
-            DestroyLoft();
-        }
-
         public void Update()
         {
             UpdatePath();
+            if (_in.IsPowered())
+            {
+                GetComponent<SkinnedMeshRenderer>().sharedMaterial = _onMaterial;
+            }
+            else
+            {
+                GetComponent<SkinnedMeshRenderer>().sharedMaterial = _offMaterial;
+            }
         }
 
         private void GetPlugPositions(out Vector3 start, out Vector3 startTan, out Vector3 endTan, out Vector3 end)
@@ -82,24 +85,8 @@ namespace DSS
 
             _loft = new Loft(_path, Bezier.Circle(0.025f));
 
-            var skin = gameObject.AddComponent<MeshRenderer>();
-            skin.sharedMaterial = _onMaterial;
-            var meshFilter = gameObject.AddComponent<MeshFilter>();
-            meshFilter.mesh = _loft.GenerateMesh(_pathSegments, _shapeSegments);
-        }
-
-        private void DestroyLoft()
-        {
-            
-            var skin = GetComponent<SkinnedMeshRenderer>();
-            if( skin ) 
-            {
-                foreach(var bone in skin.bones )
-                {
-                    Destroy(bone.gameObject);
-                }
-                Destroy(skin);
-            }
+            var skin = gameObject.AddComponent<SkinnedMeshRenderer>();
+            _loft.GenerateSkinnedMesh(_pathSegments, _shapeSegments, skin);
         }
 
         public void UpdatePath()
@@ -113,10 +100,6 @@ namespace DSS
             _path.ControlPoints[1].Point = end;
             _path.ControlPoints[1].InTangent = endTan;
             _path.ControlPoints[1].OutTangent = endTan;
-
-            var skin = gameObject.GetComponent<MeshRenderer>();
-            var meshFilter = gameObject.GetComponent<MeshFilter>();
-            meshFilter.mesh = _loft.GenerateMesh(_pathSegments, _shapeSegments);
         }
     }
 }
