@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 5596a2bf2d047134fbaca506d6ad3aec
+timeCreated: 1431048183
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: end_cap
+    100004: five_way_section
+    100006: four_way_section
+    100008: L_section
+    100010: section1
+    100012: section10
+    100014: section11
+    100016: section12
+    100018: section13
+    100020: section15
+    100022: section17
+    100024: section2
+    100026: section21
+    100028: section22
+    100030: section24
+    100032: section3
+    100034: section4
+    100036: section5
+    100038: section6
+    100040: section8
+    100042: six_way_section
+    100044: straight_section
+    100046: T_section
+    100048: transform1
+    100050: transform10
+    100052: transform11
+    100054: transform12
+    100056: transform13
+    100058: transform14
+    100060: transform15
+    100062: transform2
+    100064: transform3
+    100066: transform4
+    100068: transform5
+    100070: transform6
+    100072: transform7
+    100074: transform8
+    100076: transform9
+    100078: TT_section
+    400000: //RootNode
+    400002: end_cap
+    400004: five_way_section
+    400006: four_way_section
+    400008: L_section
+    400010: section1
+    400012: section10
+    400014: section11
+    400016: section12
+    400018: section13
+    400020: section15
+    400022: section17
+    400024: section2
+    400026: section21
+    400028: section22
+    400030: section24
+    400032: section3
+    400034: section4
+    400036: section5
+    400038: section6
+    400040: section8
+    400042: six_way_section
+    400044: straight_section
+    400046: T_section
+    400048: transform1
+    400050: transform10
+    400052: transform11
+    400054: transform12
+    400056: transform13
+    400058: transform14
+    400060: transform15
+    400062: transform2
+    400064: transform3
+    400066: transform4
+    400068: transform5
+    400070: transform6
+    400072: transform7
+    400074: transform8
+    400076: transform9
+    400078: TT_section
+    2300000: //RootNode
+    2300002: end_cap
+    2300004: five_way_section
+    2300006: four_way_section
+    2300008: L_section
+    2300010: section24
+    2300012: six_way_section
+    2300014: straight_section
+    2300016: T_section
+    2300018: TT_section
+    3300000: //RootNode
+    3300002: end_cap
+    3300004: five_way_section
+    3300006: four_way_section
+    3300008: L_section
+    3300010: section24
+    3300012: six_way_section
+    3300014: straight_section
+    3300016: T_section
+    3300018: TT_section
+    4300000: pCube1
+    4300002: end_cap
+    4300004: straight_section
+    4300006: T_section
+    4300008: four_way_section
+    4300010: L_section
+    4300012: TT_section
+    4300014: five_way_section
+    4300016: six_way_section
+    4300018: section24
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
