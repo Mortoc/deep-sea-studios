@@ -11,7 +11,10 @@ namespace DSS
     public class Plug : MonoBehaviour
     {
         [SerializeField]
-        private Wire _connectedWire;
+        private int _maxSiblings = 2;
+
+        [SerializeField]
+        public List<Plug> _siblingPlugs;
 
         public event Action OnPower;
         public event Action OnPowerLoss;
@@ -23,6 +26,7 @@ namespace DSS
         private Coroutine _plugAnimation;
 
         private bool _powered = false;
+        private bool _haveCheckedIfPowered = false;
 
         void Awake()
         {
@@ -78,10 +82,46 @@ namespace DSS
             mat.SetColor("_EmissionColorUI", toEmissive);
         }
 
+
+        private void RemoveSibling(Plug toRemove)
+        {
+            _siblingPlugs.RemoveAt(
+                _siblingPlugs.FindIndex(x => x.GetInstanceID() == toRemove.GetInstanceID())
+            );
+        }
+
+        private void AddSibling(Plug toAdd)
+        {
+            _siblingPlugs.Add(toAdd);
+        }
+
+        private bool CanAddSibling(Plug toAdd)
+        {
+            if (_siblingPlugs.Find(x => x.GetInstanceID() == toAdd.GetInstanceID()))
+            {
+                return false;
+            }
+
+            return _siblingPlugs.Count < _maxSiblings;
+        }
+
+        public static bool ConnectPlugs(Plug first, Plug second)
+        {
+            if (first.CanAddSibling(second) && second.CanAddSibling(first))
+            {
+                //Add Wire here?
+                first.AddSibling(second);
+                second.AddSibling(first);
+                return true;
+            }
+            return false;
+        } 
+
         private void UpdatePowerState()
         {
             bool wasPowered = _powered;
-            _powered = IsPoweredImpl();
+            _powered = IsPowered();
+            _haveCheckedIfPowered = true;
 
             if( wasPowered != _powered && _powered && OnPower != null )
             {
@@ -97,22 +137,26 @@ namespace DSS
         {
             UpdatePowerState();
         }
-
-        private bool IsPoweredImpl()
+        void LateUpdate()
         {
-            if (_connectedWire && _connectedWire.In)
-            {
-                return _connectedWire.In.IsPowered();
-            }
-            else
-            {
-                return false;
-            }
+            _haveCheckedIfPowered = false;
         }
 
         public virtual bool IsPowered()
         {
-            return _powered;
+            if (_haveCheckedIfPowered)
+            {
+                return _powered;
+            }
+            
+            foreach (var sibling in _siblingPlugs)
+            {
+                if (sibling.IsPowered())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
