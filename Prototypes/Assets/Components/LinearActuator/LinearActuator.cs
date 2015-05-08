@@ -20,7 +20,10 @@ namespace DSS
         private Rigidbody _center;
 
         [SerializeField]
-        private ConstantForce _expandForce;
+        private ConstantForce _expandForce1;
+
+        [SerializeField]
+        private ConstantForce _expandForce2;
 
         [SerializeField]
         private float _expandPower = 100.0f;
@@ -58,13 +61,15 @@ namespace DSS
 
         private void Expand()
         {
-            _expandForce.relativeForce = Vector3.left * _expandPower;
+            _expandForce1.relativeForce = Vector3.left * -_expandPower;
+            _expandForce2.relativeForce = Vector3.left * _expandPower;
         }
 
         private void Contract()
         {
 
-            _expandForce.relativeForce = Vector3.left * -_expandPower;
+            _expandForce1.relativeForce = Vector3.left * _expandPower;
+            _expandForce2.relativeForce = Vector3.left * - _expandPower;
         }
     }
 }

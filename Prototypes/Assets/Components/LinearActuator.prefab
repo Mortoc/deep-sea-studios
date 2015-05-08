@@ -33,6 +33,7 @@ GameObject:
   - 136: {fileID: 13625926}
   - 136: {fileID: 13675516}
   - 54: {fileID: 5454584}
+  - 75: {fileID: 7571480}
   m_Layer: 0
   m_Name: actuator_end_with_plug
   m_TagString: Untagged
@@ -318,7 +319,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 4f97abd50a401b0468ea9a7dba6733fb, type: 2}
-  - {fileID: 2100000, guid: d1befd690392d104692efaab549b9e41, type: 2}
+  - {fileID: 2100000, guid: 38970a6f7dfdada4f8e2d4842802733b, type: 2}
   - {fileID: 2100000, guid: 29e85f5f314e8974a81a77c706e3c26f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -416,7 +417,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 4f97abd50a401b0468ea9a7dba6733fb, type: 2}
-  - {fileID: 2100000, guid: d1befd690392d104692efaab549b9e41, type: 2}
+  - {fileID: 2100000, guid: 38970a6f7dfdada4f8e2d4842802733b, type: 2}
   - {fileID: 2100000, guid: 29e85f5f314e8974a81a77c706e3c26f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -558,11 +559,11 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107252}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -573,7 +574,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137320}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -629,6 +630,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .0816146806, y: .0102018351, z: .152903259}
   m_Center: {x: -7.07805157e-08, y: -3.98218125e-09, z: -.0394661687}
+--- !u!75 &7571480
+ConstantForce:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107252}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!75 &7591262
 ConstantForce:
   m_ObjectHideFlags: 1
@@ -667,8 +679,9 @@ MonoBehaviour:
   _end1: {fileID: 5454584}
   _end2: {fileID: 5462882}
   _center: {fileID: 5417392}
-  _expandForce: {fileID: 7591262}
-  _expandPower: 100
+  _expandForce1: {fileID: 7571480}
+  _expandForce2: {fileID: 7591262}
+  _expandPower: 125
   _plug: {fileID: 11422344}
 --- !u!136 &13625926
 CapsuleCollider:
