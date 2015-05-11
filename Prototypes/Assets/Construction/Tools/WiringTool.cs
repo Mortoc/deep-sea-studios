@@ -53,7 +53,10 @@ namespace DSS
                 {
                     var sceneRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                     var plug = GetPlugInRay(sceneRay);
-
+                    if( plug == currentSelection )
+                    {
+                        continue;
+                    }
                     if (plug && currentSelection)
                     {
                         Plug.ConnectPlugs(plug, currentSelection);

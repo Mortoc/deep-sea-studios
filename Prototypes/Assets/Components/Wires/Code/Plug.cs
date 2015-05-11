@@ -148,14 +148,15 @@ namespace DSS
                 return _powered;
             }
             
-            foreach (var sibling in _siblingPlugs)
-            {
-                if (sibling.IsPowered())
-                {
-                    return true;
-                }
-            }
-            return false;
+            //foreach (var sibling in _siblingPlugs)
+            //{
+            //    if (sibling.IsPowered())
+            //    {
+            //        return true;
+            //    }
+            //}
+            //return false;
+            return true;
         }
     }
 }
