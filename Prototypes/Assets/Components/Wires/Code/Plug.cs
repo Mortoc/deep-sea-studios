@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
 using System;
 using System.Collections;
@@ -12,9 +13,7 @@ namespace DSS
     {
         [SerializeField]
         private int _maxSiblings = 2;
-
-        [SerializeField]
-        public List<Plug> _siblingPlugs;
+        private List<Plug> _siblingPlugs = new List<Plug>();
 
         public event Action OnPower;
         public event Action OnPowerLoss;

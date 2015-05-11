@@ -16,7 +16,7 @@ namespace DSS
         {
             public string Name;
 
-            public GameObject Prefab;
+            public ConstructionTool Tool;
         }
 
         [SerializeField]
@@ -28,6 +28,8 @@ namespace DSS
 
         [SerializeField]
         private Button _deleteButton;
+
+        private ConstructionTool _activeTool = null;
 
         void Start()
         {
@@ -47,12 +49,12 @@ namespace DSS
 
                 newButton.GetComponentInChildren<Text>().text = part.Name;
 
-                var prefab = part.Prefab;
+                var tool = part.Tool;
                 var btn = newButton.GetComponentInChildren<Button>();
                 
                 btn.onClick.AddListener(() =>
                 {
-                    BuildNewPart(prefab);
+                    ActivateTool(tool);
                 });
 
                 btn.transform.SetParent(btnParent);
@@ -61,10 +63,20 @@ namespace DSS
             _deleteButton.onClick.AddListener(DeleteToolSelected);
         }
 
-        void BuildNewPart(GameObject prefab)
+        private void ActivateTool(ConstructionTool tool)
         {
-            Debug.Log(prefab.name);
+            if( _activeTool )
+            {
+                _activeTool.Unselected();
+            }
+            _activeTool = tool;
+
+            if (_activeTool)
+            {
+                _activeTool.Selected();
+            }
         }
+
 
         public void DeleteToolSelected()
         {

@@ -36,6 +36,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &149562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442770}
+  - 114: {fileID: 11416356}
+  m_Layer: 0
+  m_Name: WireTool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &150768
 GameObject:
   m_ObjectHideFlags: 1
@@ -91,6 +107,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &442770
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -422.026154, y: -264.772644, z: 1.05884886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22410490}
+  m_RootOrder: 2
 --- !u!114 &11409422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +139,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_HighlightedColor: {r: .450343072, g: .325475782, b: .632352948, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -146,6 +174,17 @@ MonoBehaviour:
   m_EffectColor: {r: .188235313, g: .21960786, b: .250980407, a: .501960814}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &11416356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8789d9660077ea04888bfe7496424f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11420002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,17 +254,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parts:
   - Name: Structure
-    Prefab: {fileID: 152052, guid: 61cb91c11748b824492aa5be98bb6802, type: 2}
-  - Name: Battery
-    Prefab: {fileID: 131030, guid: 4745ba964d133974c8832d6bfdcfe159, type: 2}
+    Tool: {fileID: 0}
+  - Name: Wire
+    Tool: {fileID: 11416356}
   - Name: Motor
-    Prefab: {fileID: 150494, guid: 32749c62ba2a86d4f936db440bdddb3a, type: 2}
+    Tool: {fileID: 0}
   - Name: Wheel
-    Prefab: {fileID: 191620, guid: fb15d02babb45a545a3ee5b813b2ecbe, type: 2}
+    Tool: {fileID: 0}
   - Name: Actuator
-    Prefab: {fileID: 188748, guid: 6246c55a6b6e84b4984f9861a0135eab, type: 2}
+    Tool: {fileID: 0}
   - Name: Switch
-    Prefab: {fileID: 105596, guid: 0d861a1d9bf63244299e93c0d092b18f, type: 2}
+    Tool: {fileID: 0}
+  - Name: Battery
+    Tool: {fileID: 0}
   _partBtnPrototype: {fileID: 11409422}
   _deleteButton: {fileID: 11451632}
 --- !u!114 &11445096
@@ -274,7 +315,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_HighlightedColor: {r: .823529422, g: .381487906, b: .381487906, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
     m_ColorMultiplier: 1
@@ -411,6 +452,7 @@ RectTransform:
   m_Children:
   - {fileID: 22463206}
   - {fileID: 22457314}
+  - {fileID: 442770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -451,7 +493,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &22463206
 RectTransform:
@@ -469,7 +511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22479006
 RectTransform:
