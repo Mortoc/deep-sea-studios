@@ -9,7 +9,7 @@ using Rand = UnityEngine.Random;
 
 namespace DSS
 {
-    public class Plug : MonoBehaviour
+    public class Plug : MonoBehaviour, IHoverable
     {
         [SerializeField]
         private int _maxSiblings = 2;
@@ -27,8 +27,16 @@ namespace DSS
         private bool _powered = false;
         private bool _haveCheckedIfPowered = false;
 
+
+        [SerializeField]
+        private float _outlineSize = 0.25f;
+        [SerializeField]
+        private Material _outlineMaterial;
+        private IEnumerable<GameObject> _outlines;
+
         void Awake()
         {
+            _outlines = Outliner.BuildOutline(gameObject, _outlineSize, _outlineMaterial, true, 0.0f, true);
             _initialPlugRingEmissive = GetComponent<Renderer>().materials[1].GetColor("_EmissionColorUI");
         }
 
@@ -43,6 +51,21 @@ namespace DSS
         {
             OnPower -= TurnOnPlug;
             OnPowerLoss -= TurnOffPlug;
+        }
+
+        private int _hoverFrame = -1;
+        public void OnHover()
+        {
+            ShowOutlines(true);
+            _hoverFrame = Time.frameCount;
+        }
+
+        private void ShowOutlines(bool on)
+        {
+            foreach(var outline in _outlines)
+            {
+                outline.SetActive(on);
+            }
         }
 
         private void TurnOnPlug()
@@ -139,6 +162,11 @@ namespace DSS
         void LateUpdate()
         {
             _haveCheckedIfPowered = false;
+
+            if (_hoverFrame != Time.frameCount)
+            {
+                ShowOutlines(false);
+            }
         }
 
         public virtual bool IsPowered()

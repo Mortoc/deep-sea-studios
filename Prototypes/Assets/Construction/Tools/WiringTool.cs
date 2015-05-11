@@ -6,16 +6,15 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
-namespace DSS
+namespace DSS.Construction
 {
     public class WiringTool : ConstructionTool
     {
         private Coroutine _toolExecutionLoop;
-        private int _plugLayerMask;
 
         private void Start()
         {
-            _plugLayerMask = 1 << LayerMask.NameToLayer("Plug");
+            ToolMask = 1 << LayerMask.NameToLayer("Plug");
         }
 
         public override void Selected()
@@ -30,7 +29,7 @@ namespace DSS
 
         private Plug GetPlugInRay(Ray ray)
         {
-            foreach (var rh in Physics.RaycastAll(ray, Mathf.Infinity, _plugLayerMask))
+            foreach (var rh in Physics.RaycastAll(ray, Mathf.Infinity, ToolMask))
             {
                 var plug = rh.collider.GetComponent<Plug>();
                 if (plug)
@@ -48,10 +47,11 @@ namespace DSS
             while (gameObject)
             {
                 yield return 0;
+                var sceneRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                UpdateHoverStates(sceneRay);
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    var sceneRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                     var plug = GetPlugInRay(sceneRay);
                     if( plug == currentSelection )
                     {

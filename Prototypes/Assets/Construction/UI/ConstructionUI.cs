@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
-namespace DSS
+namespace DSS.Construction
 {
     public class ConstructionUI : MonoBehaviour
     {

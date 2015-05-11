@@ -63,7 +63,8 @@ GameObject:
   - 33: {fileID: 3332726}
   - 23: {fileID: 2345696}
   - 114: {fileID: 11473806}
-  m_Layer: 0
+  - 135: {fileID: 13539632}
+  m_Layer: 10
   m_Name: Plug 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +99,8 @@ GameObject:
   - 33: {fileID: 3356106}
   - 23: {fileID: 2311914}
   - 114: {fileID: 11463438}
-  m_Layer: 0
+  - 135: {fileID: 13577790}
+  m_Layer: 10
   m_Name: Plug 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,6 +518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSiblings: 2
   _plugAnimateTime: 1
+  _outlineSize: .25
+  _outlineMaterial: {fileID: 0}
 --- !u!114 &11473806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,6 +533,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSiblings: 2
   _plugAnimateTime: 1
+  _outlineSize: .00999999978
+  _outlineMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
+--- !u!135 &13539632
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0750000179
+  m_Center: {x: -5.21322718e-08, y: .00492229126, z: -7.45974837e-09}
+--- !u!135 &13577790
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0750000179
+  m_Center: {x: -8.18966654e-08, y: .00492234342, z: 7.4505806e-09}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
