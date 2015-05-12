@@ -9,7 +9,7 @@ using Rand = UnityEngine.Random;
 
 namespace DSS
 {
-    public class Plug : MonoBehaviour, IHoverable
+    public class Plug : MonoBehaviour, IHoverable, ISelectable
     {
         [SerializeField]
         private int _maxSiblings = 2;
@@ -17,94 +17,67 @@ namespace DSS
 
         public event Action OnPower;
         public event Action OnPowerLoss;
-
-        private Color _initialPlugRingEmissive;
-
-        [SerializeField]
-        private float _plugAnimateTime = 1.0f;
-        private Coroutine _plugAnimation;
-
+        
         private bool _powered = false;
         private bool _haveCheckedIfPowered = false;
 
 
         [SerializeField]
-        private float _outlineSize = 0.25f;
+        private Material _hoverMaterial;
+        private Material[] _hoveredMaterials;
+
         [SerializeField]
-        private Material _outlineMaterial;
-        private IEnumerable<GameObject> _outlines;
+        private Material _selectMaterial;
+        private Material[] _selectedMaterials;
+
+        private Material[] _originalMaterials;
 
         void Awake()
         {
-            _outlines = Outliner.BuildOutline(gameObject, _outlineSize, _outlineMaterial, true, 0.0f, true);
-            _initialPlugRingEmissive = GetComponent<Renderer>().materials[1].GetColor("_EmissionColorUI");
+            _originalMaterials = GetComponent<Renderer>().materials;
+
+            _hoveredMaterials = (Material[])_originalMaterials.Clone();
+            _hoveredMaterials[1] = _hoverMaterial;
+
+            _selectedMaterials = (Material[])_originalMaterials.Clone();
+            _selectedMaterials[1] = _selectMaterial;
         }
 
         void OnEnable()
         {
-            OnPower += TurnOnPlug;
-            OnPowerLoss += TurnOffPlug;
             UpdatePowerState();
         }
 
         void OnDisable()
         {
-            OnPower -= TurnOnPlug;
-            OnPowerLoss -= TurnOffPlug;
         }
 
         private int _hoverFrame = -1;
+        private bool _hovered = false;
         public void OnHover()
         {
-            ShowOutlines(true);
+            if( !_hovered && !Selected )
+            {
+                GetComponent<Renderer>().materials = _hoveredMaterials;
+            }
+
             _hoverFrame = Time.frameCount;
+            _hovered = true;
         }
 
-        private void ShowOutlines(bool on)
+        public bool Selected { get; private set; }
+        public void OnSelect()
         {
-            foreach(var outline in _outlines)
-            {
-                outline.SetActive(on);
-            }
+            Selected = true;
+            GetComponent<Renderer>().materials = _selectedMaterials;
         }
 
-        private void TurnOnPlug()
+        public void OnDeselect()
         {
-            if (_plugAnimation != null)
-            {
-                StopCoroutine(_plugAnimation);
-            }
-
-            _plugAnimation = StartCoroutine(AnimatePlugEmissive(_initialPlugRingEmissive));
+            Selected = false;
+            GetComponent<Renderer>().materials = _originalMaterials;
         }
-
-        private void TurnOffPlug()
-        {
-            if (_plugAnimation != null)
-            {
-                StopCoroutine(_plugAnimation);
-            }
-
-            _plugAnimation = StartCoroutine(AnimatePlugEmissive(Color.black));
-        }
-
-        private IEnumerator AnimatePlugEmissive(Color toEmissive)
-        {
-            var invTime = 1.0f / _plugAnimateTime;
-            var mat = GetComponent<Renderer>().materials[1];
-            var initialEmissive = mat.GetColor("_EmissionColor");
-            
-            for (var t = 0.0f; t < _plugAnimateTime; t += Time.deltaTime)
-            {
-                var smoothT = Mathf.SmoothStep(0.0f, 1.0f, invTime * t);
-                var emissive = Color.Lerp(initialEmissive, toEmissive, smoothT);
-                mat.SetColor("_EmissionColor", emissive);
-                yield return 0;
-            }
-            mat.SetColor("_EmissionColorUI", toEmissive);
-        }
-
-
+        
         private void RemoveSibling(Plug toRemove)
         {
             _siblingPlugs.RemoveAt(
@@ -131,9 +104,11 @@ namespace DSS
         {
             if (first.CanAddSibling(second) && second.CanAddSibling(first))
             {
-                //Add Wire here?
                 first.AddSibling(second);
                 second.AddSibling(first);
+                var wireObj = new GameObject("Wire");
+                var wire = wireObj.AddComponent<Wire>();
+                wire.SetupWire(first, second);
                 return true;
             }
             return false;
@@ -163,9 +138,14 @@ namespace DSS
         {
             _haveCheckedIfPowered = false;
 
-            if (_hoverFrame != Time.frameCount)
+            if (_hovered && _hoverFrame != Time.frameCount)
             {
-                ShowOutlines(false);
+                _hovered = false;
+
+                if( !Selected )
+                {
+                    GetComponent<Renderer>().materials = _originalMaterials;
+                }
             }
         }
 

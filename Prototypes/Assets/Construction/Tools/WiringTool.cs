@@ -17,14 +17,20 @@ namespace DSS.Construction
             ToolMask = 1 << LayerMask.NameToLayer("Plug");
         }
 
-        public override void Selected()
+        public override void OnSelect()
         {
+            base.OnSelect();
             _toolExecutionLoop = StartCoroutine(DoWiring());
         }
 
-        public override void Unselected()
+        public override void OnDeselect()
         {
+            base.OnDeselect();
             StopCoroutine(_toolExecutionLoop);
+            if (_currentSelection)
+            {
+                _currentSelection.OnDeselect();
+            }
         }
 
         private Plug GetPlugInRay(Ray ray)
@@ -40,10 +46,9 @@ namespace DSS.Construction
             return null;
         }
 
-
+        private Plug _currentSelection = null;
         private IEnumerator DoWiring()
         {
-            Plug currentSelection = null;
             while (gameObject)
             {
                 yield return 0;
@@ -53,21 +58,23 @@ namespace DSS.Construction
                 if (Input.GetMouseButtonDown(0))
                 {
                     var plug = GetPlugInRay(sceneRay);
-                    if( plug == currentSelection )
+                    if( plug == _currentSelection )
                     {
                         continue;
                     }
-                    if (plug && currentSelection)
+                    if (plug && _currentSelection)
                     {
-                        Plug.ConnectPlugs(plug, currentSelection);
+                        Plug.ConnectPlugs(plug, _currentSelection);
                     }
                     else if (plug)
                     {
-                        currentSelection = plug;
+                        _currentSelection = plug;
+                        _currentSelection.OnSelect();
                     }
                     else
                     {
-                        currentSelection = null;
+                        _currentSelection.OnDeselect();
+                        _currentSelection = null;
                     }
                 }
             }

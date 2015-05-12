@@ -25,7 +25,6 @@ namespace DSS.Construction
         [SerializeField]
         private Button _partBtnPrototype;
 
-
         [SerializeField]
         private Button _deleteButton;
 
@@ -55,6 +54,13 @@ namespace DSS.Construction
                 btn.onClick.AddListener(() =>
                 {
                     ActivateTool(tool);
+                    foreach(var potentiallyOnButton in btn.transform.parent.GetComponentsInChildren<Button>())
+                    {
+                        potentiallyOnButton.colors = _partBtnPrototype.colors;
+                    }
+                    var colors = btn.colors;
+                    colors.normalColor = colors.highlightedColor;
+                    btn.colors = colors;
                 });
 
                 btn.transform.SetParent(btnParent);
@@ -67,13 +73,13 @@ namespace DSS.Construction
         {
             if( _activeTool )
             {
-                _activeTool.Unselected();
+                _activeTool.OnDeselect();
             }
             _activeTool = tool;
 
             if (_activeTool)
             {
-                _activeTool.Selected();
+                _activeTool.OnSelect();
             }
         }
 

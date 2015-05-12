@@ -8,8 +8,10 @@ using Rand = UnityEngine.Random;
 
 namespace DSS
 {
-    public class EditableStructure : MonoBehaviour
+    public interface ISelectable
     {
-       
+        bool Selected { get; }
+        void OnSelect();
+        void OnDeselect();
     }
 }

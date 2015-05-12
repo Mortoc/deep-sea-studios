@@ -9,10 +9,18 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-    public abstract class ConstructionTool : MonoBehaviour
+    public abstract class ConstructionTool : MonoBehaviour, ISelectable
     {
-        public abstract void Selected();
-        public abstract void Unselected();
+        public bool Selected { get; private set; }
+        public virtual void OnSelect()
+        {
+            Selected = true;
+        }
+
+        public virtual void OnDeselect()
+        {
+            Selected = false;
+        }
 
         public int ToolMask { get; protected set; }
         

@@ -44,6 +44,12 @@ namespace DSS
         private Loft _loft;
         private Bezier _path;
 
+        public void SetupWire(Plug inPlug, Plug outPlug)
+        {
+            _in = inPlug;
+            _out = outPlug;
+        }
+
         public void Start()
         {
             transform.parent = _in.transform;
