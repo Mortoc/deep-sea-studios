@@ -42,30 +42,29 @@ namespace DSS.Construction
 
             public bool Up;
             public bool Down;
-
             public bool Left;
             public bool Right;
-
             public bool Forward;
             public bool Backward;
 
             public int OrientationBitmask()
             {
-                Func<bool, int> boolToInt = b => b ? 0 : 1;
-
-                return boolToInt(Up) << 1 |
-                       boolToInt(Down) << 2 |
-                       boolToInt(Left) << 4 |
-                       boolToInt(Right) << 8 |
-                       boolToInt(Forward) << 16 |
-                       boolToInt(Backward) << 32;
+                return Convert.ToInt32(Up) << 1 |
+                       Convert.ToInt32(Down) << 2 |
+                       Convert.ToInt32(Left) << 4 |
+                       Convert.ToInt32(Right) << 8 |
+                       Convert.ToInt32(Forward) << 16 |
+                       Convert.ToInt32(Backward) << 32;
             }
         }
 
-        [SerializeField]
-        private StructurePrefab[] _prefabs;
+        public StructurePrefab[] _prefabs;
 
         private StructurePrefab[] _allStructures;
+        public IEnumerable<StructurePrefab> AllStructures
+        {
+            get { return _allStructures; }
+        }
 
         private void CalculateAllPartRotations()
         {
@@ -84,7 +83,6 @@ namespace DSS.Construction
             }
 
             _allStructures = allStructureOrientations.Values.ToArray();
-            Debug.Log("Calculated " + _allStructures.Length + " variants");
         }
 
         private delegate void StepRotation(ref bool left, ref bool right, ref bool up,
@@ -170,7 +168,7 @@ namespace DSS.Construction
         {
             base.OnSelect();
 
-            if (_allStructures.Length == 0)
+            if (_allStructures == null || _allStructures.Length == 0)
             {
                 CalculateAllPartRotations();
             }

@@ -24,16 +24,6 @@ namespace DSS.Procedural
             StartCoroutine(KeepUpdated());
         }
 
-        public void OnDrawGizmos()
-        {
-            if (Last)
-            {
-                Gizmos.color = Color.grey;
-                Gizmos.DrawLine(transform.position, Last.transform.position);
-            }
-        }
-
-
         private IEnumerator KeepUpdated()
         {
             while(gameObject)

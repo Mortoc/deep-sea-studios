@@ -10,6 +10,12 @@ namespace DSS.Construction
 {
     public class WiringTool : ConstructionTool
     {
+        [SerializeField]
+        private Material _wireOnMaterial;
+
+        [SerializeField]
+        private Material _wireOffMaterial;
+
         private Coroutine _toolExecutionLoop;
 
         private void Start()
@@ -47,6 +53,15 @@ namespace DSS.Construction
         }
 
         private Plug _currentSelection = null;
+        private void SelectNone()
+        {
+            if( _currentSelection )
+            {
+                _currentSelection.OnDeselect();
+                _currentSelection = null;
+            }
+        }
+
         private IEnumerator DoWiring()
         {
             while (gameObject)
@@ -64,7 +79,11 @@ namespace DSS.Construction
                     }
                     if (plug && _currentSelection)
                     {
-                        Plug.ConnectPlugs(plug, _currentSelection);
+                        var wire = Plug.ConnectPlugs(plug, _currentSelection, _wireOnMaterial, _wireOffMaterial);
+                        if( wire )
+                        {
+                            SelectNone();
+                        }
                     }
                     else if (plug)
                     {
@@ -73,9 +92,13 @@ namespace DSS.Construction
                     }
                     else
                     {
-                        _currentSelection.OnDeselect();
-                        _currentSelection = null;
+                        SelectNone();
                     }
+                }
+
+                if( Input.GetMouseButtonDown(1) )
+                {
+                    SelectNone();
                 }
             }
         }

@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8789d9660077ea04888bfe7496424f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wireOnMaterial: {fileID: 2100000, guid: 47e3935f405d7bb498cfe9be742cafd7, type: 2}
+  _wireOffMaterial: {fileID: 2100000, guid: d63665c852fd16943a4f67ec2aca1859, type: 2}
 --- !u!114 &11420002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parts:
   - Name: Structure
-    Tool: {fileID: 0}
+    Tool: {fileID: 11433942}
   - Name: Wire
     Tool: {fileID: 11416356}
   - Name: Motor
@@ -332,7 +334,9 @@ MonoBehaviour:
     Tool: {fileID: 0}
   - Name: Actuator
     Tool: {fileID: 0}
-  - Name: Switch
+  - Name: Pressure Switch
+    Tool: {fileID: 0}
+  - Name: Timer Switch
     Tool: {fileID: 0}
   - Name: Battery
     Tool: {fileID: 0}

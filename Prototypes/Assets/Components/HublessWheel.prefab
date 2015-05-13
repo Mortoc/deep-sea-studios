@@ -221,7 +221,8 @@ GameObject:
   - 33: {fileID: 3352168}
   - 23: {fileID: 2314134}
   - 114: {fileID: 11430774}
-  m_Layer: 0
+  - 135: {fileID: 13526014}
+  m_Layer: 10
   m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,8 +744,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191620}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.47399998, y: .624000013, z: .467999995}
+  m_LocalRotation: {x: .684457839, y: .270427883, z: -.166268051, w: .65630877}
+  m_LocalPosition: {x: .223000005, y: .628000021, z: 1.24300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499270}
@@ -965,7 +966,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191898}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 15
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -983,7 +984,7 @@ HingeJoint:
   m_Anchor: {x: -1, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -.0170068853, y: .000178615664, z: .000518628454}
+  m_ConnectedAnchor: {x: -.017006943, y: 8.06504977e-05, z: .000518659013}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1399,8 +1400,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae69a35b20d2bf04c998dd96fd16205c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connectedWire: {fileID: 0}
-  _plugAnimateTime: 1
+  _maxSiblings: 2
+  _hoverMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
+  _selectMaterial: {fileID: 2100000, guid: 374a701221245664b98bbfdcdbc5f004, type: 2}
+--- !u!135 &13526014
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0750000104
+  m_Center: {x: 7.59534213e-09, y: .00492214225, z: -1.47469308e-08}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

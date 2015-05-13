@@ -27,12 +27,6 @@ namespace DSS
         }
 
         [SerializeField]
-        private Material _onMaterial;
-
-        [SerializeField]
-        private Material _offMaterial;
-
-        [SerializeField]
         private int _pathSegments = 24;
         [SerializeField]
         private int _shapeSegments = 8;
@@ -43,38 +37,65 @@ namespace DSS
 
         private Loft _loft;
         private Bezier _path;
+        private Material _onMaterial;
+        private Material _offMaterial;
 
-        public void SetupWire(Plug inPlug, Plug outPlug)
+        public void SetupWire(Plug inPlug, Plug outPlug, Material onMaterial, Material offMaterial)
         {
             _in = inPlug;
             _out = outPlug;
-        }
+            _onMaterial = onMaterial;
+            _offMaterial = offMaterial;
 
-        public void Start()
-        {
             transform.parent = _in.transform;
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
             InitializeLoft();
+
+            StartCoroutine(AnimateOnOffTest()); // test
+        }
+
+        // Test Code
+        private IEnumerator AnimateOnOffTest()
+        {
+            while (gameObject)
+            {
+                if (Rand.value > 0.5f) 
+                    PowerOn();
+                else 
+                    PowerOff();
+
+                yield return new WaitForSeconds(Rand.value);
+            }
+        }
+        //
+
+
+        public void OnEnable()
+        {
+        }
+
+        public void OnDisable()
+        {
+
+        }
+
+        private void PowerOn()
+        {
+            GetComponent<Renderer>().material = _onMaterial;
+        }
+
+        private void PowerOff()
+        {
+            GetComponent<Renderer>().material = _offMaterial;
         }
 
         public void Update()
         {
-            if( !_in || !_out )
+            if (_in && _out)
             {
-            }
-            else
-            { 
                 UpdatePath();
-                if (_in.IsPowered())
-                {
-                    GetComponent<SkinnedMeshRenderer>().sharedMaterial = _onMaterial;
-                }
-                else
-                {
-                    GetComponent<SkinnedMeshRenderer>().sharedMaterial = _offMaterial;
-                }
             }
         }
 
@@ -100,6 +121,7 @@ namespace DSS
             _loft = new Loft(_path, Bezier.Circle(_wireThickness));
 
             var skin = gameObject.AddComponent<SkinnedMeshRenderer>();
+            skin.material = _offMaterial;
             _loft.GenerateSkinnedMesh(_pathSegments, _shapeSegments, skin);
         }
 

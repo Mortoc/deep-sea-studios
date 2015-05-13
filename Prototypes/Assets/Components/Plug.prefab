@@ -10,7 +10,9 @@ GameObject:
   - 4: {fileID: 443928}
   - 33: {fileID: 3360384}
   - 23: {fileID: 2347232}
-  m_Layer: 0
+  - 135: {fileID: 13576708}
+  - 114: {fileID: 11427558}
+  m_Layer: 10
   m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +63,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162720}
   m_Mesh: {fileID: 4300000, guid: 0af4da86130e7fc40b3ede55e584f06a, type: 3}
+--- !u!114 &11427558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae69a35b20d2bf04c998dd96fd16205c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSiblings: 2
+  _hoverMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
+  _selectMaterial: {fileID: 2100000, guid: 374a701221245664b98bbfdcdbc5f004, type: 2}
+--- !u!135 &13576708
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0750000179
+  m_Center: {x: 7.4505806e-09, y: .00492232107, z: -1.49011612e-08}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

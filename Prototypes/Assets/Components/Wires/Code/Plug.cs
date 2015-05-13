@@ -100,7 +100,7 @@ namespace DSS
             return _siblingPlugs.Count < _maxSiblings;
         }
 
-        public static bool ConnectPlugs(Plug first, Plug second)
+        public static Wire ConnectPlugs(Plug first, Plug second, Material wireOnMaterial, Material wireOffMaterial)
         {
             if (first.CanAddSibling(second) && second.CanAddSibling(first))
             {
@@ -108,10 +108,10 @@ namespace DSS
                 second.AddSibling(first);
                 var wireObj = new GameObject("Wire");
                 var wire = wireObj.AddComponent<Wire>();
-                wire.SetupWire(first, second);
-                return true;
+                wire.SetupWire(first, second, wireOnMaterial, wireOffMaterial);
+                return wire;
             }
-            return false;
+            return null;
         } 
 
         private void UpdatePowerState()
