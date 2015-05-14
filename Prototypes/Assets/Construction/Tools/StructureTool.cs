@@ -49,49 +49,66 @@ namespace DSS.Construction
 
             public int OrientationBitmask()
             {
-                return Convert.ToInt32(Up) << 1 |
-                       Convert.ToInt32(Down) << 2 |
-                       Convert.ToInt32(Left) << 4 |
-                       Convert.ToInt32(Right) << 8 |
-                       Convert.ToInt32(Forward) << 16 |
-                       Convert.ToInt32(Backward) << 32;
+				return BitmaskForOrientation(Up, Down, Left, Right, Forward, Backward);
             }
+
+			public static int BitmaskForOrientation(bool up, bool down, bool left, bool right, bool forward, bool backward)
+			{
+				return Convert.ToInt32(up) << 1 |
+					   Convert.ToInt32(down) << 2 |
+					   Convert.ToInt32(left) << 4 |
+					   Convert.ToInt32(right) << 8 |
+					   Convert.ToInt32(forward) << 16 |
+					   Convert.ToInt32(backward) << 32;
+			}
+
+			public override string ToString ()
+			{
+				return String.Format
+				(
+					"[StructurePrefab(Up={0}, Down={1}, Left={2}, Right={3}, Forward={4}, Backward={5})]",
+					Up, Down, Left, Right, Forward, Backward
+				);
+			}
         }
 
         public StructurePrefab[] _prefabs;
 
-        private StructurePrefab[] _allStructures;
+        private Dictionary<int, StructurePrefab> _allStructures;
         public IEnumerable<StructurePrefab> AllStructures
         {
-            get { return _allStructures; }
+            get { return _allStructures.Values; }
         }
 
         private void CalculateAllPartRotations()
         {
-            var allStructureOrientations = new Dictionary<int, StructurePrefab>();
+			_allStructures = new Dictionary<int, StructurePrefab>();
             for (var i = 0; i < _prefabs.Length; ++i)
             {
                 var prefab = _prefabs[i];
                 prefab.Rotation = Quaternion.identity;
 
-                allStructureOrientations[prefab.OrientationBitmask()] = prefab;
+				_allStructures[prefab.OrientationBitmask()] = prefab;
 
                 foreach (var variant in BuildAllVariants(prefab))
                 {
-                    allStructureOrientations[variant.OrientationBitmask()] = variant;
+					if( !variant.Up && !variant.Down && !variant.Left && !variant.Right && variant.Forward && !variant.Backward )
+						Debug.Log( variant );
+
+					_allStructures[variant.OrientationBitmask()] = variant;
                 }
             }
-
-            _allStructures = allStructureOrientations.Values.ToArray();
         }
 
-        private delegate void StepRotation(ref bool left, ref bool right, ref bool up,
-            ref bool down, ref bool forward, ref bool backward);
+		private delegate void StepRotation(ref bool up, ref bool down, ref bool left, ref bool right, 
+		                                   ref bool forward, ref bool backward);
 
         private IEnumerable<StructurePrefab> BuildAllVariants(StructurePrefab prefab)
         {
-            StepRotation upStep = delegate(ref bool left, ref bool right, ref bool up,
-                ref bool down, ref bool forward, ref bool backward)
+			if( prefab.OrientationBitmask() == 0 )
+				throw new ArgumentException("prefab has no orientation");
+
+            StepRotation upStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
             {
                 var originalForward = forward;
                 backward = left;
@@ -100,8 +117,7 @@ namespace DSS.Construction
                 left = originalForward;
             };
 
-            StepRotation forwardStep = delegate(ref bool left, ref bool right, ref bool up,
-                ref bool down, ref bool forward, ref bool backward)
+			StepRotation forwardStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
             {
                 var originalUp = up;
                 up = right;
@@ -110,8 +126,7 @@ namespace DSS.Construction
                 left = originalUp;
             };
 
-            StepRotation leftStep = delegate(ref bool left, ref bool right, ref bool up,
-                ref bool down, ref bool forward, ref bool backward)
+			StepRotation leftStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
             {
                 var originalUp = up;
                 up = forward;
@@ -122,17 +137,23 @@ namespace DSS.Construction
 
             foreach (var variant in BuildVariants(prefab, s_upRotations, upStep))
             {
-                yield return variant;
+				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
+	            
+				yield return variant;
             }
 
             foreach (var variant in BuildVariants(prefab, s_forwardRotations, forwardStep))
-            {
-                yield return variant;
+			{
+				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
+
+				yield return variant;
             }
 
             foreach (var variant in BuildVariants(prefab, s_leftRotations, leftStep))
-            {
-                yield return variant;
+			{
+				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
+
+				yield return variant;
             }
         }
 
@@ -151,12 +172,12 @@ namespace DSS.Construction
                 variant.Prefab = initial.Prefab;
                 variant.Rotation = rot;
 
-                connectivityRotFunc(ref left, ref right, ref up, ref down, ref forward, ref backward);
+				connectivityRotFunc(ref up, ref down, ref left, ref right, ref forward, ref backward);
 
+				variant.Up = up;
+				variant.Down = down;
                 variant.Left = left;
                 variant.Right = right;
-                variant.Up = up;
-                variant.Down = down;
                 variant.Forward = forward;
                 variant.Backward = backward;
 
@@ -164,11 +185,29 @@ namespace DSS.Construction
             }
         }
 
+		public StructurePrefab GetPrefabForOrientation(bool up, bool down, bool left, bool right, bool forward, bool backward)
+		{
+			StructurePrefab result;
+			var orientation = StructurePrefab.BitmaskForOrientation(up, down, left, right, forward, backward);
+			if( !_allStructures.TryGetValue(orientation, out result) )
+			{
+				throw new InvalidOperationException
+				(
+					String.Format
+					(
+						"There isn't a prefab for the requested orientation (Up={0}, Down={1}, Left={2}, Right={3}, Forward={4}, Backward={5})",
+						up, down, left, right, forward, backward
+					)
+				);
+			}
+			return result;
+		}
+
         public override void OnSelect()
         {
             base.OnSelect();
 
-            if (_allStructures == null || _allStructures.Length == 0)
+            if (_allStructures == null || _allStructures.Count() == 0)
             {
                 CalculateAllPartRotations();
             }

@@ -649,7 +649,7 @@ Prefab:
     - {fileID: 11420748, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1953675264 stripped
+--- !u!1 &1953675264
 GameObject:
   m_PrefabParentObject: {fileID: 125502, guid: 32749c62ba2a86d4f936db440bdddb3a, type: 2}
   m_PrefabInternal: {fileID: 1574644640}
@@ -744,6 +744,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11416356, guid: fb07a2e0225150e4c917486e7e66d555, type: 2}
+      propertyPath: _wireOnMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 47e3935f405d7bb498cfe9be742cafd7, type: 2}
+    - target: {fileID: 11416356, guid: fb07a2e0225150e4c917486e7e66d555, type: 2}
+      propertyPath: _wireOffMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d63665c852fd16943a4f67ec2aca1859, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb07a2e0225150e4c917486e7e66d555, type: 2}
   m_IsPrefabParent: 0

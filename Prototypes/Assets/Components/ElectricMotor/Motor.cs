@@ -37,7 +37,6 @@ namespace DSS
             _motorJoint.useMotor = true;
             var audio = GetComponent<AudioSource>();
 
-            Debug.Log("Fading in sound");
             audio.clip = _runningSound;
             audio.loop = true;
 
@@ -47,8 +46,6 @@ namespace DSS
         private void TurnMotorOff()
         {
             _motorJoint.useMotor = false;
-
-            Debug.Log("Fading out sound");
             GetComponent<AudioSource>().FadeOut();
         }
     }

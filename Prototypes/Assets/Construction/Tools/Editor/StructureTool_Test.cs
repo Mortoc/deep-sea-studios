@@ -101,13 +101,36 @@ namespace DSS.Construction.UnitTests
             new bool[] { false, false, false, false, true, false },
             new bool[] { false, false, false, false, false, true }
         };
+		
+		[Datapoint]
+		public bool[][] _allThruVariants = new bool[][]
+		{
+			new bool[] { true, true, false, false, false, false },
+			new bool[] { false, false, true, true, false, false },
+			new bool[] { false, false, false, false, true, true }
+		};
 
-        [Theory]
-        public void AllOrientationsAreFindableTest(bool[][] variantList)
+		
+		[Theory]
+		public void AllOrientationsAreFindableTest(bool[][] variantList)
         {
+			Assume.That(variantList.Length > 0);
             Assume.That(variantList.All(list => list.Length == 6));
 
-
+            foreach(var variant in variantList)
+            {
+                var prefab = _tool.GetPrefabForOrientation
+                (
+                    variant[0], 
+                    variant[1], 
+                    variant[2], 
+                    variant[3], 
+                    variant[4], 
+                    variant[5]
+                );
+                
+                Assert.That(prefab.OrientationBitmask() != 0);      
+            }
         }
     }
 }
