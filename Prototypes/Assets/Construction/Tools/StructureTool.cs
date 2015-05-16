@@ -11,27 +11,140 @@ namespace DSS.Construction
 {
     public class StructureTool : ConstructionTool
     {
-        private static readonly Quaternion[] s_upRotations = new Quaternion[] 
-        {
-            Quaternion.AngleAxis(90.0f, Vector3.up),
-            Quaternion.AngleAxis(180.0f, Vector3.up),
-            Quaternion.AngleAxis(270.0f, Vector3.up),
-        };
+		enum Connectivity 
+		{
+			Up = 1,
+			Down = 2,
+			Left = 4,
+			Right = 8,
+			Forward = 16,
+			Backward = 32
+		};
 
-        private static readonly Quaternion[] s_forwardRotations = new Quaternion[] 
-        {
-            Quaternion.AngleAxis(90.0f, Vector3.forward),
-            Quaternion.AngleAxis(180.0f, Vector3.forward),
-            Quaternion.AngleAxis(270.0f, Vector3.forward),
-        };
+		private struct ConnectivityMapping
+		{
+			public Connectivity From;
+			public Connectivity To;
+		}
 
-        private static readonly Quaternion[] s_leftRotations = new Quaternion[] 
-        {
-            Quaternion.AngleAxis(90.0f, Vector3.left),
-            Quaternion.AngleAxis(180.0f, Vector3.left),
-            Quaternion.AngleAxis(270.0f, Vector3.left),
-        };
+		private struct RotationVariant
+		{
+			public Quaternion Rot;
+			public ConnectivityMapping[] ConnectivityChanges;
 
+			public void SetConnectivity(StructurePrefab src, StructurePrefab target)
+			{
+
+			}
+		}
+
+		private static readonly RotationVariant[] s_variations = new Quaternion[] 
+        {
+			// Up Axis Rotations
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(90.0f, Vector3.up), 
+				ConnectivityChanges = new ConnectivityMapping[] 
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Left },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Backward },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Right },
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Forward }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(180.0f, Vector3.up), 
+				ConnectivityChanges = new ConnectivityMapping[] 
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Backward },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Right },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Forward },
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Left }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(270.0f, Vector3.up), 
+				ConnectivityChanges = new ConnectivityMapping[] 
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Right },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Forward },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Left },
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Backward }
+				}
+			},
+
+			// Forward Axis Rotations
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(90.0f, Vector3.forward), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Up },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Left },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Right }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(180.0f, Vector3.forward), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Left },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Right },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Up }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(270.0f, Vector3.forward), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Right, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Right },
+					new ConnectivityMapping() { From = Connectivity.Left, To = Connectivity.Up },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Left }
+				}
+			},
+
+			// Left Axis Rotations
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(90.0f, Vector3.left), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Up },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Backward },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Forward }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(180.0f, Vector3.left), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Backward },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Forward },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Up }
+				}
+			},
+			new RotationVariant()
+			{ 
+				Rot = Quaternion.AngleAxis(270.0f, Vector3.left), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = Connectivity.Forward, To = Connectivity.Down },
+					new ConnectivityMapping() { From = Connectivity.Up, To = Connectivity.Forward },
+					new ConnectivityMapping() { From = Connectivity.Backward, To = Connectivity.Up },
+					new ConnectivityMapping() { From = Connectivity.Down, To = Connectivity.Backward }
+				}
+			}
+        };
 
         [Serializable]
         public struct StructurePrefab
@@ -54,12 +167,12 @@ namespace DSS.Construction
 
 			public static int BitmaskForOrientation(bool up, bool down, bool left, bool right, bool forward, bool backward)
 			{
-				return Convert.ToInt32(up) << 1 |
-					   Convert.ToInt32(down) << 2 |
-					   Convert.ToInt32(left) << 4 |
-					   Convert.ToInt32(right) << 8 |
-					   Convert.ToInt32(forward) << 16 |
-					   Convert.ToInt32(backward) << 32;
+				return Convert.ToInt32(up) << Connectivity.Up |
+						Convert.ToInt32(down) << Connectivity.Down |
+						Convert.ToInt32(left) << Connectivity.Left |
+					    Convert.ToInt32(right) << Connectivity.Right |
+					    Convert.ToInt32(forward) << Connectivity.Forward |
+					    Convert.ToInt32(backward) << Connectivity.Backward;
 			}
 
 			public override string ToString ()
@@ -90,97 +203,21 @@ namespace DSS.Construction
 
 				_allStructures[prefab.OrientationBitmask()] = prefab;
 
-                foreach (var variant in BuildAllVariants(prefab))
-                {
-					if( !variant.Up && !variant.Down && !variant.Left && !variant.Right && variant.Forward && !variant.Backward )
-						Debug.Log( variant );
-
+				foreach (var variant in BuildVariants(prefab))
+				{
 					_allStructures[variant.OrientationBitmask()] = variant;
                 }
             }
         }
 
-		private delegate void StepRotation(ref bool up, ref bool down, ref bool left, ref bool right, 
-		                                   ref bool forward, ref bool backward);
-
-        private IEnumerable<StructurePrefab> BuildAllVariants(StructurePrefab prefab)
+        private IEnumerable<StructurePrefab> BuildVariants(StructurePrefab initial)
         {
-			if( prefab.OrientationBitmask() == 0 )
-				throw new ArgumentException("prefab has no orientation");
-
-            StepRotation upStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
-            {
-                var originalForward = forward;
-                backward = left;
-                right = backward;
-                forward = right;
-                left = originalForward;
-            };
-
-			StepRotation forwardStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
-            {
-                var originalUp = up;
-                up = right;
-                right = down;
-                down = left;
-                left = originalUp;
-            };
-
-			StepRotation leftStep = delegate(ref bool up, ref bool down, ref bool left, ref bool right, ref bool forward, ref bool backward)
-            {
-                var originalUp = up;
-                up = forward;
-                forward = down;
-                down = backward;
-                backward = originalUp;
-            };
-
-            foreach (var variant in BuildVariants(prefab, s_upRotations, upStep))
-            {
-				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
-	            
-				yield return variant;
-            }
-
-            foreach (var variant in BuildVariants(prefab, s_forwardRotations, forwardStep))
-			{
-				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
-
-				yield return variant;
-            }
-
-            foreach (var variant in BuildVariants(prefab, s_leftRotations, leftStep))
-			{
-				if( variant.OrientationBitmask() == 0 ) throw new Exception("Generated a variant with no orientation");
-
-				yield return variant;
-            }
-        }
-
-        private IEnumerable<StructurePrefab> BuildVariants(StructurePrefab initial, Quaternion[] rotations, StepRotation connectivityRotFunc)
-        {
-            bool left = initial.Left;
-            bool right = initial.Right;
-            bool forward = initial.Forward;
-            bool backward = initial.Backward;
-            bool up = initial.Up;
-            bool down = initial.Down;
-
-            foreach (var rot in s_upRotations)
+            foreach (var variation in s_variations)
             {
                 var variant = new StructurePrefab();
                 variant.Prefab = initial.Prefab;
-                variant.Rotation = rot;
-
-				connectivityRotFunc(ref up, ref down, ref left, ref right, ref forward, ref backward);
-
-				variant.Up = up;
-				variant.Down = down;
-                variant.Left = left;
-                variant.Right = right;
-                variant.Forward = forward;
-                variant.Backward = backward;
-
+                variant.Rotation = variation.Rot;
+				variation.SetConnectivity(initial, variant);
                 yield return variant;
             }
         }

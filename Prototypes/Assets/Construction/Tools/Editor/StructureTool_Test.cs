@@ -109,8 +109,34 @@ namespace DSS.Construction.UnitTests
 			new bool[] { false, false, true, true, false, false },
 			new bool[] { false, false, false, false, true, true }
 		};
-
 		
+		[Datapoint]
+		public bool[][] _allTIntersections = new bool[][]
+		{
+			new bool[] { true, true, true, false, false, false },
+			new bool[] { true, true, false, true, false, false },
+			new bool[] { true, true, false, false, true, false },
+			new bool[] { true, true, false, false, false, true },
+
+			new bool[] { true, false, true, true, false, false },
+			new bool[] { false, true, true, true, false, false },
+			new bool[] { false, false, true, true, true, false },
+			new bool[] { false, false, true, true, false, true },
+			
+			new bool[] { true, false, false, false, true, true },
+			new bool[] { false, true, false, false, true, true },
+			new bool[] { false, false, true, false, true, true },
+			new bool[] { false, false, false, true, true, true }
+		};
+		
+		[Datapoint]
+		public bool[][] _all4WayIntersections = new bool[][]
+		{
+			new bool[] { true, true, true, true, false, false },
+			new bool[] { true, true, false, false, true, true },
+			new bool[] { false, false, true, true, true, true }
+		};
+
 		[Theory]
 		public void AllOrientationsAreFindableTest(bool[][] variantList)
         {
@@ -121,12 +147,7 @@ namespace DSS.Construction.UnitTests
             {
                 var prefab = _tool.GetPrefabForOrientation
                 (
-                    variant[0], 
-                    variant[1], 
-                    variant[2], 
-                    variant[3], 
-                    variant[4], 
-                    variant[5]
+                    variant[0], variant[1], variant[2], variant[3], variant[4], variant[5]
                 );
                 
                 Assert.That(prefab.OrientationBitmask() != 0);      
