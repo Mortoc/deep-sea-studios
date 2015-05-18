@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
-namespace DSS
+namespace DSS.Construction
 {
-    public class EditableStructure : MonoBehaviour
-    {
-       
-    }
+	public class EditableStructureVolume : MonoBehaviour
+	{
+
+	}
 }

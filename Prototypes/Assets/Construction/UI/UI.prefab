@@ -89,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &194154
 GameObject:
   m_ObjectHideFlags: 1
@@ -305,11 +305,18 @@ MonoBehaviour:
     Right: 1
     Forward: 1
     Backward: 1
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 166328, guid: ed0b232bc6dbe834baf912b72d4545c5, type: 2}
     Up: 1
     Down: 0
     Left: 1
     Right: 1
+    Forward: 1
+    Backward: 0
+  - Prefab: {fileID: 167902, guid: dc2471f020dc73c40b1e4cf40389effe, type: 2}
+    Up: 1
+    Down: 0
+    Left: 1
+    Right: 0
     Forward: 1
     Backward: 0
 --- !u!114 &11440410
