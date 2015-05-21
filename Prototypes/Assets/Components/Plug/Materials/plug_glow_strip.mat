@@ -125,7 +125,7 @@ Material:
       data:
         first:
           name: _EmissionScaleUI
-        second: 2
+        second: 5
       data:
         first:
           name: _Metallic
@@ -134,7 +134,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 2, b: 1.83448315, a: 2}
+        second: {r: 0, g: 5, b: 4.58620787, a: 5}
       data:
         first:
           name: _Color

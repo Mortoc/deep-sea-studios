@@ -19,7 +19,7 @@ namespace DSS
         {
             if (_lastUpdate + _updateRate <= Time.time)
             {
-                _output.text = (1.0f / Time.deltaTime).ToString("f1") + " fps";
+                _output.text = (1.0f / Time.deltaTime).ToString("f0") + " fps";
                 _lastUpdate = Time.time;
             }
         }

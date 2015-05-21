@@ -101,11 +101,12 @@ namespace DSS.Construction.UnitTests
 
         public void Dispose()
         {
+            _tool.OnDeselect();
             GameObject.DestroyImmediate(_tool.gameObject);
         }
 
         [Test]
-        public void OrientationBitmaskUniquenessTest()
+        public void orientation_bitmasks_are_unique()
         {
             Assert.AreEqual
             (
@@ -234,7 +235,7 @@ namespace DSS.Construction.UnitTests
 	    };
 
         [Theory]
-        public void AllOrientationsAreFindableTest(bool[][] variantList)
+        public void all_orientations_are_findable(bool[][] variantList)
         {
             Assume.That(variantList.Length > 0);
             Assume.That(variantList.All(list => list.Length == 6));
@@ -246,7 +247,7 @@ namespace DSS.Construction.UnitTests
                     variant[0], variant[1], variant[2], variant[3], variant[4], variant[5]
                 );
 
-                Assert.That(prefab.OrientationBitmask() != 0);
+                Assert.That(prefab != null);
             }
         }
     }

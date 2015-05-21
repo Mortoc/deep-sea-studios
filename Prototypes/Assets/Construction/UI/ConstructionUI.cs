@@ -20,6 +20,9 @@ namespace DSS.Construction
         }
 
         [SerializeField]
+        private Color _selectedPartColor;
+
+        [SerializeField]
         private ConstructionPart[] _parts;
 
         [SerializeField]
@@ -53,20 +56,29 @@ namespace DSS.Construction
                 
                 btn.onClick.AddListener(() =>
                 {
-                    ActivateTool(tool);
-                    foreach(var potentiallyOnButton in btn.transform.parent.GetComponentsInChildren<Button>())
-                    {
-                        potentiallyOnButton.colors = _partBtnPrototype.colors;
-                    }
-                    var colors = btn.colors;
-                    colors.normalColor = colors.highlightedColor;
-                    btn.colors = colors;
+                    ToolButtonClicked(tool, btn);
                 });
 
                 btn.transform.SetParent(btnParent);
             }
 
             _deleteButton.onClick.AddListener(DeleteToolSelected);
+        }
+
+        private void ToolButtonClicked(ConstructionTool tool, Button btn)
+        {
+            if (tool == _activeTool)
+                return;
+
+            ActivateTool(tool);
+            foreach (var potentiallyOnButton in btn.transform.parent.GetComponentsInChildren<Button>())
+            {
+                potentiallyOnButton.colors = _partBtnPrototype.colors;
+            }
+            var colors = btn.colors;
+            colors.normalColor = _selectedPartColor;
+            colors.highlightedColor = _selectedPartColor;
+            btn.colors = colors;
         }
 
         private void ActivateTool(ConstructionTool tool)

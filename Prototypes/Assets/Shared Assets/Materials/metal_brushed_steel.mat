@@ -84,6 +84,10 @@ Material:
         second: .5
       data:
         first:
+          name: _Shininess
+        second: 1
+      data:
+        first:
           name: _SrcBlend
         second: 1
       data:
