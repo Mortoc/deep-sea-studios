@@ -107,12 +107,14 @@ namespace DSS.Construction
                 {
                     var connectivity = GetNeighbors(i);
                     var variant = _tool.GetPrefabForOrientation(connectivity);
-                    var structure = Instantiate<GameObject>(variant.Prefab);
-                    structure.transform.parent = _structureRoot.transform;
-                    structure.transform.localPosition = IToLocalPosition(i);
-                    structure.transform.localRotation = variant.Rotation;
-                    structure.transform.localScale = Vector3.one;
-                    Debug.Log(variant, structure);
+                    if (variant.Prefab)
+                    {
+                        var structure = Instantiate<GameObject>(variant.Prefab);
+                        structure.transform.parent = _structureRoot.transform;
+                        structure.transform.localPosition = IToLocalPosition(i);
+                        structure.transform.localRotation = variant.Rotation;
+                        structure.transform.localScale = Vector3.one;
+                    }
                 }
             }
         }
