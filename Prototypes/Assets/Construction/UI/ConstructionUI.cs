@@ -74,11 +74,18 @@ namespace DSS.Construction
             foreach (var potentiallyOnButton in btn.transform.parent.GetComponentsInChildren<Button>())
             {
                 potentiallyOnButton.colors = _partBtnPrototype.colors;
+                var pos = potentiallyOnButton.transform.position;
+                pos.y = _partBtnPrototype.transform.position.y;
+                potentiallyOnButton.transform.position = pos;
             }
             var colors = btn.colors;
             colors.normalColor = _selectedPartColor;
             colors.highlightedColor = _selectedPartColor;
             btn.colors = colors;
+
+            var selectedPos = btn.transform.position;
+            selectedPos.y = _partBtnPrototype.transform.position.y + 10.0f;
+            btn.transform.position = selectedPos;
         }
 
         private void ActivateTool(ConstructionTool tool)

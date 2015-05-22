@@ -10,7 +10,8 @@ GameObject:
   - 4: {fileID: 422556}
   - 33: {fileID: 3380054}
   - 23: {fileID: 2321552}
-  m_Layer: 0
+  - 114: {fileID: 11459668}
+  m_Layer: 11
   m_Name: volume_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162604}
   m_Mesh: {fileID: 4300000, guid: de2b59bd269cbde45951ac22e6f91826, type: 3}
+--- !u!114 &11459668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7fd2d6a3c7a844281e2370fcb152b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverMaterial: {fileID: 2100000, guid: 53dabf958b33f764188a5ab6fa27d21a, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

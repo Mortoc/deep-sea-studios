@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
+using DSS.UI;
+
 namespace DSS
 {
     public class Plug : MonoBehaviour, IHoverable, ISelectable
@@ -51,17 +53,20 @@ namespace DSS
         {
         }
 
-        private int _hoverFrame = -1;
-        private bool _hovered = false;
-        public void OnHover()
+        public void OnHoverStart()
         {
-            if( !_hovered && !Selected )
+            if( !Selected )
             {
                 GetComponent<Renderer>().materials = _hoveredMaterials;
             }
+        }
 
-            _hoverFrame = Time.frameCount;
-            _hovered = true;
+        public void OnHoverEnd()
+        {
+            if (!Selected)
+            {
+                GetComponent<Renderer>().materials = _originalMaterials;
+            }
         }
 
         public bool Selected { get; private set; }
@@ -136,16 +141,6 @@ namespace DSS
         void LateUpdate()
         {
             _haveCheckedIfPowered = false;
-
-            if (_hovered && _hoverFrame != Time.frameCount)
-            {
-                _hovered = false;
-
-                if( !Selected )
-                {
-                    GetComponent<Renderer>().materials = _originalMaterials;
-                }
-            }
         }
 
         public virtual bool IsPowered()

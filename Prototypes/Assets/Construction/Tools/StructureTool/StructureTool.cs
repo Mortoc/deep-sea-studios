@@ -32,6 +32,12 @@ namespace DSS.Construction
             get { return _allStructures.Values; }
         }
 
+        private void Start()
+        {
+            ToolMask = 1 << LayerMask.NameToLayer("EditableStructure");
+            MaxHovers = 1;
+        }
+
         private void CalculateAllPartRotations()
         {
             _allStructures = new Dictionary<int, StructureVariant>();
@@ -83,6 +89,14 @@ namespace DSS.Construction
                 );
             }
             return result;
+        }
+        
+        void Update()
+        {
+            if( Selected )
+            {
+                this.UpdateHoverStates();
+            }
         }
 
         public override void OnSelect()

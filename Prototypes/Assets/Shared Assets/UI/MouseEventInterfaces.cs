@@ -6,8 +6,19 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
-namespace DSS
+namespace DSS.UI
 {
+    public interface IHoverable
+    {
+        void OnHoverStart();
+        void OnHoverEnd();
+    }
+
+    public interface IClickable
+    {
+        void OnClickAsButton();
+    }
+
     public interface ISelectable
     {
         bool Selected { get; }

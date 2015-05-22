@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: volume_indicator
+  m_Name: volume_indicator_hover
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _SPECGLOSSMAP
   m_LightmapFlags: 1
@@ -39,7 +39,7 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 2800000, guid: 81a556efa9b04274e8b4f125a63f5882, type: 3}
+          m_Texture: {fileID: 2800000, guid: fd4338ae05cf9e243b28c2c8ba260790, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -132,7 +132,7 @@ Material:
       data:
         first:
           name: _EmissionScaleUI
-        second: 2
+        second: 1
       data:
         first:
           name: _Metallic
@@ -141,7 +141,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 2, b: 0, a: 2}
+        second: {r: 0, g: 1, b: 0, a: 1}
       data:
         first:
           name: _Color

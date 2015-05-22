@@ -7,6 +7,7 @@ using System.Linq;
 
 using Rand = UnityEngine.Random;
 
+using DSS.UI;
 namespace DSS.Construction
 {
     public abstract class ConstructionTool : MonoBehaviour, ISelectable
@@ -23,7 +24,26 @@ namespace DSS.Construction
         }
 
         public int ToolMask { get; protected set; }
-        
+
+        private int _maxHovers;
+        protected int MaxHovers
+        {
+            get { return _maxHovers; }
+            set
+            {
+                _maxHovers = value;
+                foreach (var ho in _hoveredLastFrame)
+                {
+                    if (ho != null)
+                    {
+                        ho.OnHoverEnd();
+                    }
+                }
+                _hoveredLastFrame = new IHoverable[_maxHovers];
+            }
+        }
+        private IHoverable[] _hoveredLastFrame = new IHoverable[4];
+
         public void UpdateHoverStates(Ray? reuseCameraRay = null)
         {
             if (ToolMask == 0)
@@ -32,7 +52,7 @@ namespace DSS.Construction
             }
 
             Ray cameraRay;
-            if( reuseCameraRay != null )
+            if (reuseCameraRay != null)
             {
                 cameraRay = (Ray)reuseCameraRay;
             }
@@ -41,25 +61,44 @@ namespace DSS.Construction
                 cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             }
 
-            var objectsUnderCursor = Physics.RaycastAll(cameraRay, Mathf.Infinity, ToolMask);
-            objectsUnderCursor.OrderBy(rh => rh.collider.gameObject.GetInstanceID());
+            var raycastHits = Physics.RaycastAll(cameraRay, Mathf.Infinity, ToolMask);
 
-            var lastInstanceId = -1;
-            foreach(var objectUnderCursor in objectsUnderCursor)
+            var hoveredObjects = new List<IHoverable>();
+            foreach (var rh in raycastHits)
             {
-                var instanceId = objectUnderCursor.collider.gameObject.GetInstanceID(); 
-                if( lastInstanceId != instanceId )
+                foreach (var mb in rh.collider.GetComponentsInChildren<MonoBehaviour>())
                 {
-                    lastInstanceId = instanceId;
-                    var monoBehaviors = objectUnderCursor.collider.gameObject.GetComponentsInChildren<MonoBehaviour>();
-                    foreach(IHoverable hoverable in monoBehaviors.Where(mb => mb is IHoverable).Distinct())
+                    if (mb is IHoverable && hoveredObjects.Count() < MaxHovers)
                     {
-                        hoverable.OnHover();
+                        hoveredObjects.Add(mb as IHoverable);
                     }
                 }
             }
-            
+
+            // Newly hovered objects
+            foreach (var ho in hoveredObjects.Where(ho => !_hoveredLastFrame.Contains(ho)))
+            {
+                ho.OnHoverStart();
+            }
+
+            // No longer hovered objects
+            foreach (var ho in _hoveredLastFrame.Where(ho => !hoveredObjects.Contains(ho) && ho != null))
+            {
+                ho.OnHoverEnd();
+            }
+
+            for (int i = 0; i < MaxHovers; ++i)
+            {
+                if (i < hoveredObjects.Count())
+                {
+                    _hoveredLastFrame[i] = hoveredObjects.ElementAt(i);
+                }
+                else
+                {
+                    _hoveredLastFrame[i] = null;
+                }
+            }
         }
-        
+
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 462878}
   - 33: {fileID: 3345536}
   - 23: {fileID: 2397712}
+  - 65: {fileID: 6504204}
   m_Layer: 0
   m_Name: five_way_section
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196756}
   m_Mesh: {fileID: 4300014, guid: 5596a2bf2d047134fbaca506d6ad3aec, type: 3}
+--- !u!65 &6504204
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .196603566, y: .14830178, z: .196603566}
+  m_Center: {x: 3.7252903e-09, y: .0241503473, z: 2.60770321e-08}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

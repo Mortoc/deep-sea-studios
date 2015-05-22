@@ -14,18 +14,20 @@ namespace DSS.Construction.UnitTests
     public class StructureTool_Test : IDisposable
     {
         private StructureTool _tool;
+        private GameObject _structurePrefabMock;
 
         public StructureTool_Test()
         {
             var toolObj = new GameObject("structure tool unit test mock object");
             _tool = toolObj.AddComponent<StructureTool>();
+            _structurePrefabMock = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
             _tool._prefabs = new StructureVariant[]
             {
                 // Endcap
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = false, Down = false, Left = false,
                     Right = true, Forward = false, Backward = false
                 },
@@ -33,7 +35,7 @@ namespace DSS.Construction.UnitTests
                 // Thru Section
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = false, Down = false, Left = true,
                     Right = true, Forward = false, Backward = false
                 },
@@ -41,7 +43,7 @@ namespace DSS.Construction.UnitTests
                 // T Intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = false, Down = false, Left = true,
                     Right = true, Forward = true, Backward = false
                 },
@@ -49,7 +51,7 @@ namespace DSS.Construction.UnitTests
                 // 4-way intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = false, Down = false, Left = true,
                     Right = true, Forward = true, Backward = true
                 },
@@ -57,7 +59,7 @@ namespace DSS.Construction.UnitTests
                 // 5-way intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = true, Down = false, Left = true,
                     Right = true, Forward = true, Backward = true
                 },
@@ -65,7 +67,7 @@ namespace DSS.Construction.UnitTests
                 // L-corner
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = true, Down = false, Left = true,
                     Right = false, Forward = false, Backward = false
                 },
@@ -73,7 +75,7 @@ namespace DSS.Construction.UnitTests
                 // 6-way intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = true, Down = true, Left = true,
                     Right = true, Forward = true, Backward = true
                 },
@@ -81,7 +83,7 @@ namespace DSS.Construction.UnitTests
                 // TT intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = true, Down = false, Left = true,
                     Right = true, Forward = true, Backward = false
                 },
@@ -89,9 +91,18 @@ namespace DSS.Construction.UnitTests
                 // Tri-corner intersection
                 new StructureVariant()
                 {
-                    Prefab = null, Rotation = Quaternion.identity,
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
                     Up = true, Down = false, Left = true,
                     Right = false, Forward = true, Backward = false
+                },
+                
+
+                // Block
+                new StructureVariant()
+                {
+                    Prefab = _structurePrefabMock, Rotation = Quaternion.identity,
+                    Up = false, Down = false, Left = false,
+                    Right = false, Forward = false, Backward = false
                 }
             };
 
@@ -103,6 +114,7 @@ namespace DSS.Construction.UnitTests
         {
             _tool.OnDeselect();
             GameObject.DestroyImmediate(_tool.gameObject);
+            GameObject.DestroyImmediate(_structurePrefabMock);
         }
 
         [Test]

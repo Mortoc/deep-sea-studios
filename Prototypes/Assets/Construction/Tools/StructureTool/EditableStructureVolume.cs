@@ -8,8 +8,20 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-    public struct Vector3i 
+    public struct Vector3i
     {
+        public static readonly Vector3i zero = new Vector3i(0, 0, 0);
+
+        public static readonly Vector3i up = new Vector3i(0, 1, 0);
+        public static readonly Vector3i down = new Vector3i(0, -1, 0);
+
+        public static readonly Vector3i left = new Vector3i(-1, 0, 0);
+        public static readonly Vector3i right = new Vector3i(1, 0, 0);
+
+        public static readonly Vector3i forward = new Vector3i(0, 0, 1);
+        public static readonly Vector3i backward = new Vector3i(0, 0, -1);
+
+
         public int x;
         public int y;
         public int z;
@@ -25,6 +37,25 @@ namespace DSS.Construction
         {
             return String.Format("({0}, {1}, {2})", x, y, z);
         }
+
+        public static Vector3i operator + (Vector3i a, Vector3i b)
+        {
+            return new Vector3i()
+            {
+                x = a.x + b.x,
+                y = a.y + b.y,
+                z = a.z + b.z
+            };
+        }
+        public static Vector3i operator -(Vector3i a, Vector3i b)
+        {
+            return new Vector3i()
+            {
+                x = a.x - b.x,
+                y = a.y - b.y,
+                z = a.z - b.z
+            };
+        }
     }
 
     public class EditableStructureVolume : MonoBehaviour
@@ -35,8 +66,14 @@ namespace DSS.Construction
 
         private StructureTool _tool;
         private Bounds _tilesetSize;
-        private GameObject _indicatorRoot;
+        private GameObject _handleRoot;
         private GameObject _structureRoot;
+        private int _editableStructureLayer;
+
+        void Start()
+        {
+            _editableStructureLayer = LayerMask.NameToLayer("EditableStructure");
+        }
 
         [SerializeField]
         private bool[] _structure = new bool[MAX_WIDTH * MAX_HEIGHT * MAX_DEPTH];
@@ -110,13 +147,87 @@ namespace DSS.Construction
                     if (variant.Prefab)
                     {
                         var structure = Instantiate<GameObject>(variant.Prefab);
+                        structure.name += " " + variant.Variation;
                         structure.transform.parent = _structureRoot.transform;
                         structure.transform.localPosition = IToLocalPosition(i);
                         structure.transform.localRotation = variant.Rotation;
                         structure.transform.localScale = Vector3.one;
+                        structure.layer = _editableStructureLayer;
                     }
                 }
             }
+        }
+
+        private void GenerateHandles()
+        {
+            if (!_tool.VolumeIndicatorPrefab)
+            {
+                return;
+            }
+
+            if (_handleRoot)
+            {
+                GameObject.DestroyImmediate(_handleRoot);
+            }
+            _handleRoot = new GameObject("HandleRoot");
+            _handleRoot.transform.parent = transform;
+            _handleRoot.transform.localPosition = Vector3.zero;
+            _handleRoot.transform.localRotation = Quaternion.identity;
+            _handleRoot.transform.localScale = Vector3.one;
+
+            var handlesPlaced = new Dictionary<int, GameObject>();
+            Action<int> placeHandle = i =>
+            {
+                GameObject handleObj;
+                if( !handlesPlaced.TryGetValue(i, out handleObj) )
+                {
+                    handleObj = Instantiate<GameObject>(_tool.VolumeIndicatorPrefab);
+                    handleObj.name = String.Format("Handle {0}", IToXYZ(i));
+                    handleObj.transform.parent = _handleRoot.transform;
+                    handleObj.transform.localPosition = IToLocalPosition(i);
+                    handleObj.transform.localRotation = Quaternion.identity;
+                    handleObj.transform.localScale = _tilesetSize.size;
+                    handleObj.GetComponent<EditableStructureHandle>().Init(this, i);
+                    handlesPlaced[i] = handleObj;
+                }
+            };
+            for(var i = 0; i < _structure.Length; ++i)
+            {
+                if( _structure[i] )
+                {
+                    var xyz = IToXYZ(i);
+                    var connectivity = GetNeighbors(i);
+                    if( !connectivity[0] )
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.up));
+                    }
+                    if( !connectivity[1] )
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.down));
+                    }
+
+                    if (!connectivity[2])
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.left));
+                    }
+
+                    if (!connectivity[3])
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.right));
+                    }
+
+                    if (!connectivity[4])
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.forward));
+                    }
+
+                    if (!connectivity[5])
+                    {
+                        placeHandle(XYZToI(xyz + Vector3i.backward));
+                    }
+                }
+            }
+
         }
 
         private bool[] GetNeighbors(int i)
@@ -151,24 +262,33 @@ namespace DSS.Construction
             _structure[XYZToI(defPos)] = true;
             defPos.x -= 2;
             _structure[XYZToI(defPos)] = true;
+            defPos.x -= 1;
+            _structure[XYZToI(defPos)] = true;
+            
+            defPos.y += 1;
+            _structure[XYZToI(defPos)] = true;
 
             GenerateMesh();
+            GenerateHandles();
         }
 
-        public void OnDisable()
+        public void AddStructure(int i)
         {
-            GameObject.DestroyImmediate(_indicatorRoot);
+            _structure[i] = true;
+
+            GenerateMesh();
+            GenerateHandles();
         }
 
-        //private GameObject BuildIndicator(int x, int y, int z)
-        //{
-        //    var indicator = Instantiate<GameObject>(_tool.VolumeIndicatorPrefab);
-        //    indicator.name = String.Format("Indicator");
-        //    indicator.transform.parent = _indicatorRoot.transform;
-        //    indicator.transform.localPosition = position;
-        //    indicator.transform.rotation = Quaternion.identity;
-        //    indicator.transform.localScale = _tilesetSize.size;
-        //}
+        public void AddStructure(Vector3i vec)
+        {
+            AddStructure(XYZToI(vec));
+        }
+
+        public void AddStructure(int x, int y, int z)
+        {
+            AddStructure(XYZToI(x, y, z));
+        }
 
         private void CalculateTilesetSize()
         {
