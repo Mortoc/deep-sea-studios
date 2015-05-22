@@ -41,7 +41,7 @@ namespace DSS.Construction
             GetComponent<Renderer>().material = _normalMaterial;
         }
 
-        public void OnClickedAsButton()
+        public void OnMouseUpAsButton()
         {
             _volume.AddStructure(_structureIndex);
         }

@@ -276,7 +276,21 @@ namespace DSS.Construction
         {
             _structure[i] = true;
 
+            if (_regenerateAll != null)
+            {
+                StopCoroutine(_regenerateAll);
+            }
+            _regenerateAll = StartCoroutine(RegenerateAll());
+        }
+
+        private Coroutine _regenerateAll;
+
+        private IEnumerator RegenerateAll()
+        {
+            yield return 0;
             GenerateMesh();
+
+            yield return 0;
             GenerateHandles();
         }
 

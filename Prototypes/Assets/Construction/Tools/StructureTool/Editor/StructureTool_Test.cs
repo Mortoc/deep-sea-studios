@@ -201,7 +201,9 @@ namespace DSS.Construction.UnitTests
 		    new bool[] { false, true, true, false, false, false },
 		    new bool[] { false, true, false, true, false, false },
 		    new bool[] { false, true, false, false, true, false },
-		    new bool[] { false, true, false, false, false, true }
+		    new bool[] { false, true, false, false, false, true },
+
+            new bool[] { false, false, false, true, true, false }
 	    };
 
         [Datapoint]

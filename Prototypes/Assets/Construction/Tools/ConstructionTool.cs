@@ -42,6 +42,7 @@ namespace DSS.Construction
                 _hoveredLastFrame = new IHoverable[_maxHovers];
             }
         }
+        
         private IHoverable[] _hoveredLastFrame = new IHoverable[4];
 
         public void UpdateHoverStates(Ray? reuseCameraRay = null)
@@ -78,13 +79,19 @@ namespace DSS.Construction
             // Newly hovered objects
             foreach (var ho in hoveredObjects.Where(ho => !_hoveredLastFrame.Contains(ho)))
             {
-                ho.OnHoverStart();
+                if ((Component)ho)
+                {
+                    ho.OnHoverStart();
+                }
             }
 
             // No longer hovered objects
             foreach (var ho in _hoveredLastFrame.Where(ho => !hoveredObjects.Contains(ho) && ho != null))
             {
-                ho.OnHoverEnd();
+                if( (Component)ho )
+                {
+                    ho.OnHoverEnd();
+                }
             }
 
             for (int i = 0; i < MaxHovers; ++i)
