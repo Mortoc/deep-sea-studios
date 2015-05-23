@@ -297,7 +297,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446480, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 446480, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -326,14 +326,6 @@ Prefab:
     - target: {fileID: 135326, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
       propertyPath: m_Name
       value: Camera Rig
-      objectReference: {fileID: 0}
-    - target: {fileID: 11409116, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 425036, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d3f615537704cc49b98d07b44ae9ad8, type: 2}

@@ -195,35 +195,35 @@ namespace DSS.Construction
             {
                 if( _structure[i] )
                 {
-                    var xyz = IToXYZ(i);
+                    var structurePos = IToXYZ(i);
                     var connectivity = GetNeighbors(i);
-                    if( !connectivity[0] )
+                    if (!connectivity[0] && structurePos.y + 1 < MAX_HEIGHT)
                     {
-                        placeHandle(XYZToI(xyz + Vector3i.up));
+                        placeHandle(XYZToI(structurePos + Vector3i.up));
                     }
-                    if( !connectivity[1] )
+                    if( !connectivity[1] && structurePos.y > 0)
                     {
-                        placeHandle(XYZToI(xyz + Vector3i.down));
-                    }
-
-                    if (!connectivity[2])
-                    {
-                        placeHandle(XYZToI(xyz + Vector3i.left));
+                        placeHandle(XYZToI(structurePos + Vector3i.down));
                     }
 
-                    if (!connectivity[3])
+                    if (!connectivity[2] && structurePos.x > 0)
                     {
-                        placeHandle(XYZToI(xyz + Vector3i.right));
+                        placeHandle(XYZToI(structurePos + Vector3i.left));
                     }
 
-                    if (!connectivity[4])
+                    if (!connectivity[3] && structurePos.x + 1 < MAX_WIDTH)
                     {
-                        placeHandle(XYZToI(xyz + Vector3i.forward));
+                        placeHandle(XYZToI(structurePos + Vector3i.right));
                     }
 
-                    if (!connectivity[5])
+                    if (!connectivity[4] && structurePos.z + 1 < MAX_DEPTH)
                     {
-                        placeHandle(XYZToI(xyz + Vector3i.backward));
+                        placeHandle(XYZToI(structurePos + Vector3i.forward));
+                    }
+
+                    if (!connectivity[5] && structurePos.z > 0)
+                    {
+                        placeHandle(XYZToI(structurePos + Vector3i.backward));
                     }
                 }
             }
@@ -242,15 +242,14 @@ namespace DSS.Construction
 
         private bool[] GetNeighbors(int x, int y, int z)
         {
-            return new bool[6]
-            {
-                _structure[XYZToI(x, y + 1, z)], // up
-                _structure[XYZToI(x, y - 1, z)], // down
-                _structure[XYZToI(x - 1, y, z)], // left
-                _structure[XYZToI(x + 1, y, z)], // right
-                _structure[XYZToI(x, y, z + 1)], // forward
-                _structure[XYZToI(x, y, z - 1)], // backward
-            };
+            var up = y + 1 < MAX_HEIGHT ? _structure[XYZToI(x, y + 1, z)] : false;
+            var down = y - 1 > 0 ? _structure[XYZToI(x, y - 1, z)] : false;
+            var left = x - 1 > 0 ? _structure[XYZToI(x - 1, y, z)] : false;
+            var right = x + 1 < MAX_WIDTH ? _structure[XYZToI(x + 1, y, z)] : false;
+            var forward = z + 1 < MAX_DEPTH ? _structure[XYZToI(x, y, z + 1)] : false;
+            var backward = z - 1 > 0 ? _structure[XYZToI(x, y, z - 1)] : false;
+
+            return new bool[] { up, down, left, right, forward, backward };
         }
 
         public void SetToDefault()

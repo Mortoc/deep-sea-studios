@@ -312,7 +312,6 @@ namespace DSS.Construction
                 }
             },
             
-
             // Up then Forward Rotations
 			new RotationVariant()
 			{ 
@@ -345,7 +344,7 @@ namespace DSS.Construction
             new RotationVariant()
             { 
                 Name = "Up90Forward270",
-                Rot = Quaternion.AngleAxis(-90.0f, Vector3.up) * Quaternion.AngleAxis(270.0f, Vector3.forward), 
+                Rot = Quaternion.AngleAxis(-90.0f, Vector3.up) * Quaternion.AngleAxis(-270.0f, Vector3.forward), 
                 ConnectivityChanges = new ConnectivityMapping[]
                 {
 					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
@@ -355,6 +354,51 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
 					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left }
                 }
+            },
+
+            
+            // Left then Up Rotations
+			new RotationVariant()
+			{ 
+                Name = "Left90Up90",
+				Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(90.0f, Vector3.up), 
+				ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+					new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+					new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up },                    
+					new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Forward },
+					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Backward }
+				}
+			},
+            new RotationVariant()
+            { 
+                Name = "Left90Up180",
+                Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(180.0f, Vector3.up), 
+                ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+					new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+					new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up },                    
+					new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Right },
+					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left }
+				}
+            },
+            new RotationVariant()
+            { 
+                Name = "Left90Up270",
+                Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(270.0f, Vector3.up), 
+                ConnectivityChanges = new ConnectivityMapping[]
+				{
+					new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+					new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+					new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up },                    
+					new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward }
+				}
             },
         };
     }
