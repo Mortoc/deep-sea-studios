@@ -257,16 +257,7 @@ namespace DSS.Construction
             var defPos = new Vector3i(MAX_WIDTH / 2, MAX_HEIGHT / 2, MAX_DEPTH / 2);
 
             _structure[XYZToI(defPos)] = true;
-            defPos.x += 1;
-            _structure[XYZToI(defPos)] = true;
-            defPos.x -= 2;
-            _structure[XYZToI(defPos)] = true;
-            defPos.x -= 1;
-            _structure[XYZToI(defPos)] = true;
             
-            defPos.y += 1;
-            _structure[XYZToI(defPos)] = true;
-
             GenerateMesh();
             GenerateHandles();
         }

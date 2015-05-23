@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,7 +23,7 @@ namespace DSS.Construction
     public class StructureVariant
     {
         public GameObject Prefab;
-        public string Variation;
+        public VariantInfo Variation { get; private set; }
         public Quaternion Rotation { get; set; }
 
         public bool Up;
@@ -58,19 +59,19 @@ namespace DSS.Construction
 
         public static IEnumerable<StructureVariant> BuildAllVariants(StructureVariant initial)
         {
-            initial.Variation = "Initial";
-            foreach (var variation in s_variations)
+            initial.Variation = null;
+            foreach (var variation in s_variations.Reverse())
             {
                 var variant = new StructureVariant();
                 variant.Prefab = initial.Prefab;
                 variant.Rotation = variation.Rot;
                 variation.SetConnectivity(initial, variant);
-                variant.Variation = variation.Name;
+                variant.Variation = variation;
                 yield return variant;
             }
         }
 
-        private struct ConnectivityMapping
+        public struct ConnectivityMapping
         {
             public StructureConnectivity From;
             public StructureConnectivity To;
@@ -81,7 +82,7 @@ namespace DSS.Construction
             }
         }
 
-        private struct RotationVariant
+        public class VariantInfo
         {
             public string Name;
             public Quaternion Rot;
@@ -152,10 +153,10 @@ namespace DSS.Construction
             }
         }
 
-        private static readonly RotationVariant[] s_variations = new RotationVariant[] 
+        private static readonly VariantInfo[] s_variations = new VariantInfo[] 
         {
             // Up Axis Rotations
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Up90",
                 Rot = Quaternion.AngleAxis(-90.0f, Vector3.up), 
@@ -167,7 +168,7 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Up180",
                 Rot = Quaternion.AngleAxis(-180.0f, Vector3.up), 
@@ -179,7 +180,7 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Up270",
                 Rot = Quaternion.AngleAxis(-270.0f, Vector3.up), 
@@ -193,7 +194,7 @@ namespace DSS.Construction
             },
 
             // Forward Axis Rotations
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Forward90",
                 Rot = Quaternion.AngleAxis(90.0f, Vector3.forward), 
@@ -205,7 +206,7 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Forward180",
                 Rot = Quaternion.AngleAxis(180.0f, Vector3.forward), 
@@ -217,7 +218,7 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Up }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Forward270",
                 Rot = Quaternion.AngleAxis(270.0f, Vector3.forward), 
@@ -231,10 +232,10 @@ namespace DSS.Construction
             },
 
             // Left Axis Rotations
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Left90",
-                Rot = Quaternion.AngleAxis(-90.0f, Vector3.left), 
+                Rot = Quaternion.AngleAxis(90.0f, Vector3.left), 
                 ConnectivityChanges = new ConnectivityMapping[]
                 {
                     new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
@@ -243,10 +244,10 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Left180",
-                Rot = Quaternion.AngleAxis(-180.0f, Vector3.left), 
+                Rot = Quaternion.AngleAxis(180.0f, Vector3.left), 
                 ConnectivityChanges = new ConnectivityMapping[]
                 {
                     new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
@@ -255,10 +256,10 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Up }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Left270",
-                Rot = Quaternion.AngleAxis(-270.0f, Vector3.left), 
+                Rot = Quaternion.AngleAxis(270.0f, Vector3.left), 
                 ConnectivityChanges = new ConnectivityMapping[]
                 {
                     new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
@@ -269,7 +270,7 @@ namespace DSS.Construction
             },
 
             // Forward then Up Rotations
-			new RotationVariant()
+			new VariantInfo()
 			{ 
                 Name = "Forward90Up90",
 				Rot = Quaternion.AngleAxis(-90.0f, Vector3.forward) * Quaternion.AngleAxis(-90.0f, Vector3.up), 
@@ -283,7 +284,7 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Right }
 				}
 			},
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Forward90Up180",
                 Rot = Quaternion.AngleAxis(-90.0f, Vector3.forward) * Quaternion.AngleAxis(-180.0f, Vector3.up), 
@@ -297,7 +298,7 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Forward90Up270",
                 Rot = Quaternion.AngleAxis(-90.0f, Vector3.forward) * Quaternion.AngleAxis(-270.0f, Vector3.up), 
@@ -313,7 +314,7 @@ namespace DSS.Construction
             },
             
             // Up then Forward Rotations
-			new RotationVariant()
+			new VariantInfo()
 			{ 
                 Name = "Up90Forward90",
 				Rot = Quaternion.AngleAxis(-90.0f, Vector3.up) * Quaternion.AngleAxis(-90.0f, Vector3.forward), 
@@ -327,7 +328,7 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right }
 				}
 			},
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Up90Forward180",
                 Rot = Quaternion.AngleAxis(-90.0f, Vector3.up) * Quaternion.AngleAxis(-180.0f, Vector3.forward), 
@@ -341,7 +342,7 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Up }
                 }
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Up90Forward270",
                 Rot = Quaternion.AngleAxis(-90.0f, Vector3.up) * Quaternion.AngleAxis(-270.0f, Vector3.forward), 
@@ -358,7 +359,7 @@ namespace DSS.Construction
 
             
             // Left then Up Rotations
-			new RotationVariant()
+			new VariantInfo()
 			{ 
                 Name = "Left90Up90",
 				Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(90.0f, Vector3.up), 
@@ -372,7 +373,7 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Backward }
 				}
 			},
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Left90Up180",
                 Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(180.0f, Vector3.up), 
@@ -386,7 +387,7 @@ namespace DSS.Construction
 					new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left }
 				}
             },
-            new RotationVariant()
+            new VariantInfo()
             { 
                 Name = "Left90Up270",
                 Rot = Quaternion.AngleAxis(90.0f, Vector3.left) * Quaternion.AngleAxis(270.0f, Vector3.up), 
