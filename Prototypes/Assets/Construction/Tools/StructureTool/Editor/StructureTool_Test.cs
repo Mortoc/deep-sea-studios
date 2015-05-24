@@ -343,19 +343,30 @@ namespace DSS.Construction.UnitTests
 
                 foreach(var connectionMapping in variant.Variation.ConnectivityChanges)
                 {
-                    var child = GetPrefabChild(variant.Prefab, connectionMapping.From);
-                    Assert.IsTrue
-                    (
-                        IsNear(child.transform.position, connectionMapping.To), 
-                        String.Format
+                    try
+                    {
+                        var child = GetPrefabChild(variant.Prefab, connectionMapping.From);
+                        Assert.IsTrue
                         (
-                            "{0} {1} position expected: {2}, actual: {3}", 
-                            variant.Variation.Name, 
-                            child.name,
-                            PositionForConnectivity(connectionMapping.To),
-                            child.transform.position
-                        )
-                    );
+                            IsNear(child.transform.position, connectionMapping.To),
+                            String.Format
+                            (
+                                "{0} {1} position expected: {2}, actual: {3}",
+                                variant.Variation.Name,
+                                child.name,
+                                PositionForConnectivity(connectionMapping.To),
+                                child.transform.position
+                            )
+                        );
+                    }
+                    catch(Exception e)
+                    {
+                        var failure = GameObject.Instantiate<GameObject>(variant.Prefab);
+                        failure.name = String.Format("FailureCase: {0}", variant.Variation.Name);
+                        failure.transform.rotation = variant.Rotation;
+                        throw e;
+                    }
+                    
                 }
             }
         }
