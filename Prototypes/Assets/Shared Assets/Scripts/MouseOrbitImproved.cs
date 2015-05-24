@@ -30,7 +30,7 @@ public class MouseOrbitImproved : MonoBehaviour
 
     private void UpdateCamera()
     {
-        if( Input.GetMouseButton(1) )
+        if( Input.GetMouseButton(0) )
         {
             x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;

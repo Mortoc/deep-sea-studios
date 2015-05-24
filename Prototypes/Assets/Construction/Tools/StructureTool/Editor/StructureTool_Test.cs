@@ -361,9 +361,9 @@ namespace DSS.Construction.UnitTests
                     }
                     catch(Exception e)
                     {
-                        var failure = GameObject.Instantiate<GameObject>(variant.Prefab);
-                        failure.name = String.Format("FailureCase: {0}", variant.Variation.Name);
-                        failure.transform.rotation = variant.Rotation;
+                        //var failure = GameObject.Instantiate<GameObject>(variant.Prefab);
+                        //failure.name = String.Format("FailureCase: {0}", variant.Variation.Name);
+                        //failure.transform.rotation = variant.Rotation;
                         throw e;
                     }
                     

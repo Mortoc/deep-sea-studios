@@ -243,11 +243,11 @@ namespace DSS.Construction
         private bool[] GetNeighbors(int x, int y, int z)
         {
             var up = y + 1 < MAX_HEIGHT ? _structure[XYZToI(x, y + 1, z)] : false;
-            var down = y - 1 > 0 ? _structure[XYZToI(x, y - 1, z)] : false;
-            var left = x - 1 > 0 ? _structure[XYZToI(x - 1, y, z)] : false;
+            var down = y > 0 ? _structure[XYZToI(x, y - 1, z)] : false;
+            var left = x > 0 ? _structure[XYZToI(x - 1, y, z)] : false;
             var right = x + 1 < MAX_WIDTH ? _structure[XYZToI(x + 1, y, z)] : false;
             var forward = z + 1 < MAX_DEPTH ? _structure[XYZToI(x, y, z + 1)] : false;
-            var backward = z - 1 > 0 ? _structure[XYZToI(x, y, z - 1)] : false;
+            var backward = z > 0 ? _structure[XYZToI(x, y, z - 1)] : false;
 
             return new bool[] { up, down, left, right, forward, backward };
         }
