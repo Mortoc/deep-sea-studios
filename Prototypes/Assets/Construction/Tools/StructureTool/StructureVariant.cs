@@ -294,6 +294,20 @@ namespace DSS.Construction
                 }
             },
             new VariantInfo()
+            {
+                Name = "Right90Up180",
+                Rot = Quaternion.Euler(new Vector3(90.0f, 90.0f, 0.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up }
+                }
+            },
+            new VariantInfo()
             { 
                 Name = "Right180Up90",
                 Rot = Quaternion.Euler(new Vector3(180.0f, 90.0f, 180.0f)), 
@@ -333,6 +347,310 @@ namespace DSS.Construction
                     new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left },
                     new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
                     new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right270Up180",
+                Rot = Quaternion.Euler(new Vector3(270.0f, 180.0f, 0.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Down }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right90Up270",
+                Rot = Quaternion.Euler(new Vector3(90.0f, 270.0f, 0.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up }
+                }
+            },
+
+
+            new VariantInfo()
+            {
+                Name = "Right180Up270",
+                Rot = Quaternion.Euler(new Vector3(180.0f, 270.0f, 0.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right270Up270",
+                Rot = Quaternion.Euler(new Vector3(270.0f, 270.0f, 0.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Down }
+                }
+            },
+
+            // Forward x Up
+            new VariantInfo()
+            {
+                Name = "Forward90Up90",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 90.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Forward180Up90",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 180.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Forward90Up180",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 180.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Up},
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+            
+            new VariantInfo()
+            {
+                Name = "Forward90Up270",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Forward180Up270",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 180.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Forward270Up90",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+
+
+            new VariantInfo()
+            {
+                Name = "Forward270Up180",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 180.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Forward90Up270",
+                Rot = Quaternion.Euler(new Vector3(0.0f, 90.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Left }
+                }
+            },
+
+            // Right x Forward
+            new VariantInfo()
+            {
+                Name = "Right90Forward90",
+                Rot = Quaternion.Euler(new Vector3(90.0f, 0.0f, 90.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right90Forward180",
+                Rot = Quaternion.Euler(new Vector3(90.0f, 0.0f, 180.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right90Forward270",
+                Rot = Quaternion.Euler(new Vector3(90.0f, 0.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Up }
+                }
+            },
+            
+            new VariantInfo()
+            {
+                Name = "Right180Forward90",
+                Rot = Quaternion.Euler(new Vector3(180.0f, 0.0f, 90.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right180Forward270",
+                Rot = Quaternion.Euler(new Vector3(180.0f, 0.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Down },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Forward }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right270Forward90",
+                Rot = Quaternion.Euler(new Vector3(270, 0.0f, 90.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Down }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right270Forward180",
+                Rot = Quaternion.Euler(new Vector3(270.0f, 0.0f, 180.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Down }
+                }
+            },
+
+            new VariantInfo()
+            {
+                Name = "Right270Forward270",
+                Rot = Quaternion.Euler(new Vector3(270.0f, 0.0f, 270.0f)),
+                ConnectivityChanges = new ConnectivityMapping[]
+                {
+                    new ConnectivityMapping() { From = StructureConnectivity.Up, To = StructureConnectivity.Right },
+                    new ConnectivityMapping() { From = StructureConnectivity.Down, To = StructureConnectivity.Left },
+                    new ConnectivityMapping() { From = StructureConnectivity.Left, To = StructureConnectivity.Backward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Right, To = StructureConnectivity.Forward },
+                    new ConnectivityMapping() { From = StructureConnectivity.Forward, To = StructureConnectivity.Up },
+                    new ConnectivityMapping() { From = StructureConnectivity.Backward, To = StructureConnectivity.Down }
                 }
             },
         };
