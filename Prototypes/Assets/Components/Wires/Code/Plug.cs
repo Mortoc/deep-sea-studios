@@ -13,13 +13,14 @@ namespace DSS
     public class Plug : MonoBehaviour, IHoverable, ISelectable
     {
         [SerializeField]
-        private int _maxSiblings = 2;
-        private List<Plug> _siblingPlugs = new List<Plug>();
+        private int _maxWires = 2;
+        public List<Wire> _connectedWires = new List<Wire>();
 
         public event Action OnPower;
         public event Action OnPowerLoss;
         
         private bool _powered = false;
+        private bool _wasPowered = false;
         private bool _haveCheckedIfPowered = false;
 
 
@@ -46,7 +47,6 @@ namespace DSS
 
         void OnEnable()
         {
-            UpdatePowerState();
         }
 
         void OnDisable()
@@ -82,83 +82,73 @@ namespace DSS
             GetComponent<Renderer>().materials = _originalMaterials;
         }
         
-        private void RemoveSibling(Plug toRemove)
+        private void RemoveWire(Wire toRemove)
         {
-            _siblingPlugs.RemoveAt(
-                _siblingPlugs.FindIndex(x => x.GetInstanceID() == toRemove.GetInstanceID())
-            );
+            _connectedWires.Remove(toRemove);
         }
 
-        private void AddSibling(Plug toAdd)
+        private void AddWire(Wire toAdd)
         {
-            _siblingPlugs.Add(toAdd);
+            _connectedWires.Add(toAdd);
         }
 
-        private bool CanAddSibling(Plug toAdd)
+        private bool CanConnectPlug(Plug toAdd)
         {
-            if (_siblingPlugs.Find(x => x.GetInstanceID() == toAdd.GetInstanceID()))
-            {
+            if (_connectedWires.Count >= _maxWires)
                 return false;
-            }
 
-            return _siblingPlugs.Count < _maxSiblings;
+            foreach (var w in _connectedWires)
+            {
+                if (w.In == toAdd || w.Out == toAdd)
+                {
+                    return false;
+                }
+            }
+            
+            return true;
         }
 
         public static Wire ConnectPlugs(Plug first, Plug second, Material wireOnMaterial, Material wireOffMaterial)
         {
-            if (first.CanAddSibling(second) && second.CanAddSibling(first))
+            if (first.CanConnectPlug(second) && second.CanConnectPlug(first))
             {
-                first.AddSibling(second);
-                second.AddSibling(first);
                 var wireObj = new GameObject("Wire");
                 var wire = wireObj.AddComponent<Wire>();
                 wire.SetupWire(first, second, wireOnMaterial, wireOffMaterial);
+
+                first.AddWire(wire);
+                second.AddWire(wire);
+
                 return wire;
             }
             return null;
-        } 
-
-        private void UpdatePowerState()
-        {
-            bool wasPowered = _powered;
-            _powered = IsPowered();
-            _haveCheckedIfPowered = true;
-
-            if( wasPowered != _powered && _powered && OnPower != null )
-            {
-                OnPower();
-            }
-            else if( wasPowered != _powered && !_powered && OnPowerLoss != null )
-            {
-                OnPowerLoss();
-            }
         }
 
         void Update()
         {
-            UpdatePowerState();
-        }
-        void LateUpdate()
-        {
+            _wasPowered = _powered;
+            _powered = false;
             _haveCheckedIfPowered = false;
+        }
+
+        public void PowerOn()
+        {
+            if (_haveCheckedIfPowered)
+                return;
+            _haveCheckedIfPowered = true;
+            _powered = true;
+            
+            foreach(var w in _connectedWires)
+            {
+                w.PowerOn();
+                w.In.PowerOn();
+                w.Out.PowerOn();
+            }
         }
 
         public virtual bool IsPowered()
         {
-            if (_haveCheckedIfPowered)
-            {
-                return _powered;
-            }
-            
-            //foreach (var sibling in _siblingPlugs)
-            //{
-            //    if (sibling.IsPowered())
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
-            return true;
+            return _powered;
         }
     }
 }

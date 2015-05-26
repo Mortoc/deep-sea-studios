@@ -53,10 +53,14 @@ namespace DSS
             transform.localScale = Vector3.one;
             InitializeLoft();
 
-            StartCoroutine(AnimateOnOffTest()); // test
+            if ((_in && _in.IsPowered()) || 
+                (_out && _out.IsPowered()))
+                PowerOn();
+            //StartCoroutine(AnimateOnOffTest()); // test
         }
 
         // Test Code
+        /*
         private IEnumerator AnimateOnOffTest()
         {
             while (gameObject)
@@ -69,6 +73,7 @@ namespace DSS
                 yield return new WaitForSeconds(Rand.value);
             }
         }
+        */
         //
 
 
@@ -81,7 +86,7 @@ namespace DSS
 
         }
 
-        private void PowerOn()
+        public void PowerOn()
         {
             GetComponent<Renderer>().material = _onMaterial;
         }

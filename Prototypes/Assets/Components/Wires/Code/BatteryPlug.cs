@@ -14,5 +14,10 @@ namespace DSS
         {
             return true;
         }
+
+        void LateUpdate()
+        {
+            PowerOn();
+        }
     }
 }
