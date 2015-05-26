@@ -5,8 +5,8 @@ using System.Collections;
 public class MouseOrbitImproved : MonoBehaviour
 {
 
-    public Transform target;
-    public float distance = 5.0f;
+    public Transform _target;
+    public float _distance = 5.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
 
@@ -28,22 +28,26 @@ public class MouseOrbitImproved : MonoBehaviour
         UpdateCamera();
     }
 
+    void OnPinch(float pinch)
+    {
+        _distance = Mathf.Clamp(_distance - pinch * 5, distanceMin, distanceMax);
+    }
+
     private void UpdateCamera()
     {
-        if( Input.GetMouseButton(0) )
+        if( Input.touchCount == 1 && Input.touches[0].phase == TouchPhase.Moved )
         {
-            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+            x += Input.touches[0].deltaPosition.x * xSpeed * _distance * 0.02f;
+            y -= Input.touches[0].deltaPosition.y * ySpeed * 0.02f;
 
             y = ClampAngle(y, yMinLimit, yMaxLimit);
         }
 
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
 
-        Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-        Vector3 position = rotation * negDistance + target.position;
+        Vector3 negDistance = new Vector3(0.0f, 0.0f, -_distance);
+        Vector3 position = rotation * negDistance + _target.position;
 
         transform.rotation = rotation;
         transform.position = position;

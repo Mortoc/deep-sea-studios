@@ -10,13 +10,9 @@ GameObject:
   - 4: {fileID: 425036}
   - 20: {fileID: 2094972}
   - 81: {fileID: 8116954}
-  - 114: {fileID: 11435738}
-  - 114: {fileID: 11463128}
-  - 114: {fileID: 11457238}
-  - 114: {fileID: 11467682}
   - 114: {fileID: 11423554}
   - 114: {fileID: 11469182}
-  - 114: {fileID: 11409116}
+  - 114: {fileID: 11473260}
   m_Layer: 9
   m_Name: Default Camera
   m_TagString: MainCamera
@@ -46,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
   m_LocalRotation: {x: .258819073, y: 0, z: 0, w: .965925813}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5}
+  m_LocalPosition: {x: 0, y: 1.38999999, z: -3.91000009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446480}
@@ -92,7 +88,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_HDR: 1
+  m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
@@ -103,25 +99,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
   m_Enabled: 1
---- !u!114 &11409116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 696d8e6ce67607f40ae82c8752bd0845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 446480}
-  distance: 5
-  xSpeed: 20
-  ySpeed: 30
-  yMinLimit: -60
-  yMaxLimit: 60
-  distanceMin: 1
-  distanceMax: 5
 --- !u!114 &11423554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,106 +119,6 @@ MonoBehaviour:
   greenCoeff: .5
   blueCoeff: .5
   edge: 0
---- !u!114 &11435738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Radius: .100000001
-  m_SampleCount: 2
-  m_OcclusionIntensity: 1
-  m_Blur: 4
-  m_Downsampling: 4
-  m_OcclusionAttenuation: .200000003
-  m_MinZ: .00999999978
-  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
-  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
---- !u!114 &11457238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweakMode: 0
-  screenBlendMode: 1
-  hdr: 1
-  sepBlurSpread: 3
-  quality: 1
-  bloomIntensity: .5
-  bloomThreshold: .25
-  bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
-  bloomBlurIterations: 4
-  hollywoodFlareBlurIterations: 2
-  flareRotation: 0
-  lensflareMode: 2
-  hollyStretchWidth: 2.5
-  lensflareIntensity: .25
-  lensflareThreshold: 1.71000004
-  lensFlareSaturation: .75
-  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
-  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
-  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
-  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
-  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
-    type: 3}
-  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
-  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
-  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
-  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
-    type: 3}
---- !u!114 &11463128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75febd242c999f04d9654522a10c006b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: .720000029
-  radius: .241999999
-  blurIterations: 3
-  blurFilterDistance: 1.01999998
-  downsample: 0
-  rand: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
-  aoShader: {fileID: 4800000, guid: 95616c020c5604dda96cf76afbbc0272, type: 3}
---- !u!114 &11467682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50e925fb93c78246bf995d9dc3a2330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  adaptiveTextureSize: 256
-  remapCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  exposureAdjustment: 1.5
-  middleGrey: .400000006
-  white: 2
-  adaptionSpeed: 1.5
-  tonemapper: {fileID: 4800000, guid: 003377fc2620a44939dadde6fe3f8190, type: 3}
-  validRenderTextureFormat: 1
 --- !u!114 &11469182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,6 +143,44 @@ MonoBehaviour:
     allowFlipping: 0
     yuvColorBleeding: 1
     yuvOffset: .5
+--- !u!114 &11473260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaeecc86123625a4abf5f4d03eaaa900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 446480}
+  initialDistance: 5
+  minDistance: 1
+  maxDistance: 10
+  yawSensitivity: 45
+  pitchSensitivity: 45
+  clampYawAngle: 0
+  minYaw: -75
+  maxYaw: 75
+  clampPitchAngle: 1
+  minPitch: -20
+  maxPitch: 80
+  allowPinchZoom: 1
+  pinchZoomSensitivity: 5
+  smoothMotion: 1
+  smoothZoomSpeed: 5
+  smoothOrbitSpeed: 10
+  allowPanning: 1
+  invertPanningDirections: 0
+  panningSensitivity: 1
+  panningPlane: {fileID: 446480}
+  smoothPanning: 1
+  smoothPanningSpeed: 12
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  OnlyRotateWhenDragStartsOnObject: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

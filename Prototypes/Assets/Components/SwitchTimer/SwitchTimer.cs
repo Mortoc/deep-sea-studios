@@ -17,14 +17,8 @@ namespace DSS
         private GameObject _positiveIndicator;
 
         [SerializeField]
-        private GameObject _positiveIndicatorLight;
-
-        [SerializeField]
         private GameObject _negativeIndicator;
-
-        [SerializeField]
-        private GameObject _negativeIndicatorLight;
-
+        
 
         [SerializeField]
         private Material _indicatorOffMaterial;
@@ -49,16 +43,16 @@ namespace DSS
             if( _isPowering )
             {
                 _positiveIndicator.GetComponent<Renderer>().material = _indicatorPositiveMaterial;
-                _positiveIndicatorLight.SetActive(true);
+                
                 _negativeIndicator.GetComponent<Renderer>().material = _indicatorOffMaterial;
-                _negativeIndicatorLight.SetActive(false);
+                
             }
             else
             {
                 _positiveIndicator.GetComponent<Renderer>().material = _indicatorOffMaterial;
-                _positiveIndicatorLight.SetActive(false);
+                
                 _negativeIndicator.GetComponent<Renderer>().material = _indicatorNegativeMaterial;
-                _negativeIndicatorLight.SetActive(true);
+                
             }
         }
     }

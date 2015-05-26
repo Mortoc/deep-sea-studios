@@ -34,6 +34,7 @@ GameObject:
   - 65: {fileID: 6582504}
   - 65: {fileID: 6562540}
   - 65: {fileID: 6520166}
+  - 54: {fileID: 5476438}
   m_Layer: 0
   m_Name: SwitchPlate
   m_TagString: Untagged
@@ -121,8 +122,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105596}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.06500006, y: 0, z: 0}
+  m_LocalRotation: {x: .193405688, y: .400700331, z: .183988139, w: .876459837}
+  m_LocalPosition: {x: .283581823, y: .466957241, z: .0761740655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477578}
@@ -282,6 +283,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105596}
   m_Mesh: {fileID: 4300002, guid: 9d01630682904f0469b8dabe7d1cbc94, type: 3}
+--- !u!54 &5476438
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105596}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6513746
 BoxCollider:
   m_ObjectHideFlags: 1
