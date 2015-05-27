@@ -9,11 +9,8 @@ using Rand = UnityEngine.Random;
 namespace DSS
 {
     [RequireComponent(typeof(AudioSource))]
-    public class Wheel : MonoBehaviour
+    public class Wheel : PowerableObject
     {
-        [SerializeField]
-        private Plug _plug;
-
         [SerializeField]
         private HingeJoint _wheelJoint;
 
@@ -23,40 +20,31 @@ namespace DSS
 
         void Awake()
         {
+            base.Awake();
+
             var audio = GetComponent<AudioSource>();
             audio.pitch = Mathf.Lerp(0.9f, 1.1f, Rand.value);
             _originalVolumne = audio.volume;
         }
 
-        void OnEnable()
+        public override void On()
         {
-            TurnWheelOn();
-            _plug.OnPower += TurnWheelOn;
-            _plug.OnPowerLoss += TurnWheelOff;
+            if (_wheelJoint.useMotor == false)
+            {
+                _wheelJoint.useMotor = true;
+                var audio = GetComponent<AudioSource>();
+
+                audio.clip = _runningSound;
+                audio.loop = true;
+
+                audio.FadeIn(_originalVolumne);
+            }
         }
 
-        void OnDisable()
-        {
-            _plug.OnPower -= TurnWheelOn;
-            _plug.OnPowerLoss -= TurnWheelOff;
-        }
-
-        private void TurnWheelOn()
-        {
-            _wheelJoint.useMotor = true;
-            var audio = GetComponent<AudioSource>();
-
-            audio.clip = _runningSound;
-            audio.loop = true;
-            
-            audio.FadeIn(_originalVolumne);
-        }
-
-        private void TurnWheelOff()
+        public override void Off()
         {
             _wheelJoint.useMotor = false;
             GetComponent<AudioSource>().FadeOut();
         }
-
     }
 }

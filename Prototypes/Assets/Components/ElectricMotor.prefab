@@ -44,7 +44,8 @@ GameObject:
   - 33: {fileID: 3382676}
   - 23: {fileID: 2328094}
   - 114: {fileID: 11443162}
-  m_Layer: 0
+  - 135: {fileID: 13579514}
+  m_Layer: 10
   m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150494}
   m_LocalRotation: {x: 0, y: .665076613, z: 0, w: .74677521}
-  m_LocalPosition: {x: .875999987, y: 0, z: -.204999998}
+  m_LocalPosition: {x: -2.52613211, y: .00511780381, z: -2.16443944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439618}
@@ -507,7 +508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896e0f3557abca04587bf15a469841f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plug: {fileID: 11443162}
+  _plugs:
+  - {fileID: 11443162}
   _motorJoint: {fileID: 5974856}
   _runningSound: {fileID: 8300000, guid: 7fc9e739a1dbef143b51318b9af8ad27, type: 3}
 --- !u!114 &11443162
@@ -521,8 +523,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae69a35b20d2bf04c998dd96fd16205c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connectedWire: {fileID: 0}
-  _plugAnimateTime: 1
+  _maxSiblings: 2
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
+  _hoverMaterial: {fileID: 0}
+  _selectMaterial: {fileID: 0}
+--- !u!135 &13579514
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .0750000179
+  m_Center: {x: -2.30967999e-07, y: .00492279837, z: -4.47034836e-08}
 --- !u!136 &13608348
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -9,32 +9,25 @@ using Rand = UnityEngine.Random;
 namespace DSS
 {
     [RequireComponent(typeof(AudioSource))]
-    public class Motor : MonoBehaviour
+    public class Motor : PowerableObject
     {
-        [SerializeField]
-        private Plug _plug;
-
         [SerializeField]
         private HingeJoint _motorJoint;
 
         [SerializeField]
         private AudioClip _runningSound;
 
-        void OnEnable()
+        void Awake()
         {
-            _plug.OnPower += TurnMotorOn;
-            _plug.OnPowerLoss += TurnMotorOff;
+            base.Awake();
         }
 
-        void OnDisable()
+        public override void On()
         {
-            _plug.OnPower -= TurnMotorOn;
-            _plug.OnPowerLoss -= TurnMotorOff;
-        }
-
-        private void TurnMotorOn()
-        {
-            _motorJoint.useMotor = true;
+            if (_motorJoint.useMotor != true)
+            {
+                _motorJoint.useMotor = true;
+            }
             var audio = GetComponent<AudioSource>();
 
             audio.clip = _runningSound;
@@ -43,7 +36,7 @@ namespace DSS
             audio.FadeIn(1.0f);
         }
 
-        private void TurnMotorOff()
+        public override void Off()
         {
             _motorJoint.useMotor = false;
             GetComponent<AudioSource>().FadeOut();

@@ -52,10 +52,6 @@ namespace DSS
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
             InitializeLoft();
-
-            if ((_in && _in.IsPowered()) || 
-                (_out && _out.IsPowered()))
-                PowerOn();
             //StartCoroutine(AnimateOnOffTest()); // test
         }
 
@@ -75,16 +71,6 @@ namespace DSS
         }
         */
         //
-
-
-        public void OnEnable()
-        {
-        }
-
-        public void OnDisable()
-        {
-
-        }
 
         public void PowerOn()
         {

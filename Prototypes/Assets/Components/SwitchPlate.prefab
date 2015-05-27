@@ -67,7 +67,8 @@ GameObject:
   - 4: {fileID: 497730}
   - 33: {fileID: 3325354}
   - 23: {fileID: 2321156}
-  m_Layer: 0
+  - 135: {fileID: 13510792}
+  m_Layer: 10
   m_Name: Plug 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +85,8 @@ GameObject:
   - 4: {fileID: 446638}
   - 33: {fileID: 3367802}
   - 23: {fileID: 2332720}
-  m_Layer: 0
+  - 135: {fileID: 13539326}
+  m_Layer: 10
   m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.06500006, y: 0, z: 0}
+  m_LocalPosition: {x: 1.71814513, y: .0138246706, z: -.166450262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477578}
@@ -383,6 +385,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!135 &13510792
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .075000003
+  m_Center: {x: -2.30967999e-07, y: .00492231967, z: 3.55271368e-15}
+--- !u!135 &13539326
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .075000003
+  m_Center: {x: 7.4505806e-09, y: .00492232013, z: 2.66453526e-15}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ using Rand = UnityEngine.Random;
 
 namespace DSS
 {
-    public class LinearActuator : MonoBehaviour
+    public class LinearActuator : PowerableObject
     {
         [SerializeField]
         private Rigidbody _end1;
@@ -28,9 +28,6 @@ namespace DSS
         [SerializeField]
         private float _expandPower = 100.0f;
 
-        [SerializeField]
-        private Plug _plug;
-
         private void IgnoreAllCollisions(IList<Collider> colliders)
         {
             for (var i = 0; i < colliders.Count; ++i)
@@ -44,30 +41,26 @@ namespace DSS
 
         void Awake()
         {
+            base.Awake();
             IgnoreAllCollisions(GetComponentsInChildren<Collider>());
         }
 
-        void OnEnable()
+        public override void On()
         {
-            _plug.OnPower += Expand;
-            _plug.OnPowerLoss += Contract;
+            if (Rand.value > 0.5f)
+            {
+                _expandForce1.relativeForce = Vector3.left * -_expandPower;
+                _expandForce2.relativeForce = Vector3.left * _expandPower;
+            }
+            else
+            {
+                _expandForce1.relativeForce = Vector3.left * _expandPower;
+                _expandForce2.relativeForce = Vector3.left * -_expandPower;
+            }
         }
 
-        void OnDisable()
+        public override void Off()
         {
-            _plug.OnPower -= Expand;
-            _plug.OnPowerLoss -= Contract;
-        }
-
-        private void Expand()
-        {
-            _expandForce1.relativeForce = Vector3.left * -_expandPower;
-            _expandForce2.relativeForce = Vector3.left * _expandPower;
-        }
-
-        private void Contract()
-        {
-
             _expandForce1.relativeForce = Vector3.left * _expandPower;
             _expandForce2.relativeForce = Vector3.left * - _expandPower;
         }

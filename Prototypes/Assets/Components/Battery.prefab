@@ -45,6 +45,7 @@ GameObject:
   - 33: {fileID: 3373552}
   - 23: {fileID: 2368288}
   - 54: {fileID: 5433544}
+  - 114: {fileID: 11476828}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -163,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131030}
   m_LocalRotation: {x: -.00926162675, y: 3.23514905e-05, z: -4.70425584e-05, w: .999957144}
-  m_LocalPosition: {x: -1.80459213, y: -4.37894297, z: 9.13978863}
+  m_LocalPosition: {x: -.647117674, y: .0995482206, z: -.657844305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496102}
@@ -516,10 +517,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774c9e259a4cce244918d3ae14517c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxWires: 2
-  _connectedWires: []
+  _maxSiblings: 2
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
   _hoverMaterial: {fileID: 0}
   _selectMaterial: {fileID: 0}
+--- !u!114 &11476828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167ba0c2f36cd05438fe541d2a492521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plugs:
+  - {fileID: 11414258}
+  - {fileID: 11492712}
 --- !u!114 &11492712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,8 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774c9e259a4cce244918d3ae14517c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxWires: 2
-  _connectedWires: []
+  _maxSiblings: 2
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
   _hoverMaterial: {fileID: 0}
   _selectMaterial: {fileID: 0}
 --- !u!135 &13539632

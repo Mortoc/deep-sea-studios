@@ -13,16 +13,11 @@ namespace DSS
     public class Plug : MonoBehaviour, IHoverable, ISelectable
     {
         [SerializeField]
-        private int _maxWires = 2;
-        public List<Wire> _connectedWires = new List<Wire>();
+        private int _maxSiblings = 2;
+        public List<Plug> _siblingPlugs = new List<Plug>();
 
-        public event Action OnPower;
-        public event Action OnPowerLoss;
-        
-        private bool _powered = false;
-        private bool _wasPowered = false;
-        private bool _haveCheckedIfPowered = false;
 
+        public PowerableObject powerableParent;
 
         [SerializeField]
         private Material _hoverMaterial;
@@ -82,24 +77,24 @@ namespace DSS
             GetComponent<Renderer>().materials = _originalMaterials;
         }
         
-        private void RemoveWire(Wire toRemove)
+        private void RemoveWire(Plug toRemove)
         {
-            _connectedWires.Remove(toRemove);
+            _siblingPlugs.Remove(toRemove);
         }
 
-        private void AddWire(Wire toAdd)
+        private void AddWire(Plug toAdd)
         {
-            _connectedWires.Add(toAdd);
+            _siblingPlugs.Add(toAdd);
         }
 
         private bool CanConnectPlug(Plug toAdd)
         {
-            if (_connectedWires.Count >= _maxWires)
+            if (_siblingPlugs.Count >= _maxSiblings)
                 return false;
 
-            foreach (var w in _connectedWires)
+            foreach (var w in _siblingPlugs)
             {
-                if (w.In == toAdd || w.Out == toAdd)
+                if (w == toAdd || w == toAdd)
                 {
                     return false;
                 }
@@ -116,8 +111,8 @@ namespace DSS
                 var wire = wireObj.AddComponent<Wire>();
                 wire.SetupWire(first, second, wireOnMaterial, wireOffMaterial);
 
-                first.AddWire(wire);
-                second.AddWire(wire);
+                first.AddWire(second);
+                second.AddWire(first);
 
                 return wire;
             }
@@ -126,29 +121,6 @@ namespace DSS
 
         void Update()
         {
-            _wasPowered = _powered;
-            _powered = false;
-            _haveCheckedIfPowered = false;
-        }
-
-        public void PowerOn()
-        {
-            if (_haveCheckedIfPowered)
-                return;
-            _haveCheckedIfPowered = true;
-            _powered = true;
-            
-            foreach(var w in _connectedWires)
-            {
-                w.PowerOn();
-                w.In.PowerOn();
-                w.Out.PowerOn();
-            }
-        }
-
-        public virtual bool IsPowered()
-        {
-            return _powered;
         }
     }
 }
