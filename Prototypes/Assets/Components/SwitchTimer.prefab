@@ -184,7 +184,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163606}
   m_LocalRotation: {x: -.0446651429, y: -.860056937, z: -.0156897083, w: .507997036}
-  m_LocalPosition: {x: 1.10899997, y: .119999997, z: .657000005}
+  m_LocalPosition: {x: 1.29256606, y: .00556659698, z: -1.9573555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417344}
@@ -514,6 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e05f663697be44b942ab5f60a8f910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plugs:
+  - {fileID: 11467678}
+  - {fileID: 11459590}
   _toggleTime: .5
   _positiveIndicator: {fileID: 173468}
   _positiveIndicatorLight: {fileID: 185890}
@@ -525,8 +528,6 @@ MonoBehaviour:
     type: 2}
   _indicatorNegativeMaterial: {fileID: 2100000, guid: 89fc5fd0821cfbd4da58dd4199078aad,
     type: 2}
-  _plug1: {fileID: 11467678}
-  _plug2: {fileID: 11459590}
 --- !u!114 &11459590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,6 +540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSiblings: 1
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
   _hoverMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
   _selectMaterial: {fileID: 2100000, guid: 374a701221245664b98bbfdcdbc5f004, type: 2}
 --- !u!114 &11467678
@@ -553,6 +556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSiblings: 1
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
   _hoverMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
   _selectMaterial: {fileID: 2100000, guid: 374a701221245664b98bbfdcdbc5f004, type: 2}
 --- !u!135 &13529946

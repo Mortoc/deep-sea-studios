@@ -14,14 +14,10 @@ namespace DSS
     {
         [SerializeField]
         private int _maxSiblings = 2;
-        private List<Plug> _siblingPlugs = new List<Plug>();
+        public List<Plug> _siblingPlugs = new List<Plug>();
 
-        public event Action OnPower;
-        public event Action OnPowerLoss;
-        
-        private bool _powered = false;
-        private bool _haveCheckedIfPowered = false;
 
+        public PowerableObject powerableParent;
 
         [SerializeField]
         private Material _hoverMaterial;
@@ -46,7 +42,6 @@ namespace DSS
 
         void OnEnable()
         {
-            UpdatePowerState();
         }
 
         void OnDisable()
@@ -82,83 +77,50 @@ namespace DSS
             GetComponent<Renderer>().materials = _originalMaterials;
         }
         
-        private void RemoveSibling(Plug toRemove)
+        private void RemoveWire(Plug toRemove)
         {
-            _siblingPlugs.RemoveAt(
-                _siblingPlugs.FindIndex(x => x.GetInstanceID() == toRemove.GetInstanceID())
-            );
+            _siblingPlugs.Remove(toRemove);
         }
 
-        private void AddSibling(Plug toAdd)
+        private void AddWire(Plug toAdd)
         {
             _siblingPlugs.Add(toAdd);
         }
 
-        private bool CanAddSibling(Plug toAdd)
+        private bool CanConnectPlug(Plug toAdd)
         {
-            if (_siblingPlugs.Find(x => x.GetInstanceID() == toAdd.GetInstanceID()))
-            {
+            if (_siblingPlugs.Count >= _maxSiblings)
                 return false;
-            }
 
-            return _siblingPlugs.Count < _maxSiblings;
+            foreach (var w in _siblingPlugs)
+            {
+                if (w == toAdd || w == toAdd)
+                {
+                    return false;
+                }
+            }
+            
+            return true;
         }
 
         public static Wire ConnectPlugs(Plug first, Plug second, Material wireOnMaterial, Material wireOffMaterial)
         {
-            if (first.CanAddSibling(second) && second.CanAddSibling(first))
+            if (first.CanConnectPlug(second) && second.CanConnectPlug(first))
             {
-                first.AddSibling(second);
-                second.AddSibling(first);
                 var wireObj = new GameObject("Wire");
                 var wire = wireObj.AddComponent<Wire>();
                 wire.SetupWire(first, second, wireOnMaterial, wireOffMaterial);
+
+                first.AddWire(second);
+                second.AddWire(first);
+
                 return wire;
             }
             return null;
-        } 
-
-        private void UpdatePowerState()
-        {
-            bool wasPowered = _powered;
-            _powered = IsPowered();
-            _haveCheckedIfPowered = true;
-
-            if( wasPowered != _powered && _powered && OnPower != null )
-            {
-                OnPower();
-            }
-            else if( wasPowered != _powered && !_powered && OnPowerLoss != null )
-            {
-                OnPowerLoss();
-            }
         }
 
         void Update()
         {
-            UpdatePowerState();
-        }
-        void LateUpdate()
-        {
-            _haveCheckedIfPowered = false;
-        }
-
-        public virtual bool IsPowered()
-        {
-            if (_haveCheckedIfPowered)
-            {
-                return _powered;
-            }
-            
-            //foreach (var sibling in _siblingPlugs)
-            //{
-            //    if (sibling.IsPowered())
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
-            return true;
         }
     }
 }

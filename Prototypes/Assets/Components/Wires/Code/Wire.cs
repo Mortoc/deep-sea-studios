@@ -52,11 +52,11 @@ namespace DSS
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
             InitializeLoft();
-
-            StartCoroutine(AnimateOnOffTest()); // test
+            //StartCoroutine(AnimateOnOffTest()); // test
         }
 
         // Test Code
+        /*
         private IEnumerator AnimateOnOffTest()
         {
             while (gameObject)
@@ -69,19 +69,10 @@ namespace DSS
                 yield return new WaitForSeconds(Rand.value);
             }
         }
+        */
         //
 
-
-        public void OnEnable()
-        {
-        }
-
-        public void OnDisable()
-        {
-
-        }
-
-        private void PowerOn()
+        public void PowerOn()
         {
             GetComponent<Renderer>().material = _onMaterial;
         }

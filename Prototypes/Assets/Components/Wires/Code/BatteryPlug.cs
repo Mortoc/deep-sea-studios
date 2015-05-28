@@ -10,9 +10,5 @@ namespace DSS
 {
     public class BatteryPlug : Plug
     {
-        public override bool IsPowered()
-        {
-            return true;
-        }
     }
 }

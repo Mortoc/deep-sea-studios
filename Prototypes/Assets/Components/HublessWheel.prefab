@@ -744,8 +744,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191620}
-  m_LocalRotation: {x: .684457839, y: .270427883, z: -.166268051, w: .65630877}
-  m_LocalPosition: {x: .223000005, y: .628000021, z: 1.24300003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.03117061, y: 1, z: -.42734313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499270}
@@ -984,13 +984,13 @@ HingeJoint:
   m_Anchor: {x: -1, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -.017006943, y: 8.06504977e-05, z: .000518659013}
+  m_ConnectedAnchor: {x: -.0170068257, y: 8.05834425e-05, z: .000518627698}
   m_UseSpring: 0
   m_Spring:
     spring: 0
     damper: 0
     targetPosition: 0
-  m_UseMotor: 1
+  m_UseMotor: 0
   m_Motor:
     targetVelocity: 125
     force: 500
@@ -1386,7 +1386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f7e0f36360a842b89146a22edacdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plug: {fileID: 11430774}
+  _plugs:
+  - {fileID: 11430774}
   _wheelJoint: {fileID: 5955294}
   _runningSound: {fileID: 8300000, guid: 7fc9e739a1dbef143b51318b9af8ad27, type: 3}
 --- !u!114 &11430774
@@ -1401,6 +1402,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSiblings: 2
+  _siblingPlugs: []
+  powerableParent: {fileID: 0}
   _hoverMaterial: {fileID: 2100000, guid: 973352cdd033a8c4c861611067edebb0, type: 2}
   _selectMaterial: {fileID: 2100000, guid: 374a701221245664b98bbfdcdbc5f004, type: 2}
 --- !u!135 &13526014
