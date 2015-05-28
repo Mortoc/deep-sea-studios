@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - Rope
-  - Ground
+  - Env
   - Plug
   - EditableStructure
-  - 
+  - RenderedSceneRawImage
   - 
   - 
   - 

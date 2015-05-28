@@ -8,9 +8,11 @@ using System.Linq;
 using Rand = UnityEngine.Random;
 
 using DSS.UI;
+using DSS.States;
+
 namespace DSS.Construction
 {
-    public abstract class ConstructionTool : MonoBehaviour, ISelectable
+    public abstract class ConstructionTool : GameState
     {
         public bool Selected { get; private set; }
         public virtual void OnSelect()

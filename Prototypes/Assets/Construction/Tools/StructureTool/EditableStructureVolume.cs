@@ -20,8 +20,7 @@ namespace DSS.Construction
 
         public static readonly Vector3i forward = new Vector3i(0, 0, 1);
         public static readonly Vector3i backward = new Vector3i(0, 0, -1);
-
-
+        
         public int x;
         public int y;
         public int z;
@@ -47,7 +46,7 @@ namespace DSS.Construction
                 z = a.z + b.z
             };
         }
-        public static Vector3i operator -(Vector3i a, Vector3i b)
+        public static Vector3i operator - (Vector3i a, Vector3i b)
         {
             return new Vector3i()
             {
@@ -75,7 +74,6 @@ namespace DSS.Construction
             _editableStructureLayer = LayerMask.NameToLayer("EditableStructure");
         }
 
-        [SerializeField]
         private bool[] _structure = new bool[MAX_WIDTH * MAX_HEIGHT * MAX_DEPTH];
         
         public static int XYZToI(Vector3i vec)
