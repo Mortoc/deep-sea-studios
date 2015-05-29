@@ -1,52 +1,100 @@
 ﻿
+Shader "DSS/GUI/Blur GUI Texture"
+{
+	Properties
+	{
+		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
+	_Color("Tint", Color) = (1,1,1,1)
 
-Shader "Custom/Blur GUI Texture" {
-	Properties{
-		_BlurBuffer("Base (RGB)", 2D) = "white" {}
-		_Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+		_StencilComp("Stencil Comparison", Float) = 8
+		_Stencil("Stencil ID", Float) = 0
+		_StencilOp("Stencil Operation", Float) = 0
+		_StencilWriteMask("Stencil Write Mask", Float) = 255
+		_StencilReadMask("Stencil Read Mask", Float) = 255
+
+		_ColorMask("Color Mask", Float) = 15
 	}
-	SubShader{
-		Pass{
+
+		SubShader
+	{
+		Tags
+	{
+		"Queue" = "Transparent"
+		"IgnoreProjector" = "True"
+		"RenderType" = "Transparent"
+		"PreviewType" = "Plane"
+		"CanUseSpriteAtlas" = "True"
+	}
+
+		Stencil
+	{
+		Ref[_Stencil]
+		Comp[_StencilComp]
+		Pass[_StencilOp]
+		ReadMask[_StencilReadMask]
+		WriteMask[_StencilWriteMask]
+	}
+
+		Cull Off
+		Lighting Off
+		ZWrite Off
+		ZTest[unity_GUIZTestMode]
+		Blend SrcAlpha OneMinusSrcAlpha
+		ColorMask[_ColorMask]
+
+		Pass
+	{
 		CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma target 3.0
+#pragma vertex vert
+#pragma fragment frag
+#include "UnityCG.cginc"
 
-			#include "UnityCG.cginc"
+	struct appdata_t
+	{
+		float4 vertex   : POSITION;
+		float4 color    : COLOR;
+		float2 texcoord : TEXCOORD0;
+	};
 
-			struct vertexInput {
-				float4 vertex : POSITION;
-				float4 texcoord0 : TEXCOORD0;
-			};
+	struct v2f
+	{
+		float4 vertex   : SV_POSITION;
+		fixed4 color : COLOR;
+		half2 texcoord  : TEXCOORD0;
+	};
 
-			struct fragmentInput {
-				float4 position : SV_POSITION;
-				float4 texcoord0 : TEXCOORD0;
-			};
+	fixed4 _Color;
 
-			uniform sampler2D _BlurBuffer;
-			uniform float4 _Color;
+	v2f vert(appdata_t IN)
+	{
+		v2f OUT;
+		OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
 
-			fragmentInput vert(vertexInput i) {
-				fragmentInput o;
-				o.position = mul(UNITY_MATRIX_MVP, i.vertex);
-				o.texcoord0.x = o.position.x * _ScreenParams.z; // 1.0f + (1.0f / Screen.width)
-				o.texcoord0.y = o.position.y * _ScreenParams.w; // 1.0f + (1.0f / Screen.height)
+		OUT.texcoord.x = OUT.vertex.x * _ScreenParams.z; // 1.0f + (1.0f / Screen.width)
+		OUT.texcoord.y = OUT.vertex.y * _ScreenParams.w; // 1.0f + (1.0f / Screen.height)
+		
+		OUT.texcoord.x *= 0.5;
+		OUT.texcoord.x += 0.5;
+		
+		OUT.texcoord.y *= 0.5;
+		OUT.texcoord.y += 0.5;
 
-				o.texcoord0.x *= 0.5;
-				o.texcoord0.x += 0.5;
+#ifdef UNITY_HALF_TEXEL_OFFSET
+		OUT.vertex.xy += (_ScreenParams.zw - 1.0)*float2(-1,1);
+#endif
+		OUT.color = IN.color * _Color;
+		return OUT;
+	}
 
-				o.texcoord0.y *= 0.5;
-				o.texcoord0.y += 0.5;
+	sampler2D _MainTex;
 
-				return o;
-			}
-
-			float4 frag(fragmentInput i) : SV_Target{
-				return tex2D(_BlurBuffer, i.texcoord0.xy) * _Color;
-			}
-
+	fixed4 frag(v2f IN) : SV_Target
+	{
+		half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
+		clip(color.a - 0.01);
+		return color;
+	}
 		ENDCG
-		}
+	}
 	}
 }

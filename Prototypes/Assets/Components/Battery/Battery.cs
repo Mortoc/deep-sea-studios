@@ -22,7 +22,7 @@ namespace DSS
         public override void TurnPowerOff(){}
         public override void TurnPowerOn(){}
 
-        void Awake()
+        public override void Awake()
         {
             base.Awake();
         }

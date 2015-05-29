@@ -30,7 +30,7 @@ GameObject:
   - 4: {fileID: 460402}
   - 20: {fileID: 2005312}
   - 114: {fileID: 11458684}
-  - 114: {fileID: 11405634}
+  - 114: {fileID: 11477592}
   m_Layer: 9
   m_Name: Blurred Scene Camera
   m_TagString: MainCamera
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -.550000012, y: 5.38000011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 425036}
@@ -223,26 +223,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
   m_Enabled: 1
---- !u!114 &11405634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4720afdaf31c7541aa9e3774ba1e4d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: f77f3936ce6ef954682f02ab2e579837, type: 3}
-  center: {x: .5, y: .5}
-  sharpness: 23.1000004
-  darkness: 12.5
-  contrast: 87.0999985
-  redCoeff: .5
-  greenCoeff: .5
-  blueCoeff: .5
-  edge: 0
 --- !u!114 &11423554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,6 +321,41 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   OnlyRotateWhenDragStartsOnObject: 0
+--- !u!114 &11477592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7b16e599ac097438d8293c6feeb1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 66065eb624bb8764392c4831503185d3, type: 3}
+  isRGB: 0
+  inputMinL: 15
+  inputMaxL: 235
+  inputGammaL: 1
+  inputMinR: 0
+  inputMaxR: 255
+  inputGammaR: 1
+  inputMinG: 0
+  inputMaxG: 255
+  inputGammaG: 1
+  inputMinB: 0
+  inputMaxB: 255
+  inputGammaB: 1
+  outputMinL: 0
+  outputMaxL: 255
+  outputMinR: 0
+  outputMaxR: 255
+  outputMinG: 0
+  outputMaxG: 255
+  outputMinB: 0
+  outputMaxB: 255
+  currentChannel: 0
+  logarithmic: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
