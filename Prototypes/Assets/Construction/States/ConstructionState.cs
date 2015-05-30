@@ -14,18 +14,18 @@ namespace DSS.Construction
     {
         [SerializeField]
         private GameObject _constructionScreenGUIPrefab;
-        private GameObject _constructionScreenGUI;
+        private ConstructionUI _constructionScreenGUI;
 
         public override void EnterState()
         {
             base.EnterState();
-            _constructionScreenGUI = Instantiate(_constructionScreenGUIPrefab);
+            _constructionScreenGUI = Instantiate(_constructionScreenGUIPrefab).GetComponent<ConstructionUI>();
         }
 
         public override void ExitState()
         {
             base.ExitState();
-            Destroy(_constructionScreenGUI);
+            Destroy(_constructionScreenGUI.gameObject);
         }
 
     }
