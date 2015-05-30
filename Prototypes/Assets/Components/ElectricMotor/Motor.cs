@@ -17,7 +17,7 @@ namespace DSS
         [SerializeField]
         private AudioClip _runningSound;
 
-        void Awake()
+        public override void Awake()
         {
             base.Awake();
         }

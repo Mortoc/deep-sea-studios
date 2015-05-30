@@ -24,14 +24,23 @@ namespace DSS.States
             {
                 transform.parent = parent.transform;
             }
+
+            foreach (Transform child in transform)
+            {
+                foreach(var state in child.GetComponents<GameState>())
+                {
+                    state.Init(this);
+                    state.gameObject.SetActive(false);
+                }
+            }
 		}
 
-		protected void SetState(GameState state)
+		protected virtual void SetState(GameState state)
 		{
-			if( state.Manager != this ) 
-			{
-				throw new InvalidOperationException("Foreign state");
-			}
+            if( state != null && state.Manager != this )
+            {
+                throw new InvalidOperationException("Cannot go to foreign state");
+            }
 
 			if( ActiveState != null ) 
 			{

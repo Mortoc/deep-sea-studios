@@ -39,7 +39,7 @@ namespace DSS
             }
         }
 
-        void Awake()
+        public override void Awake()
         {
             base.Awake();
             IgnoreAllCollisions(GetComponentsInChildren<Collider>());

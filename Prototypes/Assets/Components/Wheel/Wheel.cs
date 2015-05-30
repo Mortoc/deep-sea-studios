@@ -18,7 +18,7 @@ namespace DSS
         private AudioClip _runningSound;
         private float _originalVolumne;
 
-        void Awake()
+        public override void Awake()
         {
             base.Awake();
 
