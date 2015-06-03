@@ -10,11 +10,11 @@ using DSS.Construction;
 
 namespace DSS.States
 {
-    public class MasterStateManager : GameStateManager
+    public class MasterStateManager : GameState
     {
         public void Start()
         {
-            this.Init("Main State Manager", null);
+            this.Init(null);
             GoToHomeState();
         }
 

@@ -1489,7 +1489,7 @@ GameObject:
   - 4: {fileID: 2000182583}
   - 114: {fileID: 2000182584}
   m_Layer: 0
-  m_Name: GameStateMachine
+  m_Name: GameState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c9d74e8b6197641a59d9aa29528a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveState: {fileID: 0}
   _homeScreenGUIPrefab: {fileID: 131608, guid: 3df8979c923cc9f4980cc6225adfcbe0, type: 2}
 --- !u!1 &2025706589
 GameObject:
@@ -1663,6 +1664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa749305ab25e74d99a2bb9f9c03a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveState: {fileID: 0}
   _constructionScreenGUIPrefab: {fileID: 178602, guid: 21a96574201d4bf4c95101bf1ac5b91e,
     type: 2}
 --- !u!1 &2033886473

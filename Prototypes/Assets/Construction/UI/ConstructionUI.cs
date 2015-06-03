@@ -11,7 +11,7 @@ using DSS.States;
 
 namespace DSS.Construction
 {
-    public class ConstructionUI : GameStateManager
+    public class ConstructionUI : GameState
     {
         [SerializeField]
         private float _fadeOutTime = 0.2f;

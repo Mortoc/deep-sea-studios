@@ -44,13 +44,13 @@ namespace DSS.States.Test
             }
         }
 
-        private GameStateManager _gsm;
+        private GameState _gsm;
 
         [SetUp]
         public void Init()
         {
             var gsmObj = new GameObject("Test GameStateManager");
-            _gsm = gsmObj.AddComponent<GameStateManager>();
+            _gsm = gsmObj.AddComponent<GameState>();
         }
 
         [TearDown]

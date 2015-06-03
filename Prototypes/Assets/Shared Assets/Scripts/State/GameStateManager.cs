@@ -6,19 +6,17 @@ using System.Collections.Generic;
 
 namespace DSS.States
 {
-	public class GameStateManager : MonoBehaviour
+	public class GameState : MonoBehaviour
 	{
-		public string Name { get; private set; }
-		public GameStateManager Parent { get; private set; }
+		public GameState Parent { get; private set; }
 
         [SerializeField]
 		public GameState ActiveState;
 
         public event Action<GameState> StateTransition;
 
-		public virtual void Init(string name, GameStateManager parent)
+		public virtual void Init(GameState parent)
 		{
-			Name = name;
 			Parent = parent;
             if (parent != null)
             {
@@ -35,9 +33,22 @@ namespace DSS.States
             }
 		}
 
-		protected virtual void SetState(GameState state)
+        public event Action EnteredState;
+        public event Action ExitedState;
+
+        public virtual void EnterState()
+        {
+            if (EnteredState != null) EnteredState();
+        }
+
+        public virtual void ExitState()
+        {
+            if (ExitedState != null) ExitedState();
+        }
+
+        protected virtual void SetState(GameState state)
 		{
-            if( state != null && state.Manager != this )
+            if( state != null && state.Parent != this )
             {
                 throw new InvalidOperationException("Cannot go to foreign state");
             }
@@ -58,15 +69,7 @@ namespace DSS.States
 
             if (StateTransition != null) StateTransition(ActiveState);
 		}
-
-        public T CreateSubManager<T>(string name) where T : GameStateManager
-        {
-            var managerObj = new GameObject(name);
-            var manager = managerObj.AddComponent<T>();
-            manager.Init(name, this);
-            return manager;
-        }
-
+        
         public T TransitionToState<T>() where T : GameState
         {
             var state = default(T);
