@@ -28,10 +28,10 @@ namespace DSS.Construction
         {
             base.EnterState();
 
-            TransitionToState<NoToolSelected>();
-
             _constructionScreenGUI = Instantiate(_constructionScreenGUIPrefab).GetComponent<ConstructionUI>();
             _constructionScreenGUI.Init(this);
+            
+            TransitionToState<NoToolSelected>();
         }
 
         public override void ExitState()

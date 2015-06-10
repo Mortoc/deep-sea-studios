@@ -33,7 +33,6 @@ namespace DSS.Construction
         public void Init(ConstructionState state)
         {
             _state = state;
-            ShowToolUI(_state.ActiveTool);
             GetComponentInChildren<ConstructionBackButton>().Init(state);
         }
 
