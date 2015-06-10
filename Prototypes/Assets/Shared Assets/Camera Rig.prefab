@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11469182}
   - 114: {fileID: 11473260}
   - 114: {fileID: 11462814}
+  - 114: {fileID: 11494226}
   m_Layer: 9
   m_Name: Scene Render Camera
   m_TagString: Untagged
@@ -48,6 +49,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446480}
+  - 114: {fileID: 11459908}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: Untagged
@@ -65,7 +67,7 @@ GameObject:
   - 4: {fileID: 461558}
   - 20: {fileID: 2037528}
   m_Layer: 9
-  m_Name: Main Camera
+  m_Name: Final Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,6 +280,18 @@ MonoBehaviour:
   blurIterations: 3
   blurType: 0
   blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
+--- !u!114 &11459908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7701b6d97ea2ef43b50894ffda45e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneCamera: {fileID: 2094972}
 --- !u!114 &11462814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +402,25 @@ MonoBehaviour:
   outputMaxB: 255
   currentChannel: 0
   logarithmic: 1
+--- !u!114 &11494226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf945d278a7402a4cb9cd26aec5c0fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cameras:
+  - {fileID: 2094972}
+  IgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  RayThickness: 0
+  VisualizeRaycasts: 1
+  UsePhysics2D: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

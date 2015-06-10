@@ -18,6 +18,8 @@ namespace DSS.Construction
 
         private EditableStructureVolume _volume;
         private int _structureIndex;
+        private ScreenRaycaster _raycaster;
+        private TapRecognizer _tapRecognizer;
 
         public void Init(EditableStructureVolume volume, int structureIndex)
         {
@@ -30,20 +32,28 @@ namespace DSS.Construction
             }
 
             _normalMaterial = GetComponent<Renderer>().material;
+
+            _tapRecognizer = GetComponent<TapRecognizer>();
+            _raycaster = FindObjectOfType<ScreenRaycaster>();
+            _tapRecognizer.Raycaster = _raycaster;
         }
 
         public void OnHoverStart()
         {
             GetComponent<Renderer>().material = _hoverMaterial;
         }
+
         public void OnHoverEnd()
         {
             GetComponent<Renderer>().material = _normalMaterial;
         }
 
-        //public void OnMouseUpAsButton()
-        //{
-        //    _volume.AddStructure(_structureIndex);
-        //}
+        void OnTap(TapGesture gesture)
+        {
+            if (gesture.Selection == gameObject)
+            {
+                _volume.AddStructure(_structureIndex);
+            }
+        }
     }
 }

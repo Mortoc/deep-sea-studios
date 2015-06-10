@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3380054}
   - 23: {fileID: 2321552}
   - 114: {fileID: 11459668}
+  - 114: {fileID: 11420346}
   m_Layer: 11
   m_Name: volume_indicator
   m_TagString: Untagged
@@ -61,6 +62,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162604}
   m_Mesh: {fileID: 4300000, guid: de2b59bd269cbde45951ac22e6f91826, type: 3}
+--- !u!114 &11420346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407289a35f3c592419f607d117d413c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredFingerCount: 1
+  DistanceUnit: 2
+  MaxSimultaneousGestures: 1
+  ResetMode: 2
+  Raycaster: {fileID: 0}
+  ClusterManager: {fileID: 0}
+  Delegate: {fileID: 0}
+  UseSendMessage: 1
+  EventMessageName: OnTap
+  EventMessageTarget: {fileID: 162604}
+  SendMessageToSelection: 0
+  IsExclusive: 1
+  RequiredTaps: 1
+  MoveTolerance: .5
+  MaxDuration: 0
+  MaxDelayBetweenTaps: .5
 --- !u!114 &11459668
 MonoBehaviour:
   m_ObjectHideFlags: 1

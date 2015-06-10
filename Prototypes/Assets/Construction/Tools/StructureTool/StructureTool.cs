@@ -102,7 +102,9 @@ namespace DSS.Construction
             if( !_editVolume )
             {
                 var editVolumeObj = new GameObject("StructureVolume");
-                editVolumeObj.transform.position = Vector3.zero;
+
+                var cameraRig = FindObjectOfType<CameraRig>();
+                editVolumeObj.transform.position = cameraRig.Target.position;
                 editVolumeObj.transform.rotation = Quaternion.identity;
                 editVolumeObj.transform.localScale = Vector3.one;
 
@@ -115,6 +117,12 @@ namespace DSS.Construction
         {
             base.ExitState();
             GameObject.DestroyImmediate(_editVolume.gameObject);
+        }
+
+        public override void BackButtonAction()
+        {
+            base.BackButtonAction();
+
         }
     }
 }

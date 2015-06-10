@@ -69,7 +69,7 @@ namespace DSS.Construction
         private GameObject _structureRoot;
         private int _editableStructureLayer;
 
-        void Start()
+        void Awake()
         {
             _editableStructureLayer = LayerMask.NameToLayer("EditableStructure");
         }
@@ -108,7 +108,7 @@ namespace DSS.Construction
             var position = new Vector3
             (
                 _tilesetSize.size.x * MAX_WIDTH * -0.5f,
-                _tilesetSize.size.y * 0.5f,
+                _tilesetSize.size.y * MAX_HEIGHT * -0.5f,
                 _tilesetSize.size.z * MAX_DEPTH * -0.5f
             );
 
@@ -146,7 +146,7 @@ namespace DSS.Construction
                     {
                         var structure = Instantiate<GameObject>(variant.Prefab);
                         structure.name += " " + variant.Variation;
-                        structure.transform.parent = _structureRoot.transform;
+                        structure.transform.SetParent(_structureRoot.transform);
                         structure.transform.localPosition = IToLocalPosition(i);
                         structure.transform.localRotation = variant.Rotation;
                         structure.transform.localScale = Vector3.one;
