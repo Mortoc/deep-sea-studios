@@ -10,7 +10,7 @@ using DSS.UI;
 
 namespace DSS
 {
-    public class Plug : MonoBehaviour, IHoverable, ISelectable
+    public class Plug : MonoBehaviour
     {
         [SerializeField]
         private int _maxSiblings = 2;

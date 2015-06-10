@@ -32,10 +32,9 @@ namespace DSS.Construction
             get { return _allStructures.Values; }
         }
 
-        private void Start()
+        private void Awake()
         {
             ToolMask = 1 << LayerMask.NameToLayer("EditableStructure");
-            MaxHovers = 1;
         }
 
         private void CalculateAllPartRotations()
@@ -90,18 +89,10 @@ namespace DSS.Construction
             }
             return result;
         }
-        
-        void Update()
-        {
-            if( Selected )
-            {
-                this.UpdateHoverStates();
-            }
-        }
 
-        public override void OnSelect()
+        public override void EnterState()
         {
-            base.OnSelect();
+            base.EnterState();
 
             if (_allStructures == null || _allStructures.Count() == 0)
             {
@@ -120,9 +111,9 @@ namespace DSS.Construction
             }
         }
 
-        public override void OnDeselect()
+        public override void ExitState()
         {
-            base.OnDeselect();
+            base.ExitState();
             GameObject.DestroyImmediate(_editVolume.gameObject);
         }
     }

@@ -11,97 +11,35 @@ using DSS.States;
 
 namespace DSS.Construction
 {
-    public class ConstructionUI : GameState
+    public class ConstructionUI : MonoBehaviour
     {
-        [SerializeField]
-        private float _fadeOutTime = 0.2f;
+        private ConstructionState _state;
+        private GameObject _currentToolUI = null;
 
-        [SerializeField]
-        private float _fadeInTime = 0.1f;
-
-        [SerializeField]
-        public GameObject _structureSelectionEffect;
-
-        [SerializeField]
-        public GameObject _componentSelectionEffect;
-
-        [SerializeField]
-        public GameObject _robotHeadSelectionEffect;
-
-        [SerializeField]
-        public GameObject _deleteButtonSelectionEffect;
-
-        public IEnumerator FadeOutSelection(GameObject ui)
+        public void ShowToolUI(ConstructionTool tool)
         {
-            if( !ui.activeSelf )
+            if (_currentToolUI)
             {
-                yield break;
+                Destroy(_currentToolUI);
             }
 
-            var image = ui.GetComponentInChildren<Image>();
-            var invFloatTime = 1.0f / _fadeOutTime;
-            for(var t = 0.0f; t < _fadeOutTime; t += Time.deltaTime)
+            if(tool.UIPrefab)
             {
-                var color = image.color;
-                color.a = 1.0f - t * invFloatTime;
-                image.color = color;
-                yield return 0;
+                _currentToolUI = Instantiate<GameObject>(tool.UIPrefab);
+                _currentToolUI.transform.SetParent(transform);
             }
-
-            ui.SetActive(false);
         }
 
-        public IEnumerator FadeInSelection(GameObject ui)
+        public void Init(ConstructionState state)
         {
-            ui.SetActive(true);
-
-            var image = ui.GetComponentInChildren<Image>();
-            var invFloatTime = 1.0f / _fadeInTime;
-            var color = image.color;
-            for (var t = 0.0f; t < _fadeInTime; t += Time.deltaTime)
-            {
-                color.a = t * invFloatTime;
-                image.color = color;
-                yield return 0;
-            }
-            
-            color.a = 1.0f;
-            image.color = color;
-        }
-
-        private void DeactivateAll()
-        {
-            StartCoroutine(FadeOutSelection(_structureSelectionEffect));
-            StartCoroutine(FadeOutSelection(_componentSelectionEffect));
-            StartCoroutine(FadeOutSelection(_robotHeadSelectionEffect));
-            StartCoroutine(FadeOutSelection(_deleteButtonSelectionEffect));
+            _state = state;
+            ShowToolUI(_state.ActiveTool);
+            GetComponentInChildren<ConstructionBackButton>().Init(state);
         }
 
         public void StructureSelected()
         {
-            DeactivateAll();
-            StartCoroutine(FadeInSelection(_structureSelectionEffect));
-
-        }
-
-        public void ComponentSelected()
-        {
-            DeactivateAll();
-            StartCoroutine(FadeInSelection(_componentSelectionEffect));
-
-        }
-
-        public void RobotHeadSelected()
-        {
-            DeactivateAll();
-            StartCoroutine(FadeInSelection(_robotHeadSelectionEffect));
-        }
-
-        public void DeleteSelected()
-        {
-            DeactivateAll();
-            StartCoroutine(FadeInSelection(_deleteButtonSelectionEffect));
-
+            _state.TransitionToState<StructureTool>();
         }
     }
 }

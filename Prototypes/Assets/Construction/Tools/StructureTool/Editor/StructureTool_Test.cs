@@ -130,12 +130,12 @@ namespace DSS.Construction.UnitTests
             };
 
             // generate all the rotation variants of the initial prefabs
-            _tool.OnSelect();
+            _tool.EnterState();
         }
 
         public void Dispose()
         {
-            _tool.OnDeselect();
+            _tool.ExitState();
             GameObject.DestroyImmediate(_tool.gameObject);
             GameObject.DestroyImmediate(_structurePrefabMock);
         }

@@ -23,15 +23,15 @@ namespace DSS.Construction
             ToolMask = 1 << LayerMask.NameToLayer("Plug");
         }
 
-        public override void OnSelect()
+        public override void EnterState()
         {
-            base.OnSelect();
+            base.EnterState();
             _toolExecutionLoop = StartCoroutine(DoWiring());
         }
 
-        public override void OnDeselect()
+        public override void ExitState()
         {
-            base.OnDeselect();
+            base.ExitState();
             StopCoroutine(_toolExecutionLoop);
             if (_currentSelection)
             {
@@ -68,7 +68,7 @@ namespace DSS.Construction
             {
                 yield return 0;
                 var sceneRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-                UpdateHoverStates(sceneRay);
+                //UpdateHoverStates(sceneRay);
 
                 if (Input.GetMouseButtonDown(0))
                 {

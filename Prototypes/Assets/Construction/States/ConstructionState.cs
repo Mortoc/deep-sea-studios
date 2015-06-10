@@ -16,10 +16,22 @@ namespace DSS.Construction
         private GameObject _constructionScreenGUIPrefab;
         private ConstructionUI _constructionScreenGUI;
 
+        public ConstructionTool ActiveTool
+        {
+            get
+            {
+                return this.ActiveState as ConstructionTool;
+            } 
+        }
+
         public override void EnterState()
         {
             base.EnterState();
+
+            TransitionToState<NoToolSelected>();
+
             _constructionScreenGUI = Instantiate(_constructionScreenGUIPrefab).GetComponent<ConstructionUI>();
+            _constructionScreenGUI.Init(this);
         }
 
         public override void ExitState()

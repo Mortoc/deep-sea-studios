@@ -10,7 +10,7 @@ using DSS.UI;
 
 namespace DSS.Construction
 {
-    public class EditableStructureHandle : MonoBehaviour, IHoverable
+    public class EditableStructureHandle : MonoBehaviour
     {
         [SerializeField]
         private Material _hoverMaterial;
@@ -41,9 +41,9 @@ namespace DSS.Construction
             GetComponent<Renderer>().material = _normalMaterial;
         }
 
-        public void OnMouseUpAsButton()
-        {
-            _volume.AddStructure(_structureIndex);
-        }
+        //public void OnMouseUpAsButton()
+        //{
+        //    _volume.AddStructure(_structureIndex);
+        //}
     }
 }
