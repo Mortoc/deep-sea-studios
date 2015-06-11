@@ -184,7 +184,7 @@ namespace UnityTest
             if( !UnityEditorInternal.InternalEditorUtility.inBatchMode ) 
                 position = new Rect(position.xMin, position.yMin, 300, 100);
 
-            titleContent = new GUIContent("Test run monitor");
+            //titleContent = new GUIContent("Test run monitor");
 
             Instance = this;
             m_StatusLabel = "Initializing...";
