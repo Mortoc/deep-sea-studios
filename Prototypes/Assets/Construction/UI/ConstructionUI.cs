@@ -27,6 +27,7 @@ namespace DSS.Construction
             {
                 _currentToolUI = Instantiate<GameObject>(tool.UIPrefab);
                 _currentToolUI.transform.SetParent(transform);
+                _currentToolUI.GetComponentInChildren<Canvas>().overrideSorting = true;
             }
         }
 

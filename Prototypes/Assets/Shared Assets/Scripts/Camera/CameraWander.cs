@@ -28,8 +28,7 @@ namespace DSS
         {
             var timeSpeed = Time.time * _tiltSpeed;
             var yawModifier = Mathf.Lerp(-1.0f, 1.0f, Mathf.PerlinNoise(timeSpeed, 0.0f)) * _tiltStrength;
-            var pitchModifier = Mathf.Lerp(-1.0f, 1.0f, Mathf.PerlinNoise(0.0f, timeSpeed)) * _tiltStrength;
-            
+
             _orbit.IdealPitch = _orbit.IdealPitch + yawModifier;
             _orbit.IdealYaw = _orbit.IdealYaw + yawModifier;
         }

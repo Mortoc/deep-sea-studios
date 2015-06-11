@@ -72,7 +72,7 @@ public class ScreenRaycaster : MonoBehaviour
             // dont raycast from disabled cams
             if( !cam || !cam.enabled )
                 continue;
-
+            
 #if UNITY_3_5
             if( !cam.gameObject.active )
                 continue;
@@ -91,6 +91,12 @@ public class ScreenRaycaster : MonoBehaviour
 
     bool Raycast( Camera cam, Vector2 screenPos, out ScreenRaycastData hitData )
     {
+        if (cam.targetTexture)
+        {
+            screenPos.x *= (float)cam.targetTexture.width / (float)Screen.width;
+            screenPos.y *= (float)cam.targetTexture.height / (float)Screen.height;
+        }
+
         Ray ray = cam.ScreenPointToRay( screenPos );
         bool didHit = false;
 
