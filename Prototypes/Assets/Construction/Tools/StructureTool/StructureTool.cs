@@ -121,8 +121,6 @@ namespace DSS.Construction
             newObj.GetComponent<Rigidbody>().AddTorque(Rand.onUnitSphere, ForceMode.Impulse);
 
             GameObject.DestroyImmediate(_editVolume.gameObject);
-
-            Debug.Break();
         }
 
         public override void BackButtonAction()
