@@ -4,7 +4,7 @@ Shader "DSS/GUI/Blur GUI Texture"
 	Properties
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
-	_Color("Tint", Color) = (1,1,1,1)
+		_Color("Tint", Color) = (1,1,1,1)
 
 		_StencilComp("Stencil Comparison", Float) = 8
 		_Stencil("Stencil ID", Float) = 0
@@ -72,10 +72,10 @@ Shader "DSS/GUI/Blur GUI Texture"
 
 		OUT.texcoord.x = OUT.vertex.x * _ScreenParams.z; // 1.0f + (1.0f / Screen.width)
 		OUT.texcoord.y = OUT.vertex.y * _ScreenParams.w; // 1.0f + (1.0f / Screen.height)
-		
+
 		OUT.texcoord.x *= 0.5;
 		OUT.texcoord.x += 0.5;
-		
+
 		OUT.texcoord.y *= 0.5;
 		OUT.texcoord.y += 0.5;
 

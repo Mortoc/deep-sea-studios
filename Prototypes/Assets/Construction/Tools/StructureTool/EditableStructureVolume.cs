@@ -8,55 +8,6 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-    public struct Vector3i
-    {
-        public static readonly Vector3i zero = new Vector3i(0, 0, 0);
-
-        public static readonly Vector3i up = new Vector3i(0, 1, 0);
-        public static readonly Vector3i down = new Vector3i(0, -1, 0);
-
-        public static readonly Vector3i left = new Vector3i(-1, 0, 0);
-        public static readonly Vector3i right = new Vector3i(1, 0, 0);
-
-        public static readonly Vector3i forward = new Vector3i(0, 0, 1);
-        public static readonly Vector3i backward = new Vector3i(0, 0, -1);
-        
-        public int x;
-        public int y;
-        public int z;
-
-        public Vector3i(int x_, int y_, int z_)
-        {
-            x = x_;
-            y = y_;
-            z = z_;
-        }
-
-        public override string ToString()
-        {
-            return String.Format("({0}, {1}, {2})", x, y, z);
-        }
-
-        public static Vector3i operator + (Vector3i a, Vector3i b)
-        {
-            return new Vector3i()
-            {
-                x = a.x + b.x,
-                y = a.y + b.y,
-                z = a.z + b.z
-            };
-        }
-        public static Vector3i operator - (Vector3i a, Vector3i b)
-        {
-            return new Vector3i()
-            {
-                x = a.x - b.x,
-                y = a.y - b.y,
-                z = a.z - b.z
-            };
-        }
-    }
-
     public class EditableStructureVolume : MonoBehaviour
     {
         public static readonly int MAX_WIDTH = 16;
@@ -313,6 +264,53 @@ namespace DSS.Construction
             _tool = tool;
             CalculateTilesetSize();
             SetToDefault();
+        }
+
+        private static readonly float s_weightPerElement = 1.0f;
+        public GameObject BakeToObject()
+        {
+            var structureElements = _structureRoot.GetComponentsInChildren<MeshFilter>();
+            if (structureElements.Length == 0)
+            {
+                throw new InvalidOperationException("No structure exists to be baked");
+            }
+
+            var newStructure = _structureRoot;
+            var position = newStructure.transform.position;
+            newStructure.transform.position = Vector3.zero;
+            newStructure.transform.SetParent(null);
+
+            GameObject.DestroyImmediate(_handleRoot);
+            _handleRoot = null;
+
+            var structureMeshRenderer = newStructure.AddComponent<MeshRenderer>();
+            var structureMeshFilter = newStructure.AddComponent<MeshFilter>();
+            var rb = newStructure.AddComponent<Rigidbody>();
+            rb.mass = 0.0f;
+            
+            structureMeshRenderer.sharedMaterial = structureElements[0].GetComponent<Renderer>().sharedMaterial;
+
+            var combineInstances = new CombineInstance[structureElements.Length];
+
+            for(var i = 0; i < combineInstances.Length; ++i)
+            {
+                combineInstances[i] = new CombineInstance();
+                combineInstances[i].mesh = structureElements[i].mesh;
+                combineInstances[i].transform = structureElements[i].transform.localToWorldMatrix;
+
+                Destroy(structureElements[i].GetComponent<Renderer>());
+                Destroy(structureElements[i].GetComponent<MeshFilter>());
+
+                rb.mass += s_weightPerElement;
+            }
+
+            structureMeshFilter.mesh = new Mesh();
+            structureMeshFilter.mesh.CombineMeshes(combineInstances, true);
+            newStructure.transform.position = position;
+
+            _structureRoot = null;
+
+            return newStructure;
         }
     }
 }

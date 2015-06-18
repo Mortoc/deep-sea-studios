@@ -116,7 +116,13 @@ namespace DSS.Construction
         public override void ExitState()
         {
             base.ExitState();
+
+            var newObj = _editVolume.BakeToObject();
+            newObj.GetComponent<Rigidbody>().AddTorque(Rand.onUnitSphere, ForceMode.Impulse);
+
             GameObject.DestroyImmediate(_editVolume.gameObject);
+
+            Debug.Break();
         }
 
         public override void BackButtonAction()
