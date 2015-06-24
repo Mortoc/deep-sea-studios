@@ -661,8 +661,7 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -734,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 812ca809d676458439a3ce986b3431ce, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .617647052, g: .617647052, b: .617647052, a: 1}
   m_Texture: {fileID: 8400000, guid: 48bbfe7ee01a9d04a8a7a562332044a7, type: 2}
   m_UVRect:
     serializedVersion: 2
@@ -775,7 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 812ca809d676458439a3ce986b3431ce, type: 2}
-  m_Color: {r: .860294104, g: .860294104, b: .860294104, a: 1}
+  m_Color: {r: .617647052, g: .617647052, b: .617647052, a: 1}
   m_Texture: {fileID: 8400000, guid: 48bbfe7ee01a9d04a8a7a562332044a7, type: 2}
   m_UVRect:
     serializedVersion: 2
@@ -877,7 +876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 812ca809d676458439a3ce986b3431ce, type: 2}
-  m_Color: {r: .860294104, g: .860294104, b: .860294104, a: 1}
+  m_Color: {r: .617647052, g: .617647052, b: .617647052, a: 1}
   m_Texture: {fileID: 8400000, guid: 48bbfe7ee01a9d04a8a7a562332044a7, type: 2}
   m_UVRect:
     serializedVersion: 2
@@ -913,7 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 812ca809d676458439a3ce986b3431ce, type: 2}
-  m_Color: {r: .860294104, g: .860294104, b: .860294104, a: 1}
+  m_Color: {r: .617647052, g: .617647052, b: .617647052, a: 1}
   m_Texture: {fileID: 8400000, guid: 48bbfe7ee01a9d04a8a7a562332044a7, type: 2}
   m_UVRect:
     serializedVersion: 2
@@ -1175,7 +1174,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: -5}
+  m_AnchoredPosition: {x: 1, y: -1}
   m_SizeDelta: {x: 45, y: 12}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22451534
@@ -1210,7 +1209,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14.5, y: 14.5}
+  m_AnchoredPosition: {x: 11.5, y: 11.5}
   m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22457278
@@ -1282,7 +1281,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5, y: 5}
+  m_AnchoredPosition: {x: 2, y: 2}
   m_SizeDelta: {x: 11, y: 11}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22465792
@@ -1319,7 +1318,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: -5}
+  m_AnchoredPosition: {x: -1, y: -1}
   m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &22474020
@@ -1339,7 +1338,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: -11}
+  m_AnchoredPosition: {x: -1, y: -7}
   m_SizeDelta: {x: 30, y: 5}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &22474468

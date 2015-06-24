@@ -49,51 +49,52 @@ Shader "DSS/GUI/Blur GUI Texture"
 #pragma fragment frag
 #include "UnityCG.cginc"
 
-	struct appdata_t
-	{
-		float4 vertex   : POSITION;
-		float4 color    : COLOR;
-		float2 texcoord : TEXCOORD0;
-	};
+		struct appdata_t
+		{
+			float4 vertex   : POSITION;
+			float4 color    : COLOR;
+			float2 texcoord : TEXCOORD0;
+		};
 
-	struct v2f
-	{
-		float4 vertex   : SV_POSITION;
-		fixed4 color : COLOR;
-		half2 texcoord  : TEXCOORD0;
-	};
+		struct v2f
+		{
+			float4 vertex   : SV_POSITION;
+			fixed4 color : COLOR;
+			half2 texcoord  : TEXCOORD0;
+		};
 
-	fixed4 _Color;
+		fixed4 _Color;
 
-	v2f vert(appdata_t IN)
-	{
-		v2f OUT;
-		OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+		v2f vert(appdata_t IN)
+		{
+			v2f OUT;
+			OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
 
-		OUT.texcoord.x = OUT.vertex.x * _ScreenParams.z; // 1.0f + (1.0f / Screen.width)
-		OUT.texcoord.y = OUT.vertex.y * _ScreenParams.w; // 1.0f + (1.0f / Screen.height)
+			OUT.texcoord.x = OUT.vertex.x * _ScreenParams.z; // 1.0f + (1.0f / Screen.width)
+			OUT.texcoord.y = OUT.vertex.y * _ScreenParams.w; // 1.0f + (1.0f / Screen.height)
 
-		OUT.texcoord.x *= 0.5;
-		OUT.texcoord.x += 0.5;
+			OUT.texcoord.x *= 0.5;
+			OUT.texcoord.x += 0.5;
 
-		OUT.texcoord.y *= 0.5;
-		OUT.texcoord.y += 0.5;
+			OUT.texcoord.y *= 0.5;
+			OUT.texcoord.y += 0.5;
 
-#ifdef UNITY_HALF_TEXEL_OFFSET
-		OUT.vertex.xy += (_ScreenParams.zw - 1.0)*float2(-1,1);
-#endif
-		OUT.color = IN.color * _Color;
-		return OUT;
-	}
+		#ifdef UNITY_HALF_TEXEL_OFFSET
+			OUT.vertex.xy += (_ScreenParams.zw - 1.0)*float2(-1,1);
+		#endif
+			OUT.color = IN.color * _Color;
+			return OUT;
+		}
 
-	sampler2D _MainTex;
+		sampler2D _MainTex;
 
-	fixed4 frag(v2f IN) : SV_Target
-	{
-		half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
-		clip(color.a - 0.01);
-		return color;
-	}
+		fixed4 frag(v2f IN) : SV_Target
+		{
+			half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
+			clip(color.a - 0.01);
+			color.a = 1.0;
+			return color;
+		}
 		ENDCG
 	}
 	}
