@@ -9,8 +9,10 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
+
     public class StructureTool : ConstructionTool
     {
+        public GameObject LastBakedStructure { get; private set; }
         public StructureVariant[] _prefabs;
         public IEnumerable<StructureVariant> InitialVariants
         {
@@ -117,8 +119,8 @@ namespace DSS.Construction
         {
             base.ExitState();
 
-            var newObj = _editVolume.BakeToObject();
-            newObj.GetComponent<Rigidbody>().AddTorque(Rand.onUnitSphere, ForceMode.Impulse);
+            LastBakedStructure = _editVolume.BakeToObject();
+            LastBakedStructure.GetComponent<Rigidbody>().AddTorque(Rand.onUnitSphere, ForceMode.Impulse);
 
             GameObject.DestroyImmediate(_editVolume.gameObject);
         }

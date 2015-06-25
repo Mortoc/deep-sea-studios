@@ -19,7 +19,11 @@ namespace DSS.Construction
         public override void EnterState()
         {
             base.EnterState();
-            FindObjectOfType<ConstructionUI>().ShowToolUI(this);
+            var ui = FindObjectOfType<ConstructionUI>();
+            if (ui)
+            {
+                ui.ShowToolUI(this);
+            }
         }
 
         public virtual void BackButtonAction()

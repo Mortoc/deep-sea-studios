@@ -136,6 +136,7 @@ namespace DSS.Construction.UnitTests
         public void Dispose()
         {
             _tool.ExitState();
+            GameObject.DestroyImmediate(_tool.LastBakedStructure);
             GameObject.DestroyImmediate(_tool.gameObject);
             GameObject.DestroyImmediate(_structurePrefabMock);
         }

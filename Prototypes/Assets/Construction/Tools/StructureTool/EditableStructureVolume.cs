@@ -8,12 +8,6 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-    public interface ICommand
-    {
-        void Do();
-        void Undo();
-    }
-
     public class EditableStructureVolume : MonoBehaviour
     {
         public class Put : ICommand
@@ -45,7 +39,7 @@ namespace DSS.Construction
         }
 
         private bool[] _structure = new bool[MAX_WIDTH * MAX_HEIGHT * MAX_DEPTH];
-        
+
         public static int XYZToI(Vector3i vec)
         {
             return XYZToI(vec.x, vec.y, vec.z);
@@ -59,7 +53,7 @@ namespace DSS.Construction
         public static Vector3i IToXYZ(int i)
         {
             var heightStep = MAX_WIDTH * MAX_HEIGHT;
-            
+
             var y = i / heightStep;
             var iAfterHeight = i - (y * heightStep);
             var x = iAfterHeight / MAX_WIDTH;
@@ -96,7 +90,7 @@ namespace DSS.Construction
 
         private void GenerateMesh()
         {
-            if( _structureRoot )
+            if (_structureRoot)
             {
                 GameObject.DestroyImmediate(_structureRoot);
             }
@@ -106,9 +100,9 @@ namespace DSS.Construction
             _structureRoot.transform.localRotation = Quaternion.identity;
             _structureRoot.transform.localScale = Vector3.one;
 
-            for(var i = 0; i < _structure.Length; ++i)
+            for (var i = 0; i < _structure.Length; ++i)
             {
-                if( _structure[i] )
+                if (_structure[i])
                 {
                     var connectivity = GetNeighbors(i);
                     var variant = _tool.GetPrefabForOrientation(connectivity);
@@ -147,7 +141,7 @@ namespace DSS.Construction
             Action<int> placeHandle = i =>
             {
                 GameObject handleObj;
-                if( !handlesPlaced.TryGetValue(i, out handleObj) )
+                if (!handlesPlaced.TryGetValue(i, out handleObj))
                 {
                     handleObj = Instantiate<GameObject>(_tool.VolumeIndicatorPrefab);
                     handleObj.name = String.Format("Handle {0}", IToXYZ(i));
@@ -159,9 +153,9 @@ namespace DSS.Construction
                     handlesPlaced[i] = handleObj;
                 }
             };
-            for(var i = 0; i < _structure.Length; ++i)
+            for (var i = 0; i < _structure.Length; ++i)
             {
-                if( _structure[i] )
+                if (_structure[i])
                 {
                     var structurePos = IToXYZ(i);
                     var connectivity = GetNeighbors(i);
@@ -169,7 +163,7 @@ namespace DSS.Construction
                     {
                         placeHandle(XYZToI(structurePos + Vector3i.up));
                     }
-                    if( !connectivity[1] && structurePos.y > 0)
+                    if (!connectivity[1] && structurePos.y > 0)
                     {
                         placeHandle(XYZToI(structurePos + Vector3i.down));
                     }
@@ -225,7 +219,7 @@ namespace DSS.Construction
             var defPos = new Vector3i(MAX_WIDTH / 2, MAX_HEIGHT / 2, MAX_DEPTH / 2);
 
             _structure[XYZToI(defPos)] = true;
-            
+
             GenerateMesh();
             GenerateHandles();
         }
@@ -306,25 +300,25 @@ namespace DSS.Construction
             var structureMeshFilter = newStructure.AddComponent<MeshFilter>();
             var rb = newStructure.AddComponent<Rigidbody>();
             rb.mass = 0.0f;
-            
+
             structureMeshRenderer.sharedMaterial = structureElements[0].GetComponent<Renderer>().sharedMaterial;
 
             var combineInstances = new CombineInstance[structureElements.Length];
 
-            for(var i = 0; i < combineInstances.Length; ++i)
+            for (var i = 0; i < combineInstances.Length; ++i)
             {
                 combineInstances[i] = new CombineInstance();
-                combineInstances[i].mesh = structureElements[i].mesh;
+                combineInstances[i].mesh = structureElements[i].sharedMesh;
                 combineInstances[i].transform = structureElements[i].transform.localToWorldMatrix;
 
-                Destroy(structureElements[i].GetComponent<Renderer>());
-                Destroy(structureElements[i].GetComponent<MeshFilter>());
+                DestroyImmediate(structureElements[i].GetComponent<Renderer>());
+                DestroyImmediate(structureElements[i].GetComponent<MeshFilter>());
 
                 rb.mass += s_weightPerElement;
             }
 
-            structureMeshFilter.mesh = new Mesh();
-            structureMeshFilter.mesh.CombineMeshes(combineInstances, true);
+            structureMeshFilter.sharedMesh = new Mesh();
+            structureMeshFilter.sharedMesh.CombineMeshes(combineInstances, true);
             newStructure.transform.position = position;
 
             _structureRoot = null;
