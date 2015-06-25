@@ -8,8 +8,10 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-    public class DefaultConstructionToolbarUI : MonoBehaviour
+    public class DefaultConstructionToolbarUI : ConstructionToolbarUI
     {
+        public override void Init(ConstructionTool tool) {}
+
         public void StructureSelected()
         {
             FindObjectOfType<ConstructionUI>().StructureSelected();

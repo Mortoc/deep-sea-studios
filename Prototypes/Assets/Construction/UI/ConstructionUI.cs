@@ -11,6 +11,12 @@ using DSS.States;
 
 namespace DSS.Construction
 {
+
+    public abstract class ConstructionToolbarUI : MonoBehaviour
+    {
+        public abstract void Init(ConstructionTool tool);
+    }
+
     public class ConstructionUI : MonoBehaviour
     {
         private ConstructionState _state;
@@ -28,6 +34,8 @@ namespace DSS.Construction
                 _currentToolUI = Instantiate<GameObject>(tool.UIPrefab);
                 _currentToolUI.transform.SetParent(transform);
                 _currentToolUI.GetComponentInChildren<Canvas>().overrideSorting = true;
+
+                _currentToolUI.GetComponentInChildren<ConstructionToolbarUI>().Init(tool);
             }
         }
 

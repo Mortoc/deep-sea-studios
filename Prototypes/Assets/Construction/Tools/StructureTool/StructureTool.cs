@@ -9,9 +9,14 @@ using Rand = UnityEngine.Random;
 
 namespace DSS.Construction
 {
-
     public class StructureTool : ConstructionTool
     {
+        private UndoBuffer _undoBuffer;
+        public UndoBuffer CommandBuffer
+        {
+            get { return _undoBuffer; }
+        }
+
         public GameObject LastBakedStructure { get; private set; }
         public StructureVariant[] _prefabs;
         public IEnumerable<StructureVariant> InitialVariants
@@ -95,6 +100,8 @@ namespace DSS.Construction
         public override void EnterState()
         {
             base.EnterState();
+
+             _undoBuffer = new UndoBuffer();
 
             if (_allStructures == null || _allStructures.Count() == 0)
             {

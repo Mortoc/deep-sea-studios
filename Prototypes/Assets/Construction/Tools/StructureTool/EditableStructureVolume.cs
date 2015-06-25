@@ -224,15 +224,27 @@ namespace DSS.Construction
             GenerateHandles();
         }
 
-        public void AddStructure(int i)
+        private void SetStructure(int i, bool onOff)
         {
-            _structure[i] = true;
+            _structure[i] = onOff;
 
             if (_regenerateAll != null)
             {
                 StopCoroutine(_regenerateAll);
             }
             _regenerateAll = StartCoroutine(RegenerateAll());
+        }
+
+        public void AddStructure(int i)
+        {
+            if (!_structure[i])
+            {
+                var command = new Command();
+                command.DoFunc += () => SetStructure(i, true);
+                command.UndoFunc += () => SetStructure(i, false);
+                _tool.CommandBuffer.Do(command);
+            }
+
         }
 
         private Coroutine _regenerateAll;

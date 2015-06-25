@@ -13,36 +13,14 @@ namespace DSS.UnitTests
     [Category("Tool Tests")]
     internal class UndoBuffer_Test
     {
-        private class MockCommand : ICommand
-        {
-            public event Action DoImpl;
-            public event Action UndoImpl;
-
-            public void Do()
-            {
-                if (DoImpl != null)
-                {
-                    DoImpl();
-                }
-            }
-
-            public void Undo()
-            {
-                if (UndoImpl != null)
-                {
-                    UndoImpl();
-                }
-            }
-        }
         
         [Test]
         public void DoRunsTheCommandsDo()
         {
-
             var undoBuffer = new UndoBuffer();
             var doCount = 0;
-            var command = new MockCommand();
-            command.DoImpl += () => doCount++;
+            var command = new Command();
+            command.DoFunc += () => doCount++;
             undoBuffer.Do(command);
 
             Assert.AreEqual(doCount, 1);
@@ -64,7 +42,7 @@ namespace DSS.UnitTests
         public void UndoIsAvailableAfterCommandsAreSent()
         {
             var undoBuffer = new UndoBuffer();
-            undoBuffer.Do(new MockCommand());
+            undoBuffer.Do(new Command());
 
             Assert.IsTrue(undoBuffer.CanUndo);
             undoBuffer.Undo();
@@ -77,8 +55,8 @@ namespace DSS.UnitTests
             var undoBuffer = new UndoBuffer();
             var undoCount = 0;
 
-            var command = new MockCommand();
-            command.UndoImpl += () => undoCount++;
+            var command = new Command();
+            command.UndoFunc += () => undoCount++;
             undoBuffer.Do(command);
 
             Assert.IsTrue(undoBuffer.CanUndo);
@@ -105,7 +83,7 @@ namespace DSS.UnitTests
         {
             var undoBuffer = new UndoBuffer();
             
-            undoBuffer.Do(new MockCommand());
+            undoBuffer.Do(new Command());
             undoBuffer.Undo();
             
             Assert.IsTrue(undoBuffer.CanRedo);
@@ -118,8 +96,8 @@ namespace DSS.UnitTests
         {
             var undoBuffer = new UndoBuffer();
             var doCount = 0;
-            var command = new MockCommand();
-            command.DoImpl += () => doCount++;
+            var command = new Command();
+            command.DoFunc += () => doCount++;
             undoBuffer.Do(command);
             undoBuffer.Undo();
             undoBuffer.Redo();
@@ -131,11 +109,11 @@ namespace DSS.UnitTests
         {
             var undoBuffer = new UndoBuffer();
 
-            undoBuffer.Do(new MockCommand());
+            undoBuffer.Do(new Command());
             undoBuffer.Undo();
 
             Assert.IsTrue(undoBuffer.CanRedo);
-            undoBuffer.Do(new MockCommand());
+            undoBuffer.Do(new Command());
             Assert.IsFalse(undoBuffer.CanRedo);
         }
 
@@ -143,10 +121,10 @@ namespace DSS.UnitTests
         public void UndoQueueWorksMultipleLevelsDeep()
         {
             var undoBuffer = new UndoBuffer();
-            undoBuffer.Do(new MockCommand());
-            undoBuffer.Do(new MockCommand());
-            undoBuffer.Do(new MockCommand());
-            undoBuffer.Do(new MockCommand());
+            undoBuffer.Do(new Command());
+            undoBuffer.Do(new Command());
+            undoBuffer.Do(new Command());
+            undoBuffer.Do(new Command());
             Assert.IsTrue(undoBuffer.CanUndo);
             Assert.IsFalse(undoBuffer.CanRedo);
 

@@ -10,6 +10,28 @@ namespace DSS
         void Do();
         void Undo();
     }
+    
+    public class Command : ICommand
+    {
+        public event Action DoFunc;
+        public event Action UndoFunc;
+        
+        public void Do()
+        {
+            if (DoFunc != null)
+            {
+                DoFunc();
+            }
+        }
+
+        public void Undo()
+        {
+            if (UndoFunc != null)
+            {
+                UndoFunc();
+            }
+        }
+    }
 
     public class UndoBuffer
     {
