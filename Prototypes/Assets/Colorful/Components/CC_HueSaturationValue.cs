@@ -62,7 +62,8 @@ public class CC_HueSaturationValue : CC_Base
 	public bool advanced = false;
 	public int currentChannel = 0;
 
-	void OnRenderImage(RenderTexture source, RenderTexture destination)
+	[ImageEffectTransformsToLDR]
+	protected virtual void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
 		material.SetVector("_Master", new Vector3(masterHue / 360f, masterSaturation * 0.01f, masterValue * 0.01f));
 

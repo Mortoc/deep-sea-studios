@@ -10,19 +10,6 @@ namespace DSS.Construction
 {
     public class EditableStructureVolume : MonoBehaviour
     {
-        public class Put : ICommand
-        {
-            public void Do()
-            {
-
-            }
-
-            public void Undo()
-            {
-
-            }
-        }
-
         public static readonly int MAX_WIDTH = 16;
         public static readonly int MAX_HEIGHT = 16;
         public static readonly int MAX_DEPTH = 16;
@@ -239,6 +226,8 @@ namespace DSS.Construction
         {
             if (!_structure[i])
             {
+                AudioSource.PlayClipAtPoint(_tool.AddStructureSound, FindObjectOfType<SceneCamera>().transform.position);
+
                 var command = new Command();
                 command.DoFunc += () => SetStructure(i, true);
                 command.UndoFunc += () => SetStructure(i, false);

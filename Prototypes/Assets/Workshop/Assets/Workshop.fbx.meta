@@ -11,27 +11,32 @@ ModelImporter:
     100006: walls
     100008: window_structure
     100010: //RootNode
+    100012: window_structure1
     400000: baseboard
     400002: ceiling_joists
     400004: glass
     400006: walls
     400008: window_structure
     400010: //RootNode
+    400012: window_structure1
     2300000: baseboard
     2300002: ceiling_joists
     2300004: glass
     2300006: walls
     2300008: window_structure
+    2300010: window_structure1
     3300000: baseboard
     3300002: ceiling_joists
     3300004: glass
     3300006: walls
     3300008: window_structure
+    3300010: window_structure1
     4300000: ceiling_joists
     4300002: baseboard
     4300004: walls
     4300006: glass
     4300008: window_structure
+    4300010: window_structure1
     9500000: //RootNode
   materials:
     importMaterials: 1

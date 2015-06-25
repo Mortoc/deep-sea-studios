@@ -326,6 +326,7 @@ GameObject:
   - 114: {fileID: 11450408}
   - 114: {fileID: 11405734}
   - 114: {fileID: 11498648}
+  - 114: {fileID: 11433354}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -521,6 +522,18 @@ MonoBehaviour:
   m_EffectColor: {r: .0823529437, g: .0823529437, b: .0705882385, a: .203921571}
   m_EffectDistance: {x: .25, y: -.25}
   m_UseGraphicAlpha: 1
+--- !u!114 &11433354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ee2a7b265bae5448f1dee0c10f3526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 50a531a01cb923e4e97a3a63c6a539c9, type: 3}
 --- !u!114 &11435166
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -35,6 +35,9 @@ namespace DSS
 
     public class UndoBuffer
     {
+        public event Action<bool> OnCanUndo;
+        public event Action<bool> OnCanRedo;
+
         private List<ICommand> _undoHistory = new List<ICommand>();
 
         // should always be an index in _undoHistory or -1 when _undoHistory is empty
@@ -48,13 +51,38 @@ namespace DSS
             }
         }
 
+        private void WatchUndoRedoStates(Action duringAction)
+        {
+            var couldUndo = CanUndo;
+            var couldRedo = CanRedo;
+
+            try
+            {
+                duringAction();
+            }
+            finally
+            {
+                if (couldUndo != CanUndo && OnCanUndo != null)
+                {
+                    OnCanUndo(CanUndo);
+                }
+
+                if (couldRedo != CanRedo && OnCanRedo != null)
+                {
+                    OnCanRedo(CanRedo);
+                }
+            }
+        }
+
         public void Do(ICommand command)
         {
-            DiscardRedoBuffer();
-
-            command.Do();
-            _undoHistory.Add(command);
-            _currentCommand++;
+            WatchUndoRedoStates(() =>
+            {
+               DiscardRedoBuffer();
+               command.Do();
+                _undoHistory.Add(command);
+                _currentCommand++;
+            });
         }
 
         public bool CanUndo
@@ -68,8 +96,12 @@ namespace DSS
             {
                 throw new InvalidOperationException("Nothing to undo");
             }
-            _undoHistory[_currentCommand].Undo();
-            _currentCommand--;
+            
+            WatchUndoRedoStates(() =>
+            {
+                _undoHistory[_currentCommand].Undo();
+                _currentCommand--;
+            });
         }
         
         public bool CanRedo
@@ -83,8 +115,12 @@ namespace DSS
             {
                 throw new InvalidOperationException("Nothing to redo");
             }
-            _currentCommand++;
-            _undoHistory[_currentCommand].Do();
+
+            WatchUndoRedoStates(() =>
+            {
+                _currentCommand++;
+                _undoHistory[_currentCommand].Do();
+            });
         }
     }
 

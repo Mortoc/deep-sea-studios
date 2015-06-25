@@ -27,9 +27,11 @@ public class CC_GrayscaleEditor : Editor
 
 		GUILayout.Label("Luminance", EditorStyles.boldLabel);
 
+		EditorGUI.indentLevel++;
 		EditorGUILayout.PropertyField(p_redLuminance, new GUIContent("Red"));
 		EditorGUILayout.PropertyField(p_greenLuminance, new GUIContent("Green"));
 		EditorGUILayout.PropertyField(p_blueLuminance, new GUIContent("Blue"));
+		EditorGUI.indentLevel--;
 
 		EditorGUILayout.Separator();
 		EditorGUILayout.PropertyField(p_amount);

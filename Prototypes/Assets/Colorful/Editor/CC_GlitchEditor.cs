@@ -4,6 +4,10 @@ using UnityEditor;
 [CustomEditor(typeof(CC_Glitch))]
 public class CC_GlitchEditor : Editor
 {
+	SerializedProperty p_randomActivation;
+	SerializedProperty p_randomEvery;
+	SerializedProperty p_randomDuration;
+
 	SerializedProperty p_mode;
 	SerializedProperty p_interferencesSettings;
 	SerializedProperty p_tearingSettings;
@@ -21,6 +25,10 @@ public class CC_GlitchEditor : Editor
 
 	void OnEnable()
 	{
+		p_randomActivation = serializedObject.FindProperty("randomActivation");
+		p_randomEvery = serializedObject.FindProperty("randomEvery");
+		p_randomDuration = serializedObject.FindProperty("randomDuration");
+
 		p_mode = serializedObject.FindProperty("mode");
 		p_interferencesSettings = serializedObject.FindProperty("interferencesSettings");
 		p_tearingSettings = serializedObject.FindProperty("tearingSettings");
@@ -40,6 +48,15 @@ public class CC_GlitchEditor : Editor
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
+
+		EditorGUILayout.PropertyField(p_randomActivation);
+
+		if (p_randomActivation.boolValue)
+		{
+			DoTimingUI(p_randomEvery, "Every", 50f);
+			DoTimingUI(p_randomDuration, "For", 50f);
+			EditorGUILayout.Space();
+		}
 
 		EditorGUILayout.PropertyField(p_mode);
 
@@ -89,5 +106,21 @@ public class CC_GlitchEditor : Editor
 		}
 
 		EditorGUILayout.PropertyField(p_tearingAllowFlipping);
+	}
+
+	void DoTimingUI(SerializedProperty prop, string label, float labelWidth)
+	{
+		Vector2 v = prop.vector2Value;
+
+		EditorGUILayout.BeginHorizontal();
+			GUILayout.Space(EditorGUIUtility.labelWidth - 3);
+			GUILayout.Label(label, GUILayout.ExpandWidth(false), GUILayout.Width(labelWidth));
+			v.x = EditorGUILayout.FloatField(v.x, GUILayout.MaxWidth(75));
+			GUILayout.Label("to", GUILayout.ExpandWidth(false));
+			v.y = EditorGUILayout.FloatField(v.y, GUILayout.MaxWidth(75));
+			GUILayout.Label("second(s)", GUILayout.ExpandWidth(false));
+		EditorGUILayout.EndHorizontal();
+
+		prop.vector2Value = v;
 	}
 }

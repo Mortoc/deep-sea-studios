@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 132930, guid: 0bd5cae2057bb4142a269025811c394e, type: 2}
+  AddStructureSound: {fileID: 8300000, guid: 73dd82e8132f34654bff54421da25e0b, type: 3}
   _prefabs:
   - Prefab: {fileID: 130230, guid: 8d4b24e4e3a1ca04c8e56f7b1f61babb, type: 2}
     Up: 1

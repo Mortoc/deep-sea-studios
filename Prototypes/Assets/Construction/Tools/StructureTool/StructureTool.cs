@@ -11,6 +11,8 @@ namespace DSS.Construction
 {
     public class StructureTool : ConstructionTool
     {
+        public AudioClip AddStructureSound;
+
         private UndoBuffer _undoBuffer;
         public UndoBuffer CommandBuffer
         {
@@ -99,9 +101,7 @@ namespace DSS.Construction
 
         public override void EnterState()
         {
-            base.EnterState();
-
-             _undoBuffer = new UndoBuffer();
+            _undoBuffer = new UndoBuffer();
 
             if (_allStructures == null || _allStructures.Count() == 0)
             {
@@ -120,6 +120,8 @@ namespace DSS.Construction
                 _editVolume = editVolumeObj.AddComponent<EditableStructureVolume>();
                 _editVolume.Initialize(this);
             }
+
+            base.EnterState();
         }
 
         public override void ExitState()

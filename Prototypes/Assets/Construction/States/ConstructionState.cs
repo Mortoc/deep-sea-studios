@@ -14,6 +14,7 @@ namespace DSS.Construction
     {
         [SerializeField]
         private GameObject _constructionScreenGUIPrefab;
+        
         private ConstructionUI _constructionScreenGUI;
 
         public ConstructionTool ActiveTool

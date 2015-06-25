@@ -160,5 +160,65 @@ namespace DSS.UnitTests
             Assert.IsTrue(undoBuffer.CanUndo);
             Assert.IsFalse(undoBuffer.CanRedo);
         }
+        
+        [Test]
+        public void CanUndoCallbacksFireOnlyWhenFirstAvailable()
+        {
+            var currentUndoState = false;
+            var callbackCount = 0;
+            var undoBuffer = new UndoBuffer();
+            undoBuffer.OnCanUndo += s =>
+            {
+                currentUndoState = s;
+                callbackCount++;
+            };
+
+            Assert.AreEqual(currentUndoState, undoBuffer.CanUndo);
+            undoBuffer.Do(new Command());
+
+            Assert.IsTrue(currentUndoState);
+            Assert.AreEqual(currentUndoState, undoBuffer.CanUndo);
+            Assert.AreEqual(1, callbackCount);
+
+            undoBuffer.Do(new Command());
+            Assert.AreEqual(1, callbackCount);
+            
+            undoBuffer.Undo();
+            Assert.AreEqual(currentUndoState, undoBuffer.CanUndo);
+            Assert.AreEqual(1, callbackCount);
+
+            undoBuffer.Undo();
+            Assert.AreEqual(2, callbackCount);
+            Assert.IsFalse(currentUndoState);
+            Assert.AreEqual(currentUndoState, undoBuffer.CanUndo);
+        }
+
+        [Test]
+        public void CanRedoCallbacksFireOnlyWhenFirstAvailable()
+        {
+            var currentRedoState = false;
+            var callbackCount = 0;
+            var undoBuffer = new UndoBuffer();
+            undoBuffer.OnCanRedo += s =>
+            {
+                currentRedoState = s;
+                callbackCount++;
+            };
+
+            Assert.AreEqual(currentRedoState, undoBuffer.CanRedo);
+            undoBuffer.Do(new Command());
+            undoBuffer.Do(new Command());
+
+            Assert.IsFalse(currentRedoState);
+            Assert.AreEqual(currentRedoState, undoBuffer.CanRedo);
+
+            undoBuffer.Undo();
+            var callbackCountBefore2ndUndo = callbackCount;
+            undoBuffer.Undo();
+            Assert.AreEqual(callbackCountBefore2ndUndo, callbackCount);
+
+            Assert.IsTrue(currentRedoState);
+            Assert.AreEqual(currentRedoState, undoBuffer.CanRedo);
+        }
     }
 }
