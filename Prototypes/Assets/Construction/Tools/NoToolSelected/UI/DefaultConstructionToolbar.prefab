@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22284828}
   - 114: {fileID: 11423670}
   - 114: {fileID: 11437366}
+  - 114: {fileID: 11436728}
   m_Layer: 5
   m_Name: Another Button
   m_TagString: Untagged
@@ -29,6 +30,7 @@ GameObject:
   - 222: {fileID: 22266266}
   - 114: {fileID: 11460392}
   - 114: {fileID: 11443586}
+  - 114: {fileID: 11411058}
   m_Layer: 5
   m_Name: Delete Button
   m_TagString: Untagged
@@ -47,6 +49,7 @@ GameObject:
   - 222: {fileID: 22208672}
   - 114: {fileID: 11431862}
   - 114: {fileID: 11473484}
+  - 114: {fileID: 11443590}
   m_Layer: 5
   m_Name: Structure Button
   m_TagString: Untagged
@@ -84,6 +87,7 @@ GameObject:
   - 222: {fileID: 22292652}
   - 114: {fileID: 11419170}
   - 114: {fileID: 11494932}
+  - 114: {fileID: 11442588}
   m_Layer: 5
   m_Name: Mechanical Part Button
   m_TagString: Untagged
@@ -108,6 +112,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11411058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ee2a7b265bae5448f1dee0c10f3526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 9fb7203c63e05244285fdd19b20c451b, type: 3}
 --- !u!114 &11411414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +203,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11436728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ee2a7b265bae5448f1dee0c10f3526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 9fb7203c63e05244285fdd19b20c451b, type: 3}
 --- !u!114 &11437366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +267,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11442588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ee2a7b265bae5448f1dee0c10f3526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 9fb7203c63e05244285fdd19b20c451b, type: 3}
 --- !u!114 &11443586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +331,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11443590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ee2a7b265bae5448f1dee0c10f3526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 9fb7203c63e05244285fdd19b20c451b, type: 3}
 --- !u!114 &11457554
 MonoBehaviour:
   m_ObjectHideFlags: 1
