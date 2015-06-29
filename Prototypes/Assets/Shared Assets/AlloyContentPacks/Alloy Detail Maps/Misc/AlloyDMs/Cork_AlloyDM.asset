@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b158258a30cea746ad413697b1d071b, type: 3}
+  m_Name: Cork_AlloyDM
+  m_EditorClassIdentifier: 
+  ChannelValues: {x: 0, y: 0, z: .5, w: 0}
+  TexturesGUID:
+  - 
+  - 3437366632613534323361343362663439383433383135356434643166373930
+  - 
+  - 
+  NormalGUID: 3261616664323332336638643136323463623933366331383133663635663331
+  SelectedModes: 00000000040000000000000000000000
+  MaxResolution: 0
+  IsDetailMap: 1
+  IsTerrainMap: 0
+  VarianceBias: 0
+  Width: 1024
+  Height: 1024
+  DoAutoRegenerate: 0

@@ -11,7 +11,7 @@ RenderTexture:
     Hash: 00000000000000000000000000000000
   m_Width: 960
   m_Height: 540
-  m_AntiAliasing: 4
+  m_AntiAliasing: 1
   m_DepthFormat: 1
   m_ColorFormat: 0
   m_MipMap: 0

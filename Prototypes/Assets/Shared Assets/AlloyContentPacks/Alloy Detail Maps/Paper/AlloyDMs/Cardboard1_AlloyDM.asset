@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b158258a30cea746ad413697b1d071b, type: 3}
+  m_Name: Cardboard1_AlloyDM
+  m_EditorClassIdentifier: 
+  ChannelValues: {x: 0, y: 0, z: .5, w: 0}
+  TexturesGUID:
+  - 
+  - 3663303633353531643364643564363433626161363866363063303930373066
+  - 
+  - 
+  NormalGUID: 6539616239663630373061653066353438383766386663623934393433373731
+  SelectedModes: 00000000040000000000000000000000
+  MaxResolution: 0
+  IsDetailMap: 1
+  IsTerrainMap: 0
+  VarianceBias: 0
+  Width: 1024
+  Height: 1024
+  DoAutoRegenerate: 0

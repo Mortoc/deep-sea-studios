@@ -9,7 +9,7 @@ Material:
   m_Name: light
   m_Shader: {fileID: 4800000, guid: 54982321056a11e4eaaa5c38a17b10ef, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -137,7 +137,7 @@ Material:
       data:
         first:
           name: _EmissivePower
-        second: 2
+        second: 5
     m_Colors:
       data:
         first:
