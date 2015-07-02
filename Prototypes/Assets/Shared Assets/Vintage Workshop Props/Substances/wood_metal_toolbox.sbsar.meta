@@ -1,16 +1,17 @@
 fileFormatVersion: 2
 guid: 1d1ae0dcc0d5d2d4cb8429b5ca36e313
-timeCreated: 1434456897
-licenseType: Store
+timeCreated: 1435620274
+licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
-  - serializedVersion: 15
+  - serializedVersion: 16
     name: wood_metal_toolbox
     prototypeName: wood_metal_toolbox
-    shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
+    shaderKeywords: _NORMALMAP
     renderQueue: -1
+    lightmapFlags: 5
     inputs:
     - name: wood_grain_normal_intensity
       value:
@@ -204,60 +205,7 @@ SubstanceImporter:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailNormalMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _MetallicGlossMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _OcclusionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _ParallaxMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _EmissionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailMask
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailAlbedoMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
       floats:
-        data:
-          first:
-            name: _Cutoff
-          second: .5
         data:
           first:
             name: _SrcBlend
@@ -268,6 +216,14 @@ SubstanceImporter:
           second: 0
         data:
           first:
+            name: _Cutoff
+          second: .5
+        data:
+          first:
+            name: _Parallax
+          second: .0199999996
+        data:
+          first:
             name: _ZWrite
           second: 1
         data:
@@ -276,16 +232,8 @@ SubstanceImporter:
           second: .5
         data:
           first:
-            name: _Metallic
-          second: 0
-        data:
-          first:
             name: _BumpScale
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _OcclusionStrength
@@ -305,6 +253,10 @@ SubstanceImporter:
         data:
           first:
             name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
           second: 0
       colors:
         data:
@@ -349,14 +301,6 @@ SubstanceImporter:
         name: _BumpMap
       material: {instanceID: 0}
       baseUID: 1424085724
-    - shaderProp:
-        name: _MetallicGlossMap
-      material: {instanceID: 0}
-      baseUID: 1424085720
-    - shaderProp:
-        name: _OcclusionMap
-      material: {instanceID: 0}
-      baseUID: 1438135525
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 

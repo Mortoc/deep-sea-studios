@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 79f59f568c48dc9458279c8e08dad7bc
-timeCreated: 1435614096
+timeCreated: 1435620474
 licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
@@ -8,7 +8,7 @@ SubstanceImporter:
   - serializedVersion: 16
     name: metal_locker_main
     prototypeName: metal_locker_main
-    shader: {fileID: 10705, guid: 0000000000000000f000000000000000, type: 0}
+    shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
     shaderKeywords: _NORMALMAP
     renderQueue: -1
     lightmapFlags: 5

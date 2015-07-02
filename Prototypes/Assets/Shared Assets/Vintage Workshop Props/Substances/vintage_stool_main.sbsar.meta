@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 81fbce8131217f04290e1110564976da
-timeCreated: 1435612789
+timeCreated: 1435620536
 licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
@@ -8,7 +8,7 @@ SubstanceImporter:
   - serializedVersion: 16
     name: vintage_stool_main
     prototypeName: vintage_stool_main
-    shader: {fileID: 10705, guid: 0000000000000000f000000000000000, type: 0}
+    shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
     shaderKeywords: _NORMALMAP
     renderQueue: -1
     lightmapFlags: 5

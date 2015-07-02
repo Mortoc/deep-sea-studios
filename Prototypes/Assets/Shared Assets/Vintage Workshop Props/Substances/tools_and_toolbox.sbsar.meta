@@ -1,16 +1,17 @@
 fileFormatVersion: 2
 guid: 783f38f08421edb41816a3b5f2d5efd4
-timeCreated: 1434457244
-licenseType: Store
+timeCreated: 1435620310
+licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
-  - serializedVersion: 15
+  - serializedVersion: 16
     name: tools_and_toolbox
     prototypeName: tools_and_toolbox
-    shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
+    shaderKeywords: _NORMALMAP
     renderQueue: -1
+    lightmapFlags: 5
     inputs:
     - name: $randomseed
       value:
@@ -50,60 +51,7 @@ SubstanceImporter:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailNormalMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _MetallicGlossMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _OcclusionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _ParallaxMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _EmissionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailMask
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailAlbedoMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
       floats:
-        data:
-          first:
-            name: _Cutoff
-          second: .5
         data:
           first:
             name: _SrcBlend
@@ -114,6 +62,14 @@ SubstanceImporter:
           second: 0
         data:
           first:
+            name: _Cutoff
+          second: .5
+        data:
+          first:
+            name: _Parallax
+          second: .0199999996
+        data:
+          first:
             name: _ZWrite
           second: 1
         data:
@@ -122,16 +78,8 @@ SubstanceImporter:
           second: .5
         data:
           first:
-            name: _Metallic
-          second: 0
-        data:
-          first:
             name: _BumpScale
           second: 1
-        data:
-          first:
-            name: _Parallax
-          second: .0199999996
         data:
           first:
             name: _OcclusionStrength
@@ -151,6 +99,10 @@ SubstanceImporter:
         data:
           first:
             name: _Mode
+          second: 0
+        data:
+          first:
+            name: _Metallic
           second: 0
       colors:
         data:
@@ -195,14 +147,6 @@ SubstanceImporter:
         name: _BumpMap
       material: {instanceID: 0}
       baseUID: 1642039800
-    - shaderProp:
-        name: _MetallicGlossMap
-      material: {instanceID: 0}
-      baseUID: 1642039804
-    - shaderProp:
-        name: _OcclusionMap
-      material: {instanceID: 0}
-      baseUID: 1620775925
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
