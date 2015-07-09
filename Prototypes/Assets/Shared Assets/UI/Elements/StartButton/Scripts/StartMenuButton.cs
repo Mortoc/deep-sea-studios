@@ -40,7 +40,7 @@ namespace DSS.UI
         public void Clicked()
         {
             // for now just go straight to construction state
-            FindObjectOfType<MasterStateManager>().GoToConstructionState();
+            FindObjectOfType<WorkshopState>().GoToConstructionState();
         }
         
     }

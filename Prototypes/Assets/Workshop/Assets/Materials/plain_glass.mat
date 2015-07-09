@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: plain_glass
-  m_Shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a96dadc75e9e0f34483c0cf4a406a2b0, type: 3}
+          m_Texture: {fileID: 2800000, guid: 4be6df9bbea74004192e1dccb4bf76d4, type: 3}
           m_Scale: {x: 20, y: 20}
           m_Offset: {x: 0, y: .0500000007}
       data:
@@ -93,6 +93,10 @@ Material:
         second: .5
       data:
         first:
+          name: _Shininess
+        second: .108999997
+      data:
+        first:
           name: _Parallax
         second: .0199999996
       data:
@@ -135,4 +139,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .724859476, g: .837544084, b: .904411793, a: 1}
+        second: {r: .56915009, g: .639705896, b: .610510409, a: .421999991}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .720588207, g: 1, b: .861257613, a: 1}

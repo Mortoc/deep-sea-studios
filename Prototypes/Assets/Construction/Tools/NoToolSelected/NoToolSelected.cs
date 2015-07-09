@@ -14,7 +14,7 @@ namespace DSS.Construction
 	{
         public override void BackButtonAction()
         {
-            FindObjectOfType<MasterStateManager>().TransitionToState<HomeState>();
+            FindObjectOfType<WorkshopState>().TransitionToState<HomeState>();
         }
     }
 }

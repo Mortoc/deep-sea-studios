@@ -39,7 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c9d74e8b6197641a59d9aa29528a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveState: {fileID: 0}
   _homeScreenGUIPrefab: {fileID: 131608, guid: 3df8979c923cc9f4980cc6225adfcbe0, type: 2}
 --- !u!1001 &100100000
 Prefab:

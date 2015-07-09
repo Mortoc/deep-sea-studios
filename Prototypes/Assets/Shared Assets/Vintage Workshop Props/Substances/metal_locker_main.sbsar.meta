@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 79f59f568c48dc9458279c8e08dad7bc
-timeCreated: 1435620474
+timeCreated: 1435864812
 licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
@@ -273,15 +273,15 @@ SubstanceImporter:
           second: 0
         data:
           first:
-            name: _EmissionScaleUI
-          second: 0
-        data:
-          first:
             name: _Mode
           second: 0
         data:
           first:
             name: _Metallic
+          second: 0
+        data:
+          first:
+            name: _EmissionScaleUI
           second: 0
       colors:
         data:
