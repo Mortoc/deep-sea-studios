@@ -7,9 +7,9 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Glass
-  m_Shader: {fileID: 33, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
-  m_LightmapFlags: 1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _NORMALMAP
+  m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
@@ -135,11 +135,11 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .987999976
+        second: .699999988
       data:
         first:
           name: _BumpScale
-        second: 1
+        second: 2
       data:
         first:
           name: _OcclusionStrength
@@ -180,7 +180,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .74610728, g: .814699948, b: .882352948, a: .545098066}
+        second: {r: .845588207, g: .923326612, b: 1, a: .758000016}
       data:
         first:
           name: _SpecColor
