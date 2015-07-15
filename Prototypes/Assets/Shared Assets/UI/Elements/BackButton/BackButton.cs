@@ -14,7 +14,7 @@ namespace DSS.UI
     {
         public void GoBack()
         {
-            FindObjectOfType<WorkshopState>().GoToHomeState();
+			FindObjectOfType<WorkshopState> ().TransitionToState<HomeState>();
         }
     }
 }
