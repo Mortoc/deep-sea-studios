@@ -12,22 +12,22 @@ namespace DSS.States
 {
     public class WorkshopState : GameState
     {
-        // Stuff happening on start because this is the root state object
-        public void Start()
-        {
+		public void Start()
+		{
+			EnterState (); // bootstrap cause this is the rootstate
+		}
+
+		public override void EnterState ()
+		{
+			base.EnterState ();
+
             this.Init(null);
-            GoToHomeState();
-            
+            GoToState<HomeState>();            
         }
 
-        public void GoToHomeState()
+        public void GoToState<T>() where T : GameState
         {
-            SetState(GetComponentsInChildren<HomeState>(true)[0]);
-        }
-
-        public void GoToConstructionState()
-        {
-            SetState(GetComponentsInChildren<ConstructionState>(true)[0]);
+            SetState(GetComponentsInChildren<T>(true)[0]);
         }
     }
 }

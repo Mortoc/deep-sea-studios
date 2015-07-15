@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Rand = UnityEngine.Random;
 
 using DSS.States;
+using DSS.Builds;
 
 namespace DSS.UI
 {
@@ -34,13 +35,12 @@ namespace DSS.UI
 
         void Start()
         {
-            NotificationCount = 0;
+            NotificationCount = 2;
         }
 
         public void Clicked()
         {
-            // for now just go straight to construction state
-            FindObjectOfType<WorkshopState>().GoToConstructionState();
+            FindObjectOfType<WorkshopState>().GoToState<BuildsState>();
         }
         
     }
