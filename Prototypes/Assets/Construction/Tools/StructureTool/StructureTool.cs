@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 using Rand = UnityEngine.Random;
 
+using DSS.UI;
+
 namespace DSS.Construction
 {
     public class StructureTool : ConstructionTool
@@ -101,28 +103,36 @@ namespace DSS.Construction
 
         public override void EnterState()
         {
-            _undoBuffer = new UndoBuffer();
+			_undoBuffer = new UndoBuffer();
+			base.EnterState();
 
-            if (_allStructures == null || _allStructures.Count() == 0)
-            {
-                CalculateAllPartRotations();
-            }
-
-            if( !_editVolume )
-            {
-                var editVolumeObj = new GameObject("StructureVolume");
-
-                var cameraRig = FindObjectOfType<CameraRig>();
-                editVolumeObj.transform.position = cameraRig.Target.position;
-                editVolumeObj.transform.rotation = Quaternion.identity;
-                editVolumeObj.transform.localScale = Vector3.one;
-
-                _editVolume = editVolumeObj.AddComponent<EditableStructureVolume>();
-                _editVolume.Initialize(this);
-            }
-
-            base.EnterState();
+			InstructionDialog.Say("Select starting point")
+				.Ok (StartEditing)
+				.Cancel (BackButtonAction);
         }
+
+		private void StartEditing()
+		{
+			
+			if (_allStructures == null || _allStructures.Count() == 0)
+			{
+				CalculateAllPartRotations();
+			}
+			
+			if( !_editVolume )
+			{
+				var editVolumeObj = new GameObject("StructureVolume");
+				
+				var cameraRig = FindObjectOfType<CameraRig>();
+				editVolumeObj.transform.position = cameraRig.Target.position;
+				editVolumeObj.transform.rotation = Quaternion.identity;
+				editVolumeObj.transform.localScale = Vector3.one;
+				
+				_editVolume = editVolumeObj.AddComponent<EditableStructureVolume>();
+				_editVolume.Initialize(this);
+			}
+
+		}
 
         public override void ExitState()
         {

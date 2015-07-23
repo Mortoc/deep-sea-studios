@@ -30,7 +30,7 @@ namespace DSS.Builds
 
 		public void NewBuildSelected()
 		{
-			FindObjectOfType<WorkshopState> ().TransitionToState<ConstructionState>();
+			FindObjectOfType<WorkshopState>().TransitionToState<ConstructionState>();
 		}
 	}
 }
