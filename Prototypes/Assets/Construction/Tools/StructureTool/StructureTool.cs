@@ -13,6 +13,13 @@ namespace DSS.Construction
 {
     public class StructureTool : ConstructionTool
     {
+		[SerializeField]
+		private GameObject _aiCorePrefab;
+
+		[SerializeField]
+		private Vector3 _coreSpawnPoint;
+
+
         public AudioClip AddStructureSound;
 
         private UndoBuffer _undoBuffer;
@@ -20,6 +27,11 @@ namespace DSS.Construction
         {
             get { return _undoBuffer; }
         }
+
+		public ConstructionState ConstructionParent 
+		{ 
+			get { return (ConstructionState)Parent; }
+		}
 
         public GameObject LastBakedStructure { get; private set; }
         public StructureVariant[] _prefabs;
@@ -106,19 +118,30 @@ namespace DSS.Construction
 			_undoBuffer = new UndoBuffer();
 			base.EnterState();
 
-			InstructionDialog.Say("Select starting point")
-				.Ok (StartEditing)
-				.Cancel (BackButtonAction);
-        }
-
-		private void StartEditing()
-		{
-			
 			if (_allStructures == null || _allStructures.Count() == 0)
 			{
 				CalculateAllPartRotations();
 			}
-			
+
+			InstructionDialog.Say("Drag the starting point")
+				.Ok (StartEditing)
+				.Cancel (BackButtonAction);
+                
+            
+			SpawnAiCore();
+        }
+
+		private GameObject _aiCore;
+		private void SpawnAiCore()
+		{
+			_aiCore = Instantiate<GameObject>(_aiCorePrefab);
+			_aiCore.transform.position = _coreSpawnPoint;
+
+			ConstructionParent.OriginMarkerObject.SpawnOnObject(_aiCore);
+		}
+
+		private void StartEditing()
+		{
 			if( !_editVolume )
 			{
 				var editVolumeObj = new GameObject("StructureVolume");
@@ -131,7 +154,6 @@ namespace DSS.Construction
 				_editVolume = editVolumeObj.AddComponent<EditableStructureVolume>();
 				_editVolume.Initialize(this);
 			}
-
 		}
 
         public override void ExitState()
@@ -141,7 +163,13 @@ namespace DSS.Construction
             LastBakedStructure = _editVolume.BakeToObject();
             LastBakedStructure.GetComponent<Rigidbody>().AddTorque(Rand.onUnitSphere, ForceMode.Impulse);
 
-            GameObject.DestroyImmediate(_editVolume.gameObject);
+            DestroyImmediate(_editVolume.gameObject);
+
+			ConstructionParent.OriginMarkerObject.Disable ();
+			if (_aiCore) 
+			{
+				DestroyImmediate(_aiCore);
+			}
         }
 
         public override void BackButtonAction()

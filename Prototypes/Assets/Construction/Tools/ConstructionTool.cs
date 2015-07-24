@@ -16,6 +16,7 @@ namespace DSS.Construction
 
         public int ToolMask { get; protected set; }
 
+
         public override void EnterState()
         {
             base.EnterState();

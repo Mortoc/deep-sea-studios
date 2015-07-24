@@ -322,16 +322,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4720afdaf31c7541aa9e3774ba1e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: f77f3936ce6ef954682f02ab2e579837, type: 3}
+  shader: {fileID: 0}
   center: {x: .5, y: .5}
-  sharpness: 23.1000004
-  darkness: 18.6000004
-  contrast: 87.0999985
+  sharpness: 32
+  darkness: 28
+  contrast: 20
   redCoeff: .5
   greenCoeff: .5
   blueCoeff: .5
@@ -342,17 +342,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: .25
-  intensity: 1
+  intensity: .75
   blurSize: 1
   blurIterations: 1
   blurType: 0
-  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+  fastBloomShader: {fileID: 0}
 --- !u!114 &11439612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,14 +375,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iterations: 3
-  blurSpread: .100000001
-  blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
+  blurSpread: .600000024
+  blurShader: {fileID: 0}
 --- !u!114 &11450446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e50e925fb93c78246bf995d9dc3a2330, type: 3}
   m_Name: 
@@ -417,7 +417,7 @@ MonoBehaviour:
   middleGrey: .400000006
   white: 2
   adaptionSpeed: 1.5
-  tonemapper: {fileID: 4800000, guid: 003377fc2620a44939dadde6fe3f8190, type: 3}
+  tonemapper: {fileID: 0}
   validRenderTextureFormat: 1
 --- !u!114 &11462814
 MonoBehaviour:
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneCamera: {fileID: 2094972}
+  _animateTime: .25
 --- !u!114 &11493628
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _constructionScreenGUIPrefab: {fileID: 178602, guid: 21a96574201d4bf4c95101bf1ac5b91e,
     type: 2}
+  _originMarkerPrefab: {fileID: 105696, guid: 5ffe82a924347459a9c29072347b0f1b, type: 2}
 --- !u!114 &11419688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 132930, guid: 0bd5cae2057bb4142a269025811c394e, type: 2}
+  _aiCorePrefab: {fileID: 116448, guid: fbf1764a1a4324bc58312e8f885b9478, type: 2}
+  _coreSpawnPoint: {x: -35, y: 2, z: 0}
   AddStructureSound: {fileID: 8300000, guid: 73dd82e8132f34654bff54421da25e0b, type: 3}
   _prefabs:
   - Prefab: {fileID: 130230, guid: 8d4b24e4e3a1ca04c8e56f7b1f61babb, type: 2}
