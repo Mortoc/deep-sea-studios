@@ -146,9 +146,9 @@ namespace DSS.Construction
 			{
 				var editVolumeObj = new GameObject("StructureVolume");
 				
-				var cameraRig = FindObjectOfType<CameraRig>();
-				editVolumeObj.transform.position = cameraRig.Target.position;
-				editVolumeObj.transform.rotation = Quaternion.identity;
+				editVolumeObj.transform.SetParent(ConstructionParent.OriginMarkerObject.transform);
+				editVolumeObj.transform.localPosition = Vector3.zero;
+				editVolumeObj.transform.localRotation = Quaternion.identity;
 				editVolumeObj.transform.localScale = Vector3.one;
 				
 				_editVolume = editVolumeObj.AddComponent<EditableStructureVolume>();
