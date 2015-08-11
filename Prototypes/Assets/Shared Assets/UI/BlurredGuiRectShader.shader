@@ -3,7 +3,6 @@ Shader "DSS/GUI/Blur GUI Texture"
 {
 	Properties
 	{
-		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
 		_Color("Tint", Color) = (1,1,1,1)
 
 		_StencilComp("Stencil Comparison", Float) = 8
@@ -64,6 +63,7 @@ Shader "DSS/GUI/Blur GUI Texture"
 		};
 
 		fixed4 _Color;
+		uniform sampler2D _blurRender;
 
 		v2f vert(appdata_t IN)
 		{
@@ -80,17 +80,15 @@ Shader "DSS/GUI/Blur GUI Texture"
 			OUT.texcoord.y += 0.5;
 
 		#ifdef UNITY_HALF_TEXEL_OFFSET
-			OUT.vertex.xy += (_ScreenParams.zw - 1.0)*float2(-1,1);
+			OUT.vertex.xy += (_ScreenParams.zw - 1.0) * float2(-1,1);
 		#endif
 			OUT.color = IN.color * _Color;
 			return OUT;
 		}
 
-		sampler2D _MainTex;
-
 		fixed4 frag(v2f IN) : SV_Target
 		{
-			half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
+			half4 color = tex2D(_blurRender, IN.texcoord) * IN.color;
 			clip(color.a - 0.01);
 			color.a = 1.0;
 			return color;

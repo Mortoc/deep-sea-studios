@@ -12,7 +12,7 @@ namespace DSS
 
         private void PlaySound()
         {
-            AudioSource.PlayClipAtPoint(_sound, FindObjectOfType<SceneCamera>().transform.position);
+			CameraRig.PlaySoundAtCamera(_sound);
         }
 
         void OnEnable()

@@ -10,14 +10,9 @@ GameObject:
   - 4: {fileID: 425036}
   - 20: {fileID: 2094972}
   - 81: {fileID: 8116954}
-  - 114: {fileID: 11423554}
-  - 114: {fileID: 11469182}
   - 114: {fileID: 11473260}
-  - 114: {fileID: 11462814}
   - 114: {fileID: 11494226}
-  - 114: {fileID: 11485560}
-  - 114: {fileID: 11435402}
-  - 114: {fileID: 11459656}
+  - 114: {fileID: 11481316}
   m_Layer: 9
   m_Name: Scene Render Camera
   m_TagString: Untagged
@@ -34,8 +29,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 460402}
   - 20: {fileID: 2005312}
-  - 114: {fileID: 11444660}
-  - 114: {fileID: 11450446}
+  - 114: {fileID: 11463748}
   m_Layer: 9
   m_Name: Blurred Scene Camera
   m_TagString: MainCamera
@@ -282,7 +276,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 91e166c5b70a896459b6dcadf1e00a2c, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: ecf7a7c7fdb72424484c8a2a2a2198a3, type: 2}
   m_TargetDisplay: 0
   m_HDR: 1
   m_OcclusionCulling: 1
@@ -309,50 +303,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Texture: {fileID: 8400000, guid: 91e166c5b70a896459b6dcadf1e00a2c, type: 2}
+  m_Texture: {fileID: 8400000, guid: ecf7a7c7fdb72424484c8a2a2a2198a3, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
---- !u!114 &11423554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4720afdaf31c7541aa9e3774ba1e4d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 0}
-  center: {x: .5, y: .5}
-  sharpness: 32
-  darkness: 28
-  contrast: 20
-  redCoeff: .5
-  greenCoeff: .5
-  blueCoeff: .5
-  edge: 0
---- !u!114 &11435402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: .25
-  intensity: .75
-  blurSize: 1
-  blurIterations: 1
-  blurType: 0
-  fastBloomShader: {fileID: 0}
 --- !u!114 &11439612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,21 +326,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11444660
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129238}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iterations: 3
-  blurSpread: .600000024
-  blurShader: {fileID: 0}
---- !u!114 &11450446
+--- !u!114 &11463748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -391,74 +334,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 129238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4ccae55fb0f4a4abb535c37c3c0794, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fc6bde01469c7b4badee5362f191d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _downsample: 2
---- !u!114 &11459656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50e925fb93c78246bf995d9dc3a2330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
-  adaptiveTextureSize: 256
-  remapCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  exposureAdjustment: 1.5
-  middleGrey: .400000006
-  white: 2
-  adaptionSpeed: 1.5
-  tonemapper: {fileID: 0}
-  validRenderTextureFormat: 1
---- !u!114 &11462814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56031f787587039479fe9c726443f155, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tiltStrength: .00499999989
-  _tiltSpeed: .100000001
---- !u!114 &11469182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90e91712a24c254b83baa6618c1abb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: 4be7b4e071193b140a23fc28b6d9cbc6, type: 3}
-  randomActivation: 0
-  randomEvery: {x: 1, y: 2}
-  randomDuration: {x: 1, y: 2}
-  mode: 2
-  interferencesSettings:
-    speed: 5
-    density: 3
-    maxDisplacement: 1.5
-  tearingSettings:
-    speed: .5
-    intensity: .25
-    maxDisplacement: .0500000007
-    allowFlipping: 0
-    yuvColorBleeding: 1
-    yuvOffset: .5
+  downsample: 0
+  blurSize: 1
+  blurIterations: 2
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
 --- !u!114 &11473260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,7 +380,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   OnlyRotateWhenDragStartsOnObject: 0
---- !u!114 &11485560
+--- !u!114 &11481316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -505,10 +388,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 103184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b78ae246027444a86faf0027ff0f04, type: 3}
+  m_Script: {fileID: 11500000, guid: b4720afdaf31c7541aa9e3774ba1e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _downsample: 2
+  shader: {fileID: 4800000, guid: f77f3936ce6ef954682f02ab2e579837, type: 3}
+  center: {x: .5, y: .5}
+  sharpness: 32
+  darkness: 28
+  contrast: 20
+  redCoeff: .5
+  greenCoeff: .5
+  blueCoeff: .5
+  edge: 0
 --- !u!114 &11486110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,7 +411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7701b6d97ea2ef43b50894ffda45e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneRenderTarget: {fileID: 11415174}
+  _screenResPercent: .75
   _sceneCamera: {fileID: 2094972}
+  _blurCamera: {fileID: 2005312}
+  _finalCamera: {fileID: 2037528}
   _animateTime: .25
 --- !u!114 &11493628
 MonoBehaviour:

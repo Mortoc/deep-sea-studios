@@ -226,7 +226,7 @@ namespace DSS.Construction
         {
             if (!_structure[i])
             {
-                AudioSource.PlayClipAtPoint(_tool.AddStructureSound, FindObjectOfType<SceneCamera>().transform.position);
+				CameraRig.PlaySoundAtCamera(_tool.AddStructureSound);
 
                 var command = new Command();
                 command.DoFunc += () => SetStructure(i, true);
